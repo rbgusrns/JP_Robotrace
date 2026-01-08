@@ -210,7 +210,8 @@ __VARIABLE_EXE__  Uint16 g_u16pos_cnt,
 						 g_u16sen_state,
  					     g_u16turnmark_limit,
  					     i,
-						 g_u16sen_enable;
+						 g_u16sen_enable,
+						 g_u16gyro_raw_data[2];
 						 
 
 						
@@ -252,7 +253,10 @@ __VARIABLE_EXE__  _iq g_q17shift_dist,
 					  g_q17ext_large_acc,
 					  g_q17shift_ratio,
 					  g_q17return_ratio,
-					  g_q17st_ret_ratio;
+					  g_q17turn_angle,
+					  g_q17st_ret_ratio,
+					  g_q17_dps_z,
+					  g_q17_gyro_offset;
 
 
 
@@ -276,6 +280,9 @@ __VARIABLE_EXE__    _iq7 turn_step,
 
 __VARIABLE_EXE__    _iq28 g_q28kp,
                           g_q28kd;
+
+
+__VARIABLE_EXE__    int16 g_int16_gyro_raw;
 
 
 /*extremerun variables*/

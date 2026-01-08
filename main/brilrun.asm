@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Thu Jan 08 12:14:44 2026                 *
+;* Date/Time created: Thu Jan 08 16:13:09 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -393,8 +393,8 @@ DW$95	.dwtag  DW_TAG_variable, DW_AT_name("g_fast_info"), DW_AT_symbol_name("_g_
 	.dwattr DW$95, DW_AT_type(*DW$T$128)
 	.dwattr DW$95, DW_AT_declaration(0x01)
 	.dwattr DW$95, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI32810 C:\Users\rbgus\AppData\Local\Temp\TI3284 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI3282 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI3286 --object_file brilrun.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI84010 C:\Users\rbgus\AppData\Local\Temp\TI8404 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI8402 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI8406 --object_file brilrun.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 ***	Parameter deleted: perr == &g_err;
 	.sect	".text"
 
@@ -4771,7 +4771,7 @@ L166:
         ; return occurs
 
 DW$209	.dwtag  DW_TAG_loop
-	.dwattr DW$209, DW_AT_name("C:\project\JP_Robotrace\main\brilrun.asm:L165:1:1767842085")
+	.dwattr DW$209, DW_AT_name("C:\project\JP_Robotrace\main\brilrun.asm:L165:1:1767856389")
 	.dwattr DW$209, DW_AT_begin_file("brilrun.c")
 	.dwattr DW$209, DW_AT_begin_line(0x26a)
 	.dwattr DW$209, DW_AT_end_line(0x26f)
@@ -4999,7 +4999,7 @@ L170:
         ; return occurs
 
 DW$217	.dwtag  DW_TAG_loop
-	.dwattr DW$217, DW_AT_name("C:\project\JP_Robotrace\main\brilrun.asm:L167:1:1767842085")
+	.dwattr DW$217, DW_AT_name("C:\project\JP_Robotrace\main\brilrun.asm:L167:1:1767856389")
 	.dwattr DW$217, DW_AT_begin_file("brilrun.c")
 	.dwattr DW$217, DW_AT_begin_line(0x2eb)
 	.dwattr DW$217, DW_AT_end_line(0x301)
@@ -5549,7 +5549,7 @@ L189:
         ; return occurs
 
 DW$225	.dwtag  DW_TAG_loop
-	.dwattr DW$225, DW_AT_name("C:\project\JP_Robotrace\main\brilrun.asm:L185:1:1767842085")
+	.dwattr DW$225, DW_AT_name("C:\project\JP_Robotrace\main\brilrun.asm:L185:1:1767856389")
 	.dwattr DW$225, DW_AT_begin_file("brilrun.c")
 	.dwattr DW$225, DW_AT_begin_line(0x280)
 	.dwattr DW$225, DW_AT_end_line(0x2c0)
@@ -6430,7 +6430,7 @@ DW$L$_bril_run$16$E:
         ; return occurs
 
 DW$289	.dwtag  DW_TAG_loop
-	.dwattr DW$289, DW_AT_name("C:\project\JP_Robotrace\main\brilrun.asm:L206:1:1767842085")
+	.dwattr DW$289, DW_AT_name("C:\project\JP_Robotrace\main\brilrun.asm:L206:1:1767856389")
 	.dwattr DW$289, DW_AT_begin_file("brilrun.c")
 	.dwattr DW$289, DW_AT_begin_line(0x32e)
 	.dwattr DW$289, DW_AT_end_line(0x350)

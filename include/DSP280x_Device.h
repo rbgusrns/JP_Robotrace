@@ -159,6 +159,8 @@ typedef long double     float64;
 #include "..\main\search.h"
 #include "..\main\fastrun.h"
 #include "..\main\extremerun.h"
+#include "..\main\brilrun.h"
+#include "..\main\gyro.h"
 
 #ifdef __cplusplus
 }

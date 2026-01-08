@@ -27,6 +27,9 @@
 #define LSM6DSR_CTRL2_G       0x11 // 0001 0001 || ODR_G3~0 : 4bit -> Gyro Hz(ODR) select
 
 #define LSM6DSR_CTRL3_C       0x12 // 0001 0010
+#define LSM6DSR_CTRL4_C       0x13 // 0001 0010
+#define LSM6DSR_CTRL6_C       0x15 // 0001 0010
+
 
 #define LSM6DSR_OUTZ_L_G      0x26  // Yaw_L
 #define LSM6DSR_OUTZ_H_G      0x27  // Yaw_H
@@ -109,9 +112,9 @@ void LSM6DSR_ReadMulti(Uint16 reg, Uint16 *pBuf, Uint16 len)
     Uint16 i;
     
     SPIGYRO_CS_H;
-    SPI_CS_DELAY;
+    //SPI_CS_DELAY;
     SPIGYRO_CS_L;
-    SPI_CS_DELAY;
+    //SPI_CS_DELAY;
 
     SpiaRegs.SPICCR.bit.SPISWRESET = 1;
     
@@ -123,7 +126,7 @@ void LSM6DSR_ReadMulti(Uint16 reg, Uint16 *pBuf, Uint16 len)
     }
 
     SPIGYRO_CS_H;
-    SPI_CS_DELAY;
+    //SPI_CS_DELAY;
 
 }
 
@@ -160,10 +163,18 @@ Uint16 LSM6DSR_Init(void)
     // - FS_125=0, FS_4000=1
     // => 10100001
     LSM6DSR_WriteByte(LSM6DSR_CTRL2_G, 0xA1);
+    
 
-    // (선택사항) 가속도계도 활성화 하려면 CTRL1_XL 설정
-    // 예: 104Hz, ±4g => 0b01001000 = 0x48
-    // LSM6DSR_WriteByte(LSM6DSR_CTRL1_XL, 0x48);
+   
+    // CTRL4_C (0x13) 레지스터의 1번 비트(LPF1_SEL_G)를 1로 설정
+    LSM6DSR_WriteByte(LSM6DSR_CTRL4_C, 0x02);
+    
+   
+    // CTRL6_C (0x15) 레지스터의 하위 3비트(FTYPE)를 011(0x03)로 설정
+    // (ODR 6.66kHz일 때 FTYPE 011은 470Hz 대역폭을 의미함)
+    LSM6DSR_WriteByte(LSM6DSR_CTRL6_C, 0x03);
+
+
     
     // 설정 적용을 위한 짧은 지연
     Delay(0xFFFF);
@@ -178,32 +189,101 @@ Uint16 LSM6DSR_Init(void)
  * @param dps_y Y축 dps 값을 저장할 포인터
  * @param dps_z Z축 dps 값을 저장할 포인터
  */
-void LSM6DSR_GetGyroDataDPS(void)
+
+#if 0
+extern void Gyro_test(void)
 {
-    Uint16 raw_data[6]; // X, Y, Z 각 2바이트씩 저장할 버퍼
-    int16 gx_raw, gy_raw, gz_raw; // 16비트 부호있는 정수형
-    float dps_x;
-    float dps_y;
-    float dps_z;
-    const float sensitivity = 70.0 / 1000.0; // dps/LSB
+
+  	while(1)
+	{
+        Uint16 raw_data[2]; // X, Y, Z 각 2바이트씩 저장할 버퍼
+        int16 gz_raw; // 16비트 부호있는 정수형
+        _iq17 dps_z;
+        _iq17 sensitivity = _IQ(-0.140); // dps/LSB
+
+        LED_ON;
+        // 자이로 데이터 레지스터(0x22 ~ 0x27) 6바이트를 한 번에 읽음
+        LSM6DSR_ReadMulti(LSM6DSR_OUTZ_L_G, raw_data, 2);
+
+        LED_OFF;
+        gz_raw = (int16)((raw_data[1] << 8) | raw_data[0]);
+
+        dps_z = _IQmpy(_IQ(gz_raw), sensitivity);
+        
+        //TxPrintf("%ld\n",dps_z >> 17);
+        VFDPrintf("DP:%5ld\n",dps_z >> 17);
+
+		if(Down_SW){
+			DELAY_US(125000);
+			break;
+		}
+
+  	}
+}
+
+#endif
+
+#if 1
+extern void Gyro_test(void)
+{
+
+  	while(1)
+	{
+
+        VFDPrintf("ANG:%4f\n",_IQtoF(g_q17turn_angle));
+
+        if(Right_SW)
+        {
+            g_q17turn_angle = _IQ(0);
+            DELAY_US(125000);
+        }
+        
+		if(Down_SW){
+			DELAY_US(125000);
+			break;
+		}
+
+  	}
+}
+#endif
+
+
+extern void LSM6DSR_GetGyroDataDPS(void)
+{
 
     // 자이로 데이터 레지스터(0x22 ~ 0x27) 6바이트를 한 번에 읽음
-    LSM6DSR_ReadMulti(LSM6DSR_OUTX_L_G, raw_data, 6);
+    LSM6DSR_ReadMulti(LSM6DSR_OUTZ_L_G, g_u16gyro_raw_data, 2);
+    
+    g_int16_gyro_raw = (int16)((g_u16gyro_raw_data[1] << 8) | g_u16gyro_raw_data[0]);
+    
+    g_q17_dps_z = _IQmpy(_IQ(g_int16_gyro_raw), _IQ(-0.140)) - g_q17_gyro_offset;
 
-    // LSB와 MSB를 조합하여 16비트 데이터로 변환
-    gx_raw = (int16)((raw_data[1] << 8) | raw_data[0]);
-    gy_raw = (int16)((raw_data[3] << 8) | raw_data[2]);
-    gz_raw = (int16)((raw_data[5] << 8) | raw_data[4]);
 
-    // 데이터시트 기반 Raw 데이터를 dps 단위로 변환
-    // FS = ±2000 dps 일 때, 민감도(Sensitivity)는 70 mdps/LSB [cite: 244]
-    // mdps를 dps로 바꾸기 위해 1000으로 나눠줍니다.
-   
+    //VFDPrintf("DP:%5ld\n", g_q17_dps_z >> 17);
 
-    dps_x = (float)gx_raw * sensitivity;
-    dps_y = (float)gy_raw * sensitivity;
-    dps_z = (float)gz_raw * sensitivity;
-
-    TxPrintf("%d\n",gz_raw);
 }
+
+
+extern void calculate_average_offset(void)
+{
+    _iq dps_sum = _IQ(0);
+    int16 cnt = 10000;
+    for ( i = 0 ; i < cnt; i++ )
+    {
+        LSM6DSR_ReadMulti(LSM6DSR_OUTZ_L_G, g_u16gyro_raw_data, 2);
+        
+        g_int16_gyro_raw = (int16)((g_u16gyro_raw_data[1] << 8) | g_u16gyro_raw_data[0]);        
+
+        g_q17_dps_z = _IQmpy(_IQ(g_int16_gyro_raw), _IQ(-0.140));
+
+        dps_sum += g_q17_dps_z;
+    }
+
+    g_q17_gyro_offset = _IQdiv(dps_sum,_IQ(cnt));
+
+    TxPrintf("offset = %f\r\n", _IQtoF(g_q17_gyro_offset));
+
+    
+}
+
 

@@ -183,6 +183,9 @@ void Variable_Init( void )
     g_q17return_ratio = _IQ(8);
     g_q17st_ret_ratio = _IQ(4);
 
+    g_q17turn_angle = _IQ(0);
+    g_q17_dps_z = _IQ(0);
+
 
 }
 
@@ -194,11 +197,11 @@ void main(void)
     race_start_init();
 	VfdInit();
     LSM6DSR_Init();
-	
+	calculate_average_offset();
 	
 
 	///초기값 설정//
-	MOTOR_TIMER_ENABLE; // start cputimer1 
+	
 
 #if 1
     VFDPrintf("LOADING|");
@@ -219,7 +222,8 @@ void main(void)
     //g_Flag.motor_start = ON;
 	//move_to_end(_IQ(100), _IQ(0), g_q17end_acc);
 	
-    	
+    MOTOR_TIMER_ENABLE; // start cputimer1 
+    
 	LED_OFF;
     FAN_OFF;
 

@@ -357,11 +357,16 @@ static void position_to_vel( void )
 interrupt void  motor_ISR(void)
 {	
 	g_Flag.motor_ISR_flag = ON; // 주행 플래그
+	LED_ON;
 
 	position_PID();
 	position_to_vel();
-	
-	//	qep value sampling
+    
+	LSM6DSR_GetGyroDataDPS(); //gyro sampling
+
+    g_q17turn_angle += _IQ17mpyIQX( g_q17_dps_z , 17 , SAMPLE_FRQ, 30 );
+
+    //	qep value sampling
 	g_rm.u16qep_sample = LeftQepRegs.QPOSCNT;  // 엔코더 값 read , 엔코더 count 
 	g_lm.u16qep_sample = RightQepRegs.QPOSCNT;
 
@@ -449,29 +454,7 @@ interrupt void  motor_ISR(void)
 	
 		}
 	}	
-	// SAMPLE_FRQ = 500us
-    
-	/* jerk accel & decel compute */
-    /*
-	if( ( g_rm.int32accel ) > ( g_rm.q17next_acc >> 17 ) ) //need to accel up
-	{
-		g_rm.q17next_acc += _IQ17mpyIQX( SAMPLE_FRQ , 30 , JERK_VALUE , 14 );
-		
-		if( g_rm.int32accel < ( g_rm.q17next_acc >> 17 ) )
-			g_rm.q17next_acc = _IQ( g_rm.int32accel );	
-	}
-	else if( ( g_rm.int32accel ) < ( g_rm.q17next_acc >> 17 ) ) //need to accel down
-	{
-		g_rm.q17next_acc -= _IQ17mpyIQX( SAMPLE_FRQ , 30 , JERK_VALUE , 14 );	
-		if( g_rm.int32accel > ( g_rm.q17next_acc >> 17 ) )
-			g_rm.q17next_acc = _IQ( g_rm.int32accel );	
-	}
-	else;
 
-	g_lm.q17next_acc = g_rm.q17next_acc;
-    */
-
-	// accel & decel compute
 	if( g_rm.q17user_vel > g_rm.q17next_vel )  
 	{
 		g_rm.q17next_vel += _IQ17mpyIQX( SAMPLE_FRQ , 30 , ( g_rm.int32accel << 15 ) , 15 ); //accel
@@ -593,6 +576,6 @@ interrupt void  motor_ISR(void)
 	if( g_Flag.start_flag )		g_int32timer_cnt++;
     
 	StartCpuTimer0();
-	
+	LED_OFF;
 }
 
