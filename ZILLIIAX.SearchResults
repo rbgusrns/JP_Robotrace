@@ -1,0 +1,16 @@
+---- __VARIABLE_EXE__ Matches (15 in 1 files) ----
+Variable.h (main):	#ifndef __VARIABLE_EXE__
+Variable.h (main):		#define __VARIABLE_EXE__
+Variable.h (main):	#ifndef __VARIABLE_EXE__
+Variable.h (main):		#define __VARIABLE_EXE__	extern
+Variable.h (main):__VARIABLE_EXE__  int32 g_int32_sen_cnt,
+Variable.h (main):__VARIABLE_EXE__  Uint16 g_u16pos_cnt,
+Variable.h (main):__VARIABLE_EXE__  _iq g_q17right_handle,
+Variable.h (main):__VARIABLE_EXE__  _iq g_q17shift_dist,
+Variable.h (main):__VARIABLE_EXE__	_iq16 g_q16han_decmax,
+Variable.h (main):__VARIABLE_EXE__	  float32 g_float32time_cnt;
+Variable.h (main):__VARIABLE_EXE__    _iq7 turn_step,
+Variable.h (main):__VARIABLE_EXE__    _iq28 g_q28kp,
+Variable.h (main):__VARIABLE_EXE__ volatile int32 g_int32shift_level;
+Variable.h (main):__VARIABLE_EXE__ 	_iq	g_q1745user_vel,
+Variable.h (main):__VARIABLE_EXE__ 	 volatile _iq7 	g_q7shift_pos;
