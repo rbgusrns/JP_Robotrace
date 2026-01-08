@@ -132,17 +132,17 @@ void Variable_Init( void )
 	g_q16left_handle_temp = _IQ16(1);	
 
 	////////////////////////////////////handle_search//////
-	g_q16out_corner_limit = _IQ16(0.400);	//0.15			
+	g_q16out_corner_limit = _IQ16(0.300);	//0.15			
 	//0.3//0.24	//0.55	//0.6	
-	g_q16in_corner_limit = _IQ16(2.600);		//3.0
+	g_q16in_corner_limit = _IQ16(2.700);		//3.0
 	//3.1//2.6	//1.7	//1.6
 	////////////////////////////////////////////////
 
 	////////////////////////////////////handle_fast///////
-	g_q16out_corner_fast_limit = _IQ16(0.400);		
+	g_q16out_corner_fast_limit = _IQ16(0.300);		
 	//0.20	//0.21	//0.45	//0.4
 	
-	g_q16in_corner_fast_limit = _IQ16(2.600);		
+	g_q16in_corner_fast_limit = _IQ16(2.700);		
 	//3.31	//3.1	//1.9	//2.0c 
 	////////////////////////////////////////////////
 	
@@ -196,10 +196,6 @@ void main(void)
 	Variable_Init();
     race_start_init();
 	VfdInit();
-    LSM6DSR_Init();
-	calculate_average_offset();
-	
-
 	///초기값 설정//
 	
 
@@ -221,8 +217,13 @@ void main(void)
 #endif  
     //g_Flag.motor_start = ON;
 	//move_to_end(_IQ(100), _IQ(0), g_q17end_acc);
+
+    LSM6DSR_Init();
+	calculate_average_offset();
+
 	
     MOTOR_TIMER_ENABLE; // start cputimer1 
+
     
 	LED_OFF;
     FAN_OFF;

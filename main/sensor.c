@@ -587,7 +587,7 @@ static void cross_check(void)
 void start_end_check(void)				// start와 end를  체크한다
 {
 	int16 toggle = 0;
-	if ( !g_Flag.start_flag  )			// 처음 마크가 다 들어온 경우 -> start 인식
+	if ( !g_Flag.start_flag  )			// 처음 마크가 들어온 경우 -> start 인식
 	{	
 		if( !g_Flag.fast_flag )
 		g_fast_info[ 0 ].u16turn_way = STRAIGHT; // 출발은 무조건 직진 
@@ -691,10 +691,10 @@ void turnmark_check(turnmark_t* p_mark,turnmark_t* p_remark)
 	turnmark_t *pmark = p_mark;
 	turnmark_t *premark = p_remark;
 
-	if( pmark->u16single_flag )	 // 반대편 마크가 들어오지 않은 경우// 엥..? 
+	if( pmark->u16single_flag )	 
 	{	
 		if( pmark->q7turn_dis > pmark->q7dist_limit )	// 일정 거리 후(turnmark 인식 길이 보다 길 경우)
-		{                      // 중복방지거리. 이걸 넘으면 cross, st/ed 아님!
+		{                      // 중복방지거리. 이걸 넘으면 cross 아님
 			if( pmark == g_ptr->g_lmark )
 			{
 				
@@ -723,16 +723,23 @@ void turnmark_check(turnmark_t* p_mark,turnmark_t* p_remark)
 						//VFDPrintf("cross");
 						return;
 					}	
-					start_end_check(); // 크로스가 아닐 경우 : start or end 		
+					
 				}
 			}
 			else		// 반대편 마크값이 들어오지 않은 경우 : 턴마크로 인식(순수 턴마크)
 			{
 				if(!g_Flag.move_state )	return;
-				
-				if(!g_Flag.fast_flag)	 line_info(pmark); //1차 turnmark count ( 턴마크로 간주하고 라인 정보 저장 ) 
-				else					 second_infor( g_ptr->pfastinfo,g_ptr->perr);  //2차 	
+
+                if (pmark == g_ptr->g_lmark)
+                {
+    				if(!g_Flag.fast_flag)	 line_info(pmark); //1차 turnmark count ( 턴마크로 간주하고 라인 정보 저장 ) 
+    				else					 second_infor( g_ptr->pfastinfo,g_ptr->perr);  //2차 	
+                }
+
+                else                         start_end_check();
+                    
 			}
+                
 		}
 		else if( premark->u16single_flag )  pmark->u16cross_flag = ON;	// 중복 방지 거리동안 반대편이 인식됨..
 		else;

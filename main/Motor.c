@@ -357,7 +357,7 @@ static void position_to_vel( void )
 interrupt void  motor_ISR(void)
 {	
 	g_Flag.motor_ISR_flag = ON; // 주행 플래그
-	LED_ON;
+	//LED_ON;
 
 	position_PID();
 	position_to_vel();
@@ -576,6 +576,6 @@ interrupt void  motor_ISR(void)
 	if( g_Flag.start_flag )		g_int32timer_cnt++;
     
 	StartCpuTimer0();
-	LED_OFF;
+	//LED_OFF;
 }
 

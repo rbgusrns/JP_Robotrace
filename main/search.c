@@ -16,66 +16,6 @@
 #include "DSP280x_Device.h"     // DSP280x Headerfile Include File
 #include "DSP280x_Examples.h"   // DSP280x Examples Include File
 
-#if 0
-void line_information (turnmark_t *pmark)
-{
-	if(!g_Flag.fast_flag )										//search
-	{
-		g_line_info.u16line_dist[g_line_info.u16turnmark_total_cnt] = IQ_TO_UINT16(g_lm.q17total_dist);
-		
-		if( g_ptr->g_lmark == pmark )
-			g_line_info.u16RL_Info[g_line_info.u16turnmark_total_cnt] = LEFT;
-		else
-			g_line_info.u16RL_Info[g_line_info.u16turnmark_total_cnt] = RIGHT;
-
-	//	TxPrintf("[%u] :%u \n",g_line_info.u16turnmark_total_cnt ,g_line_info.u16line_dist[g_line_info.u16turnmark_total_cnt]);
-		
-		g_line_info.u16turnmark_total_cnt++;
-	}
-	
-	else if( g_Flag.fast_flag && !g_Flag.debug_flag )
-	{
-		g_line_info.u16turnmark_total_cnt++;
-		g_Flag.speed_up_flag = OFF;
-	
-		if( _IQabs( g_lm.q17total_dist - _IQ(g_line_info.u16line_dist[ g_line_info.u16turnmark_total_cnt-1 ]) ) > _IQ(500) )
-		{
-		//	DEBUG_LED_ON;
-			g_Flag.debug_flag = ON;
-		}
-
-		if (g_line_info.u16turn_Info[ g_line_info.u16turnmark_total_cnt ] == STRAIGHT )
-		{
-			g_Flag.speed_up_flag = ON;
-		//	STRAIGHT_LED_ON;
-			//if(g_line_info.u16line_dist[ g_line_info.u16turnmark_total_cnt ] > 700)
-			if( g_line_info.u16turnmark_total_cnt == g_line_info.u16turnmark_final_cnt )
-			{
-
-				move_to_move(_IQ(g_line_info.u16line_dist[ g_line_info.u16turnmark_total_cnt ]),_IQ(g_line_info.u16decel_dist[ g_line_info.u16turnmark_total_cnt ]) , 
-					g_run_info[g_line_info.u16turnmark_total_cnt].q17in_vel, _IQ(2000), g_run_info[g_line_info.u16turnmark_total_cnt].q17acc );
-
-			}
-			else
-			{
-				move_to_move(_IQ(g_line_info.u16line_dist[ g_line_info.u16turnmark_total_cnt ]),_IQ(g_line_info.u16decel_dist[ g_line_info.u16turnmark_total_cnt ]) , 
-					g_run_info[g_line_info.u16turnmark_total_cnt].q17in_vel, g_run_info[g_line_info.u16turnmark_total_cnt].q17out_vel, g_run_info[g_line_info.u16turnmark_total_cnt].q17acc );
-
-			}
-			
-		}
-	
-		
-	}
-	else if ( g_Flag.debug_flag )
-		g_line_info.u16turnmark_total_cnt++;
-
-	else;
-	g_lm.q17total_dist = g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0);
-}
-
-
-#endif
 
 void line_info(turnmark_t *pmark)
 {
@@ -98,12 +38,15 @@ void line_info(turnmark_t *pmark)
 	g_fast_info[g_int32mark_cnt].iq7pos_integral_val = g_pos.iq7integral_val;
 
     g_pos.iq7integral_val = _IQ7(0.0);
+    g_fast_info[g_int32mark_cnt].q17angle = g_q17turn_angle;
 	//TxPrintf("1\n");
 	g_int32mark_cnt++;
-	g_fast_info[g_int32mark_cnt].u16turn_way = ( pmark == g_ptr->g_lmark ) ? ( RTURN ) : ( LTURN );	// left or right 
+	g_fast_info[g_int32mark_cnt].u16turn_way = ( g_q17turn_angle > _IQ(0) ) ? ( RTURN ) : ( LTURN );	// left or right 
 		
-	if( g_int32mark_cnt && g_fast_info[g_int32mark_cnt].u16turn_way == g_fast_info[g_int32mark_cnt - 1].u16turn_way )
+	if( _IQabs( g_q17turn_angle ) < _IQ(10) )
 		g_fast_info[g_int32mark_cnt].u16turn_way = STRAIGHT;  // straight
+
+    g_q17turn_angle = _IQ(0);
 //	g_lm.q17total_dist = g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0);
     //VFDPrintf("%8d",g_fast_info[g_int32mark_cnt].u16turn_way);
 }

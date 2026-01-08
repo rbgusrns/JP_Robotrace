@@ -1,3 +1,6 @@
----- sensor.h Matches (2 in 2 files) ----
-DSP280x_Device.h (include):#include "..\main\sensor.h"
-sensor.c (main):#include "Sensor.h"
+---- LED_ON Matches (5 in 4 files) ----
+gyro.c (main):        LED_ON;
+Motor.c (main):	LED_ON;
+sensor.c (main):                    LED_ON;
+sensor.c (main):                    LED_ON;
+Variable.h (main):#define LED_ON GpioDataRegs.GPASET.bit.GPIO27 = 1

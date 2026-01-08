@@ -239,7 +239,8 @@ typedef volatile struct fast_run_struct
 			q17dec_dist,
 			q17m_dist,
 			q17str_cross,
-			q17end_cross;	
+			q17end_cross,
+			q17angle;	
 			
 	Uint16	u16turn_way,
 			u16turn_cnt,

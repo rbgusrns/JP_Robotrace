@@ -350,7 +350,7 @@ void turnvel_read_rom(void)
 	Rom_Data_Buffer |= ((read_buf1[j++] & 0xff) << 8);
 
 	g_q17user_vel = _IQ(Rom_Data_Buffer);
-
+    TxPrintf("vel: %ld\r\n",_IQ(Rom_Data_Buffer)>>17);
 	//g_rm.q17user_vel = g_lm.q17user_vel = g_q17user_vel;
 
 }
