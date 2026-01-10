@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Thu Jan 08 17:15:43 2026                 *
+;* Date/Time created: Sat Jan 10 22:03:56 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -231,8 +231,8 @@ DW$65	.dwtag  DW_TAG_variable, DW_AT_name("g_fast_info"), DW_AT_symbol_name("_g_
 	.dwattr DW$65, DW_AT_type(*DW$T$200)
 	.dwattr DW$65, DW_AT_declaration(0x01)
 	.dwattr DW$65, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI60410 C:\Users\rbgus\AppData\Local\Temp\TI6044 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI6042 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI6046 --object_file Motor.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI46010 C:\Users\rbgus\AppData\Local\Temp\TI4604 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI4602 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI4606 --object_file Motor.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 	.sect	".text"
 	.global	_move_to_move
 
@@ -2383,8 +2383,8 @@ DW$141	.dwtag  DW_TAG_subprogram, DW_AT_name("handle_ad_make"), DW_AT_symbol_nam
 _handle_ad_make:
 ;*** 110	-----------------------    acc_rate = acc_rate;
 ;*** 110	-----------------------    dec_rate = dec_rate;
-;*** 111	-----------------------    g_q16han_accstep = _IQ16div(65536L-acc_rate, 655360L);
-;*** 112	-----------------------    g_q16han_decstep = _IQ16div(dec_rate-65536L, 655360L);
+;*** 111	-----------------------    g_q16han_accstep = _IQ16div(65536L-acc_rate, 1900544L);
+;*** 112	-----------------------    g_q16han_decstep = _IQ16div(dec_rate-65536L, 1900544L);
 ;*** 114	-----------------------    g_q16han_accmax = acc_rate;
 ;*** 115	-----------------------    g_q16han_decmax = 131072L-dec_rate;
 ;*** 115	-----------------------    return;
@@ -2418,7 +2418,7 @@ DW$147	.dwtag  DW_TAG_variable, DW_AT_name("dec_rate"), DW_AT_symbol_name("_dec_
         MOVL      *-SP[4],ACC           ; |110| 
         MOVL      *-SP[6],XAR6          ; |110| 
 	.dwpsn	"Motor.c",111,2
-        MOVL      XAR4,#655360          ; |111| 
+        MOVL      XAR4,#1900544         ; |111| 
         MOVL      *-SP[2],XAR4          ; |111| 
         MOVL      XAR4,#65536           ; |111| 
         MOVL      ACC,XAR4              ; |111| 
@@ -2428,7 +2428,7 @@ DW$147	.dwtag  DW_TAG_variable, DW_AT_name("dec_rate"), DW_AT_symbol_name("_dec_
         MOVW      DP,#_g_q16han_accstep
         MOVL      @_g_q16han_accstep,ACC ; |111| 
 	.dwpsn	"Motor.c",112,2
-        MOVL      XAR4,#655360          ; |112| 
+        MOVL      XAR4,#1900544         ; |112| 
         MOVL      *-SP[2],XAR4          ; |112| 
         MOVL      ACC,*-SP[6]           ; |112| 
         SUB       ACC,#2 << 15          ; |112| 

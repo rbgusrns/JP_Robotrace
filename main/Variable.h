@@ -30,14 +30,14 @@
 
 #define ON_L		1L
 //#define HANDLE_CENTER 			_IQ16( 7800 )
-#define HANDLE_CENTER 			_IQ16( 2500 )
-#define CENTER_POSITION			_IQ7( 5000 )  
+#define HANDLE_CENTER 			_IQ16( 7250 )
+#define CENTER_POSITION			_IQ7( 14500 )  
 
 #define SENSOR_TIMER_ENABLE		do{ StartCpuTimer0();	}while(0);
 #define SENSOR_TIMER_DISABLE	do{	StopCpuTimer0();	}while(0);
 
 #define MOTOR_TIMER_ENABLE		do{ StartCpuTimer1();	}while(0);
-#define MOTOR_TIMER_DISABLE		do{	StopCpuTimer1();	}while(0);
+#define MOTOR_TIMER_DISABLE		do{	StopCpuTimer1(); Delay(0xc000); }while(0);
 
 
 #define SW_RIGHT	GpioDataRegs.GPBDAT.bit.GPIO34 & 0x01

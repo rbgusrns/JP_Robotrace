@@ -329,7 +329,12 @@ void Set_Velocity()
 		}
 	    VFDPrintf("VEL:%4f",_IQ17toF(g_q17user_vel));
 	}
+
+    MOTOR_TIMER_DISABLE;
+    
 	turnvel_write_rom();
+
+    MOTOR_TIMER_ENABLE;
 }
 
 void Set_Shift()
@@ -455,9 +460,12 @@ void Set_TurnMark(void)
 		}
 		VFDPrintf("errflg%2ld",g_int32fasterror_flag);
 	}
-	
+
+    MOTOR_TIMER_DISABLE;
+    
 	turnmark_info_write_rom();
-	
+
+    MOTOR_TIMER_ENABLE;
 }
 
 
@@ -599,7 +607,12 @@ void Set_Handle(void){
 	
 			VFDPrintf("OF:%4.3f",_IQ16toF(g_q16out_corner_fast_limit));
 			}
+
+            MOTOR_TIMER_DISABLE;
+            
 		    handle_write_rom();
+
+            MOTOR_TIMER_ENABLE;
 }
 
 
@@ -670,9 +683,13 @@ void SET_END(){
 			
 			if(Right_SW){
 				DELAY_US(125000);
-				
+
+                MOTOR_TIMER_DISABLE;
+                
 				acc_info_write_rom();
-				
+
+                MOTOR_TIMER_ENABLE;
+                
 				break;
 			}
 		VFDPrintf("EA:%5u",IQ_TO_UINT16(g_q17end_acc));
@@ -1073,8 +1090,12 @@ void extreme_ctl()
 		VFDPrintf("escp%4u",IQ_TO_UINT16(g_q17escape45_vel));
 	}
 	DELAY_US(150000);
+
+    MOTOR_TIMER_DISABLE;
+    
     extvel_write_rom();
-	
+
+    MOTOR_TIMER_ENABLE;
 }
 
 void Set_ShiftRatio(void){

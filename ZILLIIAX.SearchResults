@@ -1,6 +1,12 @@
----- LED_ON Matches (5 in 4 files) ----
-gyro.c (main):        LED_ON;
-Motor.c (main):	LED_ON;
-sensor.c (main):                    LED_ON;
-sensor.c (main):                    LED_ON;
-Variable.h (main):#define LED_ON GpioDataRegs.GPASET.bit.GPIO27 = 1
+---- 2500 Matches (11 in 3 files) ----
+brilrun.c (main):	_IQ(0.0) , _IQ(500.0) , _IQ(1500.0) , _IQ(2500.0) , _IQ(3500.0) , _IQ(4500.0) , _IQ(5500.0) , _IQ(6500.0) , _IQ(7500.0) , _IQ(8500.0) , _IQ(9500.0)
+brilrun.c (main):	_IQ(0.0) , _IQ(-500.0) , _IQ(-1500.0) , _IQ(-2500.0) , _IQ(-3500.0) , _IQ(-4500.0) , _IQ(-5500.0) , _IQ(-6500.0) , _IQ(-7500.0) , _IQ(-8500.0) , _IQ(-9500.0)
+brilrun.c (main):	_IQ(0.0) , _IQ(250.0) , _IQ(500.0) , _IQ(750.0) , _IQ(1000.0) , _IQ(1250.0) , _IQ(1500.0) , _IQ(1750.0) , _IQ(2000.0) , _IQ(2250.0) , _IQ(2500.0)
+brilrun.c (main):	_IQ(0.0) , _IQ(-250.0) , _IQ(-500.0) , _IQ(-750.0) , _IQ(-1000.0) , _IQ(-1250.0) , _IQ(-1500.0) , _IQ(-1750.0) , _IQ(-2000.0) , _IQ(-2250.0) , _IQ(-2500.0)
+brilrun.c (main):    _IQ(0.0) , _IQ(500.0) , _IQ(1500.0) , _IQ(2500.0) , _IQ(3500.0) , _IQ(4500.0) , _IQ(5500.0) , _IQ(6500.0) , _IQ(7500.0) , _IQ(8500.0) , _IQ(9500.0)
+brilrun.c (main):    _IQ(0.0) , _IQ(-500.0) , _IQ(-1500.0) , _IQ(-2500.0) , _IQ(-3500.0) , _IQ(-4500.0) , _IQ(-5500.0) , _IQ(-6500.0) , _IQ(-7500.0) , _IQ(-8500.0) , _IQ(-9500.0)
+sensor.c (main):	g_sen[ L1 ].iq7weight = _IQ7(2500);			g_sen[ L1 ].u16active_arr = 0x0200;		g_sen[ 9 ].u16passive_arr = 0xfdff; 	// 1000
+sensor.c (main):	g_sen[ R6 ].iq7weight = _IQ7(-2500); 		g_sen[ R6 ].u16active_arr = 0x0040;		g_sen[ 6 ].u16passive_arr = 0xffbf;
+sensor.c (main):	g_sen[ L1 ].iq7weight = _IQ7(2500);			g_sen[ L1 ].u16active_arr = 0x0200;		g_sen[ 9 ].u16passive_arr = 0xfdff; 	// 1000
+sensor.c (main):	g_sen[ R6 ].iq7weight = _IQ7(-2500); 		g_sen[ R6 ].u16active_arr = 0x0040;		g_sen[ 6 ].u16passive_arr = 0xffbf;
+Variable.h (main):#define HANDLE_CENTER 			_IQ16( 2500 )

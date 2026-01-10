@@ -226,6 +226,7 @@ extern void Gyro_test(void)
 #if 1
 extern void Gyro_test(void)
 {
+    
     g_q17turn_angle = _IQ(0);
   	while(1)
 	{
@@ -244,6 +245,8 @@ extern void Gyro_test(void)
 		}
 
   	}
+
+    MOTOR_TIMER_DISABLE;
 }
 #endif
 

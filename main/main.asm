@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Thu Jan 08 17:15:42 2026                 *
+;* Date/Time created: Sat Jan 10 22:03:55 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -829,8 +829,8 @@ DW$162	.dwtag  DW_TAG_variable, DW_AT_name("g_fast_info"), DW_AT_symbol_name("_g
 	.dwattr DW$162, DW_AT_location[DW_OP_addr _g_fast_info]
 	.dwattr DW$162, DW_AT_type(*DW$T$211)
 	.dwattr DW$162, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI38010 C:\Users\rbgus\AppData\Local\Temp\TI3804 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI3802 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI3806 --object_file main.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI34810 C:\Users\rbgus\AppData\Local\Temp\TI3484 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI3482 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI3486 --object_file main.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 	.sect	".text"
 	.global	_print_second_info
 
@@ -838,9 +838,9 @@ DW$163	.dwtag  DW_TAG_subprogram, DW_AT_name("print_second_info"), DW_AT_symbol_
 	.dwattr DW$163, DW_AT_low_pc(_print_second_info)
 	.dwattr DW$163, DW_AT_high_pc(0x00)
 	.dwattr DW$163, DW_AT_begin_file("main.c")
-	.dwattr DW$163, DW_AT_begin_line(0x117)
+	.dwattr DW$163, DW_AT_begin_line(0x11e)
 	.dwattr DW$163, DW_AT_begin_column(0x06)
-	.dwpsn	"main.c",280,1
+	.dwpsn	"main.c",287,1
 
 	.dwfde DW$CIE
 
@@ -864,7 +864,7 @@ _print_second_info:
 ;***  	-----------------------    #pragma LOOP_FLAGS(5376u)
 ;***  	-----------------------    U$6 = &g_fast_info[0];
 ;***  	-----------------------    U$2 = 0L;
-;*** 281	-----------------------    i = 0;
+;*** 288	-----------------------    i = 0;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -894,136 +894,136 @@ DW$166	.dwtag  DW_TAG_variable, DW_AT_name("U$6"), DW_AT_symbol_name("U$6")
         MOVL      XAR4,#_g_fast_info
         MOVL      XAR2,XAR4
         MOVB      XAR3,#0
-	.dwpsn	"main.c",281,6
+	.dwpsn	"main.c",288,6
         MOVB      XAR1,#0
 L1:    
 DW$L$_print_second_info$2$B:
 ;***	-----------------------g2:
-;*** 285	-----------------------    TxPrintf("%d| dst: %5d| dec: %5ld| mdst: %5ld| turn_dir: 0x%04X| acc: %5ld| in: %5ld| vel: %5ld| out: %5ld| cnt: %d | down: %d| s44s: %d| escape: %d| kp: %.2f| RDIST: %ld| LDIST: %ld| P: %ld\n", i, (*U$6).u16dist, (*U$6).q17dec_dist>>17, (*U$6).q17m_dist>>17, (*U$6).u16turn_dir, (*U$6).q17acc>>17, (*U$6).q17in_vel>>17, (*U$6).q17vel>>17, (*U$6).q17out_vel>>17, (*U$6).u16turn_cnt, *((volatile unsigned *)U$6+14)>>2&1, *((volatile unsigned *)U$6+14)>>1&1, *((volatile unsigned *)U$6+14)>>3&1, _IQ7toF((*U$6).q7kp_val), (*U$6).q17r_dist>>17, (*U$6).q17l_dist>>17, (*U$6).iq7pos_integral_val>>7);
-;*** 304	-----------------------    if ( U$2 == g_int32total_cnt ) goto g4;
-	.dwpsn	"main.c",285,8
-        MOVL      ACC,*+XAR2[0]         ; |285| 
-        LCR       #__IQ7toF             ; |285| 
-        ; call occurs [#__IQ7toF] ; |285| 
-        MOVL      XAR4,#FSL1            ; |285| 
-        MOVB      XAR0,#41              ; |285| 
-        MOVL      *-SP[2],XAR4          ; |285| 
-        MOVL      XAR6,ACC              ; |285| 
-        MOV       *-SP[3],AR1           ; |285| 
-        MOV       AL,*+XAR2[AR0]        ; |285| 
-        MOV       T,#17                 ; |285| 
-        MOVB      XAR0,#28              ; |285| 
-        MOV       *-SP[4],AL            ; |285| 
-        MOVL      ACC,*+XAR2[AR0]       ; |285| 
-        ASRL      ACC,T                 ; |285| 
-        MOVB      XAR0,#30              ; |285| 
-        MOVL      *-SP[6],ACC           ; |285| 
-        MOVL      ACC,*+XAR2[AR0]       ; |285| 
-        ASRL      ACC,T                 ; |285| 
-        MOVB      XAR0,#40              ; |285| 
-        MOVL      *-SP[8],ACC           ; |285| 
-        MOV       AL,*+XAR2[AR0]        ; |285| 
-        MOVB      XAR0,#20              ; |285| 
-        MOV       *-SP[9],AL            ; |285| 
-        MOVL      ACC,*+XAR2[AR0]       ; |285| 
-        ASRL      ACC,T                 ; |285| 
-        MOVB      XAR0,#22              ; |285| 
-        MOVL      *-SP[12],ACC          ; |285| 
-        MOVL      ACC,*+XAR2[AR0]       ; |285| 
-        ASRL      ACC,T                 ; |285| 
-        MOVB      XAR0,#24              ; |285| 
-        MOVL      *-SP[14],ACC          ; |285| 
-        MOVL      ACC,*+XAR2[AR0]       ; |285| 
-        ASRL      ACC,T                 ; |285| 
-        MOVB      XAR0,#26              ; |285| 
-        MOVL      *-SP[16],ACC          ; |285| 
+;*** 292	-----------------------    TxPrintf("%d| dst: %5d| dec: %5ld| mdst: %5ld| turn_dir: 0x%04X| acc: %5ld| in: %5ld| vel: %5ld| out: %5ld| cnt: %d | down: %d| s44s: %d| escape: %d| kp: %.2f| RDIST: %ld| LDIST: %ld| P: %ld\n", i, (*U$6).u16dist, (*U$6).q17dec_dist>>17, (*U$6).q17m_dist>>17, (*U$6).u16turn_dir, (*U$6).q17acc>>17, (*U$6).q17in_vel>>17, (*U$6).q17vel>>17, (*U$6).q17out_vel>>17, (*U$6).u16turn_cnt, *((volatile unsigned *)U$6+14)>>2&1, *((volatile unsigned *)U$6+14)>>1&1, *((volatile unsigned *)U$6+14)>>3&1, _IQ7toF((*U$6).q7kp_val), (*U$6).q17r_dist>>17, (*U$6).q17l_dist>>17, (*U$6).iq7pos_integral_val>>7);
+;*** 311	-----------------------    if ( U$2 == g_int32total_cnt ) goto g4;
+	.dwpsn	"main.c",292,8
+        MOVL      ACC,*+XAR2[0]         ; |292| 
+        LCR       #__IQ7toF             ; |292| 
+        ; call occurs [#__IQ7toF] ; |292| 
+        MOVL      XAR4,#FSL1            ; |292| 
+        MOVB      XAR0,#41              ; |292| 
+        MOVL      *-SP[2],XAR4          ; |292| 
+        MOVL      XAR6,ACC              ; |292| 
+        MOV       *-SP[3],AR1           ; |292| 
+        MOV       AL,*+XAR2[AR0]        ; |292| 
+        MOV       T,#17                 ; |292| 
+        MOVB      XAR0,#28              ; |292| 
+        MOV       *-SP[4],AL            ; |292| 
+        MOVL      ACC,*+XAR2[AR0]       ; |292| 
+        ASRL      ACC,T                 ; |292| 
+        MOVB      XAR0,#30              ; |292| 
+        MOVL      *-SP[6],ACC           ; |292| 
+        MOVL      ACC,*+XAR2[AR0]       ; |292| 
+        ASRL      ACC,T                 ; |292| 
+        MOVB      XAR0,#40              ; |292| 
+        MOVL      *-SP[8],ACC           ; |292| 
+        MOV       AL,*+XAR2[AR0]        ; |292| 
+        MOVB      XAR0,#20              ; |292| 
+        MOV       *-SP[9],AL            ; |292| 
+        MOVL      ACC,*+XAR2[AR0]       ; |292| 
+        ASRL      ACC,T                 ; |292| 
+        MOVB      XAR0,#22              ; |292| 
+        MOVL      *-SP[12],ACC          ; |292| 
+        MOVL      ACC,*+XAR2[AR0]       ; |292| 
+        ASRL      ACC,T                 ; |292| 
+        MOVB      XAR0,#24              ; |292| 
+        MOVL      *-SP[14],ACC          ; |292| 
+        MOVL      ACC,*+XAR2[AR0]       ; |292| 
+        ASRL      ACC,T                 ; |292| 
+        MOVB      XAR0,#26              ; |292| 
+        MOVL      *-SP[16],ACC          ; |292| 
         SETC      SXM
-        MOVL      ACC,*+XAR2[AR0]       ; |285| 
-        ASRL      ACC,T                 ; |285| 
-        MOVB      XAR0,#39              ; |285| 
-        MOVL      *-SP[18],ACC          ; |285| 
-        MOV       AL,*+XAR2[AR0]        ; |285| 
-        MOVB      XAR0,#14              ; |285| 
-        MOV       *-SP[19],AL           ; |285| 
-        AND       AL,*+XAR2[AR0],#0x0004 ; |285| 
-        LSR       AL,2                  ; |285| 
-        MOV       *-SP[20],AL           ; |285| 
-        AND       AL,*+XAR2[AR0],#0x0002 ; |285| 
-        LSR       AL,1                  ; |285| 
-        MOV       *-SP[21],AL           ; |285| 
-        AND       AL,*+XAR2[AR0],#0x0008 ; |285| 
-        LSR       AL,3                  ; |285| 
-        MOV       *-SP[22],AL           ; |285| 
-        MOVB      XAR0,#16              ; |285| 
-        MOVL      *-SP[24],XAR6         ; |285| 
-        MOVL      ACC,*+XAR2[AR0]       ; |285| 
-        ASRL      ACC,T                 ; |285| 
-        MOVB      XAR0,#18              ; |285| 
-        MOVL      *-SP[26],ACC          ; |285| 
-        MOVL      ACC,*+XAR2[AR0]       ; |285| 
-        ASRL      ACC,T                 ; |285| 
-        MOVL      *-SP[28],ACC          ; |285| 
-        MOVL      ACC,*+XAR2[6]         ; |285| 
-        SFR       ACC,7                 ; |285| 
-        MOVL      *-SP[30],ACC          ; |285| 
-        LCR       #_TxPrintf            ; |285| 
-        ; call occurs [#_TxPrintf] ; |285| 
-	.dwpsn	"main.c",304,8
+        MOVL      ACC,*+XAR2[AR0]       ; |292| 
+        ASRL      ACC,T                 ; |292| 
+        MOVB      XAR0,#39              ; |292| 
+        MOVL      *-SP[18],ACC          ; |292| 
+        MOV       AL,*+XAR2[AR0]        ; |292| 
+        MOVB      XAR0,#14              ; |292| 
+        MOV       *-SP[19],AL           ; |292| 
+        AND       AL,*+XAR2[AR0],#0x0004 ; |292| 
+        LSR       AL,2                  ; |292| 
+        MOV       *-SP[20],AL           ; |292| 
+        AND       AL,*+XAR2[AR0],#0x0002 ; |292| 
+        LSR       AL,1                  ; |292| 
+        MOV       *-SP[21],AL           ; |292| 
+        AND       AL,*+XAR2[AR0],#0x0008 ; |292| 
+        LSR       AL,3                  ; |292| 
+        MOV       *-SP[22],AL           ; |292| 
+        MOVB      XAR0,#16              ; |292| 
+        MOVL      *-SP[24],XAR6         ; |292| 
+        MOVL      ACC,*+XAR2[AR0]       ; |292| 
+        ASRL      ACC,T                 ; |292| 
+        MOVB      XAR0,#18              ; |292| 
+        MOVL      *-SP[26],ACC          ; |292| 
+        MOVL      ACC,*+XAR2[AR0]       ; |292| 
+        ASRL      ACC,T                 ; |292| 
+        MOVL      *-SP[28],ACC          ; |292| 
+        MOVL      ACC,*+XAR2[6]         ; |292| 
+        SFR       ACC,7                 ; |292| 
+        MOVL      *-SP[30],ACC          ; |292| 
+        LCR       #_TxPrintf            ; |292| 
+        ; call occurs [#_TxPrintf] ; |292| 
+	.dwpsn	"main.c",311,8
         MOVW      DP,#_g_int32total_cnt
         MOVL      ACC,XAR3
-        CMPL      ACC,@_g_int32total_cnt ; |304| 
-        BF        L2,EQ                 ; |304| 
-        ; branchcc occurs ; |304| 
+        CMPL      ACC,@_g_int32total_cnt ; |311| 
+        BF        L2,EQ                 ; |311| 
+        ; branchcc occurs ; |311| 
 DW$L$_print_second_info$2$E:
 DW$L$_print_second_info$3$B:
-;*** 308	-----------------------    if ( U$2-g_int32total_cnt != 5L ) goto g5;
-	.dwpsn	"main.c",308,9
+;*** 315	-----------------------    if ( U$2-g_int32total_cnt != 5L ) goto g5;
+	.dwpsn	"main.c",315,9
         MOVB      XAR6,#5
-        MOVL      ACC,XAR3              ; |308| 
-        SUBL      ACC,@_g_int32total_cnt ; |308| 
-        CMPL      ACC,XAR6              ; |308| 
-        BF        L3,NEQ                ; |308| 
-        ; branchcc occurs ; |308| 
+        MOVL      ACC,XAR3              ; |315| 
+        SUBL      ACC,@_g_int32total_cnt ; |315| 
+        CMPL      ACC,XAR6              ; |315| 
+        BF        L3,NEQ                ; |315| 
+        ; branchcc occurs ; |315| 
 DW$L$_print_second_info$3$E:
-;*** 308	-----------------------    goto g6;
-        BF        L4,UNC                ; |308| 
-        ; branch occurs ; |308| 
+;*** 315	-----------------------    goto g6;
+        BF        L4,UNC                ; |315| 
+        ; branch occurs ; |315| 
 L2:    
 DW$L$_print_second_info$5$B:
 ;***	-----------------------g4:
-;*** 305	-----------------------    TxPrintf("-----------------------------------\n");
-	.dwpsn	"main.c",305,9
-        MOVL      XAR4,#FSL2            ; |305| 
-        MOVL      *-SP[2],XAR4          ; |305| 
-        LCR       #_TxPrintf            ; |305| 
-        ; call occurs [#_TxPrintf] ; |305| 
+;*** 312	-----------------------    TxPrintf("-----------------------------------\n");
+	.dwpsn	"main.c",312,9
+        MOVL      XAR4,#FSL2            ; |312| 
+        MOVL      *-SP[2],XAR4          ; |312| 
+        LCR       #_TxPrintf            ; |312| 
+        ; call occurs [#_TxPrintf] ; |312| 
 DW$L$_print_second_info$5$E:
 L3:    
 DW$L$_print_second_info$6$B:
 ;***	-----------------------g5:
-;*** 282	-----------------------    U$6 += 42;
-;*** 282	-----------------------    ++i;
-;*** 282	-----------------------    if ( (++U$2) < 256L ) goto g2;
+;*** 289	-----------------------    U$6 += 42;
+;*** 289	-----------------------    ++i;
+;*** 289	-----------------------    if ( (++U$2) < 256L ) goto g2;
 ;***	-----------------------g6:
 ;***  	-----------------------    return;
-	.dwpsn	"main.c",282,18
-        MOVL      ACC,XAR2              ; |282| 
-        MOVB      XAR4,#42              ; |282| 
-        ADDU      ACC,AR4               ; |282| 
-        MOVL      XAR2,ACC              ; |282| 
+	.dwpsn	"main.c",289,18
+        MOVL      ACC,XAR2              ; |289| 
+        MOVB      XAR4,#42              ; |289| 
+        ADDU      ACC,AR4               ; |289| 
+        MOVL      XAR2,ACC              ; |289| 
         MOV       AL,AR1
-        ADDB      AL,#1                 ; |282| 
-        MOVZ      AR1,AL                ; |282| 
+        ADDB      AL,#1                 ; |289| 
+        MOVZ      AR1,AL                ; |289| 
         MOVL      ACC,XAR3
-        ADDB      ACC,#1                ; |282| 
-        MOVL      XAR3,ACC              ; |282| 
-        MOV       ACC,#256              ; |282| 
-        CMPL      ACC,XAR3              ; |282| 
-        BF        L1,GT                 ; |282| 
-        ; branchcc occurs ; |282| 
+        ADDB      ACC,#1                ; |289| 
+        MOVL      XAR3,ACC              ; |289| 
+        MOV       ACC,#256              ; |289| 
+        CMPL      ACC,XAR3              ; |289| 
+        BF        L1,GT                 ; |289| 
+        ; branchcc occurs ; |289| 
 DW$L$_print_second_info$6$E:
 L4:    
-	.dwpsn	"main.c",312,1
+	.dwpsn	"main.c",319,1
         SUBB      SP,#30
 	.dwcfa	0x1d, -8
         MOVL      XAR3,*--SP
@@ -1039,10 +1039,10 @@ L4:
         ; return occurs
 
 DW$167	.dwtag  DW_TAG_loop
-	.dwattr DW$167, DW_AT_name("C:\project\JP_Robotrace\main\main.asm:L1:1:1767860142")
+	.dwattr DW$167, DW_AT_name("C:\project\JP_Robotrace\main\main.asm:L1:1:1768050235")
 	.dwattr DW$167, DW_AT_begin_file("main.c")
-	.dwattr DW$167, DW_AT_begin_line(0x11a)
-	.dwattr DW$167, DW_AT_end_line(0x137)
+	.dwattr DW$167, DW_AT_begin_line(0x121)
+	.dwattr DW$167, DW_AT_end_line(0x13e)
 DW$168	.dwtag  DW_TAG_loop_range
 	.dwattr DW$168, DW_AT_low_pc(DW$L$_print_second_info$2$B)
 	.dwattr DW$168, DW_AT_high_pc(DW$L$_print_second_info$2$E)
@@ -1058,7 +1058,7 @@ DW$171	.dwtag  DW_TAG_loop_range
 	.dwendtag DW$167
 
 	.dwattr DW$163, DW_AT_end_file("main.c")
-	.dwattr DW$163, DW_AT_end_line(0x138)
+	.dwattr DW$163, DW_AT_end_line(0x13f)
 	.dwattr DW$163, DW_AT_end_column(0x01)
 	.dwendentry
 	.dwendtag DW$163
@@ -1829,7 +1829,7 @@ DW$179	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
 ;*** 228	-----------------------    C$1 = &GpioDataRegs;
 ;*** 228	-----------------------    ((volatile unsigned *)C$1)[5] |= 0x800u;
 ;*** 229	-----------------------    ((volatile unsigned *)C$1)[4] |= 0x4000u;
-;*** 231	-----------------------    TxPrintf("%5f, %5F\n", _IQ16toF(655360L), _IQ16toF(_IQ16div(163840000L, 16384000L)));
+;*** 231	-----------------------    TxPrintf("%5f, %5F\n", _IQ16toF(1900544L), _IQ16toF(_IQ16div(475136000L, 16384000L)));
 	.dwpsn	"main.c",210,2
         LCR       #_cross_info_read_rom ; |210| 
         ; call occurs [#_cross_info_read_rom] ; |210| 
@@ -1867,14 +1867,14 @@ DW$179	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
         OR        *+XAR4[4],#0x4000     ; |229| 
 	.dwpsn	"main.c",231,2
         MOV       AL,#0
-        MOV       AH,#10
+        MOV       AH,#29
         LCR       #__IQ16toF            ; |231| 
         ; call occurs [#__IQ16toF] ; |231| 
         MOV       PH,#250
         MOV       PL,#0
         MOVL      XAR1,ACC              ; |231| 
         MOVL      *-SP[2],P             ; |231| 
-        MOV       ACC,#5000 << 15
+        MOV       ACC,#14500 << 15
         LCR       #__IQ16div            ; |231| 
         ; call occurs [#__IQ16div] ; |231| 
         LCR       #__IQ16toF            ; |231| 
@@ -1903,17 +1903,17 @@ DW$L$_main$4$E:
 	.dwcfa	0xc0, 7
 
 DW$180	.dwtag  DW_TAG_loop
-	.dwattr DW$180, DW_AT_name("C:\project\JP_Robotrace\main\main.asm:L5:1:1767860142")
+	.dwattr DW$180, DW_AT_name("C:\project\JP_Robotrace\main\main.asm:L5:1:1768050235")
 	.dwattr DW$180, DW_AT_begin_file("main.c")
 	.dwattr DW$180, DW_AT_begin_line(0xef)
-	.dwattr DW$180, DW_AT_end_line(0x109)
+	.dwattr DW$180, DW_AT_end_line(0x110)
 DW$181	.dwtag  DW_TAG_loop_range
 	.dwattr DW$181, DW_AT_low_pc(DW$L$_main$4$B)
 	.dwattr DW$181, DW_AT_high_pc(DW$L$_main$4$E)
 	.dwendtag DW$180
 
 	.dwattr DW$178, DW_AT_end_file("main.c")
-	.dwattr DW$178, DW_AT_end_line(0x10a)
+	.dwattr DW$178, DW_AT_end_line(0x111)
 	.dwattr DW$178, DW_AT_end_column(0x01)
 	.dwendentry
 	.dwendtag DW$178
@@ -1925,9 +1925,9 @@ DW$182	.dwtag  DW_TAG_subprogram, DW_AT_name("Delay"), DW_AT_symbol_name("_Delay
 	.dwattr DW$182, DW_AT_low_pc(_Delay)
 	.dwattr DW$182, DW_AT_high_pc(0x00)
 	.dwattr DW$182, DW_AT_begin_file("main.c")
-	.dwattr DW$182, DW_AT_begin_line(0x10c)
+	.dwattr DW$182, DW_AT_begin_line(0x113)
 	.dwattr DW$182, DW_AT_begin_column(0x06)
-	.dwpsn	"main.c",269,1
+	.dwpsn	"main.c",276,1
 
 	.dwfde DW$CIE
 
@@ -1947,7 +1947,7 @@ DW$182	.dwtag  DW_TAG_subprogram, DW_AT_name("Delay"), DW_AT_symbol_name("_Delay
 ;*                                                             *
 ;***************************************************************
 _Delay:
-;*** 270	-----------------------    if ( Cnt == 0uL ) goto g4;
+;*** 277	-----------------------    if ( Cnt == 0uL ) goto g4;
 ;***  	-----------------------    #pragma MUST_ITERATE(1, 4294967295, 1)
 ;***  	-----------------------    #pragma LOOP_FLAGS(4096u)
 	.dwcfa	0x1d, -2
@@ -1961,45 +1961,45 @@ DW$183	.dwtag  DW_TAG_formal_parameter, DW_AT_name("Cnt"), DW_AT_symbol_name("_C
 DW$184	.dwtag  DW_TAG_variable, DW_AT_name("Cnt"), DW_AT_symbol_name("_Cnt")
 	.dwattr DW$184, DW_AT_type(*DW$T$36)
 	.dwattr DW$184, DW_AT_location[DW_OP_reg0]
-	.dwpsn	"main.c",270,2
-        TEST      ACC                   ; |270| 
-        BF        L7,EQ                 ; |270| 
-        ; branchcc occurs ; |270| 
+	.dwpsn	"main.c",277,2
+        TEST      ACC                   ; |277| 
+        BF        L7,EQ                 ; |277| 
+        ; branchcc occurs ; |277| 
 L6:    
 DW$L$_Delay$2$B:
 ;***	-----------------------g3:
-;*** 272	-----------------------    asm("\t\tnop");
-;*** 274	-----------------------    asm("\tnop");
-;*** 272	-----------------------    if ( --Cnt ) goto g3;
+;*** 279	-----------------------    asm("\t\tnop");
+;*** 281	-----------------------    asm("\tnop");
+;*** 279	-----------------------    if ( --Cnt ) goto g3;
 ;***	-----------------------g4:
 ;***  	-----------------------    return;
-	.dwpsn	"main.c",272,3
+	.dwpsn	"main.c",279,3
 		nop
-	.dwpsn	"main.c",274,3
+	.dwpsn	"main.c",281,3
 	nop
-	.dwpsn	"main.c",272,3
-        SUBB      ACC,#1                ; |272| 
-        BF        L6,NEQ                ; |272| 
-        ; branchcc occurs ; |272| 
+	.dwpsn	"main.c",279,3
+        SUBB      ACC,#1                ; |279| 
+        BF        L6,NEQ                ; |279| 
+        ; branchcc occurs ; |279| 
 DW$L$_Delay$2$E:
 L7:    
-	.dwpsn	"main.c",276,1
+	.dwpsn	"main.c",283,1
         SPM       #0
         LRETR
         ; return occurs
 
 DW$185	.dwtag  DW_TAG_loop
-	.dwattr DW$185, DW_AT_name("C:\project\JP_Robotrace\main\main.asm:L6:1:1767860142")
+	.dwattr DW$185, DW_AT_name("C:\project\JP_Robotrace\main\main.asm:L6:1:1768050235")
 	.dwattr DW$185, DW_AT_begin_file("main.c")
-	.dwattr DW$185, DW_AT_begin_line(0x10e)
-	.dwattr DW$185, DW_AT_end_line(0x113)
+	.dwattr DW$185, DW_AT_begin_line(0x115)
+	.dwattr DW$185, DW_AT_end_line(0x11a)
 DW$186	.dwtag  DW_TAG_loop_range
 	.dwattr DW$186, DW_AT_low_pc(DW$L$_Delay$2$B)
 	.dwattr DW$186, DW_AT_high_pc(DW$L$_Delay$2$E)
 	.dwendtag DW$185
 
 	.dwattr DW$182, DW_AT_end_file("main.c")
-	.dwattr DW$182, DW_AT_end_line(0x114)
+	.dwattr DW$182, DW_AT_end_line(0x11b)
 	.dwattr DW$182, DW_AT_end_column(0x01)
 	.dwendentry
 	.dwendtag DW$182

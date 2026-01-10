@@ -333,6 +333,7 @@ void turnvel_write_rom(void)
 	write_buf1[ j++ ] = (Uint16)(( Rom_Data_Buffer >> 8 ) & 0xff);
 
 	SpiWriteRom((Uint16)(_TURNVEL_CTRL) , 0 , (Uint16)(_TURNVEL_BLOCK), write_buf1 );
+    TxPrintf("Write vel: %d\r\n",Rom_Data_Buffer);
 }
 
 
@@ -350,7 +351,7 @@ void turnvel_read_rom(void)
 	Rom_Data_Buffer |= ((read_buf1[j++] & 0xff) << 8);
 
 	g_q17user_vel = _IQ(Rom_Data_Buffer);
-    TxPrintf("vel: %ld\r\n",_IQ(Rom_Data_Buffer)>>17);
+    TxPrintf("Read vel: %d\r\n",Rom_Data_Buffer);
 	//g_rm.q17user_vel = g_lm.q17user_vel = g_q17user_vel;
 
 }

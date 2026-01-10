@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Thu Jan 08 17:15:46 2026                 *
+;* Date/Time created: Sat Jan 10 22:03:58 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -76,8 +76,8 @@ DW$26	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
 DW$27	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$10)
 	.dwendtag DW$24
 
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI23210 C:\Users\rbgus\AppData\Local\Temp\TI2324 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI2322 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI2326 --object_file extremerun.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI29210 C:\Users\rbgus\AppData\Local\Temp\TI2924 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI2922 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI2926 --object_file extremerun.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 	.sect	".text"
 	.global	_xcontinus_angle_vel_compute_func
 
