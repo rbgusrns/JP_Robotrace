@@ -36,8 +36,8 @@ typedef volatile enum
 	SEN5 = 8, //D3
 	SEN6 = 9, //D4
 	SEN7  = 10, //D5
-	SEN_END = 16,
-	ADC_NUM = 16
+	SEN_END = 15,
+	ADC_NUM = 15
 	#endif
 	
 }sensor_num;
@@ -46,14 +46,14 @@ typedef volatile enum
 volatile Uint16 sen_shoot_arr[ SEN_END ] = 
 {
 	SEN0, SEN2, SEN1, SEN3, SEN4, SEN5, SEN6, SEN7, 
-    SEN3, SEN4, SEN5, SEN6, SEN7, SEN1, SEN2, SEN0     
+    SEN3, SEN4, SEN5, SEN6, SEN7, SEN1, SEN2    
 };
 
 
 volatile Uint16 sen_adc_seq[ ADC_NUM ] = 
 {
 	ADC_7,ADC_1,ADC_0,ADC_2,ADC_3,ADC_4,ADC_5,ADC_6,
-	ADC_10,ADC_11,ADC_12,ADC_13,ADC_14,ADC_8,ADC_9,ADC_7
+	ADC_10,ADC_11,ADC_12,ADC_13,ADC_14,ADC_8,ADC_9
 
 };
 
@@ -61,8 +61,11 @@ volatile Uint16 sen_adc_seq[ ADC_NUM ] =
 
 volatile Uint16 state_table[] = 
 {
-	0x1e00 , 0x1e00 , 0x1e00 , 
+	0xf000 , 0xf000 , 0xf000 , 
 		
+	0xf000 ,  // 1111 0000 0000 0000
+	0x7800 ,  // 0111 1000 0000 0000
+	0x3c00 ,  // 0011 1100 0000 0000
 	0x1e00 ,  // 0001 1110 0000 0000	
 	0x0f00 ,  // 0000 1111 0000 0000
 	0x0780 ,  // 0000 0111 1000 0000
@@ -70,9 +73,13 @@ volatile Uint16 state_table[] =
 	0x01e0 ,  // 0000 0001 1110 0000	
 	0x00f0 ,  // 0000 0000 1111 0000
 	0x0078 ,  // 0000 0000 0111 1000
+	0x003c ,  // 0000 0000 0011 1100
+	0x001e ,  // 0000 0000 0001 1110
+	0x000f ,  // 0000 0000 0000 1111
 	
-	0x0078 , 0x0078 , 0x0078
+	0x000f , 0x000f , 0x000f
 };
+
 
 
 void sen_vari_init(void)
@@ -113,7 +120,7 @@ void sen_vari_init(void)
 
 
 #if 1
-	g_sen[ L7 ].iq7weight = _IQ7(14500);		g_sen[ L7 ].u16active_arr = 0x8000; 	g_sen[ 15 ].u16passive_arr = 0x7fff;
+	g_sen[ L7 ].iq7weight = _IQ7(14500);		g_sen[ L7 ].u16active_arr = 0x8000; 	g_sen[ 15 ].u16passive_arr = 0xffff;
  	g_sen[ L6 ].iq7weight = _IQ7(12500);		g_sen[ L6 ].u16active_arr = 0x4000; 	g_sen[ 14 ].u16passive_arr = 0xbfff;
 	g_sen[ L5 ].iq7weight = _IQ7(10500);		g_sen[ L5 ].u16active_arr = 0x2000; 	g_sen[ 13 ].u16passive_arr = 0xdfff;
 	g_sen[ L4 ].iq7weight = _IQ7(8500);			g_sen[ L4 ].u16active_arr = 0x1000; 	g_sen[ 12 ].u16passive_arr = 0xefff;	// 8900
@@ -239,31 +246,28 @@ interrupt void adc_timer_ISR(void)
 	// ADC_NUM = 16 , SEN_END = 16
         g_sen[g_int32_sen_cnt].iq17result = ( adc_v1 + adc_v2 ) << 13 ; 
 
-	if( g_sen[ g_int32_full_cnt ].iq17result > g_sen[ g_int32_full_cnt ].iq17max_value ) // max	
-		g_sen[ g_int32_full_cnt ].iq17data = _IQ(127);
+	if( g_sen[ g_int32_sen_cnt ].iq17result > g_sen[ g_int32_sen_cnt ].iq17max_value ) // max	
+		g_sen[ g_int32_sen_cnt ].iq17data = _IQ(127);
     
-	else if( g_sen[ g_int32_full_cnt ].iq17result < g_sen[ g_int32_full_cnt ].iq17min_value )	// min
-		g_sen[ g_int32_full_cnt ].iq17data = _IQ(0);
+	else if( g_sen[ g_int32_sen_cnt ].iq17result < g_sen[ g_int32_sen_cnt ].iq17min_value )	// min
+		g_sen[ g_int32_sen_cnt ].iq17data = _IQ(0);
     
 	else //sensor data value compute
 	{
-		g_sen[ g_int32_full_cnt ].iq17data = _IQ17mpy(_IQ17div( ( g_sen[ g_int32_full_cnt ].iq17result - g_sen[ g_int32_full_cnt ].iq17min_value ) , ( g_sen[ g_int32_full_cnt ].iq17max_value - g_sen[ g_int32_full_cnt ].iq17min_value )) 
+		g_sen[ g_int32_sen_cnt ].iq17data = _IQ17mpy(_IQ17div( ( g_sen[ g_int32_sen_cnt ].iq17result - g_sen[ g_int32_sen_cnt ].iq17min_value ) , ( g_sen[ g_int32_sen_cnt ].iq17max_value - g_sen[ g_int32_sen_cnt ].iq17min_value )) 
 												, _IQ(127)); // divide 127
 	}
 
 	/* current sensor state compute : 흰색선 검은색 선 판별 , state 값은 cross check, turnmark check에 사용 */
-	if(g_sen[ g_int32_full_cnt ].iq17data > g_q17sen_valmax )	g_pos.u16state |= g_sen[ g_int32_full_cnt ].u16active_arr; 
-	else						 /*127 값 >    흰색 인정 값*/	g_pos.u16state &= g_sen[ g_int32_full_cnt ].u16passive_arr;
+	if(g_sen[ g_int32_sen_cnt ].iq17data > g_q17sen_valmax )	g_pos.u16state |= g_sen[ g_int32_sen_cnt ].u16active_arr; 
+	else						 /*127 값 >    흰색 인정 값*/	g_pos.u16state &= g_sen[ g_int32_sen_cnt ].u16passive_arr;
 
-	g_int32_full_cnt++;
-	if(g_int32_full_cnt >= ADC_NUM){
-		g_int32_full_cnt = 0; 
-	}
+
 	
 	g_int32_sen_cnt++;
 	if(g_int32_sen_cnt >= SEN_END)
 	{		
-		g_int32_sen_cnt = 0;
+		g_int32_sen_cnt = 3;
 		StopCpuTimer0(); // sensor interrupt stop 
 	}
     
@@ -406,14 +410,16 @@ static position_enable(void)
 
 }
 
+
+
 void position_PID(void) // 500us 
 {
 	#if 1
 	/////////////////////IIR filtering  
    
-	g_pos.iq7pos_IIR_puted = g_pos.iq7pos_IIR_puting;  
+	g_pos.iq7pos_IIR_puted = g_pos.iq7pos_IIR_puting;  //이전 입력값 
 
-	g_pos.iq7pos_IIR_puting = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10);
+	g_pos.iq7pos_IIR_puting = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10); //현재 입력값 
 	//g_pos.iq7pos_IIR_puting = g_pos.iq7current_pos; // extreme run  
 	g_pos.iq7pos_IIR_output = _IQ7mpy( PID_Kb , (g_pos.iq7pos_IIR_puted + g_pos.iq7pos_IIR_puting )) - _IQ7mpy(PID_Ka , g_pos.iq7past_pos[ 0 ] );
     
@@ -438,16 +444,7 @@ void position_PID(void) // 500us
 		g_q16right_handle_temp = _IQ16mpy( g_q16han_decstep, (  _IQ16div(HANDLE_CENTER , _IQ16(250) ) - _IQ16div( g_pos.iq7pid_out << 9, _IQ16(250.0) ) ) ) + g_q16han_decmax;
 		g_q16left_handle_temp = _IQ16mpy( g_q16han_accstep , ( _IQ16div( HANDLE_CENTER , _IQ16(250)) + _IQ16div( g_pos.iq7pid_out << 9, _IQ16(250.0) ) ) ) + g_q16han_accmax;
 
-		if( (!g_Flag.fast_flag ) && ( g_q16right_handle_temp < _IQ16(0.0)) )	g_q16right_handle_temp = _IQ16(0.0);
-		else if( (g_Flag.fast_flag ) && (g_fast_info[g_int32mark_cnt].u16turn_dir & STRAIGHT) )		// 직진 가속 핸들값 고정 
-		{
-			if( g_q16left_handle_temp > MAX_SPEED_HANDLE )		g_q16left_handle_temp = MAX_SPEED_HANDLE;
-			if( g_q16right_handle_temp < -MAX_SPEED_HANDLE )		g_q16right_handle_temp = -MAX_SPEED_HANDLE;	
-		}
-		else if( (g_Flag.fast_flag ) && ( g_q16right_handle_temp < _IQ16(-0.05)) ) g_q16right_handle_temp = _IQ16(-0.05);
-		else;
-		
-		
+	
 		
 	}
 	else								//좌회전
@@ -456,15 +453,6 @@ void position_PID(void) // 500us
 		g_q16right_handle_temp = _IQ16mpy( g_q16han_accstep , (_IQ16div(HANDLE_CENTER , _IQ16(250)) - _IQ16div( g_pos.iq7pid_out << 9,_IQ16(250.0) ) ))  + g_q16han_accmax;
 		g_q16left_handle_temp = _IQ16mpy( g_q16han_decstep , (_IQ16div(HANDLE_CENTER , _IQ16(250)) + _IQ16div( g_pos.iq7pid_out << 9,_IQ16(250.0)) )) + g_q16han_decmax;
 
-		if( (!g_Flag.fast_flag ) && ( g_q16left_handle_temp < _IQ16(0.0)) )	g_q16left_handle_temp = _IQ16(0.0);
-		else if( (g_Flag.fast_flag ) && (g_fast_info[g_int32mark_cnt].u16turn_dir & STRAIGHT) )
-		{
-			if( g_q16right_handle_temp > MAX_SPEED_HANDLE )			g_q16right_handle_temp = MAX_SPEED_HANDLE;
-			if( g_q16left_handle_temp < -MAX_SPEED_HANDLE )		g_q16left_handle_temp = -MAX_SPEED_HANDLE;
-		}
-		else if( (g_Flag.fast_flag ) && ( g_q16left_handle_temp < _IQ16(-0.05)) ) g_q16left_handle_temp = _IQ16(-0.05);
-		else;
-		
 	}
 	
 	g_q17left_handle = g_q16left_handle_temp << 1;
@@ -486,43 +474,13 @@ static void cross_check(void)
 	// RIGHT_ENABLE	0xfc00	 // 1111 1100 0000 0000
 	// LEFT_ENABLE		0x003f	 // 0000 0000 0011 1111
 
-	if( g_u16sen_enable & RIGHT_ENABLE )
+	if( g_pos.u16current_state & LTURN )
 		state = STATE_CENTER - g_u16sen_state;  // g_u16sen_state : 8 7 6 5 4 3 2 1 0 1 2 3 4 5 6 7 8 
-	else if (g_u16sen_enable & LEFT_ENABLE )
+	else if ( g_pos.u16current_state & RTURN )
 		state = STATE_CENTER + g_u16sen_state;	// state : 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 
 	else 
 		state = STATE_CENTER;
 
-	/*
-		g_u16pos_cnt = S_TEN;
-		g_u16sen_state = FOUR_SHIFT;
-		g_u16sen_enable = 0x3c00;		//0011 1100 0000 0000
-	*/
-	
-	/*
-	volatile Uint16 state_table[] = 
-	{
-		0xf000 , 0xf000 , 0xf000 , 
-			
-		0xf000 ,  // 1111 0000 0000 0000
-		0x7800 ,  // 0111 1000 0000 0000
-		0x3c00 ,  // 0011 1100 0000 0000
-		0x1e00 ,  // 0001 1110 0000 0000	
-		0x0f00 ,  // 0000 1111 0000 0000
-		0x0780 ,  // 0000 0111 1000 0000
-		0x03c0 ,  // 0000 0011 1100 0000
-		0x01e0 ,  // 0000 0001 1110 0000	
-		0x00f0 ,  // 0000 0000 1111 0000
-		0x0078 ,  // 0000 0000 0111 1000
-		0x003c ,  // 0000 0000 0011 1100
-		0x001e ,  // 0000 0000 0001 1110
-		0x000f ,  // 0000 0000 0000 1111
-		
-		0x000f , 0x000f , 0x000f
-	};
-
-	g_sen[ L7 ].u16active_arr = 0x8000; 1000 0000 0000 0000
-	*/  //흰선 읽은 센서 &  쉬프트하여 활성화된 센서  
 	if( ( g_pos.u16state & state_table[ state - 1 ] ) == state_table[ state - 1] ||
 		( g_pos.u16state & state_table[ state + 1 ] ) == state_table[ state + 1] ||
 		( g_pos.u16state & state_table[ state ] ) == state_table[ state ] )
@@ -559,7 +517,7 @@ static void cross_check(void)
 			g_Flag.cross_shift = OFF;
 		}
 
-		if( g_q17cross_dist > _IQ(140) ) // _IQ(145) // cross checking distance  
+		if( g_q17cross_dist > _IQ(150) ) // _IQ(145) // cross checking distance  
 		{
 
 			g_lmark.u16turn_flag = OFF;
@@ -592,13 +550,13 @@ void start_end_check(void)				// start와 end를  체크한다
 		
 		
 		g_Flag.start_flag = ON;
-		g_lm.q17total_dist = g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0);
-		g_lm.q17gone_distance = g_rm.q17gone_distance = _IQ17(0);
+		//g_lm.q17total_dist = g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0);
+		//g_lm.q17gone_distance = g_rm.q17gone_distance = _IQ17(0);
 	}
 	else								// end 인식
 	{	
 	
-		//if((g_u16turnmark_limit < (Uint16)(g_int32mark_cnt + 2))) return;
+		//if((g_u16turnmark_limit < (Uint16)(g_int32mark_cnt + 2))) return;\
 		if( (Uint16)g_int32mark_cnt < g_u16turnmark_limit ) 	return;
 				
 		g_Flag.start_flag = OFF;
@@ -631,7 +589,7 @@ void start_end_check(void)				// start와 end를  체크한다
             position_PID();
 		}
 
-	
+	    FAN_OFF;
 		VFDPrintf("MARK:%3u",(Uint16)(g_int32mark_cnt));
 		g_float32time_cnt = ((float)g_int32timer_cnt) * (float)0.0005;  
 		
@@ -642,7 +600,7 @@ void start_end_check(void)				// start와 end를  체크한다
 			{
 				while(!SW_DOWN);
 				DELAY_US(125000);
-				if( toggle )	VFDPrintf("%3ld | %2u",g_int32mark_cnt , g_line_info.u16cross_total_cnt);	
+				if( toggle )	VFDPrintf("%8ld",g_int32mark_cnt);	
 				else	VFDPrintf("T:%5.3lf",g_float32time_cnt);
 				toggle ^= 1;
 			}
@@ -650,7 +608,7 @@ void start_end_check(void)				// start와 end를  체크한다
 			{
 				while(!SW_UP);
 				DELAY_US(125000);
-				if( toggle )	VFDPrintf("%3ld | %2u",g_int32mark_cnt , g_line_info.u16cross_total_cnt);	
+				if( toggle )	VFDPrintf("%8ld",g_int32mark_cnt);	
 				else	VFDPrintf("T:%5.3lf",g_float32time_cnt);
 				toggle ^= 1;
 			}
@@ -659,23 +617,22 @@ void start_end_check(void)				// start와 end를  체크한다
 				while(!SW_RIGHT);
 				DELAY_US(125000);
 				
-				g_line_info.u16cross_final_cnt = g_line_info.u16cross_total_cnt;
 				g_int32total_cnt = g_int32mark_cnt;
 				
 				line_info(NULL);
-//				g_fast_info[g_int32total_cnt].u16= g_line_info.u16line_dist[g_line_info.u16turnmark_total_cnt];
-
+                init_line_info(NULL);
                 MOTOR_TIMER_DISABLE;
 
 				fast_infor_write_rom();
-				cross_info_write_rom();
 				mark_write_rom();
 
                 MOTOR_TIMER_ENABLE;
                 
 				VFDPrintf("-SAVED!-");	
-                DELAY_US(1000000);
-                break;
+                DELAY_US(500000);
+                print_second_info();
+                //fst_info();
+                
 			}
 			
 		}
@@ -687,109 +644,6 @@ void start_end_check(void)				// start와 end를  체크한다
 
 //	turnmark_check( g_ptr->g_lmark, g_ptr->g_rmark ); // 왼쪽 턴마크 체크 
 //	turnmark_check( g_ptr->g_rmark, g_ptr->g_lmark ); // 오른쪽 턴마크 체크 
-
-void turnmark_check(turnmark_t* p_mark,turnmark_t* p_remark)
-{                            //현재 마크            이전 마크  
-	turnmark_t *pmark = p_mark;
-	turnmark_t *premark = p_remark;
-
-	if( pmark->u16single_flag )	 
-	{	
-		if( pmark->q7turn_dis > pmark->q7dist_limit )	// 일정 거리 후(turnmark 인식 길이 보다 길 경우)
-		{                      // 중복방지거리. 이걸 넘으면 cross 아님
-			if( pmark == g_ptr->g_lmark )
-			{
-				
-				LED_OFF;
-				if( premark->u16single_flag )	return; //???
-			}
-			else if ( pmark == g_ptr->g_rmark )
-            {
-                LED_OFF;
-			}
-			else;
-			
-
-			pmark->u16turn_flag = OFF;
-			pmark->u16single_flag = OFF;
-			pmark->q7turn_dis = _IQ7(0); // 마크 변수 초기화 
-
-			if( pmark->u16cross_flag )   //중복 거리 이내에 L/R 모두 인식됨.. 
-			{
-				pmark->u16cross_flag = OFF;
-				if( pmark == g_ptr->g_rmark )
-				{
-					if( g_Flag.cross_flag )  // 크로스인 경우 return 
-					{
-						g_line_info.u16cross_total_cnt++;
-						//VFDPrintf("cross");
-						return;
-					}	
-					
-				}
-			}
-			else		// 반대편 마크값이 들어오지 않은 경우 : 턴마크로 인식(순수 턴마크)
-			{
-				if(!g_Flag.move_state )	return;
-
-                if (pmark == g_ptr->g_lmark)
-                {
-    				if(!g_Flag.fast_flag)	 line_info(pmark); //1차 turnmark count ( 턴마크로 간주하고 라인 정보 저장 ) 
-    				else					 second_infor( g_ptr->pfastinfo,g_ptr->perr);  //2차 	
-                }
-
-                else                         start_end_check();
-                    
-			}
-                
-		}
-		else if( premark->u16single_flag )  pmark->u16cross_flag = ON;	// 중복 방지 거리동안 반대편이 인식됨..
-		else;
-
-		return;
-	}
-	else;  
-	
-	///////////////////////////////////////////////////////////////////////////////////////////	
-	
-	if( pmark->u16mark_enable & g_pos.u16state ) // 마크 센서에 값이 들어온 경우 
-	{    //쉬프팅된 마크 위치 &  흰선 인식 
-		if( !pmark->u16turn_flag ) // 턴마크를 읽지 않은 경우 
-		{	
-			pmark->q7dist_limit = pmark->q7turn_dis + turn_step; // 0 + 3 . 먼지 인식 방지 
-			pmark->u16turn_flag = ON; // 더이상 마크를 체크하지 않음
-		}
-		else if( pmark->q7turn_dis >= pmark->q7dist_limit ) // 반대편 마크값이 들어오는지 일정 구간 기다림 
-		{ //먼지가 아님!! 턴마크로 인식하자!
-			pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);	// _IQ(73) // turnmark 인식 길이 갱신
-			pmark->u16single_flag = ON;	// turnmark로 인정        중복 방지 거리 
-			
-			if( !g_Flag.cross_flag )
-			{
-				if( pmark == g_ptr -> g_lmark )
-                {
-                    
-                    LED_ON;
-                    g_Flag.lmark_flag = ON;
-				}
-				else if ( pmark == g_ptr -> g_rmark )
-				{
-                    LED_ON;
-                    g_Flag.rmark_flag = ON;
-				}
-				else;
-			}
-			
-		}
-		else;
-	}
-	else	// 마크에 센서값이 들어오지 않을 경우
-	{
-		pmark->u16turn_flag = OFF;
-		pmark->q7turn_dis = _IQ7( 0 );
-	}
-	////////////////////////////////////////////////////////////////////////////////////////////
-}
 
 
 
@@ -949,8 +803,9 @@ void print_pos()
 	while(1)
 	{
 		make_position();
-		TxPrintf("position : %5ld|pos_pid_out : %.6f| left_handle : %.6f| right_handle : %.6f| pos_cnt: %d|  %#x|\n",g_pos.iq7temp_pos>>7, _IQ7toF(g_pos.iq7pid_out),_IQ17toF(g_q17left_handle),_IQ17toF(g_q17right_handle),g_u16pos_cnt,g_u16sen_enable);
-		VFDPrintf("P:%6ld",g_pos.iq7temp_pos>>7);
+		//TxPrintf("position : %5ld|pos_pid_out : %.6f| left_handle : %.6f| right_handle : %.6f| pos_cnt: %d|  %#x|\n",g_pos.iq7temp_pos>>7, _IQ7toF(g_pos.iq7pid_out),_IQ17toF(g_q17left_handle),_IQ17toF(g_q17right_handle),g_u16pos_cnt,g_u16sen_enable);
+        TxPrintf("%f,%f\r\n",_IQ7toF(g_pos.iq7temp_pos),_IQ7toF(g_pos.iq7pid_out));
+        VFDPrintf("P:%6ld",g_pos.iq7temp_pos>>7);
 		
 		if(Right_SW){
 			DELAY_US(125000);

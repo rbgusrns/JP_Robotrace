@@ -40,8 +40,6 @@ void Variable_Init( void )
 	memset( ( void * )&g_rmark, 0x00 , sizeof( turnmark_t ) );
 	memset( ( void * )&g_lmark, 0x00 , sizeof( turnmark_t ) );
 	memset( ( void * )g_ptr , 0x00 , sizeof( str_point_t * ) );
-	memset( ( void * )&g_line_info , 0x00 , sizeof(lineinfo_t) );
-	memset( ( void * )&g_run_info , 0x00 , sizeof(runinfo_t) * 256 );
 	memset( ( void * )g_fast_info , 0x00 , sizeof(fast_run_str) * 256 );
 	memset( ( void * )&g_err, 0x00, sizeof( error_str ) );
 
@@ -62,10 +60,6 @@ void Variable_Init( void )
 	g_ptr->pfastinfo = g_fast_info;
 	g_ptr->perr = &g_err;
 
-
-	g_int32senmode_cnt = 0;
-	g_int32accmode_cnt = 0;
-	g_int32tmode_cnt = 0;
 	g_int32lineout_cnt = 0;
 	g_int32mark_cnt = 0;
 	g_int32total_cnt = 0;
@@ -95,9 +89,7 @@ void Variable_Init( void )
     g_u16pos_cnt = S_SIX;
     g_u16sen_state = 0;
 
-	g_int32_sen_cnt = 0;
-    g_int32_sen2_cnt = 0;
-	g_int32_full_cnt = 0;
+	g_int32_sen_cnt = 3;
 	g_int32speed_up_cnt = 0;   
 
 	//
@@ -109,7 +101,7 @@ void Variable_Init( void )
 
 
 	g_q17user_acc = _IQ(13000);
-    g_int32decel = 15000; //가속보다 감속을 더하자 .. 감속도 고정 !
+    g_int32decel = g_q17user_acc >> 17 ;
 	g_q17end_acc = _IQ(12500); // _IQ(13500)
 	g_q17endturn_acc = g_q17user_acc;
 	g_q17fast_vel_limit = _IQ(7700);
@@ -132,22 +124,21 @@ void Variable_Init( void )
 	g_q16left_handle_temp = _IQ16(1);	
 
 	////////////////////////////////////handle_search//////
-	g_q16out_corner_limit = _IQ16(0.300);	//0.15			
-	//0.3//0.24	//0.55	//0.6	
-	g_q16in_corner_limit = _IQ16(2.700);		//3.0
-	//3.1//2.6	//1.7	//1.6
+	g_q16out_corner_limit = _IQ16(0.400);	//0.15			
+
+	g_q16in_corner_limit = _IQ16(2.600);		//3.0
+
 	////////////////////////////////////////////////
 
 	////////////////////////////////////handle_fast///////
-	g_q16out_corner_fast_limit = _IQ16(0.300);		
+	g_q16out_corner_fast_limit = _IQ16(0.400);		
 	//0.20	//0.21	//0.45	//0.4
 	
-	g_q16in_corner_fast_limit = _IQ16(2.700);		
+	g_q16in_corner_fast_limit = _IQ16(2.600);		
 	//3.31	//3.1	//1.9	//2.0c 
 	////////////////////////////////////////////////
 	
-	turn_step = _IQ7( 3.0 );
-	g_line_info.u16cross_total_cnt = 0;
+	turn_step = _IQ7( 3 );
 
 	/*	extremerun variables	*/
 	g_int32shift_level=4;
@@ -165,7 +156,7 @@ void Variable_Init( void )
 	
 	g_q17max_acc = g_q17user_acc;
 	g_q17mid_acc = g_q17user_acc;
-	g_q17short_acc = g_q17user_acc + _IQ(2000);
+	g_q17short_acc = g_q17user_acc;
 	
 	g_q17s4s_vel = _IQ(3300);
 	g_q17s44s_vel = _IQ(4000); 
@@ -185,8 +176,25 @@ void Variable_Init( void )
 
     g_q17turn_angle = _IQ(0);
     g_q17_dps_z = _IQ(0);
+    g_q17past_gyro = _IQ(0);
+    g_q17gyro_IIR_output = _IQ(0);
+    g_q17gyro_IIR_puting = _IQ(0);
+    g_q17gyro_IIR_puted = _IQ(0);
 
+    g_pos.u16current_state = STRAIGHT;
+    g_pos.u16past_state = STRAIGHT;
 
+    
+    memset( ( void * )&g_q17omega_buf, 0x00, sizeof( g_q17omega_buf ) );
+    memset( ( void * )&g_q17angle_buffer, 0x00, sizeof( g_q17angle_buffer ) );
+    g_q17old_angle = _IQ(0);
+    g_q17turn_angle = _IQ(0);
+    g_int16_buf_idx = 0;
+
+    g_q17omega_sum = _IQ(0);
+    g_int16_omega_idx = _IQ(0);
+
+    
 }
 
 void main(void)
@@ -207,7 +215,6 @@ void main(void)
     handle_read_rom();
     VFDPrintf("LOADING/");
     turnmark_info_read_rom();
-	cross_info_read_rom();
 	mark_read_rom();
     VFDPrintf("LOADING-");
     extvel_read_rom();
@@ -228,7 +235,7 @@ void main(void)
 	LED_OFF;
     FAN_OFF;
 
-	TxPrintf("%5f, %5F\n", _IQ16toF(HANDLE_CENTER / 250) , _IQ16toF(_IQ16div(HANDLE_CENTER, _IQ16(250)) ) );
+	//TxPrintf("%5f, %5F\n", _IQ16toF(HANDLE_CENTER / 250) , _IQ16toF(_IQ16div(HANDLE_CENTER, _IQ16(250)) ) );
 	//TxPrintf("PULSE_TO_V: %10f\n",_IQ25toF(_IQ25( 33.37209546898672 )));
 	menu_start();
 
@@ -269,6 +276,8 @@ void main(void)
 		//RightPwmRegs.CMPA.half.CMPA =200;
 		//GpioDataRegs.GPASET.bit.GPIO1 = 1;
 	    //LeftPwmRegs.CMPA.half.CMPA = 200;
+	    //TxPrintf("%f\n",_IQ17toF(g_lm.q17gone_distance));
+	    
 	}
 }
 
@@ -286,10 +295,10 @@ void Delay(Uint32 Cnt)
 void print_second_info()
 {    
 	int i=0;
-	for( i=0; i<256;i++)
+	for( i=0; i<256;i++)\
 	{
 		
-							TxPrintf("%d| dst: %5d| dec: %5ld| mdst: %5ld| turn_dir: 0x%04X| acc: %5ld| in: %5ld| vel: %5ld| out: %5ld| cnt: %d | down: %d| s44s: %d| escape: %d| kp: %.2f| RDIST: %ld| LDIST: %ld| P: %ld\n",
+							TxPrintf("%d| dst: %5d| dec: %5ld| mdst: %5ld| turn_dir: 0x%04X| acc: %5ld| in: %5ld| vel: %5ld| out: %5ld| cnt: %d | down: %d| s44s: %d| escape: %d| kp: %.2f| RDIST: %ld| LDIST: %ld| P: %ld| angle: %ld\n",
 									i,
 										  g_fast_info[ i ].u16dist,
 													g_fast_info[ i ].q17dec_dist>>17,	
@@ -306,7 +315,8 @@ void print_second_info()
 																								 							 _IQ7toF(g_fast_info[ i ].q7kp_val),
 																								 							 g_fast_info[ i ].q17r_dist>>17,
 																								 							 g_fast_info[ i ].q17l_dist>>17,
-																								 							 g_fast_info[ i ].iq7pos_integral_val>>7
+																								 							 g_fast_info[ i ].iq7pos_integral_val>>7,
+																								 							 g_fast_info[ i ].q17angle>>17
 																								 							 );
 							if(i==g_int32total_cnt){
 								TxPrintf("-----------------------------------\n");

@@ -141,7 +141,7 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 		pinfo->q17dist_limit = _IQ( pinfo->u16dist >> 1 );
 	}
 	
-	if( !mark_cnt && pinfo->q17acc > _IQ17(10000) )	pinfo->q17acc = _IQ17(10000);  // 시작 직진 가속도 제한 
+	if( !mark_cnt && pinfo->q17acc > _IQ17(8000) )	pinfo->q17acc = _IQ17(8000);  // 시작 직진 가속도 제한 
 
 	big_vel = MAX( pinfo->q17in_vel, pinfo->q17out_vel);
 	small_vel = MIN( pinfo->q17in_vel, pinfo->q17out_vel);
@@ -739,7 +739,7 @@ extern void print_bril_info(fast_run_str *pinfo)
 { 
 	int i = 0;
     race_start_init();
-    fast_infor_read_rom(); 
+    //fast_infor_read_rom(); 
     turn_info_func();
     bril_turn_division_func();
     print_second_info();
@@ -784,7 +784,7 @@ void bril_run( fast_run_str *p_info )
 
 	race_start_init(); 		//  주행전  변수 초기화 
 	
-	fast_infor_read_rom();  //  저장된  변수 가져오기  
+	//fast_infor_read_rom();  //  저장된  변수 가져오기  
 	turn_info_func();
 	
 	bril_turn_division_func();  //주행 전 미리 곡률들 속도 및 가속도 계산
@@ -798,8 +798,9 @@ void bril_run( fast_run_str *p_info )
 		
 	VFDPrintf("brl %f",_IQ17toF(g_q17user_vel));	
 	DELAY_US(1000000);
+    FAN_ON;
 	VFDPrintf("        ");
-	
+	DELAY_US(1000000);
 	handle_ad_make(g_q16out_corner_fast_limit, g_q16in_corner_fast_limit);
 	move_to_move( _IQ17( pinfo->u16dist ), pinfo->q17dec_dist, pinfo->q17vel, pinfo->q17out_vel, pinfo->q17acc );
 
@@ -819,8 +820,8 @@ void bril_run( fast_run_str *p_info )
 			g_lmark.q7turn_dis = (g_lmark.q7check_dis + g_rmark.q7check_dis) >> 1;		//   턴마크 체크 거리값 갱신 
 			g_rmark.q7turn_dis = g_lmark.q7turn_dis;
 	
-			turnmark_check( g_ptr->g_lmark, g_ptr->g_rmark ); 	//	왼쪽 턴마크 check
-			turnmark_check( g_ptr->g_rmark, g_ptr->g_lmark ); 	//	오른쪽 턴마크 check
+			turn_decide( g_ptr->g_lmark ); 	//	왼쪽 턴마크 check
+			turn_decide( g_ptr->g_rmark ); 	//	오른쪽 턴마크 check
 		}
 
 		if( g_Flag.motor_ISR_flag )	// 모터 interrupt 동기화 

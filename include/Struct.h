@@ -58,6 +58,11 @@ typedef volatile struct bit_field_flag
 	Uint16 BLTURN_flag:1;
 	Uint16 BALL_flag:1;
 
+    Uint16  Rturn_flag;  
+    Uint16  Lturn_flag;    
+    Uint16  STR_flag;
+
+
 }bit_field_flag_t;
 
 __STRUCT_EXT__ bit_field_flag_t	g_Flag;
@@ -85,9 +90,13 @@ typedef volatile struct position
 {
 	Uint16		u16state;
 	Uint16		u16enable;
-	
+	Uint16		u16current_state;
+    Uint16		u16past_state;
+    Uint16		u16dw_state;
+    
 	_iq			iq17sum;
-	
+	_iq		    iq17past_gyro[4];
+    _iq         iq17D_gyro;
 	_iq7		iq7pos_IIR_puted;
 	_iq7		iq7pos_IIR_puting;
 	_iq7		iq7pos_IIR_output;
@@ -110,41 +119,7 @@ typedef volatile struct position
 
 __STRUCT_EXT__	position_t		g_pos;
 
-#if 1
-typedef volatile struct
-{
-//	Uint16 u16turnmark_total_cnt;
-//	Uint16 u16turnmark_final_cnt;
-	Uint16 u16cross_total_cnt;
-	Uint16 u16cross_final_cnt;
-//	Uint16 u16RL_Info[256];				// right, left save
-//	Uint16 u16turn_Info[256];			// map info save
-//	Uint16 u16line_dist[256];	
-//	Uint16 u16delay_info[256];
-//	Uint16 u16decel_dist[256];		
-	Uint16 u16err_dist[256];
-	
-}lineinfo_t;
 
-__STRUCT_EXT__ lineinfo_t g_line_info;
-
-
-
-typedef volatile struct
-{
-
-//	_iq17	q17in_vel;
-//	_iq17	q17out_vel;
-//	_iq17	q17acc;
-//	_iq17	q17limit_vel;
-
-	Uint16  u16cross_debug_arr;
-
-}runinfo_t;
-
-__STRUCT_EXT__ runinfo_t  g_run_info[256];
-
-#endif
 typedef volatile struct motor_variable
 {
 	Uint16	u16qep_sample,
@@ -203,7 +178,9 @@ typedef volatile struct
 	Uint16 u16single_flag;
 	Uint16	u16cross_flag;	
 	Uint16	u16turn_flag;
-	
+
+
+    
 }turnmark_t;
 
 __STRUCT_EXT__ turnmark_t g_rmark;
@@ -259,9 +236,6 @@ typedef volatile struct error_struct
 	
 	_iq17 q17under_dist[ 256 ];
 	_iq17 q17err_dist[ 256 ];
-
-	int32 int32err_cnt[ 256 ];
-	int32 int32load_err[ 256 ];
 
 	int32 in32mark_val[ 20 ];
 }error_str;

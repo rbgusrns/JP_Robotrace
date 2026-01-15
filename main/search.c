@@ -17,9 +17,26 @@
 #include "DSP280x_Examples.h"   // DSP280x Examples Include File
 
 
+void init_line_info(turnmark_t *pmark)
+{
+
+    if(!g_Flag.fast_flag)
+    {
+        
+        g_lm.q17gone_distance -= g_fast_info[g_int32mark_cnt].q17l_dist;
+        g_rm.q17gone_distance -= g_fast_info[g_int32mark_cnt].q17r_dist;
+        g_int32mark_cnt++;
+
+        g_fast_info[g_int32mark_cnt].u16turn_way = g_pos.u16current_state;	// left or right 
+    }
+    
+    
+    g_pos.u16past_state = g_pos.u16current_state;
+}
+
 void line_info(turnmark_t *pmark)
 {
-	if( pmark == NULL) // end 거리 
+	if( pmark == NULL ) // end 거리 
 	{
 		g_fast_info[g_int32mark_cnt].q17l_dist = g_lm.q17end_gone_distance;
 		g_fast_info[g_int32mark_cnt].q17r_dist = g_rm.q17end_gone_distance;
@@ -30,23 +47,20 @@ void line_info(turnmark_t *pmark)
 		g_fast_info[g_int32mark_cnt].q17r_dist = g_rm.q17gone_distance;
 	}
 	
-	g_lm.q17gone_distance = g_rm.q17gone_distance = _IQ17(0);
-	if( pmark == NULL) g_fast_info[g_int32mark_cnt].u16turn_way = ETURN; // end
+	
+	if( pmark == NULL ) g_fast_info[g_int32mark_cnt].u16turn_way = ETURN; // end
 	
 	
 	g_fast_info[g_int32mark_cnt].u16dist = IQ_TO_UINT16( ( g_fast_info[g_int32mark_cnt].q17l_dist >> 1 ) + ( g_fast_info[g_int32mark_cnt].q17r_dist >> 1 ) ); // 마크와 마크 사이 거리 
-	g_fast_info[g_int32mark_cnt].iq7pos_integral_val = g_pos.iq7integral_val;
 
-    g_pos.iq7integral_val = _IQ7(0.0);
     g_fast_info[g_int32mark_cnt].q17angle = g_q17turn_angle;
 	//TxPrintf("1\n");
-	g_int32mark_cnt++;
-	g_fast_info[g_int32mark_cnt].u16turn_way = ( g_q17turn_angle > _IQ(0) ) ? ( RTURN ) : ( LTURN );	// left or right 
+	
+	
+	
 		
-	if( _IQabs( g_q17turn_angle ) < _IQ(10) )
-		g_fast_info[g_int32mark_cnt].u16turn_way = STRAIGHT;  // straight
 
-    g_q17turn_angle = _IQ(0);
+    //g_q17turn_angle = _IQ(0);
 //	g_lm.q17total_dist = g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0);
     //VFDPrintf("%8d",g_fast_info[g_int32mark_cnt].u16turn_way);
 }
@@ -222,7 +236,7 @@ int lineout_func(void)		// 라인아웃 체크 함수
 
 		
 		VFDPrintf("Err_%3ld_",g_int32total_cnt);
-		
+		FAN_OFF;
 		while(1)
 		{
 			if(!SW_RIGHT)
@@ -269,9 +283,15 @@ void  search_run(void)
 	
 	while(1)
 	{
+        
+        TxPrintf("%f,%f,%ld,%d,%d\n",_IQtoF(g_q17current_omega),_IQtoF((g_lm.q17gone_distance + g_rm.q17gone_distance) >> 1),g_int32mark_cnt,g_fast_info[g_int32mark_cnt].u16turn_way<<6,g_pos.u16current_state<<6 );
+                
+        //TxPrintf("%f,%f,%d\n",_IQtoF(g_q17turn_angle),_IQtoF(g_q17current_omega),g_pos.u16current_state<<6 );
+        //if (g_int32fasterror_flag) TxPrintf("%f,%f,%f\r\n",_IQtoF(g_q17_dps_z),_IQtoF(g_q17gyro_IIR_output),_IQtoF(g_pos.iq17D_gyro));
         //VFDPrintf("%ld",g_pos.iq7integral_val >> 7 );
-        //TxPrintf("L:%f\tR:%f\n",_IQtoF(g_lm.q17cur_vel_avr),_IQtoF(g_rm.q17cur_vel_avr));
+        //TxPrintf("%f,%f\r\n",_IQtoF(g_lm.q17cur_vel_avr),_IQtoF(g_lm.q17next_vel));
         //TxPrintf("L:%f\tR:%f\n",_IQtoF(g_lm.q17next_acc),_IQtoF(g_rm.q17next_acc));
+        //TxPrintf("%4f\r\n",_IQtoF(g_q17_dps_z));
 		make_position(); // 포지션 업데이트 
 		
 		if(g_Flag.move_state)
@@ -279,8 +299,8 @@ void  search_run(void)
 			g_lmark.q7turn_dis = (g_lmark.q7check_dis + g_rmark.q7check_dis) >> 1; // 턴마크 체크 거리값 업데이트  
  			g_rmark.q7turn_dis = g_lmark.q7turn_dis; 
 	
-			turnmark_check( g_ptr->g_lmark, g_ptr->g_rmark ); // 왼쪽 턴마크 체크 
-			turnmark_check( g_ptr->g_rmark, g_ptr->g_lmark ); // 오른쪽 턴마크 체크 	
+			turn_decide( g_ptr->g_lmark ); // 곡률 변화 체크
+			turn_decide( g_ptr->g_rmark ); // 스타트 엔드 체크 	
 		}
 		
 		if( g_Flag.motor_ISR_flag )
@@ -724,7 +744,7 @@ void Set_Accel(){
 
     g_q17max_acc = g_q17user_acc;
 	g_q17mid_acc = g_q17user_acc;
-	g_q17short_acc = g_q17user_acc + _IQ(2000);
+	g_q17short_acc = g_q17user_acc;
 
 	DELAY_US(150000);
 

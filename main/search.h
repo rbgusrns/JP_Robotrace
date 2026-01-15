@@ -39,6 +39,7 @@ typedef enum		//조절 필요
 
 //extern void line_information (turnmark_t *pmark);
 extern void line_info(turnmark_t *pmark);
+extern void init_line_info(turnmark_t *pmark);
 
 extern void race_start_init(void);
 

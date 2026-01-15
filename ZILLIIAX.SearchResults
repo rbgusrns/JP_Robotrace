@@ -1,12 +1,30 @@
----- 2500 Matches (11 in 3 files) ----
-brilrun.c (main):	_IQ(0.0) , _IQ(500.0) , _IQ(1500.0) , _IQ(2500.0) , _IQ(3500.0) , _IQ(4500.0) , _IQ(5500.0) , _IQ(6500.0) , _IQ(7500.0) , _IQ(8500.0) , _IQ(9500.0)
-brilrun.c (main):	_IQ(0.0) , _IQ(-500.0) , _IQ(-1500.0) , _IQ(-2500.0) , _IQ(-3500.0) , _IQ(-4500.0) , _IQ(-5500.0) , _IQ(-6500.0) , _IQ(-7500.0) , _IQ(-8500.0) , _IQ(-9500.0)
-brilrun.c (main):	_IQ(0.0) , _IQ(250.0) , _IQ(500.0) , _IQ(750.0) , _IQ(1000.0) , _IQ(1250.0) , _IQ(1500.0) , _IQ(1750.0) , _IQ(2000.0) , _IQ(2250.0) , _IQ(2500.0)
-brilrun.c (main):	_IQ(0.0) , _IQ(-250.0) , _IQ(-500.0) , _IQ(-750.0) , _IQ(-1000.0) , _IQ(-1250.0) , _IQ(-1500.0) , _IQ(-1750.0) , _IQ(-2000.0) , _IQ(-2250.0) , _IQ(-2500.0)
-brilrun.c (main):    _IQ(0.0) , _IQ(500.0) , _IQ(1500.0) , _IQ(2500.0) , _IQ(3500.0) , _IQ(4500.0) , _IQ(5500.0) , _IQ(6500.0) , _IQ(7500.0) , _IQ(8500.0) , _IQ(9500.0)
-brilrun.c (main):    _IQ(0.0) , _IQ(-500.0) , _IQ(-1500.0) , _IQ(-2500.0) , _IQ(-3500.0) , _IQ(-4500.0) , _IQ(-5500.0) , _IQ(-6500.0) , _IQ(-7500.0) , _IQ(-8500.0) , _IQ(-9500.0)
-sensor.c (main):	g_sen[ L1 ].iq7weight = _IQ7(2500);			g_sen[ L1 ].u16active_arr = 0x0200;		g_sen[ 9 ].u16passive_arr = 0xfdff; 	// 1000
-sensor.c (main):	g_sen[ R6 ].iq7weight = _IQ7(-2500); 		g_sen[ R6 ].u16active_arr = 0x0040;		g_sen[ 6 ].u16passive_arr = 0xffbf;
-sensor.c (main):	g_sen[ L1 ].iq7weight = _IQ7(2500);			g_sen[ L1 ].u16active_arr = 0x0200;		g_sen[ 9 ].u16passive_arr = 0xfdff; 	// 1000
-sensor.c (main):	g_sen[ R6 ].iq7weight = _IQ7(-2500); 		g_sen[ R6 ].u16active_arr = 0x0040;		g_sen[ 6 ].u16passive_arr = 0xffbf;
-Variable.h (main):#define HANDLE_CENTER 			_IQ16( 2500 )
+---- g_int32_sen_cnt Matches (36 in 5 files) ----
+main.asm (main):DW$114	.dwtag  DW_TAG_variable, DW_AT_name("g_int32_sen_cnt"), DW_AT_symbol_name("_g_int32_sen_cnt")
+main.asm (main):;*** 92	-----------------------    g_int32_sen_cnt = 0L;
+main.c (main):	g_int32_sen_cnt = 0;
+sensor.asm (main):DW$33	.dwtag  DW_TAG_variable, DW_AT_name("g_int32_sen_cnt"), DW_AT_symbol_name("_g_int32_sen_cnt")
+sensor.asm (main):;*** 221	-----------------------    GpioDataRegs.GPACLEAR.all = 1L<<sen_shoot_arr[g_int32_sen_cnt];
+sensor.asm (main):;*** 247	-----------------------    C$2 = g_int32_sen_cnt*18L;
+sensor.asm (main):;***  	-----------------------    U$22 = &K$21[g_int32_sen_cnt];
+sensor.asm (main):;*** 267	-----------------------    if ( (++g_int32_sen_cnt) < 15L ) goto g11;
+sensor.asm (main):;*** 270	-----------------------    g_int32_sen_cnt = 3L;
+sensor.asm (main):;*** 201	-----------------------    GpioDataRegs.GPASET.all = 1L<<sen_shoot_arr[g_int32_sen_cnt];
+sensor.asm (main):;*** 203	-----------------------    C$1 = &sen_adc_seq[g_int32_sen_cnt];
+sensor.c (main):	GpioDataRegs.GPASET.all = ( ON_L << sen_shoot_arr[ g_int32_sen_cnt ] );	 //sensor shoot code
+sensor.c (main):	AdcRegs.ADCCHSELSEQ1.all = sen_adc_seq[ g_int32_sen_cnt ];  // adcchselseq =  Channel select sequencing control
+sensor.c (main):	AdcRegs.ADCCHSELSEQ2.all = sen_adc_seq[ g_int32_sen_cnt ]; 
+sensor.c (main):	AdcRegs.ADCCHSELSEQ3.all = sen_adc_seq[ g_int32_sen_cnt ];
+sensor.c (main):	AdcRegs.ADCCHSELSEQ4.all = sen_adc_seq[ g_int32_sen_cnt ]; 
+sensor.c (main):	GpioDataRegs.GPACLEAR.all = ( ON_L << sen_shoot_arr[ g_int32_sen_cnt ] ); //sensor shoot stop
+sensor.c (main):        g_sen[g_int32_sen_cnt].iq17result = ( adc_v1 + adc_v2 ) << 13 ; 
+sensor.c (main):	if( g_sen[ g_int32_sen_cnt ].iq17result > g_sen[ g_int32_sen_cnt ].iq17max_value ) // max	
+sensor.c (main):		g_sen[ g_int32_sen_cnt ].iq17data = _IQ(127);
+sensor.c (main):	else if( g_sen[ g_int32_sen_cnt ].iq17result < g_sen[ g_int32_sen_cnt ].iq17min_value )	// min
+sensor.c (main):		g_sen[ g_int32_sen_cnt ].iq17data = _IQ(0);
+sensor.c (main):		g_sen[ g_int32_sen_cnt ].iq17data = _IQ17mpy(_IQ17div( ( g_sen[ g_int32_sen_cnt ].iq17result - g_sen[ g_int32_sen_cnt ].iq17min_value ) , ( g_sen[ g_int32_sen_cnt ].iq17max_value - g_sen[ g_int32_sen_cnt ].iq17min_value )) 
+sensor.c (main):	if(g_sen[ g_int32_sen_cnt ].iq17data > g_q17sen_valmax )	g_pos.u16state |= g_sen[ g_int32_sen_cnt ].u16active_arr; 
+sensor.c (main):	else						 /*127 값 >    흰색 인정 값*/	g_pos.u16state &= g_sen[ g_int32_sen_cnt ].u16passive_arr;
+sensor.c (main):	g_int32_sen_cnt++;
+sensor.c (main):	if(g_int32_sen_cnt >= SEN_END)
+sensor.c (main):		g_int32_sen_cnt = 3;
+Variable.h (main):__VARIABLE_EXE__  int32 g_int32_sen_cnt,

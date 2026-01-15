@@ -27,14 +27,15 @@
 #define SAMPLE_FRQ				_IQ30( 0.0005 )			//500us
 
 //PULSE_TO_D = (WHEEL_RADIUS * M_PI) / (encoder_pulse * 4) / geer_ratio 
-//(23.5 * M_PI) / 2048 / 2.592592592592592
-//#define PULSE_TO_D				_IQ30( 0.016484569660 )
-#define PULSE_TO_D				_IQ30( 0.01390444014 )
+//(24.5 * M_PI) / 4096 / 2.592592592592592
+///#define PULSE_TO_D				_IQ30( 0.016484569660 )
+//#define PULSE_TO_D				_IQ30( 0.01390444014 )
+#define PULSE_TO_D				_IQ30( 0.007248059223 )
 
 //PULSE_TO_V = (WHEEL_RADIUS * M_PI) / (encoder_pulse * 4) / geer_ratio / SAMPLE_FRQ
-//(23.5 * M_PI) / 2048 / 3.35 / 0.0005
+//(24.5 * M_PI) / 4096 / 2.592592592592592 / 0.0005
 //#define PULSE_TO_V  			_IQ26( 32.96913932172 )
-#define PULSE_TO_V  			_IQ25( 27.80888028 )
+#define PULSE_TO_V  			_IQ25( 14.49611845 )
 ////////////////////////////////////////////       PID information       ///////////////////////////////////////////////////
 
 // 9000으로 임의로 잡고 계산했을 경우 공회전으로 7700mm/s 정도까지 올라가는것 확인-> 정속 주행일때를 위해 좀 더 올려야 할 듯... 
@@ -364,7 +365,7 @@ interrupt void  motor_ISR(void)
     
 	LSM6DSR_GetGyroDataDPS(); //gyro sampling
 
-    g_q17turn_angle += _IQ17mpyIQX( g_q17_dps_z , 17 , SAMPLE_FRQ, 30 );
+    
 
     //	qep value sampling
 	g_rm.u16qep_sample = LeftQepRegs.QPOSCNT;  // 엔코더 값 read , 엔코더 count 

@@ -26,7 +26,7 @@
 #endif	
 
 
-
+#define WAIT do{ VFDPrintf("LOADING|"); DELAY_US(300000); VFDPrintf("LOADING/"); DELAY_US(300000); VFDPrintf("LOADING-"); DELAY_US(300000); VFDPrintf("LOADING\\"); DELAY_US(300000); }while(!GpioDataRegs.GPADAT.bit.GPIO15);
 
 #define ON_L		1L
 //#define HANDLE_CENTER 			_IQ16( 7800 )
@@ -37,7 +37,7 @@
 #define SENSOR_TIMER_DISABLE	do{	StopCpuTimer0();	}while(0);
 
 #define MOTOR_TIMER_ENABLE		do{ StartCpuTimer1();	}while(0);
-#define MOTOR_TIMER_DISABLE		do{	StopCpuTimer1(); Delay(0xc000); }while(0);
+#define MOTOR_TIMER_DISABLE		do{	StopCpuTimer1(); WAIT; }while(0);
 
 
 #define SW_RIGHT	GpioDataRegs.GPBDAT.bit.GPIO34 & 0x01
@@ -61,8 +61,8 @@
 
 
 
-#define LEFT_MARK_CHECK				0x6000 // 0110 0000 0000 0000
-#define RIGHT_MARK_CHECK			0x0006 // 0000 0000 0000 0110
+#define LEFT_MARK_CHECK				0x8000 //  1000 0000 0000 0000
+#define RIGHT_MARK_CHECK			0x6000 //  0110 0000 0000 0000
 #define STATE_CENTER				9
 
 #define UP_SW_SELECT		1
@@ -93,6 +93,7 @@
 #define	LTURN						0x0002
 #define	RTURN						0x0004
 #define ETURN						0x0008
+#define CTURN						0x000C
 
 #define	TURN_45						0x0010
 #define	TURN_90						0x0020
@@ -131,6 +132,10 @@
 
 #define LED_ON GpioDataRegs.GPASET.bit.GPIO27 = 1
 #define LED_OFF GpioDataRegs.GPACLEAR.bit.GPIO27 = 1
+
+
+#define OMEGA_WIN 20
+
 
 typedef enum
 {
@@ -173,22 +178,9 @@ typedef enum
 }pos_e;
 
 
-typedef enum
-{
-	ERR_STR ,
-	ERR_45A = 30 ,
-	ERR_90A = 100 ,
-	ERR_180A = 150 , 
-	ERR_270A = 200
-
-}speed_err_e;
 
 
 __VARIABLE_EXE__  int32 g_int32_sen_cnt,
-                        g_int32_sen2_cnt,
-						g_int32_full_cnt,
-					    g_int32accmode_cnt,
-					    g_int32tmode_cnt,
 					    g_int32timer_cnt,
 					    g_int32lineout_cnt,
 					    g_int32mark_cnt,
@@ -254,9 +246,20 @@ __VARIABLE_EXE__  _iq g_q17shift_dist,
 					  g_q17shift_ratio,
 					  g_q17return_ratio,
 					  g_q17turn_angle,
+					  g_q17old_angle,
+					  g_q17angle_buffer[200],
+					  g_q17omega_buf[OMEGA_WIN],
+					  g_q17omega_sum,
+					  g_q17omega_avg,
+					  g_q17test_omega,
+					  g_q17current_omega,
 					  g_q17st_ret_ratio,
 					  g_q17_dps_z,
-					  g_q17_gyro_offset;
+					  g_q17_gyro_offset,
+					  g_q17gyro_IIR_puted,
+					  g_q17gyro_IIR_puting,
+					  g_q17gyro_IIR_output,
+					  g_q17past_gyro;
 
 
 
@@ -282,7 +285,9 @@ __VARIABLE_EXE__    _iq28 g_q28kp,
                           g_q28kd;
 
 
-__VARIABLE_EXE__    int16 g_int16_gyro_raw;
+__VARIABLE_EXE__    int16 g_int16_gyro_raw,
+                          g_int16_buf_idx,
+                          g_int16_omega_idx;
 
 
 /*extremerun variables*/
@@ -315,6 +320,8 @@ typedef enum extrem_variable_vel
 	LIMIT_STRATIO = 4700
 
 }x_vari_vel_e;
+
+
 
 #define KVAL_UP						0x0001
 #define KVAL_DOWN					0x0002

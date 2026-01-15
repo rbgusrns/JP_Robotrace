@@ -54,9 +54,7 @@ void fast_error_compute( error_str *perr, fast_run_str *pinfo, int32 mark_cnt )
 	if( perr->q17over_dist > perr->q17err_dist[ mark_cnt ] ) // 마크에 주어진 에러값보다 더 간 경우 ( 마크를 놓친 경우) 
 	{
 
-		g_err.int32err_cnt[ g_int32err_cnt++ ] = mark_cnt;	
 
-		
 		if(g_int32fasterror_flag)
 		{
 			if( g_int32err_cnt > 10 || mark_cnt > ( g_int32total_cnt - 1 ) ) // 1차 주행으로 전환 
@@ -66,7 +64,7 @@ void fast_error_compute( error_str *perr, fast_run_str *pinfo, int32 mark_cnt )
 				g_Flag.err = ON;
 				g_Flag.fast_flag= OFF;
 			
-				if( g_q17user_vel > _IQ17(2200) )			g_q17user_vel = _IQ17(2200);
+				if( g_q17user_vel > _IQ17(1000) )			g_q17user_vel = _IQ17(1000);
 
 				return;
 			}
@@ -355,13 +353,14 @@ void second_infor(fast_run_str * p_info, error_str *perr )
 	g_lm.q17total_dist = g_rm.q17total_dist = _IQ(0.0);
     g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0.0);
     g_pos.iq7integral_val = _IQ7(0.0);
+    //g_pos.u16past_state = g_pos.u16current_state;
 	
 }
    
 void print_sec_info(fast_run_str *pinfo)
 {
 	race_start_init();
-	fast_infor_read_rom(); 
+	//fast_infor_read_rom(); 
 	turn_info_func();
 	turn_division_func();
 
@@ -375,20 +374,26 @@ void second_run(fast_run_str *pinfo)
 	//int32 i = 0;
 	
 	race_start_init();
-	fast_infor_read_rom(); 
+	//fast_infor_read_rom(); 
 	turn_info_func();
 	turn_division_func();
-
+    //print_second_info();
 	
 	VFDPrintf("fst %f",_IQ17toF(g_q17user_vel));	
+
+    DELAY_US(500000);
+
+    FAN_ON;
+    
 	DELAY_US(1000000);
+    
 	VFDPrintf("        ");
-	DELAY_US(500000);
+
 	
 	// 1차 handle : 0.52 1.88 / 
 	handle_ad_make(g_q16out_corner_fast_limit, g_q16in_corner_fast_limit); // _IQ16(0.35) , _IQ16(2.05);
 	move_to_move( _IQ17( pinfo->u16dist ), pinfo->q17dec_dist, pinfo->q17vel, pinfo->q17out_vel, pinfo->q17acc );
-
+    //TxPrintf("%d,%ld,%ld,%ld,%ld\n",pinfo->u16dist, pinfo->q17dec_dist >> 17 , pinfo->q17vel >> 17 , pinfo->q17out_vel >> 17 , pinfo->q17acc >> 17 );
 	g_Flag.fast_flag = ON;
 	g_Flag.motor_start = ON;
 	
@@ -403,8 +408,8 @@ void second_run(fast_run_str *pinfo)
 			g_lmark.q7turn_dis = (g_lmark.q7check_dis + g_rmark.q7check_dis) >> 1;
 			g_rmark.q7turn_dis = g_lmark.q7turn_dis;
 	
-			turnmark_check( g_ptr->g_lmark, g_ptr->g_rmark );
-			turnmark_check( g_ptr->g_rmark, g_ptr->g_lmark );
+			turn_decide( g_ptr->g_lmark );
+			turn_decide( g_ptr->g_rmark );
 			
 			
 		}

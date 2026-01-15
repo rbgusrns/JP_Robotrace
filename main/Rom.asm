@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Sat Jan 10 22:03:56 2026                 *
+;* Date/Time created: Thu Jan 15 16:05:51 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -10,132 +10,138 @@ DW$CU	.dwtag  DW_TAG_compile_unit
 	.dwattr DW$CU, DW_AT_stmt_list(0x00)
 	.dwattr DW$CU, DW_AT_TI_VERSION(0x01)
 
-DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("SpiWriteRom"), DW_AT_symbol_name("_SpiWriteRom")
+DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("SpiReadRom"), DW_AT_symbol_name("_SpiReadRom")
 	.dwattr DW$1, DW_AT_declaration(0x01)
 	.dwattr DW$1, DW_AT_external(0x01)
 DW$2	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
 DW$3	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
 DW$4	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
-DW$5	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$34)
+DW$5	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$27)
 	.dwendtag DW$1
 
 
-DW$6	.dwtag  DW_TAG_subprogram, DW_AT_name("TxPrintf"), DW_AT_symbol_name("_TxPrintf")
+DW$6	.dwtag  DW_TAG_subprogram, DW_AT_name("SpiWriteRom"), DW_AT_symbol_name("_SpiWriteRom")
 	.dwattr DW$6, DW_AT_declaration(0x01)
 	.dwattr DW$6, DW_AT_external(0x01)
-DW$7	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$31)
-DW$8	.dwtag  DW_TAG_unspecified_parameters
+DW$7	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
+DW$8	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
+DW$9	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
+DW$10	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$27)
 	.dwendtag DW$6
 
-
-DW$9	.dwtag  DW_TAG_subprogram, DW_AT_name("SpiReadRom"), DW_AT_symbol_name("_SpiReadRom")
-	.dwattr DW$9, DW_AT_declaration(0x01)
-	.dwattr DW$9, DW_AT_external(0x01)
-DW$10	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
-DW$11	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
-DW$12	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
-DW$13	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$34)
-	.dwendtag DW$9
-
-DW$14	.dwtag  DW_TAG_variable, DW_AT_name("g_u16turnmark_limit"), DW_AT_symbol_name("_g_u16turnmark_limit")
-	.dwattr DW$14, DW_AT_type(*DW$T$21)
+DW$11	.dwtag  DW_TAG_variable, DW_AT_name("g_u16turnmark_limit"), DW_AT_symbol_name("_g_u16turnmark_limit")
+	.dwattr DW$11, DW_AT_type(*DW$T$21)
+	.dwattr DW$11, DW_AT_declaration(0x01)
+	.dwattr DW$11, DW_AT_external(0x01)
+DW$12	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_ratio"), DW_AT_symbol_name("_g_q17shift_ratio")
+	.dwattr DW$12, DW_AT_type(*DW$T$52)
+	.dwattr DW$12, DW_AT_declaration(0x01)
+	.dwattr DW$12, DW_AT_external(0x01)
+DW$13	.dwtag  DW_TAG_variable, DW_AT_name("g_q17escape45_vel"), DW_AT_symbol_name("_g_q17escape45_vel")
+	.dwattr DW$13, DW_AT_type(*DW$T$52)
+	.dwattr DW$13, DW_AT_declaration(0x01)
+	.dwattr DW$13, DW_AT_external(0x01)
+DW$14	.dwtag  DW_TAG_variable, DW_AT_name("g_q17st_ret_ratio"), DW_AT_symbol_name("_g_q17st_ret_ratio")
+	.dwattr DW$14, DW_AT_type(*DW$T$52)
 	.dwattr DW$14, DW_AT_declaration(0x01)
 	.dwattr DW$14, DW_AT_external(0x01)
-DW$15	.dwtag  DW_TAG_variable, DW_AT_name("g_q17s44s_vel"), DW_AT_symbol_name("_g_q17s44s_vel")
-	.dwattr DW$15, DW_AT_type(*DW$T$60)
+DW$15	.dwtag  DW_TAG_variable, DW_AT_name("g_q17short_acc"), DW_AT_symbol_name("_g_q17short_acc")
+	.dwattr DW$15, DW_AT_type(*DW$T$52)
 	.dwattr DW$15, DW_AT_declaration(0x01)
 	.dwattr DW$15, DW_AT_external(0x01)
-DW$16	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_ratio"), DW_AT_symbol_name("_g_q17shift_ratio")
-	.dwattr DW$16, DW_AT_type(*DW$T$60)
+DW$16	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mid_acc"), DW_AT_symbol_name("_g_q17mid_acc")
+	.dwattr DW$16, DW_AT_type(*DW$T$52)
 	.dwattr DW$16, DW_AT_declaration(0x01)
 	.dwattr DW$16, DW_AT_external(0x01)
-DW$17	.dwtag  DW_TAG_variable, DW_AT_name("g_q17escape45_vel"), DW_AT_symbol_name("_g_q17escape45_vel")
-	.dwattr DW$17, DW_AT_type(*DW$T$60)
+DW$17	.dwtag  DW_TAG_variable, DW_AT_name("g_q17s44s_vel"), DW_AT_symbol_name("_g_q17s44s_vel")
+	.dwattr DW$17, DW_AT_type(*DW$T$52)
 	.dwattr DW$17, DW_AT_declaration(0x01)
 	.dwattr DW$17, DW_AT_external(0x01)
-DW$18	.dwtag  DW_TAG_variable, DW_AT_name("g_q17return_ratio"), DW_AT_symbol_name("_g_q17return_ratio")
-	.dwattr DW$18, DW_AT_type(*DW$T$60)
+DW$18	.dwtag  DW_TAG_variable, DW_AT_name("g_q17s4s_vel"), DW_AT_symbol_name("_g_q17s4s_vel")
+	.dwattr DW$18, DW_AT_type(*DW$T$52)
 	.dwattr DW$18, DW_AT_declaration(0x01)
 	.dwattr DW$18, DW_AT_external(0x01)
-DW$19	.dwtag  DW_TAG_variable, DW_AT_name("g_q17max_acc"), DW_AT_symbol_name("_g_q17max_acc")
-	.dwattr DW$19, DW_AT_type(*DW$T$60)
-	.dwattr DW$19, DW_AT_declaration(0x01)
-	.dwattr DW$19, DW_AT_external(0x01)
-DW$20	.dwtag  DW_TAG_variable, DW_AT_name("g_q17_45acc"), DW_AT_symbol_name("_g_q17_45acc")
-	.dwattr DW$20, DW_AT_type(*DW$T$60)
-	.dwattr DW$20, DW_AT_declaration(0x01)
-	.dwattr DW$20, DW_AT_external(0x01)
-DW$21	.dwtag  DW_TAG_variable, DW_AT_name("g_q17short_acc"), DW_AT_symbol_name("_g_q17short_acc")
-	.dwattr DW$21, DW_AT_type(*DW$T$60)
-	.dwattr DW$21, DW_AT_declaration(0x01)
-	.dwattr DW$21, DW_AT_external(0x01)
-DW$22	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mid_acc"), DW_AT_symbol_name("_g_q17mid_acc")
-	.dwattr DW$22, DW_AT_type(*DW$T$60)
-	.dwattr DW$22, DW_AT_declaration(0x01)
-	.dwattr DW$22, DW_AT_external(0x01)
-DW$23	.dwtag  DW_TAG_variable, DW_AT_name("g_q1745user_vel"), DW_AT_symbol_name("_g_q1745user_vel")
-	.dwattr DW$23, DW_AT_type(*DW$T$60)
-	.dwattr DW$23, DW_AT_declaration(0x01)
-	.dwattr DW$23, DW_AT_external(0x01)
 	.sect	".econst"
 	.align	1
-_$T44$45$0:
-	.field  	0,16			; _$T44$45$0[0] @ 0
+_$T41$42$0:
+	.field  	0,16			; _$T41$42$0[0] @ 0
 	.space	16
 
-DW$24	.dwtag  DW_TAG_variable, DW_AT_name("$T44$45$0"), DW_AT_symbol_name("_$T44$45$0")
-	.dwattr DW$24, DW_AT_type(*DW$T$43)
-	.dwattr DW$24, DW_AT_location[DW_OP_addr _$T44$45$0]
-DW$25	.dwtag  DW_TAG_variable, DW_AT_name("g_q16in_corner_fast_limit"), DW_AT_symbol_name("_g_q16in_corner_fast_limit")
-	.dwattr DW$25, DW_AT_type(*DW$T$61)
+DW$19	.dwtag  DW_TAG_variable, DW_AT_name("$T41$42$0"), DW_AT_symbol_name("_$T41$42$0")
+	.dwattr DW$19, DW_AT_type(*DW$T$36)
+	.dwattr DW$19, DW_AT_location[DW_OP_addr _$T41$42$0]
+DW$20	.dwtag  DW_TAG_variable, DW_AT_name("g_q16in_corner_fast_limit"), DW_AT_symbol_name("_g_q16in_corner_fast_limit")
+	.dwattr DW$20, DW_AT_type(*DW$T$53)
+	.dwattr DW$20, DW_AT_declaration(0x01)
+	.dwattr DW$20, DW_AT_external(0x01)
+DW$21	.dwtag  DW_TAG_variable, DW_AT_name("g_q1745user_vel"), DW_AT_symbol_name("_g_q1745user_vel")
+	.dwattr DW$21, DW_AT_type(*DW$T$52)
+	.dwattr DW$21, DW_AT_declaration(0x01)
+	.dwattr DW$21, DW_AT_external(0x01)
+	.sect	".econst"
+	.align	1
+_$T40$41$0:
+	.field  	0,16			; _$T40$41$0[0] @ 0
+	.space	16
+
+DW$22	.dwtag  DW_TAG_variable, DW_AT_name("$T40$41$0"), DW_AT_symbol_name("_$T40$41$0")
+	.dwattr DW$22, DW_AT_type(*DW$T$36)
+	.dwattr DW$22, DW_AT_location[DW_OP_addr _$T40$41$0]
+DW$23	.dwtag  DW_TAG_variable, DW_AT_name("g_q16out_corner_limit"), DW_AT_symbol_name("_g_q16out_corner_limit")
+	.dwattr DW$23, DW_AT_type(*DW$T$53)
+	.dwattr DW$23, DW_AT_declaration(0x01)
+	.dwattr DW$23, DW_AT_external(0x01)
+DW$24	.dwtag  DW_TAG_variable, DW_AT_name("g_q17return_ratio"), DW_AT_symbol_name("_g_q17return_ratio")
+	.dwattr DW$24, DW_AT_type(*DW$T$52)
+	.dwattr DW$24, DW_AT_declaration(0x01)
+	.dwattr DW$24, DW_AT_external(0x01)
+DW$25	.dwtag  DW_TAG_variable, DW_AT_name("g_q16in_corner_limit"), DW_AT_symbol_name("_g_q16in_corner_limit")
+	.dwattr DW$25, DW_AT_type(*DW$T$53)
 	.dwattr DW$25, DW_AT_declaration(0x01)
 	.dwattr DW$25, DW_AT_external(0x01)
-DW$26	.dwtag  DW_TAG_variable, DW_AT_name("g_int32shift_level"), DW_AT_symbol_name("_g_int32shift_level")
-	.dwattr DW$26, DW_AT_type(*DW$T$59)
+DW$26	.dwtag  DW_TAG_variable, DW_AT_name("g_q16out_corner_fast_limit"), DW_AT_symbol_name("_g_q16out_corner_fast_limit")
+	.dwattr DW$26, DW_AT_type(*DW$T$53)
 	.dwattr DW$26, DW_AT_declaration(0x01)
 	.dwattr DW$26, DW_AT_external(0x01)
-DW$27	.dwtag  DW_TAG_variable, DW_AT_name("g_q16in_corner_limit"), DW_AT_symbol_name("_g_q16in_corner_limit")
-	.dwattr DW$27, DW_AT_type(*DW$T$61)
+DW$27	.dwtag  DW_TAG_variable, DW_AT_name("g_int32mark_cnt"), DW_AT_symbol_name("_g_int32mark_cnt")
+	.dwattr DW$27, DW_AT_type(*DW$T$50)
 	.dwattr DW$27, DW_AT_declaration(0x01)
 	.dwattr DW$27, DW_AT_external(0x01)
-DW$28	.dwtag  DW_TAG_variable, DW_AT_name("g_q17st_ret_ratio"), DW_AT_symbol_name("_g_q17st_ret_ratio")
-	.dwattr DW$28, DW_AT_type(*DW$T$60)
+
+DW$28	.dwtag  DW_TAG_subprogram, DW_AT_name("__IQmpy"), DW_AT_symbol_name("___IQmpy")
+	.dwattr DW$28, DW_AT_type(*DW$T$12)
 	.dwattr DW$28, DW_AT_declaration(0x01)
 	.dwattr DW$28, DW_AT_external(0x01)
-DW$29	.dwtag  DW_TAG_variable, DW_AT_name("g_q17s4s_vel"), DW_AT_symbol_name("_g_q17s4s_vel")
-	.dwattr DW$29, DW_AT_type(*DW$T$60)
-	.dwattr DW$29, DW_AT_declaration(0x01)
-	.dwattr DW$29, DW_AT_external(0x01)
-DW$30	.dwtag  DW_TAG_variable, DW_AT_name("g_q16out_corner_fast_limit"), DW_AT_symbol_name("_g_q16out_corner_fast_limit")
-	.dwattr DW$30, DW_AT_type(*DW$T$61)
-	.dwattr DW$30, DW_AT_declaration(0x01)
-	.dwattr DW$30, DW_AT_external(0x01)
-DW$31	.dwtag  DW_TAG_variable, DW_AT_name("g_q16out_corner_limit"), DW_AT_symbol_name("_g_q16out_corner_limit")
-	.dwattr DW$31, DW_AT_type(*DW$T$61)
-	.dwattr DW$31, DW_AT_declaration(0x01)
-	.dwattr DW$31, DW_AT_external(0x01)
+DW$29	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+DW$30	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+DW$31	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$10)
+	.dwendtag DW$28
 
-DW$32	.dwtag  DW_TAG_subprogram, DW_AT_name("__IQmpy"), DW_AT_symbol_name("___IQmpy")
-	.dwattr DW$32, DW_AT_type(*DW$T$12)
+DW$32	.dwtag  DW_TAG_variable, DW_AT_name("g_q17sen_valmax"), DW_AT_symbol_name("_g_q17sen_valmax")
+	.dwattr DW$32, DW_AT_type(*DW$T$52)
 	.dwattr DW$32, DW_AT_declaration(0x01)
 	.dwattr DW$32, DW_AT_external(0x01)
-DW$33	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-DW$34	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+
+DW$33	.dwtag  DW_TAG_subprogram, DW_AT_name("memset"), DW_AT_symbol_name("_memset")
+	.dwattr DW$33, DW_AT_type(*DW$T$3)
+	.dwattr DW$33, DW_AT_declaration(0x01)
+	.dwattr DW$33, DW_AT_external(0x01)
+DW$34	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$3)
 DW$35	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$10)
-	.dwendtag DW$32
+DW$36	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$24)
+	.dwendtag DW$33
 
 
-DW$36	.dwtag  DW_TAG_subprogram, DW_AT_name("memset"), DW_AT_symbol_name("_memset")
-	.dwattr DW$36, DW_AT_type(*DW$T$3)
-	.dwattr DW$36, DW_AT_declaration(0x01)
-	.dwattr DW$36, DW_AT_external(0x01)
-DW$37	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$3)
-DW$38	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$10)
-DW$39	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$27)
-	.dwendtag DW$36
+DW$37	.dwtag  DW_TAG_subprogram, DW_AT_name("_IQ16div"), DW_AT_symbol_name("__IQ16div")
+	.dwattr DW$37, DW_AT_type(*DW$T$12)
+	.dwattr DW$37, DW_AT_declaration(0x01)
+	.dwattr DW$37, DW_AT_external(0x01)
+DW$38	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+DW$39	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+	.dwendtag DW$37
 
-DW$40	.dwtag  DW_TAG_variable, DW_AT_name("g_int32mark_cnt"), DW_AT_symbol_name("_g_int32mark_cnt")
-	.dwattr DW$40, DW_AT_type(*DW$T$58)
+DW$40	.dwtag  DW_TAG_variable, DW_AT_name("g_int32total_cnt"), DW_AT_symbol_name("_g_int32total_cnt")
+	.dwattr DW$40, DW_AT_type(*DW$T$50)
 	.dwattr DW$40, DW_AT_declaration(0x01)
 	.dwattr DW$40, DW_AT_external(0x01)
 
@@ -147,588 +153,514 @@ DW$42	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
 DW$43	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
 	.dwendtag DW$41
 
-
-DW$44	.dwtag  DW_TAG_subprogram, DW_AT_name("_IQ16toF"), DW_AT_symbol_name("__IQ16toF")
-	.dwattr DW$44, DW_AT_type(*DW$T$16)
+DW$44	.dwtag  DW_TAG_variable, DW_AT_name("g_q17_45acc"), DW_AT_symbol_name("_g_q17_45acc")
+	.dwattr DW$44, DW_AT_type(*DW$T$52)
 	.dwattr DW$44, DW_AT_declaration(0x01)
 	.dwattr DW$44, DW_AT_external(0x01)
-DW$45	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-	.dwendtag DW$44
-
-
-DW$46	.dwtag  DW_TAG_subprogram, DW_AT_name("labs"), DW_AT_symbol_name("_labs")
-	.dwattr DW$46, DW_AT_type(*DW$T$12)
+DW$45	.dwtag  DW_TAG_variable, DW_AT_name("g_q17turnmark_dist"), DW_AT_symbol_name("_g_q17turnmark_dist")
+	.dwattr DW$45, DW_AT_type(*DW$T$52)
+	.dwattr DW$45, DW_AT_declaration(0x01)
+	.dwattr DW$45, DW_AT_external(0x01)
+DW$46	.dwtag  DW_TAG_variable, DW_AT_name("g_int32shift_level"), DW_AT_symbol_name("_g_int32shift_level")
+	.dwattr DW$46, DW_AT_type(*DW$T$51)
 	.dwattr DW$46, DW_AT_declaration(0x01)
 	.dwattr DW$46, DW_AT_external(0x01)
-DW$47	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-	.dwendtag DW$46
-
-
-DW$48	.dwtag  DW_TAG_subprogram, DW_AT_name("_IQ16div"), DW_AT_symbol_name("__IQ16div")
-	.dwattr DW$48, DW_AT_type(*DW$T$12)
+DW$47	.dwtag  DW_TAG_variable, DW_AT_name("g_q17user_acc"), DW_AT_symbol_name("_g_q17user_acc")
+	.dwattr DW$47, DW_AT_type(*DW$T$52)
+	.dwattr DW$47, DW_AT_declaration(0x01)
+	.dwattr DW$47, DW_AT_external(0x01)
+DW$48	.dwtag  DW_TAG_variable, DW_AT_name("g_q17end_acc"), DW_AT_symbol_name("_g_q17end_acc")
+	.dwattr DW$48, DW_AT_type(*DW$T$52)
 	.dwattr DW$48, DW_AT_declaration(0x01)
 	.dwattr DW$48, DW_AT_external(0x01)
-DW$49	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-DW$50	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-	.dwendtag DW$48
-
-DW$51	.dwtag  DW_TAG_variable, DW_AT_name("g_q17user_vel"), DW_AT_symbol_name("_g_q17user_vel")
-	.dwattr DW$51, DW_AT_type(*DW$T$60)
-	.dwattr DW$51, DW_AT_declaration(0x01)
-	.dwattr DW$51, DW_AT_external(0x01)
-DW$52	.dwtag  DW_TAG_variable, DW_AT_name("g_q17user_acc"), DW_AT_symbol_name("_g_q17user_acc")
-	.dwattr DW$52, DW_AT_type(*DW$T$60)
-	.dwattr DW$52, DW_AT_declaration(0x01)
-	.dwattr DW$52, DW_AT_external(0x01)
-	.sect	".econst"
-	.align	1
-_$T45$46$0:
-	.field  	0,16			; _$T45$46$0[0] @ 0
-	.space	16
-
-DW$53	.dwtag  DW_TAG_variable, DW_AT_name("$T45$46$0"), DW_AT_symbol_name("_$T45$46$0")
-	.dwattr DW$53, DW_AT_type(*DW$T$43)
-	.dwattr DW$53, DW_AT_location[DW_OP_addr _$T45$46$0]
-DW$54	.dwtag  DW_TAG_variable, DW_AT_name("g_q17turnmark_dist"), DW_AT_symbol_name("_g_q17turnmark_dist")
-	.dwattr DW$54, DW_AT_type(*DW$T$60)
-	.dwattr DW$54, DW_AT_declaration(0x01)
-	.dwattr DW$54, DW_AT_external(0x01)
-DW$55	.dwtag  DW_TAG_variable, DW_AT_name("g_q17sen_valmax"), DW_AT_symbol_name("_g_q17sen_valmax")
-	.dwattr DW$55, DW_AT_type(*DW$T$60)
-	.dwattr DW$55, DW_AT_declaration(0x01)
-	.dwattr DW$55, DW_AT_external(0x01)
-DW$56	.dwtag  DW_TAG_variable, DW_AT_name("g_int32total_cnt"), DW_AT_symbol_name("_g_int32total_cnt")
-	.dwattr DW$56, DW_AT_type(*DW$T$58)
-	.dwattr DW$56, DW_AT_declaration(0x01)
-	.dwattr DW$56, DW_AT_external(0x01)
-DW$57	.dwtag  DW_TAG_variable, DW_AT_name("g_q17end_acc"), DW_AT_symbol_name("_g_q17end_acc")
-	.dwattr DW$57, DW_AT_type(*DW$T$60)
-	.dwattr DW$57, DW_AT_declaration(0x01)
-	.dwattr DW$57, DW_AT_external(0x01)
-	.sect	".econst"
-	.align	1
-_$T29$30$0:
-	.field  	0,16			; _$T29$30$0[0] @ 0
-	.space	1008
-
-DW$58	.dwtag  DW_TAG_variable, DW_AT_name("$T29$30$0"), DW_AT_symbol_name("_$T29$30$0")
-	.dwattr DW$58, DW_AT_type(*DW$T$42)
-	.dwattr DW$58, DW_AT_location[DW_OP_addr _$T29$30$0]
-	.sect	".econst"
-	.align	1
-_$T28$29$0:
-	.field  	0,16			; _$T28$29$0[0] @ 0
-	.space	1008
-
-DW$59	.dwtag  DW_TAG_variable, DW_AT_name("$T28$29$0"), DW_AT_symbol_name("_$T28$29$0")
-	.dwattr DW$59, DW_AT_type(*DW$T$42)
-	.dwattr DW$59, DW_AT_location[DW_OP_addr _$T28$29$0]
-	.sect	".econst"
-	.align	1
-_$T30$31$0:
-	.field  	0,16			; _$T30$31$0[0] @ 0
-	.space	1008
-
-DW$60	.dwtag  DW_TAG_variable, DW_AT_name("$T30$31$0"), DW_AT_symbol_name("_$T30$31$0")
-	.dwattr DW$60, DW_AT_type(*DW$T$42)
-	.dwattr DW$60, DW_AT_location[DW_OP_addr _$T30$31$0]
-	.sect	".econst"
-	.align	1
-_$T32$33$0:
-	.field  	0,16			; _$T32$33$0[0] @ 0
-	.space	1008
-
-DW$61	.dwtag  DW_TAG_variable, DW_AT_name("$T32$33$0"), DW_AT_symbol_name("_$T32$33$0")
-	.dwattr DW$61, DW_AT_type(*DW$T$42)
-	.dwattr DW$61, DW_AT_location[DW_OP_addr _$T32$33$0]
-	.sect	".econst"
-	.align	1
-_$T31$32$0:
-	.field  	0,16			; _$T31$32$0[0] @ 0
-	.space	1008
-
-DW$62	.dwtag  DW_TAG_variable, DW_AT_name("$T31$32$0"), DW_AT_symbol_name("_$T31$32$0")
-	.dwattr DW$62, DW_AT_type(*DW$T$42)
-	.dwattr DW$62, DW_AT_location[DW_OP_addr _$T31$32$0]
-	.sect	".econst"
-	.align	1
-_$T20$21$0:
-	.field  	0,16			; _$T20$21$0[0] @ 0
-	.space	1008
-
-DW$63	.dwtag  DW_TAG_variable, DW_AT_name("$T20$21$0"), DW_AT_symbol_name("_$T20$21$0")
-	.dwattr DW$63, DW_AT_type(*DW$T$42)
-	.dwattr DW$63, DW_AT_location[DW_OP_addr _$T20$21$0]
-	.sect	".econst"
-	.align	1
-_$T19$20$0:
-	.field  	0,16			; _$T19$20$0[0] @ 0
-	.space	1008
-
-DW$64	.dwtag  DW_TAG_variable, DW_AT_name("$T19$20$0"), DW_AT_symbol_name("_$T19$20$0")
-	.dwattr DW$64, DW_AT_type(*DW$T$42)
-	.dwattr DW$64, DW_AT_location[DW_OP_addr _$T19$20$0]
-	.sect	".econst"
-	.align	1
-_$T21$22$0:
-	.field  	0,16			; _$T21$22$0[0] @ 0
-	.space	1008
-
-DW$65	.dwtag  DW_TAG_variable, DW_AT_name("$T21$22$0"), DW_AT_symbol_name("_$T21$22$0")
-	.dwattr DW$65, DW_AT_type(*DW$T$42)
-	.dwattr DW$65, DW_AT_location[DW_OP_addr _$T21$22$0]
-	.sect	".econst"
-	.align	1
-_$T27$28$0:
-	.field  	0,16			; _$T27$28$0[0] @ 0
-	.space	1008
-
-DW$66	.dwtag  DW_TAG_variable, DW_AT_name("$T27$28$0"), DW_AT_symbol_name("_$T27$28$0")
-	.dwattr DW$66, DW_AT_type(*DW$T$42)
-	.dwattr DW$66, DW_AT_location[DW_OP_addr _$T27$28$0]
+DW$49	.dwtag  DW_TAG_variable, DW_AT_name("g_q17max_acc"), DW_AT_symbol_name("_g_q17max_acc")
+	.dwattr DW$49, DW_AT_type(*DW$T$52)
+	.dwattr DW$49, DW_AT_declaration(0x01)
+	.dwattr DW$49, DW_AT_external(0x01)
+DW$50	.dwtag  DW_TAG_variable, DW_AT_name("g_q17user_vel"), DW_AT_symbol_name("_g_q17user_vel")
+	.dwattr DW$50, DW_AT_type(*DW$T$52)
+	.dwattr DW$50, DW_AT_declaration(0x01)
+	.dwattr DW$50, DW_AT_external(0x01)
 	.sect	".econst"
 	.align	1
 _$T26$27$0:
 	.field  	0,16			; _$T26$27$0[0] @ 0
 	.space	1008
 
-DW$67	.dwtag  DW_TAG_variable, DW_AT_name("$T26$27$0"), DW_AT_symbol_name("_$T26$27$0")
-	.dwattr DW$67, DW_AT_type(*DW$T$42)
-	.dwattr DW$67, DW_AT_location[DW_OP_addr _$T26$27$0]
+DW$51	.dwtag  DW_TAG_variable, DW_AT_name("$T26$27$0"), DW_AT_symbol_name("_$T26$27$0")
+	.dwattr DW$51, DW_AT_type(*DW$T$35)
+	.dwattr DW$51, DW_AT_location[DW_OP_addr _$T26$27$0]
 	.sect	".econst"
 	.align	1
-_$T39$40$0:
-	.field  	0,16			; _$T39$40$0[0] @ 0
+_$T25$26$0:
+	.field  	0,16			; _$T25$26$0[0] @ 0
 	.space	1008
 
-DW$68	.dwtag  DW_TAG_variable, DW_AT_name("$T39$40$0"), DW_AT_symbol_name("_$T39$40$0")
-	.dwattr DW$68, DW_AT_type(*DW$T$42)
-	.dwattr DW$68, DW_AT_location[DW_OP_addr _$T39$40$0]
+DW$52	.dwtag  DW_TAG_variable, DW_AT_name("$T25$26$0"), DW_AT_symbol_name("_$T25$26$0")
+	.dwattr DW$52, DW_AT_type(*DW$T$35)
+	.dwattr DW$52, DW_AT_location[DW_OP_addr _$T25$26$0]
 	.sect	".econst"
 	.align	1
-_$T38$39$0:
-	.field  	0,16			; _$T38$39$0[0] @ 0
+_$T28$29$0:
+	.field  	0,16			; _$T28$29$0[0] @ 0
 	.space	1008
 
-DW$69	.dwtag  DW_TAG_variable, DW_AT_name("$T38$39$0"), DW_AT_symbol_name("_$T38$39$0")
-	.dwattr DW$69, DW_AT_type(*DW$T$42)
-	.dwattr DW$69, DW_AT_location[DW_OP_addr _$T38$39$0]
+DW$53	.dwtag  DW_TAG_variable, DW_AT_name("$T28$29$0"), DW_AT_symbol_name("_$T28$29$0")
+	.dwattr DW$53, DW_AT_type(*DW$T$35)
+	.dwattr DW$53, DW_AT_location[DW_OP_addr _$T28$29$0]
 	.sect	".econst"
 	.align	1
-_$T40$41$0:
-	.field  	0,16			; _$T40$41$0[0] @ 0
+_$T27$28$0:
+	.field  	0,16			; _$T27$28$0[0] @ 0
 	.space	1008
 
-DW$70	.dwtag  DW_TAG_variable, DW_AT_name("$T40$41$0"), DW_AT_symbol_name("_$T40$41$0")
-	.dwattr DW$70, DW_AT_type(*DW$T$42)
-	.dwattr DW$70, DW_AT_location[DW_OP_addr _$T40$41$0]
+DW$54	.dwtag  DW_TAG_variable, DW_AT_name("$T27$28$0"), DW_AT_symbol_name("_$T27$28$0")
+	.dwattr DW$54, DW_AT_type(*DW$T$35)
+	.dwattr DW$54, DW_AT_location[DW_OP_addr _$T27$28$0]
 	.sect	".econst"
 	.align	1
-_$T42$43$0:
-	.field  	0,16			; _$T42$43$0[0] @ 0
+_$T29$30$0:
+	.field  	0,16			; _$T29$30$0[0] @ 0
 	.space	1008
 
-DW$71	.dwtag  DW_TAG_variable, DW_AT_name("$T42$43$0"), DW_AT_symbol_name("_$T42$43$0")
-	.dwattr DW$71, DW_AT_type(*DW$T$42)
-	.dwattr DW$71, DW_AT_location[DW_OP_addr _$T42$43$0]
+DW$55	.dwtag  DW_TAG_variable, DW_AT_name("$T29$30$0"), DW_AT_symbol_name("_$T29$30$0")
+	.dwattr DW$55, DW_AT_type(*DW$T$35)
+	.dwattr DW$55, DW_AT_location[DW_OP_addr _$T29$30$0]
 	.sect	".econst"
 	.align	1
-_$T41$42$0:
-	.field  	0,16			; _$T41$42$0[0] @ 0
+_$T21$22$0:
+	.field  	0,16			; _$T21$22$0[0] @ 0
 	.space	1008
 
-DW$72	.dwtag  DW_TAG_variable, DW_AT_name("$T41$42$0"), DW_AT_symbol_name("_$T41$42$0")
-	.dwattr DW$72, DW_AT_type(*DW$T$42)
-	.dwattr DW$72, DW_AT_location[DW_OP_addr _$T41$42$0]
+DW$56	.dwtag  DW_TAG_variable, DW_AT_name("$T21$22$0"), DW_AT_symbol_name("_$T21$22$0")
+	.dwattr DW$56, DW_AT_type(*DW$T$35)
+	.dwattr DW$56, DW_AT_location[DW_OP_addr _$T21$22$0]
 	.sect	".econst"
 	.align	1
-_$T34$35$0:
-	.field  	0,16			; _$T34$35$0[0] @ 0
+_$T20$21$0:
+	.field  	0,16			; _$T20$21$0[0] @ 0
 	.space	1008
 
-DW$73	.dwtag  DW_TAG_variable, DW_AT_name("$T34$35$0"), DW_AT_symbol_name("_$T34$35$0")
-	.dwattr DW$73, DW_AT_type(*DW$T$42)
-	.dwattr DW$73, DW_AT_location[DW_OP_addr _$T34$35$0]
+DW$57	.dwtag  DW_TAG_variable, DW_AT_name("$T20$21$0"), DW_AT_symbol_name("_$T20$21$0")
+	.dwattr DW$57, DW_AT_type(*DW$T$35)
+	.dwattr DW$57, DW_AT_location[DW_OP_addr _$T20$21$0]
 	.sect	".econst"
 	.align	1
-_$T33$34$0:
-	.field  	0,16			; _$T33$34$0[0] @ 0
+_$T23$24$0:
+	.field  	0,16			; _$T23$24$0[0] @ 0
 	.space	1008
 
-DW$74	.dwtag  DW_TAG_variable, DW_AT_name("$T33$34$0"), DW_AT_symbol_name("_$T33$34$0")
-	.dwattr DW$74, DW_AT_type(*DW$T$42)
-	.dwattr DW$74, DW_AT_location[DW_OP_addr _$T33$34$0]
+DW$58	.dwtag  DW_TAG_variable, DW_AT_name("$T23$24$0"), DW_AT_symbol_name("_$T23$24$0")
+	.dwattr DW$58, DW_AT_type(*DW$T$35)
+	.dwattr DW$58, DW_AT_location[DW_OP_addr _$T23$24$0]
 	.sect	".econst"
 	.align	1
-_$T35$36$0:
-	.field  	0,16			; _$T35$36$0[0] @ 0
+_$T22$23$0:
+	.field  	0,16			; _$T22$23$0[0] @ 0
 	.space	1008
 
-DW$75	.dwtag  DW_TAG_variable, DW_AT_name("$T35$36$0"), DW_AT_symbol_name("_$T35$36$0")
-	.dwattr DW$75, DW_AT_type(*DW$T$42)
-	.dwattr DW$75, DW_AT_location[DW_OP_addr _$T35$36$0]
+DW$59	.dwtag  DW_TAG_variable, DW_AT_name("$T22$23$0"), DW_AT_symbol_name("_$T22$23$0")
+	.dwattr DW$59, DW_AT_type(*DW$T$35)
+	.dwattr DW$59, DW_AT_location[DW_OP_addr _$T22$23$0]
 	.sect	".econst"
 	.align	1
-_$T37$38$0:
-	.field  	0,16			; _$T37$38$0[0] @ 0
+_$T24$25$0:
+	.field  	0,16			; _$T24$25$0[0] @ 0
 	.space	1008
 
-DW$76	.dwtag  DW_TAG_variable, DW_AT_name("$T37$38$0"), DW_AT_symbol_name("_$T37$38$0")
-	.dwattr DW$76, DW_AT_type(*DW$T$42)
-	.dwattr DW$76, DW_AT_location[DW_OP_addr _$T37$38$0]
+DW$60	.dwtag  DW_TAG_variable, DW_AT_name("$T24$25$0"), DW_AT_symbol_name("_$T24$25$0")
+	.dwattr DW$60, DW_AT_type(*DW$T$35)
+	.dwattr DW$60, DW_AT_location[DW_OP_addr _$T24$25$0]
 	.sect	".econst"
 	.align	1
 _$T36$37$0:
 	.field  	0,16			; _$T36$37$0[0] @ 0
 	.space	1008
 
-DW$77	.dwtag  DW_TAG_variable, DW_AT_name("$T36$37$0"), DW_AT_symbol_name("_$T36$37$0")
-	.dwattr DW$77, DW_AT_type(*DW$T$42)
-	.dwattr DW$77, DW_AT_location[DW_OP_addr _$T36$37$0]
+DW$61	.dwtag  DW_TAG_variable, DW_AT_name("$T36$37$0"), DW_AT_symbol_name("_$T36$37$0")
+	.dwattr DW$61, DW_AT_type(*DW$T$35)
+	.dwattr DW$61, DW_AT_location[DW_OP_addr _$T36$37$0]
 	.sect	".econst"
 	.align	1
-_$T43$44$0:
-	.field  	0,16			; _$T43$44$0[0] @ 0
+_$T35$36$0:
+	.field  	0,16			; _$T35$36$0[0] @ 0
 	.space	1008
 
-DW$78	.dwtag  DW_TAG_variable, DW_AT_name("$T43$44$0"), DW_AT_symbol_name("_$T43$44$0")
-	.dwattr DW$78, DW_AT_type(*DW$T$42)
-	.dwattr DW$78, DW_AT_location[DW_OP_addr _$T43$44$0]
+DW$62	.dwtag  DW_TAG_variable, DW_AT_name("$T35$36$0"), DW_AT_symbol_name("_$T35$36$0")
+	.dwattr DW$62, DW_AT_type(*DW$T$35)
+	.dwattr DW$62, DW_AT_location[DW_OP_addr _$T35$36$0]
 	.sect	".econst"
 	.align	1
-_$T8$9$0:
-	.field  	0,16			; _$T8$9$0[0] @ 0
+_$T38$39$0:
+	.field  	0,16			; _$T38$39$0[0] @ 0
 	.space	1008
 
-DW$79	.dwtag  DW_TAG_variable, DW_AT_name("$T8$9$0"), DW_AT_symbol_name("_$T8$9$0")
-	.dwattr DW$79, DW_AT_type(*DW$T$42)
-	.dwattr DW$79, DW_AT_location[DW_OP_addr _$T8$9$0]
+DW$63	.dwtag  DW_TAG_variable, DW_AT_name("$T38$39$0"), DW_AT_symbol_name("_$T38$39$0")
+	.dwattr DW$63, DW_AT_type(*DW$T$35)
+	.dwattr DW$63, DW_AT_location[DW_OP_addr _$T38$39$0]
+	.sect	".econst"
+	.align	1
+_$T37$38$0:
+	.field  	0,16			; _$T37$38$0[0] @ 0
+	.space	1008
+
+DW$64	.dwtag  DW_TAG_variable, DW_AT_name("$T37$38$0"), DW_AT_symbol_name("_$T37$38$0")
+	.dwattr DW$64, DW_AT_type(*DW$T$35)
+	.dwattr DW$64, DW_AT_location[DW_OP_addr _$T37$38$0]
+	.sect	".econst"
+	.align	1
+_$T39$40$0:
+	.field  	0,16			; _$T39$40$0[0] @ 0
+	.space	1008
+
+DW$65	.dwtag  DW_TAG_variable, DW_AT_name("$T39$40$0"), DW_AT_symbol_name("_$T39$40$0")
+	.dwattr DW$65, DW_AT_type(*DW$T$35)
+	.dwattr DW$65, DW_AT_location[DW_OP_addr _$T39$40$0]
+	.sect	".econst"
+	.align	1
+_$T31$32$0:
+	.field  	0,16			; _$T31$32$0[0] @ 0
+	.space	1008
+
+DW$66	.dwtag  DW_TAG_variable, DW_AT_name("$T31$32$0"), DW_AT_symbol_name("_$T31$32$0")
+	.dwattr DW$66, DW_AT_type(*DW$T$35)
+	.dwattr DW$66, DW_AT_location[DW_OP_addr _$T31$32$0]
+	.sect	".econst"
+	.align	1
+_$T30$31$0:
+	.field  	0,16			; _$T30$31$0[0] @ 0
+	.space	1008
+
+DW$67	.dwtag  DW_TAG_variable, DW_AT_name("$T30$31$0"), DW_AT_symbol_name("_$T30$31$0")
+	.dwattr DW$67, DW_AT_type(*DW$T$35)
+	.dwattr DW$67, DW_AT_location[DW_OP_addr _$T30$31$0]
+	.sect	".econst"
+	.align	1
+_$T33$34$0:
+	.field  	0,16			; _$T33$34$0[0] @ 0
+	.space	1008
+
+DW$68	.dwtag  DW_TAG_variable, DW_AT_name("$T33$34$0"), DW_AT_symbol_name("_$T33$34$0")
+	.dwattr DW$68, DW_AT_type(*DW$T$35)
+	.dwattr DW$68, DW_AT_location[DW_OP_addr _$T33$34$0]
+	.sect	".econst"
+	.align	1
+_$T32$33$0:
+	.field  	0,16			; _$T32$33$0[0] @ 0
+	.space	1008
+
+DW$69	.dwtag  DW_TAG_variable, DW_AT_name("$T32$33$0"), DW_AT_symbol_name("_$T32$33$0")
+	.dwattr DW$69, DW_AT_type(*DW$T$35)
+	.dwattr DW$69, DW_AT_location[DW_OP_addr _$T32$33$0]
+	.sect	".econst"
+	.align	1
+_$T34$35$0:
+	.field  	0,16			; _$T34$35$0[0] @ 0
+	.space	1008
+
+DW$70	.dwtag  DW_TAG_variable, DW_AT_name("$T34$35$0"), DW_AT_symbol_name("_$T34$35$0")
+	.dwattr DW$70, DW_AT_type(*DW$T$35)
+	.dwattr DW$70, DW_AT_location[DW_OP_addr _$T34$35$0]
 	.sect	".econst"
 	.align	1
 _$T7$8$0:
 	.field  	0,16			; _$T7$8$0[0] @ 0
 	.space	1008
 
-DW$80	.dwtag  DW_TAG_variable, DW_AT_name("$T7$8$0"), DW_AT_symbol_name("_$T7$8$0")
-	.dwattr DW$80, DW_AT_type(*DW$T$42)
-	.dwattr DW$80, DW_AT_location[DW_OP_addr _$T7$8$0]
-	.sect	".econst"
-	.align	1
-_$T9$10$0:
-	.field  	0,16			; _$T9$10$0[0] @ 0
-	.space	1008
-
-DW$81	.dwtag  DW_TAG_variable, DW_AT_name("$T9$10$0"), DW_AT_symbol_name("_$T9$10$0")
-	.dwattr DW$81, DW_AT_type(*DW$T$42)
-	.dwattr DW$81, DW_AT_location[DW_OP_addr _$T9$10$0]
-	.sect	".econst"
-	.align	1
-_$T11$12$0:
-	.field  	0,16			; _$T11$12$0[0] @ 0
-	.space	1008
-
-DW$82	.dwtag  DW_TAG_variable, DW_AT_name("$T11$12$0"), DW_AT_symbol_name("_$T11$12$0")
-	.dwattr DW$82, DW_AT_type(*DW$T$42)
-	.dwattr DW$82, DW_AT_location[DW_OP_addr _$T11$12$0]
-	.sect	".econst"
-	.align	1
-_$T10$11$0:
-	.field  	0,16			; _$T10$11$0[0] @ 0
-	.space	1008
-
-DW$83	.dwtag  DW_TAG_variable, DW_AT_name("$T10$11$0"), DW_AT_symbol_name("_$T10$11$0")
-	.dwattr DW$83, DW_AT_type(*DW$T$42)
-	.dwattr DW$83, DW_AT_location[DW_OP_addr _$T10$11$0]
-	.sect	".econst"
-	.align	1
-_$T3$4$0:
-	.field  	0,16			; _$T3$4$0[0] @ 0
-	.space	1008
-
-DW$84	.dwtag  DW_TAG_variable, DW_AT_name("$T3$4$0"), DW_AT_symbol_name("_$T3$4$0")
-	.dwattr DW$84, DW_AT_type(*DW$T$42)
-	.dwattr DW$84, DW_AT_location[DW_OP_addr _$T3$4$0]
-	.sect	".econst"
-	.align	1
-_$T2$3$0:
-	.field  	0,16			; _$T2$3$0[0] @ 0
-	.space	1008
-
-DW$85	.dwtag  DW_TAG_variable, DW_AT_name("$T2$3$0"), DW_AT_symbol_name("_$T2$3$0")
-	.dwattr DW$85, DW_AT_type(*DW$T$42)
-	.dwattr DW$85, DW_AT_location[DW_OP_addr _$T2$3$0]
-	.sect	".econst"
-	.align	1
-_$T4$5$0:
-	.field  	0,16			; _$T4$5$0[0] @ 0
-	.space	1008
-
-DW$86	.dwtag  DW_TAG_variable, DW_AT_name("$T4$5$0"), DW_AT_symbol_name("_$T4$5$0")
-	.dwattr DW$86, DW_AT_type(*DW$T$42)
-	.dwattr DW$86, DW_AT_location[DW_OP_addr _$T4$5$0]
+DW$71	.dwtag  DW_TAG_variable, DW_AT_name("$T7$8$0"), DW_AT_symbol_name("_$T7$8$0")
+	.dwattr DW$71, DW_AT_type(*DW$T$35)
+	.dwattr DW$71, DW_AT_location[DW_OP_addr _$T7$8$0]
 	.sect	".econst"
 	.align	1
 _$T6$7$0:
 	.field  	0,16			; _$T6$7$0[0] @ 0
 	.space	1008
 
-DW$87	.dwtag  DW_TAG_variable, DW_AT_name("$T6$7$0"), DW_AT_symbol_name("_$T6$7$0")
-	.dwattr DW$87, DW_AT_type(*DW$T$42)
-	.dwattr DW$87, DW_AT_location[DW_OP_addr _$T6$7$0]
+DW$72	.dwtag  DW_TAG_variable, DW_AT_name("$T6$7$0"), DW_AT_symbol_name("_$T6$7$0")
+	.dwattr DW$72, DW_AT_type(*DW$T$35)
+	.dwattr DW$72, DW_AT_location[DW_OP_addr _$T6$7$0]
+	.sect	".econst"
+	.align	1
+_$T9$10$0:
+	.field  	0,16			; _$T9$10$0[0] @ 0
+	.space	1008
+
+DW$73	.dwtag  DW_TAG_variable, DW_AT_name("$T9$10$0"), DW_AT_symbol_name("_$T9$10$0")
+	.dwattr DW$73, DW_AT_type(*DW$T$35)
+	.dwattr DW$73, DW_AT_location[DW_OP_addr _$T9$10$0]
+	.sect	".econst"
+	.align	1
+_$T8$9$0:
+	.field  	0,16			; _$T8$9$0[0] @ 0
+	.space	1008
+
+DW$74	.dwtag  DW_TAG_variable, DW_AT_name("$T8$9$0"), DW_AT_symbol_name("_$T8$9$0")
+	.dwattr DW$74, DW_AT_type(*DW$T$35)
+	.dwattr DW$74, DW_AT_location[DW_OP_addr _$T8$9$0]
+	.sect	".econst"
+	.align	1
+_$T3$4$0:
+	.field  	0,16			; _$T3$4$0[0] @ 0
+	.space	1008
+
+DW$75	.dwtag  DW_TAG_variable, DW_AT_name("$T3$4$0"), DW_AT_symbol_name("_$T3$4$0")
+	.dwattr DW$75, DW_AT_type(*DW$T$35)
+	.dwattr DW$75, DW_AT_location[DW_OP_addr _$T3$4$0]
+	.sect	".econst"
+	.align	1
+_$T2$3$0:
+	.field  	0,16			; _$T2$3$0[0] @ 0
+	.space	1008
+
+DW$76	.dwtag  DW_TAG_variable, DW_AT_name("$T2$3$0"), DW_AT_symbol_name("_$T2$3$0")
+	.dwattr DW$76, DW_AT_type(*DW$T$35)
+	.dwattr DW$76, DW_AT_location[DW_OP_addr _$T2$3$0]
 	.sect	".econst"
 	.align	1
 _$T5$6$0:
 	.field  	0,16			; _$T5$6$0[0] @ 0
 	.space	1008
 
-DW$88	.dwtag  DW_TAG_variable, DW_AT_name("$T5$6$0"), DW_AT_symbol_name("_$T5$6$0")
-	.dwattr DW$88, DW_AT_type(*DW$T$42)
-	.dwattr DW$88, DW_AT_location[DW_OP_addr _$T5$6$0]
+DW$77	.dwtag  DW_TAG_variable, DW_AT_name("$T5$6$0"), DW_AT_symbol_name("_$T5$6$0")
+	.dwattr DW$77, DW_AT_type(*DW$T$35)
+	.dwattr DW$77, DW_AT_location[DW_OP_addr _$T5$6$0]
 	.sect	".econst"
 	.align	1
-_$T17$18$0:
-	.field  	0,16			; _$T17$18$0[0] @ 0
+_$T4$5$0:
+	.field  	0,16			; _$T4$5$0[0] @ 0
 	.space	1008
 
-DW$89	.dwtag  DW_TAG_variable, DW_AT_name("$T17$18$0"), DW_AT_symbol_name("_$T17$18$0")
-	.dwattr DW$89, DW_AT_type(*DW$T$42)
-	.dwattr DW$89, DW_AT_location[DW_OP_addr _$T17$18$0]
+DW$78	.dwtag  DW_TAG_variable, DW_AT_name("$T4$5$0"), DW_AT_symbol_name("_$T4$5$0")
+	.dwattr DW$78, DW_AT_type(*DW$T$35)
+	.dwattr DW$78, DW_AT_location[DW_OP_addr _$T4$5$0]
 	.sect	".econst"
 	.align	1
-_$T18$19$0:
-	.field  	0,16			; _$T18$19$0[0] @ 0
+_$T10$11$0:
+	.field  	0,16			; _$T10$11$0[0] @ 0
 	.space	1008
 
-DW$90	.dwtag  DW_TAG_variable, DW_AT_name("$T18$19$0"), DW_AT_symbol_name("_$T18$19$0")
-	.dwattr DW$90, DW_AT_type(*DW$T$42)
-	.dwattr DW$90, DW_AT_location[DW_OP_addr _$T18$19$0]
+DW$79	.dwtag  DW_TAG_variable, DW_AT_name("$T10$11$0"), DW_AT_symbol_name("_$T10$11$0")
+	.dwattr DW$79, DW_AT_type(*DW$T$35)
+	.dwattr DW$79, DW_AT_location[DW_OP_addr _$T10$11$0]
 	.sect	".econst"
 	.align	1
 _$T16$17$0:
 	.field  	0,16			; _$T16$17$0[0] @ 0
 	.space	1008
 
-DW$91	.dwtag  DW_TAG_variable, DW_AT_name("$T16$17$0"), DW_AT_symbol_name("_$T16$17$0")
-	.dwattr DW$91, DW_AT_type(*DW$T$42)
-	.dwattr DW$91, DW_AT_location[DW_OP_addr _$T16$17$0]
+DW$80	.dwtag  DW_TAG_variable, DW_AT_name("$T16$17$0"), DW_AT_symbol_name("_$T16$17$0")
+	.dwattr DW$80, DW_AT_type(*DW$T$35)
+	.dwattr DW$80, DW_AT_location[DW_OP_addr _$T16$17$0]
 	.sect	".econst"
 	.align	1
 _$T15$16$0:
 	.field  	0,16			; _$T15$16$0[0] @ 0
 	.space	1008
 
-DW$92	.dwtag  DW_TAG_variable, DW_AT_name("$T15$16$0"), DW_AT_symbol_name("_$T15$16$0")
-	.dwattr DW$92, DW_AT_type(*DW$T$42)
-	.dwattr DW$92, DW_AT_location[DW_OP_addr _$T15$16$0]
+DW$81	.dwtag  DW_TAG_variable, DW_AT_name("$T15$16$0"), DW_AT_symbol_name("_$T15$16$0")
+	.dwattr DW$81, DW_AT_type(*DW$T$35)
+	.dwattr DW$81, DW_AT_location[DW_OP_addr _$T15$16$0]
 	.sect	".econst"
 	.align	1
-_$T13$14$0:
-	.field  	0,16			; _$T13$14$0[0] @ 0
+_$T18$19$0:
+	.field  	0,16			; _$T18$19$0[0] @ 0
 	.space	1008
 
-DW$93	.dwtag  DW_TAG_variable, DW_AT_name("$T13$14$0"), DW_AT_symbol_name("_$T13$14$0")
-	.dwattr DW$93, DW_AT_type(*DW$T$42)
-	.dwattr DW$93, DW_AT_location[DW_OP_addr _$T13$14$0]
+DW$82	.dwtag  DW_TAG_variable, DW_AT_name("$T18$19$0"), DW_AT_symbol_name("_$T18$19$0")
+	.dwattr DW$82, DW_AT_type(*DW$T$35)
+	.dwattr DW$82, DW_AT_location[DW_OP_addr _$T18$19$0]
+	.sect	".econst"
+	.align	1
+_$T17$18$0:
+	.field  	0,16			; _$T17$18$0[0] @ 0
+	.space	1008
+
+DW$83	.dwtag  DW_TAG_variable, DW_AT_name("$T17$18$0"), DW_AT_symbol_name("_$T17$18$0")
+	.dwattr DW$83, DW_AT_type(*DW$T$35)
+	.dwattr DW$83, DW_AT_location[DW_OP_addr _$T17$18$0]
 	.sect	".econst"
 	.align	1
 _$T12$13$0:
 	.field  	0,16			; _$T12$13$0[0] @ 0
 	.space	1008
 
-DW$94	.dwtag  DW_TAG_variable, DW_AT_name("$T12$13$0"), DW_AT_symbol_name("_$T12$13$0")
-	.dwattr DW$94, DW_AT_type(*DW$T$42)
-	.dwattr DW$94, DW_AT_location[DW_OP_addr _$T12$13$0]
+DW$84	.dwtag  DW_TAG_variable, DW_AT_name("$T12$13$0"), DW_AT_symbol_name("_$T12$13$0")
+	.dwattr DW$84, DW_AT_type(*DW$T$35)
+	.dwattr DW$84, DW_AT_location[DW_OP_addr _$T12$13$0]
+	.sect	".econst"
+	.align	1
+_$T11$12$0:
+	.field  	0,16			; _$T11$12$0[0] @ 0
+	.space	1008
+
+DW$85	.dwtag  DW_TAG_variable, DW_AT_name("$T11$12$0"), DW_AT_symbol_name("_$T11$12$0")
+	.dwattr DW$85, DW_AT_type(*DW$T$35)
+	.dwattr DW$85, DW_AT_location[DW_OP_addr _$T11$12$0]
 	.sect	".econst"
 	.align	1
 _$T14$15$0:
 	.field  	0,16			; _$T14$15$0[0] @ 0
 	.space	1008
 
-DW$95	.dwtag  DW_TAG_variable, DW_AT_name("$T14$15$0"), DW_AT_symbol_name("_$T14$15$0")
-	.dwattr DW$95, DW_AT_type(*DW$T$42)
-	.dwattr DW$95, DW_AT_location[DW_OP_addr _$T14$15$0]
+DW$86	.dwtag  DW_TAG_variable, DW_AT_name("$T14$15$0"), DW_AT_symbol_name("_$T14$15$0")
+	.dwattr DW$86, DW_AT_type(*DW$T$35)
+	.dwattr DW$86, DW_AT_location[DW_OP_addr _$T14$15$0]
 	.sect	".econst"
 	.align	1
-_$T55$56$0:
-	.field  	0,16			; _$T55$56$0[0] @ 0
-	.space	4080
+_$T13$14$0:
+	.field  	0,16			; _$T13$14$0[0] @ 0
+	.space	1008
 
-DW$96	.dwtag  DW_TAG_variable, DW_AT_name("$T55$56$0"), DW_AT_symbol_name("_$T55$56$0")
-	.dwattr DW$96, DW_AT_type(*DW$T$41)
-	.dwattr DW$96, DW_AT_location[DW_OP_addr _$T55$56$0]
+DW$87	.dwtag  DW_TAG_variable, DW_AT_name("$T13$14$0"), DW_AT_symbol_name("_$T13$14$0")
+	.dwattr DW$87, DW_AT_type(*DW$T$35)
+	.dwattr DW$87, DW_AT_location[DW_OP_addr _$T13$14$0]
 	.sect	".econst"
 	.align	1
-_$T51$52$0:
-	.field  	0,16			; _$T51$52$0[0] @ 0
-	.space	4080
+_$T19$20$0:
+	.field  	0,16			; _$T19$20$0[0] @ 0
+	.space	1008
 
-DW$97	.dwtag  DW_TAG_variable, DW_AT_name("$T51$52$0"), DW_AT_symbol_name("_$T51$52$0")
-	.dwattr DW$97, DW_AT_type(*DW$T$41)
-	.dwattr DW$97, DW_AT_location[DW_OP_addr _$T51$52$0]
-	.sect	".econst"
-	.align	1
-_$T53$54$0:
-	.field  	0,16			; _$T53$54$0[0] @ 0
-	.space	4080
-
-DW$98	.dwtag  DW_TAG_variable, DW_AT_name("$T53$54$0"), DW_AT_symbol_name("_$T53$54$0")
-	.dwattr DW$98, DW_AT_type(*DW$T$41)
-	.dwattr DW$98, DW_AT_location[DW_OP_addr _$T53$54$0]
-	.sect	".econst"
-	.align	1
-_$T54$55$0:
-	.field  	0,16			; _$T54$55$0[0] @ 0
-	.space	4080
-
-DW$99	.dwtag  DW_TAG_variable, DW_AT_name("$T54$55$0"), DW_AT_symbol_name("_$T54$55$0")
-	.dwattr DW$99, DW_AT_type(*DW$T$41)
-	.dwattr DW$99, DW_AT_location[DW_OP_addr _$T54$55$0]
-	.sect	".econst"
-	.align	1
-_$T52$53$0:
-	.field  	0,16			; _$T52$53$0[0] @ 0
-	.space	4080
-
-DW$100	.dwtag  DW_TAG_variable, DW_AT_name("$T52$53$0"), DW_AT_symbol_name("_$T52$53$0")
-	.dwattr DW$100, DW_AT_type(*DW$T$41)
-	.dwattr DW$100, DW_AT_location[DW_OP_addr _$T52$53$0]
-	.sect	".econst"
-	.align	1
-_$T48$49$0:
-	.field  	0,16			; _$T48$49$0[0] @ 0
-	.space	4080
-
-DW$101	.dwtag  DW_TAG_variable, DW_AT_name("$T48$49$0"), DW_AT_symbol_name("_$T48$49$0")
-	.dwattr DW$101, DW_AT_type(*DW$T$41)
-	.dwattr DW$101, DW_AT_location[DW_OP_addr _$T48$49$0]
-	.sect	".econst"
-	.align	1
-_$T49$50$0:
-	.field  	0,16			; _$T49$50$0[0] @ 0
-	.space	4080
-
-DW$102	.dwtag  DW_TAG_variable, DW_AT_name("$T49$50$0"), DW_AT_symbol_name("_$T49$50$0")
-	.dwattr DW$102, DW_AT_type(*DW$T$41)
-	.dwattr DW$102, DW_AT_location[DW_OP_addr _$T49$50$0]
-	.sect	".econst"
-	.align	1
-_$T46$47$0:
-	.field  	0,16			; _$T46$47$0[0] @ 0
-	.space	4080
-
-DW$103	.dwtag  DW_TAG_variable, DW_AT_name("$T46$47$0"), DW_AT_symbol_name("_$T46$47$0")
-	.dwattr DW$103, DW_AT_type(*DW$T$41)
-	.dwattr DW$103, DW_AT_location[DW_OP_addr _$T46$47$0]
+DW$88	.dwtag  DW_TAG_variable, DW_AT_name("$T19$20$0"), DW_AT_symbol_name("_$T19$20$0")
+	.dwattr DW$88, DW_AT_type(*DW$T$35)
+	.dwattr DW$88, DW_AT_location[DW_OP_addr _$T19$20$0]
 	.sect	".econst"
 	.align	1
 _$T47$48$0:
 	.field  	0,16			; _$T47$48$0[0] @ 0
 	.space	4080
 
-DW$104	.dwtag  DW_TAG_variable, DW_AT_name("$T47$48$0"), DW_AT_symbol_name("_$T47$48$0")
-	.dwattr DW$104, DW_AT_type(*DW$T$41)
-	.dwattr DW$104, DW_AT_location[DW_OP_addr _$T47$48$0]
+DW$89	.dwtag  DW_TAG_variable, DW_AT_name("$T47$48$0"), DW_AT_symbol_name("_$T47$48$0")
+	.dwattr DW$89, DW_AT_type(*DW$T$34)
+	.dwattr DW$89, DW_AT_location[DW_OP_addr _$T47$48$0]
 	.sect	".econst"
 	.align	1
 _$T50$51$0:
 	.field  	0,16			; _$T50$51$0[0] @ 0
 	.space	4080
 
-DW$105	.dwtag  DW_TAG_variable, DW_AT_name("$T50$51$0"), DW_AT_symbol_name("_$T50$51$0")
-	.dwattr DW$105, DW_AT_type(*DW$T$41)
-	.dwattr DW$105, DW_AT_location[DW_OP_addr _$T50$51$0]
+DW$90	.dwtag  DW_TAG_variable, DW_AT_name("$T50$51$0"), DW_AT_symbol_name("_$T50$51$0")
+	.dwattr DW$90, DW_AT_type(*DW$T$34)
+	.dwattr DW$90, DW_AT_location[DW_OP_addr _$T50$51$0]
+	.sect	".econst"
+	.align	1
+_$T45$46$0:
+	.field  	0,16			; _$T45$46$0[0] @ 0
+	.space	4080
+
+DW$91	.dwtag  DW_TAG_variable, DW_AT_name("$T45$46$0"), DW_AT_symbol_name("_$T45$46$0")
+	.dwattr DW$91, DW_AT_type(*DW$T$34)
+	.dwattr DW$91, DW_AT_location[DW_OP_addr _$T45$46$0]
+	.sect	".econst"
+	.align	1
+_$T49$50$0:
+	.field  	0,16			; _$T49$50$0[0] @ 0
+	.space	4080
+
+DW$92	.dwtag  DW_TAG_variable, DW_AT_name("$T49$50$0"), DW_AT_symbol_name("_$T49$50$0")
+	.dwattr DW$92, DW_AT_type(*DW$T$34)
+	.dwattr DW$92, DW_AT_location[DW_OP_addr _$T49$50$0]
+	.sect	".econst"
+	.align	1
+_$T48$49$0:
+	.field  	0,16			; _$T48$49$0[0] @ 0
+	.space	4080
+
+DW$93	.dwtag  DW_TAG_variable, DW_AT_name("$T48$49$0"), DW_AT_symbol_name("_$T48$49$0")
+	.dwattr DW$93, DW_AT_type(*DW$T$34)
+	.dwattr DW$93, DW_AT_location[DW_OP_addr _$T48$49$0]
+	.sect	".econst"
+	.align	1
+_$T46$47$0:
+	.field  	0,16			; _$T46$47$0[0] @ 0
+	.space	4080
+
+DW$94	.dwtag  DW_TAG_variable, DW_AT_name("$T46$47$0"), DW_AT_symbol_name("_$T46$47$0")
+	.dwattr DW$94, DW_AT_type(*DW$T$34)
+	.dwattr DW$94, DW_AT_location[DW_OP_addr _$T46$47$0]
+	.sect	".econst"
+	.align	1
+_$T51$52$0:
+	.field  	0,16			; _$T51$52$0[0] @ 0
+	.space	4080
+
+DW$95	.dwtag  DW_TAG_variable, DW_AT_name("$T51$52$0"), DW_AT_symbol_name("_$T51$52$0")
+	.dwattr DW$95, DW_AT_type(*DW$T$34)
+	.dwattr DW$95, DW_AT_location[DW_OP_addr _$T51$52$0]
 	.sect	".econst"
 	.align	1
 _$T1$2$0:
 	.field  	0,16			; _$T1$2$0[0] @ 0
 	.space	4080
 
-DW$106	.dwtag  DW_TAG_variable, DW_AT_name("$T1$2$0"), DW_AT_symbol_name("_$T1$2$0")
-	.dwattr DW$106, DW_AT_type(*DW$T$41)
-	.dwattr DW$106, DW_AT_location[DW_OP_addr _$T1$2$0]
-	.sect	".econst"
-	.align	1
-_$T22$23$0:
-	.field  	0,16			; _$T22$23$0[0] @ 0
-	.space	4080
-
-DW$107	.dwtag  DW_TAG_variable, DW_AT_name("$T22$23$0"), DW_AT_symbol_name("_$T22$23$0")
-	.dwattr DW$107, DW_AT_type(*DW$T$41)
-	.dwattr DW$107, DW_AT_location[DW_OP_addr _$T22$23$0]
-DW$108	.dwtag  DW_TAG_variable, DW_AT_name("g_run_info"), DW_AT_symbol_name("_g_run_info")
-	.dwattr DW$108, DW_AT_type(*DW$T$75)
-	.dwattr DW$108, DW_AT_declaration(0x01)
-	.dwattr DW$108, DW_AT_external(0x01)
-	.sect	".econst"
-	.align	1
-_$T24$25$0:
-	.field  	0,16			; _$T24$25$0[0] @ 0
-	.space	4080
-
-DW$109	.dwtag  DW_TAG_variable, DW_AT_name("$T24$25$0"), DW_AT_symbol_name("_$T24$25$0")
-	.dwattr DW$109, DW_AT_type(*DW$T$41)
-	.dwattr DW$109, DW_AT_location[DW_OP_addr _$T24$25$0]
-	.sect	".econst"
-	.align	1
-_$T25$26$0:
-	.field  	0,16			; _$T25$26$0[0] @ 0
-	.space	4080
-
-DW$110	.dwtag  DW_TAG_variable, DW_AT_name("$T25$26$0"), DW_AT_symbol_name("_$T25$26$0")
-	.dwattr DW$110, DW_AT_type(*DW$T$41)
-	.dwattr DW$110, DW_AT_location[DW_OP_addr _$T25$26$0]
+DW$96	.dwtag  DW_TAG_variable, DW_AT_name("$T1$2$0"), DW_AT_symbol_name("_$T1$2$0")
+	.dwattr DW$96, DW_AT_type(*DW$T$34)
+	.dwattr DW$96, DW_AT_location[DW_OP_addr _$T1$2$0]
 	.sect	".econst"
 	.align	1
 _$T0$1$0:
 	.field  	0,16			; _$T0$1$0[0] @ 0
 	.space	4080
 
-DW$111	.dwtag  DW_TAG_variable, DW_AT_name("$T0$1$0"), DW_AT_symbol_name("_$T0$1$0")
-	.dwattr DW$111, DW_AT_type(*DW$T$41)
-	.dwattr DW$111, DW_AT_location[DW_OP_addr _$T0$1$0]
+DW$97	.dwtag  DW_TAG_variable, DW_AT_name("$T0$1$0"), DW_AT_symbol_name("_$T0$1$0")
+	.dwattr DW$97, DW_AT_type(*DW$T$34)
+	.dwattr DW$97, DW_AT_location[DW_OP_addr _$T0$1$0]
 	.sect	".econst"
 	.align	1
-_$T23$24$0:
-	.field  	0,16			; _$T23$24$0[0] @ 0
+_$T43$44$0:
+	.field  	0,16			; _$T43$44$0[0] @ 0
 	.space	4080
 
-DW$112	.dwtag  DW_TAG_variable, DW_AT_name("$T23$24$0"), DW_AT_symbol_name("_$T23$24$0")
-	.dwattr DW$112, DW_AT_type(*DW$T$41)
-	.dwattr DW$112, DW_AT_location[DW_OP_addr _$T23$24$0]
-DW$113	.dwtag  DW_TAG_variable, DW_AT_name("g_line_info"), DW_AT_symbol_name("_g_line_info")
-	.dwattr DW$113, DW_AT_type(*DW$T$72)
-	.dwattr DW$113, DW_AT_declaration(0x01)
-	.dwattr DW$113, DW_AT_external(0x01)
-DW$114	.dwtag  DW_TAG_variable, DW_AT_name("g_sen"), DW_AT_symbol_name("_g_sen")
-	.dwattr DW$114, DW_AT_type(*DW$T$68)
-	.dwattr DW$114, DW_AT_declaration(0x01)
-	.dwattr DW$114, DW_AT_external(0x01)
-DW$115	.dwtag  DW_TAG_variable, DW_AT_name("g_fast_info"), DW_AT_symbol_name("_g_fast_info")
-	.dwattr DW$115, DW_AT_type(*DW$T$80)
-	.dwattr DW$115, DW_AT_declaration(0x01)
-	.dwattr DW$115, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI34810 C:\Users\rbgus\AppData\Local\Temp\TI3484 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI3482 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI3486 --object_file Rom.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+DW$98	.dwtag  DW_TAG_variable, DW_AT_name("$T43$44$0"), DW_AT_symbol_name("_$T43$44$0")
+	.dwattr DW$98, DW_AT_type(*DW$T$34)
+	.dwattr DW$98, DW_AT_location[DW_OP_addr _$T43$44$0]
+	.sect	".econst"
+	.align	1
+_$T42$43$0:
+	.field  	0,16			; _$T42$43$0[0] @ 0
+	.space	4080
+
+DW$99	.dwtag  DW_TAG_variable, DW_AT_name("$T42$43$0"), DW_AT_symbol_name("_$T42$43$0")
+	.dwattr DW$99, DW_AT_type(*DW$T$34)
+	.dwattr DW$99, DW_AT_location[DW_OP_addr _$T42$43$0]
+	.sect	".econst"
+	.align	1
+_$T44$45$0:
+	.field  	0,16			; _$T44$45$0[0] @ 0
+	.space	4080
+
+DW$100	.dwtag  DW_TAG_variable, DW_AT_name("$T44$45$0"), DW_AT_symbol_name("_$T44$45$0")
+	.dwattr DW$100, DW_AT_type(*DW$T$34)
+	.dwattr DW$100, DW_AT_location[DW_OP_addr _$T44$45$0]
+DW$101	.dwtag  DW_TAG_variable, DW_AT_name("g_sen"), DW_AT_symbol_name("_g_sen")
+	.dwattr DW$101, DW_AT_type(*DW$T$58)
+	.dwattr DW$101, DW_AT_declaration(0x01)
+	.dwattr DW$101, DW_AT_external(0x01)
+DW$102	.dwtag  DW_TAG_variable, DW_AT_name("g_fast_info"), DW_AT_symbol_name("_g_fast_info")
+	.dwattr DW$102, DW_AT_type(*DW$T$63)
+	.dwattr DW$102, DW_AT_declaration(0x01)
+	.dwattr DW$102, DW_AT_external(0x01)
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI72810 C:\Users\rbgus\AppData\Local\Temp\TI7284 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI7282 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI7286 --object_file Rom.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 	.sect	".text"
 	.global	_turnvel_write_rom
 
-DW$116	.dwtag  DW_TAG_subprogram, DW_AT_name("turnvel_write_rom"), DW_AT_symbol_name("_turnvel_write_rom")
-	.dwattr DW$116, DW_AT_low_pc(_turnvel_write_rom)
-	.dwattr DW$116, DW_AT_high_pc(0x00)
-	.dwattr DW$116, DW_AT_begin_file("Rom.c")
-	.dwattr DW$116, DW_AT_begin_line(0x141)
-	.dwattr DW$116, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",322,1
+DW$103	.dwtag  DW_TAG_subprogram, DW_AT_name("turnvel_write_rom"), DW_AT_symbol_name("_turnvel_write_rom")
+	.dwattr DW$103, DW_AT_low_pc(_turnvel_write_rom)
+	.dwattr DW$103, DW_AT_high_pc(0x00)
+	.dwattr DW$103, DW_AT_begin_file("Rom.c")
+	.dwattr DW$103, DW_AT_begin_line(0x143)
+	.dwattr DW$103, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",324,1
 
 	.dwfde DW$CIE
 
 ;***************************************************************
-;* FNAME: _turnvel_write_rom            FR SIZE:  72           *
+;* FNAME: _turnvel_write_rom            FR SIZE:  66           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
 ;* FUNCTION PROPERTIES                                         *
-;*                            3 Parameter, 64 Auto,  4 SOE     *
+;*                            0 Parameter, 64 Auto,  2 SOE     *
 ;***************************************************************
 
 
@@ -738,112 +670,95 @@ DW$116	.dwtag  DW_TAG_subprogram, DW_AT_name("turnvel_write_rom"), DW_AT_symbol_
 ;*                                                             *
 ;***************************************************************
 _turnvel_write_rom:
-;*** 324	-----------------------    write_buf1[] = {...};
-;*** 327	-----------------------    memset(&write_buf1, 0, 64uL);
-;*** 331	-----------------------    Rom_Data_Buffer = g_q17user_vel>>17;
-;*** 332	-----------------------    write_buf1[0] = Rom_Data_Buffer&0xffu;
-;*** 333	-----------------------    write_buf1[1] = Rom_Data_Buffer>>8;
-;*** 335	-----------------------    SpiWriteRom(2u, 0u, 64u, &write_buf1);
-;*** 336	-----------------------    TxPrintf("Write vel: %d\r\n", Rom_Data_Buffer);
-;*** 336	-----------------------    return;
+;*** 326	-----------------------    write_buf1[] = {...};
+;*** 329	-----------------------    memset(&write_buf1, 0, 64uL);
+;*** 334	-----------------------    C$1 = (unsigned)(g_q17user_vel>>17);
+;*** 334	-----------------------    write_buf1[0] = C$1&0xffu;
+;*** 335	-----------------------    write_buf1[1] = C$1>>8;
+;*** 337	-----------------------    SpiWriteRom(2u, 0u, 64u, &write_buf1);
+;*** 337	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
-        MOVL      *SP++,XAR1
-	.dwcfa	0x80, 7, 2
-	.dwcfa	0x1d, -4
         MOVL      *SP++,XAR2
-	.dwcfa	0x80, 9, 4
-	.dwcfa	0x1d, -6
+	.dwcfa	0x80, 9, 2
+	.dwcfa	0x1d, -4
         MOVZ      AR2,SP
-        SUBB      FP,#6
-        ADDB      SP,#68
-	.dwcfa	0x1d, -74
-;* AR1   assigned to _Rom_Data_Buffer
-DW$117	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$117, DW_AT_type(*DW$T$21)
-	.dwattr DW$117, DW_AT_location[DW_OP_reg6]
-DW$118	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
-	.dwattr DW$118, DW_AT_type(*DW$T$44)
-	.dwattr DW$118, DW_AT_location[DW_OP_breg20 -67]
-	.dwpsn	"Rom.c",324,9
-        MOVZ      AR4,SP                ; |324| 
+        SUBB      FP,#4
+        ADDB      SP,#64
+	.dwcfa	0x1d, -68
+;* AL    assigned to C$1
+DW$104	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
+	.dwattr DW$104, DW_AT_type(*DW$T$11)
+	.dwattr DW$104, DW_AT_location[DW_OP_reg0]
+DW$105	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
+	.dwattr DW$105, DW_AT_type(*DW$T$37)
+	.dwattr DW$105, DW_AT_location[DW_OP_breg20 -64]
+	.dwpsn	"Rom.c",326,9
+        MOVZ      AR4,SP                ; |326| 
         MOVB      ACC,#64
-        MOVL      XAR5,#_$T2$3$0        ; |324| 
-        SUBB      XAR4,#67              ; |324| 
-        LCR       #___memcpy_ff         ; |324| 
-        ; call occurs [#___memcpy_ff] ; |324| 
-	.dwpsn	"Rom.c",327,2
-        MOVZ      AR4,SP                ; |327| 
+        MOVL      XAR5,#_$T2$3$0        ; |326| 
+        SUBB      XAR4,#64              ; |326| 
+        LCR       #___memcpy_ff         ; |326| 
+        ; call occurs [#___memcpy_ff] ; |326| 
+	.dwpsn	"Rom.c",329,2
+        MOVZ      AR4,SP                ; |329| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        SUBB      XAR4,#67              ; |327| 
-        LCR       #_memset              ; |327| 
-        ; call occurs [#_memset] ; |327| 
-	.dwpsn	"Rom.c",331,2
+        SUBB      XAR4,#64              ; |329| 
+        LCR       #_memset              ; |329| 
+        ; call occurs [#_memset] ; |329| 
+	.dwpsn	"Rom.c",334,2
         MOVW      DP,#_g_q17user_vel
-        MOV       T,#17                 ; |331| 
-        MOVL      ACC,@_g_q17user_vel   ; |331| 
-        ASRL      ACC,T                 ; |331| 
-        MOVZ      AR1,AL                ; |331| 
-	.dwpsn	"Rom.c",332,2
-        AND       AL,AR1,#0x00ff        ; |332| 
-        MOV       *+FP[7],AL            ; |332| 
-	.dwpsn	"Rom.c",333,2
-        MOVL      XAR0,#8               ; |333| 
-        MOV       AL,AR1                ; |333| 
-        LSR       AL,8                  ; |333| 
-        MOV       *+FP[AR0],AL          ; |333| 
+        MOV       T,#17                 ; |334| 
+        MOVL      ACC,@_g_q17user_vel   ; |334| 
+        ASRL      ACC,T                 ; |334| 
+        AND       AH,AL,#0x00ff         ; |334| 
+        MOV       *+FP[4],AH            ; |334| 
 	.dwpsn	"Rom.c",335,2
-        MOVZ      AR4,SP                ; |335| 
-        MOVB      XAR5,#64              ; |335| 
+        LSR       AL,8                  ; |335| 
+        MOV       *-SP[63],AL           ; |335| 
+	.dwpsn	"Rom.c",337,2
+        MOVZ      AR4,SP                ; |337| 
+        MOVB      XAR5,#64              ; |337| 
         MOVB      ACC,#2
-        SUBB      XAR4,#67              ; |335| 
-        LCR       #_SpiWriteRom         ; |335| 
-        ; call occurs [#_SpiWriteRom] ; |335| 
-	.dwpsn	"Rom.c",336,5
-        MOVL      XAR4,#FSL1            ; |336| 
-        MOVL      *-SP[2],XAR4          ; |336| 
-        MOV       *-SP[3],AR1           ; |336| 
-        LCR       #_TxPrintf            ; |336| 
-        ; call occurs [#_TxPrintf] ; |336| 
-	.dwpsn	"Rom.c",337,1
-        SUBB      SP,#68
-	.dwcfa	0x1d, -6
-        MOVL      XAR2,*--SP
+        SUBB      XAR4,#64              ; |337| 
+        LCR       #_SpiWriteRom         ; |337| 
+        ; call occurs [#_SpiWriteRom] ; |337| 
+	.dwpsn	"Rom.c",339,1
+        SUBB      SP,#64
 	.dwcfa	0x1d, -4
-	.dwcfa	0xc0, 9
-        MOVL      XAR1,*--SP
+        MOVL      XAR2,*--SP
 	.dwcfa	0x1d, -2
-	.dwcfa	0xc0, 7
+	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$116, DW_AT_end_file("Rom.c")
-	.dwattr DW$116, DW_AT_end_line(0x151)
-	.dwattr DW$116, DW_AT_end_column(0x01)
+	.dwattr DW$103, DW_AT_end_file("Rom.c")
+	.dwattr DW$103, DW_AT_end_line(0x153)
+	.dwattr DW$103, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$116
+	.dwendtag DW$103
 
 	.sect	".text"
 	.global	_turnvel_read_rom
 
-DW$119	.dwtag  DW_TAG_subprogram, DW_AT_name("turnvel_read_rom"), DW_AT_symbol_name("_turnvel_read_rom")
-	.dwattr DW$119, DW_AT_low_pc(_turnvel_read_rom)
-	.dwattr DW$119, DW_AT_high_pc(0x00)
-	.dwattr DW$119, DW_AT_begin_file("Rom.c")
-	.dwattr DW$119, DW_AT_begin_line(0x155)
-	.dwattr DW$119, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",342,1
+DW$106	.dwtag  DW_TAG_subprogram, DW_AT_name("turnvel_read_rom"), DW_AT_symbol_name("_turnvel_read_rom")
+	.dwattr DW$106, DW_AT_low_pc(_turnvel_read_rom)
+	.dwattr DW$106, DW_AT_high_pc(0x00)
+	.dwattr DW$106, DW_AT_begin_file("Rom.c")
+	.dwattr DW$106, DW_AT_begin_line(0x157)
+	.dwattr DW$106, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",344,1
 
 	.dwfde DW$CIE
 
 ;***************************************************************
-;* FNAME: _turnvel_read_rom             FR SIZE:  80           *
+;* FNAME: _turnvel_read_rom             FR SIZE:  74           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
 ;* FUNCTION PROPERTIES                                         *
-;*                            3 Parameter, 73 Auto,  4 SOE     *
+;*                            0 Parameter, 72 Auto,  2 SOE     *
 ;***************************************************************
 
 
@@ -853,107 +768,93 @@ DW$119	.dwtag  DW_TAG_subprogram, DW_AT_name("turnvel_read_rom"), DW_AT_symbol_n
 ;*                                                             *
 ;***************************************************************
 _turnvel_read_rom:
-;*** 344	-----------------------    read_buf1[] = {...};
-;*** 348	-----------------------    SpiReadRom(2u, 0u, 64u, &read_buf1);
-;*** 350	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
-;*** 351	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
-;*** 353	-----------------------    g_q17user_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;*** 354	-----------------------    TxPrintf("Read vel: %d\r\n", Rom_Data_Buffer);
-;*** 354	-----------------------    return;
+;*** 346	-----------------------    read_buf1[] = {...};
+;*** 350	-----------------------    SpiReadRom(2u, 0u, 64u, &read_buf1);
+;*** 352	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
+;*** 353	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
+;*** 355	-----------------------    g_q17user_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 355	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
-        MOVL      *SP++,XAR1
-	.dwcfa	0x80, 7, 2
-	.dwcfa	0x1d, -4
         MOVL      *SP++,XAR2
-	.dwcfa	0x80, 9, 4
-	.dwcfa	0x1d, -6
-        MOVZ      AR2,SP
-        SUBB      FP,#6
-        ADDB      SP,#76
-	.dwcfa	0x1d, -82
-;* AR1   assigned to _Rom_Data_Buffer
-DW$120	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$120, DW_AT_type(*DW$T$21)
-	.dwattr DW$120, DW_AT_location[DW_OP_reg6]
-DW$121	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
-	.dwattr DW$121, DW_AT_type(*DW$T$44)
-	.dwattr DW$121, DW_AT_location[DW_OP_breg20 -67]
-	.dwpsn	"Rom.c",344,9
-        MOVZ      AR4,SP                ; |344| 
-        MOVB      ACC,#64
-        MOVL      XAR5,#_$T3$4$0        ; |344| 
-        SUBB      XAR4,#67              ; |344| 
-        LCR       #___memcpy_ff         ; |344| 
-        ; call occurs [#___memcpy_ff] ; |344| 
-	.dwpsn	"Rom.c",348,2
-        MOVZ      AR4,SP                ; |348| 
-        MOVB      XAR5,#64              ; |348| 
-        MOVB      ACC,#2
-        SUBB      XAR4,#67              ; |348| 
-        LCR       #_SpiReadRom          ; |348| 
-        ; call occurs [#_SpiReadRom] ; |348| 
-	.dwpsn	"Rom.c",350,2
-        MOVL      XAR0,#15              ; |350| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |350| 
-        MOVZ      AR1,AL                ; |350| 
-	.dwpsn	"Rom.c",351,2
-        MOVL      XAR0,#16              ; |351| 
-        MOV       ACC,*+FP[AR0] << #8   ; |351| 
-        OR        AR1,AL                ; |351| 
-	.dwpsn	"Rom.c",353,2
-        MOVZ      AR6,SP                ; |353| 
-        SUBB      XAR6,#76              ; |353| 
-        MOV       AL,AR1                ; |353| 
-        LCR       #U$$TOFD              ; |353| 
-        ; call occurs [#U$$TOFD] ; |353| 
-        MOVZ      AR6,SP                ; |353| 
-        MOVZ      AR4,SP                ; |353| 
-        SUBB      XAR6,#72              ; |353| 
-        MOVL      XAR5,#FL1             ; |353| 
-        SUBB      XAR4,#76              ; |353| 
-        LCR       #FD$$MPY              ; |353| 
-        ; call occurs [#FD$$MPY] ; |353| 
-        MOVZ      AR4,SP                ; |353| 
-        SUBB      XAR4,#72              ; |353| 
-        LCR       #FD$$TOL              ; |353| 
-        ; call occurs [#FD$$TOL] ; |353| 
-        MOVW      DP,#_g_q17user_vel
-        MOVL      @_g_q17user_vel,ACC   ; |353| 
-	.dwpsn	"Rom.c",354,5
-        MOVL      XAR4,#FSL2            ; |354| 
-        MOVL      *-SP[2],XAR4          ; |354| 
-        MOV       *-SP[3],AR1           ; |354| 
-        LCR       #_TxPrintf            ; |354| 
-        ; call occurs [#_TxPrintf] ; |354| 
-	.dwpsn	"Rom.c",357,1
-        SUBB      SP,#76
-	.dwcfa	0x1d, -6
-        MOVL      XAR2,*--SP
+	.dwcfa	0x80, 9, 2
 	.dwcfa	0x1d, -4
-	.dwcfa	0xc0, 9
-        MOVL      XAR1,*--SP
+        MOVZ      AR2,SP
+        SUBB      FP,#4
+        ADDB      SP,#72
+	.dwcfa	0x1d, -76
+;* AR7   assigned to _Rom_Data_Buffer
+DW$107	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
+	.dwattr DW$107, DW_AT_type(*DW$T$21)
+	.dwattr DW$107, DW_AT_location[DW_OP_reg18]
+DW$108	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
+	.dwattr DW$108, DW_AT_type(*DW$T$37)
+	.dwattr DW$108, DW_AT_location[DW_OP_breg20 -64]
+	.dwpsn	"Rom.c",346,9
+        MOVZ      AR4,SP                ; |346| 
+        MOVB      ACC,#64
+        MOVL      XAR5,#_$T3$4$0        ; |346| 
+        SUBB      XAR4,#64              ; |346| 
+        LCR       #___memcpy_ff         ; |346| 
+        ; call occurs [#___memcpy_ff] ; |346| 
+	.dwpsn	"Rom.c",350,2
+        MOVZ      AR4,SP                ; |350| 
+        MOVB      XAR5,#64              ; |350| 
+        MOVB      ACC,#2
+        SUBB      XAR4,#64              ; |350| 
+        LCR       #_SpiReadRom          ; |350| 
+        ; call occurs [#_SpiReadRom] ; |350| 
+	.dwpsn	"Rom.c",352,2
+        MOVL      XAR0,#12              ; |352| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |352| 
+        MOVZ      AR7,AL                ; |352| 
+	.dwpsn	"Rom.c",353,2
+        MOV       ACC,*-SP[63] << #8    ; |353| 
+        OR        AR7,AL                ; |353| 
+	.dwpsn	"Rom.c",355,2
+        MOVZ      AR6,SP                ; |355| 
+        SUBB      XAR6,#72              ; |355| 
+        MOV       AL,AR7                ; |355| 
+        LCR       #U$$TOFD              ; |355| 
+        ; call occurs [#U$$TOFD] ; |355| 
+        MOVZ      AR6,SP                ; |355| 
+        MOVZ      AR4,SP                ; |355| 
+        SUBB      XAR6,#68              ; |355| 
+        MOVL      XAR5,#FL1             ; |355| 
+        SUBB      XAR4,#72              ; |355| 
+        LCR       #FD$$MPY              ; |355| 
+        ; call occurs [#FD$$MPY] ; |355| 
+        MOVZ      AR4,SP                ; |355| 
+        SUBB      XAR4,#68              ; |355| 
+        LCR       #FD$$TOL              ; |355| 
+        ; call occurs [#FD$$TOL] ; |355| 
+        MOVW      DP,#_g_q17user_vel
+        MOVL      @_g_q17user_vel,ACC   ; |355| 
+	.dwpsn	"Rom.c",359,1
+        SUBB      SP,#72
+	.dwcfa	0x1d, -4
+        MOVL      XAR2,*--SP
 	.dwcfa	0x1d, -2
-	.dwcfa	0xc0, 7
+	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$119, DW_AT_end_file("Rom.c")
-	.dwattr DW$119, DW_AT_end_line(0x165)
-	.dwattr DW$119, DW_AT_end_column(0x01)
+	.dwattr DW$106, DW_AT_end_file("Rom.c")
+	.dwattr DW$106, DW_AT_end_line(0x167)
+	.dwattr DW$106, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$119
+	.dwendtag DW$106
 
 	.sect	".text"
 	.global	_turnmark_info_write_rom
 
-DW$122	.dwtag  DW_TAG_subprogram, DW_AT_name("turnmark_info_write_rom"), DW_AT_symbol_name("_turnmark_info_write_rom")
-	.dwattr DW$122, DW_AT_low_pc(_turnmark_info_write_rom)
-	.dwattr DW$122, DW_AT_high_pc(0x00)
-	.dwattr DW$122, DW_AT_begin_file("Rom.c")
-	.dwattr DW$122, DW_AT_begin_line(0x36b)
-	.dwattr DW$122, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",876,1
+DW$109	.dwtag  DW_TAG_subprogram, DW_AT_name("turnmark_info_write_rom"), DW_AT_symbol_name("_turnmark_info_write_rom")
+	.dwattr DW$109, DW_AT_low_pc(_turnmark_info_write_rom)
+	.dwattr DW$109, DW_AT_high_pc(0x00)
+	.dwattr DW$109, DW_AT_begin_file("Rom.c")
+	.dwattr DW$109, DW_AT_begin_line(0x2bc)
+	.dwattr DW$109, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",701,1
 
 	.dwfde DW$CIE
 
@@ -973,25 +874,25 @@ DW$122	.dwtag  DW_TAG_subprogram, DW_AT_name("turnmark_info_write_rom"), DW_AT_s
 ;*                                                             *
 ;***************************************************************
 _turnmark_info_write_rom:
-;*** 879	-----------------------    write_buf1[] = {...};
-;*** 880	-----------------------    write_buf2[] = {...};
-;*** 881	-----------------------    write_buf3[] = {...};
-;*** 886	-----------------------    memset(&write_buf1, 0, 64uL);
-;*** 887	-----------------------    memset(&write_buf2, 0, 64uL);
-;*** 888	-----------------------    memset(&write_buf3, 0, 64uL);
-;*** 894	-----------------------    C$2 = (unsigned)(g_q17turnmark_dist>>17);
-;*** 894	-----------------------    write_buf1[0] = C$2&0xffu;
-;*** 895	-----------------------    write_buf1[1] = C$2>>8;
-;*** 897	-----------------------    SpiWriteRom(17u, 0u, 64u, &write_buf1);
-;*** 901	-----------------------    Rom_Data_Buffer = g_u16turnmark_limit;
-;*** 902	-----------------------    write_buf2[0] = Rom_Data_Buffer&0xffu;
-;*** 903	-----------------------    write_buf2[1] = Rom_Data_Buffer>>8;
-;*** 905	-----------------------    SpiWriteRom(18u, 0u, 64u, &write_buf2);
-;*** 911	-----------------------    C$1 = (unsigned)(g_q17sen_valmax>>17);
-;*** 911	-----------------------    write_buf3[0] = C$1&0xffu;
-;*** 912	-----------------------    write_buf3[1] = C$1>>8;
-;*** 914	-----------------------    SpiWriteRom(19u, 0u, 64u, &write_buf3);
-;*** 914	-----------------------    return;
+;*** 704	-----------------------    write_buf1[] = {...};
+;*** 705	-----------------------    write_buf2[] = {...};
+;*** 706	-----------------------    write_buf3[] = {...};
+;*** 711	-----------------------    memset(&write_buf1, 0, 64uL);
+;*** 712	-----------------------    memset(&write_buf2, 0, 64uL);
+;*** 713	-----------------------    memset(&write_buf3, 0, 64uL);
+;*** 719	-----------------------    C$2 = (unsigned)(g_q17turnmark_dist>>17);
+;*** 719	-----------------------    write_buf1[0] = C$2&0xffu;
+;*** 720	-----------------------    write_buf1[1] = C$2>>8;
+;*** 722	-----------------------    SpiWriteRom(17u, 0u, 64u, &write_buf1);
+;*** 726	-----------------------    Rom_Data_Buffer = g_u16turnmark_limit;
+;*** 727	-----------------------    write_buf2[0] = Rom_Data_Buffer&0xffu;
+;*** 728	-----------------------    write_buf2[1] = Rom_Data_Buffer>>8;
+;*** 730	-----------------------    SpiWriteRom(18u, 0u, 64u, &write_buf2);
+;*** 736	-----------------------    C$1 = (unsigned)(g_q17sen_valmax>>17);
+;*** 736	-----------------------    write_buf3[0] = C$1&0xffu;
+;*** 737	-----------------------    write_buf3[1] = C$1>>8;
+;*** 739	-----------------------    SpiWriteRom(19u, 0u, 64u, &write_buf3);
+;*** 739	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -1003,122 +904,122 @@ _turnmark_info_write_rom:
         ADD       SP,#192
 	.dwcfa	0x1d, -196
 ;* AL    assigned to C$1
-DW$123	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
-	.dwattr DW$123, DW_AT_type(*DW$T$11)
-	.dwattr DW$123, DW_AT_location[DW_OP_reg0]
+DW$110	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
+	.dwattr DW$110, DW_AT_type(*DW$T$11)
+	.dwattr DW$110, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$2
-DW$124	.dwtag  DW_TAG_variable, DW_AT_name("C$2"), DW_AT_symbol_name("C$2")
-	.dwattr DW$124, DW_AT_type(*DW$T$11)
-	.dwattr DW$124, DW_AT_location[DW_OP_reg0]
+DW$111	.dwtag  DW_TAG_variable, DW_AT_name("C$2"), DW_AT_symbol_name("C$2")
+	.dwattr DW$111, DW_AT_type(*DW$T$11)
+	.dwattr DW$111, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to _Rom_Data_Buffer
-DW$125	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$125, DW_AT_type(*DW$T$21)
-	.dwattr DW$125, DW_AT_location[DW_OP_reg0]
-DW$126	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
-	.dwattr DW$126, DW_AT_type(*DW$T$44)
-	.dwattr DW$126, DW_AT_location[DW_OP_breg20 -64]
-DW$127	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
-	.dwattr DW$127, DW_AT_type(*DW$T$44)
-	.dwattr DW$127, DW_AT_location[DW_OP_breg20 -128]
-DW$128	.dwtag  DW_TAG_variable, DW_AT_name("write_buf3"), DW_AT_symbol_name("_write_buf3")
-	.dwattr DW$128, DW_AT_type(*DW$T$44)
-	.dwattr DW$128, DW_AT_location[DW_OP_breg20 -192]
-	.dwpsn	"Rom.c",879,9
-        MOVZ      AR4,SP                ; |879| 
-        MOVL      XAR5,#_$T34$35$0      ; |879| 
+DW$112	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
+	.dwattr DW$112, DW_AT_type(*DW$T$21)
+	.dwattr DW$112, DW_AT_location[DW_OP_reg0]
+DW$113	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
+	.dwattr DW$113, DW_AT_type(*DW$T$37)
+	.dwattr DW$113, DW_AT_location[DW_OP_breg20 -64]
+DW$114	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
+	.dwattr DW$114, DW_AT_type(*DW$T$37)
+	.dwattr DW$114, DW_AT_location[DW_OP_breg20 -128]
+DW$115	.dwtag  DW_TAG_variable, DW_AT_name("write_buf3"), DW_AT_symbol_name("_write_buf3")
+	.dwattr DW$115, DW_AT_type(*DW$T$37)
+	.dwattr DW$115, DW_AT_location[DW_OP_breg20 -192]
+	.dwpsn	"Rom.c",704,9
+        MOVZ      AR4,SP                ; |704| 
+        MOVL      XAR5,#_$T30$31$0      ; |704| 
         MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |879| 
-        LCR       #___memcpy_ff         ; |879| 
-        ; call occurs [#___memcpy_ff] ; |879| 
-	.dwpsn	"Rom.c",880,9
-        MOVZ      AR4,SP                ; |880| 
-        ADD       AR4,#-128             ; |880| 
-        MOVL      XAR5,#_$T35$36$0      ; |880| 
+        SUBB      XAR4,#64              ; |704| 
+        LCR       #___memcpy_ff         ; |704| 
+        ; call occurs [#___memcpy_ff] ; |704| 
+	.dwpsn	"Rom.c",705,9
+        MOVZ      AR4,SP                ; |705| 
+        ADD       AR4,#-128             ; |705| 
+        MOVL      XAR5,#_$T31$32$0      ; |705| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |880| 
-        ; call occurs [#___memcpy_ff] ; |880| 
-	.dwpsn	"Rom.c",881,9
-        MOVZ      AR4,SP                ; |881| 
-        ADD       AR4,#-192             ; |881| 
-        MOVL      XAR5,#_$T36$37$0      ; |881| 
+        LCR       #___memcpy_ff         ; |705| 
+        ; call occurs [#___memcpy_ff] ; |705| 
+	.dwpsn	"Rom.c",706,9
+        MOVZ      AR4,SP                ; |706| 
+        ADD       AR4,#-192             ; |706| 
+        MOVL      XAR5,#_$T32$33$0      ; |706| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |881| 
-        ; call occurs [#___memcpy_ff] ; |881| 
-	.dwpsn	"Rom.c",886,2
-        MOVZ      AR4,SP                ; |886| 
+        LCR       #___memcpy_ff         ; |706| 
+        ; call occurs [#___memcpy_ff] ; |706| 
+	.dwpsn	"Rom.c",711,2
+        MOVZ      AR4,SP                ; |711| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |886| 
-        LCR       #_memset              ; |886| 
-        ; call occurs [#_memset] ; |886| 
-	.dwpsn	"Rom.c",887,2
-        MOVZ      AR4,SP                ; |887| 
-        ADD       AR4,#-128             ; |887| 
+        SUBB      XAR4,#64              ; |711| 
+        LCR       #_memset              ; |711| 
+        ; call occurs [#_memset] ; |711| 
+	.dwpsn	"Rom.c",712,2
+        MOVZ      AR4,SP                ; |712| 
+        ADD       AR4,#-128             ; |712| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        LCR       #_memset              ; |887| 
-        ; call occurs [#_memset] ; |887| 
-	.dwpsn	"Rom.c",888,2
-        MOVZ      AR4,SP                ; |888| 
-        ADD       AR4,#-192             ; |888| 
+        LCR       #_memset              ; |712| 
+        ; call occurs [#_memset] ; |712| 
+	.dwpsn	"Rom.c",713,2
+        MOVZ      AR4,SP                ; |713| 
+        ADD       AR4,#-192             ; |713| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        LCR       #_memset              ; |888| 
-        ; call occurs [#_memset] ; |888| 
-	.dwpsn	"Rom.c",894,2
+        LCR       #_memset              ; |713| 
+        ; call occurs [#_memset] ; |713| 
+	.dwpsn	"Rom.c",719,2
         MOVW      DP,#_g_q17turnmark_dist
-        MOV       T,#17                 ; |894| 
-        MOVL      XAR0,#132             ; |894| 
-        MOVL      ACC,@_g_q17turnmark_dist ; |894| 
-        ASRL      ACC,T                 ; |894| 
-        AND       AH,AL,#0x00ff         ; |894| 
-        MOV       *+FP[AR0],AH          ; |894| 
-	.dwpsn	"Rom.c",895,2
-        LSR       AL,8                  ; |895| 
-        MOV       *-SP[63],AL           ; |895| 
-	.dwpsn	"Rom.c",897,2
-        MOVZ      AR4,SP                ; |897| 
-        MOVB      XAR5,#64              ; |897| 
+        MOV       T,#17                 ; |719| 
+        MOVL      XAR0,#132             ; |719| 
+        MOVL      ACC,@_g_q17turnmark_dist ; |719| 
+        ASRL      ACC,T                 ; |719| 
+        AND       AH,AL,#0x00ff         ; |719| 
+        MOV       *+FP[AR0],AH          ; |719| 
+	.dwpsn	"Rom.c",720,2
+        LSR       AL,8                  ; |720| 
+        MOV       *-SP[63],AL           ; |720| 
+	.dwpsn	"Rom.c",722,2
+        MOVZ      AR4,SP                ; |722| 
+        MOVB      XAR5,#64              ; |722| 
         MOVB      ACC,#17
-        SUBB      XAR4,#64              ; |897| 
-        LCR       #_SpiWriteRom         ; |897| 
-        ; call occurs [#_SpiWriteRom] ; |897| 
-	.dwpsn	"Rom.c",901,2
+        SUBB      XAR4,#64              ; |722| 
+        LCR       #_SpiWriteRom         ; |722| 
+        ; call occurs [#_SpiWriteRom] ; |722| 
+	.dwpsn	"Rom.c",726,2
         MOVW      DP,#_g_u16turnmark_limit
-        MOV       AL,@_g_u16turnmark_limit ; |901| 
-	.dwpsn	"Rom.c",902,2
-        MOVL      XAR0,#68              ; |902| 
-        AND       AH,AL,#0x00ff         ; |902| 
-        MOV       *+FP[AR0],AH          ; |902| 
-	.dwpsn	"Rom.c",903,2
-        MOVL      XAR0,#69              ; |903| 
-        LSR       AL,8                  ; |903| 
-        MOV       *+FP[AR0],AL          ; |903| 
-	.dwpsn	"Rom.c",905,2
-        MOVZ      AR4,SP                ; |905| 
+        MOV       AL,@_g_u16turnmark_limit ; |726| 
+	.dwpsn	"Rom.c",727,2
+        MOVL      XAR0,#68              ; |727| 
+        AND       AH,AL,#0x00ff         ; |727| 
+        MOV       *+FP[AR0],AH          ; |727| 
+	.dwpsn	"Rom.c",728,2
+        MOVL      XAR0,#69              ; |728| 
+        LSR       AL,8                  ; |728| 
+        MOV       *+FP[AR0],AL          ; |728| 
+	.dwpsn	"Rom.c",730,2
+        MOVZ      AR4,SP                ; |730| 
         MOVB      ACC,#18
-        ADD       AR4,#-128             ; |905| 
-        MOVB      XAR5,#64              ; |905| 
-        LCR       #_SpiWriteRom         ; |905| 
-        ; call occurs [#_SpiWriteRom] ; |905| 
-	.dwpsn	"Rom.c",911,2
+        ADD       AR4,#-128             ; |730| 
+        MOVB      XAR5,#64              ; |730| 
+        LCR       #_SpiWriteRom         ; |730| 
+        ; call occurs [#_SpiWriteRom] ; |730| 
+	.dwpsn	"Rom.c",736,2
         MOVW      DP,#_g_q17sen_valmax
-        MOV       T,#17                 ; |911| 
-        MOVL      ACC,@_g_q17sen_valmax ; |911| 
-        ASRL      ACC,T                 ; |911| 
-        AND       AH,AL,#0x00ff         ; |911| 
-        MOV       *+FP[4],AH            ; |911| 
-	.dwpsn	"Rom.c",912,2
-        LSR       AL,8                  ; |912| 
-        MOV       *+FP[5],AL            ; |912| 
-	.dwpsn	"Rom.c",914,2
-        MOVZ      AR4,SP                ; |914| 
+        MOV       T,#17                 ; |736| 
+        MOVL      ACC,@_g_q17sen_valmax ; |736| 
+        ASRL      ACC,T                 ; |736| 
+        AND       AH,AL,#0x00ff         ; |736| 
+        MOV       *+FP[4],AH            ; |736| 
+	.dwpsn	"Rom.c",737,2
+        LSR       AL,8                  ; |737| 
+        MOV       *+FP[5],AL            ; |737| 
+	.dwpsn	"Rom.c",739,2
+        MOVZ      AR4,SP                ; |739| 
         MOVB      ACC,#19
-        ADD       AR4,#-192             ; |914| 
-        MOVB      XAR5,#64              ; |914| 
-        LCR       #_SpiWriteRom         ; |914| 
-        ; call occurs [#_SpiWriteRom] ; |914| 
-	.dwpsn	"Rom.c",917,1
+        ADD       AR4,#-192             ; |739| 
+        MOVB      XAR5,#64              ; |739| 
+        LCR       #_SpiWriteRom         ; |739| 
+        ; call occurs [#_SpiWriteRom] ; |739| 
+	.dwpsn	"Rom.c",742,1
         ADD       SP,#-192
 	.dwcfa	0x1d, -4
         MOVL      XAR2,*--SP
@@ -1126,22 +1027,22 @@ DW$128	.dwtag  DW_TAG_variable, DW_AT_name("write_buf3"), DW_AT_symbol_name("_wr
 	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$122, DW_AT_end_file("Rom.c")
-	.dwattr DW$122, DW_AT_end_line(0x395)
-	.dwattr DW$122, DW_AT_end_column(0x01)
+	.dwattr DW$109, DW_AT_end_file("Rom.c")
+	.dwattr DW$109, DW_AT_end_line(0x2e6)
+	.dwattr DW$109, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$122
+	.dwendtag DW$109
 
 	.sect	".text"
 	.global	_turnmark_info_read_rom
 
-DW$129	.dwtag  DW_TAG_subprogram, DW_AT_name("turnmark_info_read_rom"), DW_AT_symbol_name("_turnmark_info_read_rom")
-	.dwattr DW$129, DW_AT_low_pc(_turnmark_info_read_rom)
-	.dwattr DW$129, DW_AT_high_pc(0x00)
-	.dwattr DW$129, DW_AT_begin_file("Rom.c")
-	.dwattr DW$129, DW_AT_begin_line(0x397)
-	.dwattr DW$129, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",920,1
+DW$116	.dwtag  DW_TAG_subprogram, DW_AT_name("turnmark_info_read_rom"), DW_AT_symbol_name("_turnmark_info_read_rom")
+	.dwattr DW$116, DW_AT_low_pc(_turnmark_info_read_rom)
+	.dwattr DW$116, DW_AT_high_pc(0x00)
+	.dwattr DW$116, DW_AT_begin_file("Rom.c")
+	.dwattr DW$116, DW_AT_begin_line(0x2e8)
+	.dwattr DW$116, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",745,1
 
 	.dwfde DW$CIE
 
@@ -1161,21 +1062,21 @@ DW$129	.dwtag  DW_TAG_subprogram, DW_AT_name("turnmark_info_read_rom"), DW_AT_sy
 ;*                                                             *
 ;***************************************************************
 _turnmark_info_read_rom:
-;*** 922	-----------------------    read_buf1[] = {...};
-;*** 923	-----------------------    read_buf2[] = {...};
-;*** 924	-----------------------    read_buf3[] = {...};
-;*** 929	-----------------------    SpiReadRom(17u, 0u, 64u, &read_buf1);
-;*** 931	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
-;*** 932	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
-;*** 934	-----------------------    g_q17turnmark_dist = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;*** 937	-----------------------    SpiReadRom(18u, 0u, 64u, &read_buf2);
-;*** 939	-----------------------    Rom_Data_Buffer = read_buf2[0]&0xffu;
-;*** 940	-----------------------    Rom_Data_Buffer |= read_buf2[1]<<8;
-;*** 942	-----------------------    g_u16turnmark_limit = Rom_Data_Buffer;
-;*** 946	-----------------------    SpiReadRom(19u, 0u, 64u, &read_buf3);
-;*** 948	-----------------------    Rom_Data_Buffer = read_buf3[0]&0xffu;
-;*** 949	-----------------------    Rom_Data_Buffer |= read_buf3[1]<<8;
-;*** 951	-----------------------    g_q17sen_valmax = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 747	-----------------------    read_buf1[] = {...};
+;*** 748	-----------------------    read_buf2[] = {...};
+;*** 749	-----------------------    read_buf3[] = {...};
+;*** 754	-----------------------    SpiReadRom(17u, 0u, 64u, &read_buf1);
+;*** 756	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
+;*** 757	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
+;*** 759	-----------------------    g_q17turnmark_dist = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 762	-----------------------    SpiReadRom(18u, 0u, 64u, &read_buf2);
+;*** 764	-----------------------    Rom_Data_Buffer = read_buf2[0]&0xffu;
+;*** 765	-----------------------    Rom_Data_Buffer |= read_buf2[1]<<8;
+;*** 767	-----------------------    g_u16turnmark_limit = Rom_Data_Buffer;
+;*** 771	-----------------------    SpiReadRom(19u, 0u, 64u, &read_buf3);
+;*** 773	-----------------------    Rom_Data_Buffer = read_buf3[0]&0xffu;
+;*** 774	-----------------------    Rom_Data_Buffer |= read_buf3[1]<<8;
+;*** 776	-----------------------    g_q17sen_valmax = (long)((long double)Rom_Data_Buffer*1.31072e5L);
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -1187,126 +1088,126 @@ _turnmark_info_read_rom:
         ADD       SP,#200
 	.dwcfa	0x1d, -204
 ;* AR7   assigned to _Rom_Data_Buffer
-DW$130	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$130, DW_AT_type(*DW$T$21)
-	.dwattr DW$130, DW_AT_location[DW_OP_reg18]
-DW$131	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
-	.dwattr DW$131, DW_AT_type(*DW$T$44)
-	.dwattr DW$131, DW_AT_location[DW_OP_breg20 -64]
-DW$132	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
-	.dwattr DW$132, DW_AT_type(*DW$T$44)
-	.dwattr DW$132, DW_AT_location[DW_OP_breg20 -128]
-DW$133	.dwtag  DW_TAG_variable, DW_AT_name("read_buf3"), DW_AT_symbol_name("_read_buf3")
-	.dwattr DW$133, DW_AT_type(*DW$T$44)
-	.dwattr DW$133, DW_AT_location[DW_OP_breg20 -192]
-	.dwpsn	"Rom.c",922,9
-        MOVZ      AR4,SP                ; |922| 
-        MOVL      XAR5,#_$T37$38$0      ; |922| 
+DW$117	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
+	.dwattr DW$117, DW_AT_type(*DW$T$21)
+	.dwattr DW$117, DW_AT_location[DW_OP_reg18]
+DW$118	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
+	.dwattr DW$118, DW_AT_type(*DW$T$37)
+	.dwattr DW$118, DW_AT_location[DW_OP_breg20 -64]
+DW$119	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
+	.dwattr DW$119, DW_AT_type(*DW$T$37)
+	.dwattr DW$119, DW_AT_location[DW_OP_breg20 -128]
+DW$120	.dwtag  DW_TAG_variable, DW_AT_name("read_buf3"), DW_AT_symbol_name("_read_buf3")
+	.dwattr DW$120, DW_AT_type(*DW$T$37)
+	.dwattr DW$120, DW_AT_location[DW_OP_breg20 -192]
+	.dwpsn	"Rom.c",747,9
+        MOVZ      AR4,SP                ; |747| 
+        MOVL      XAR5,#_$T33$34$0      ; |747| 
         MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |922| 
-        LCR       #___memcpy_ff         ; |922| 
-        ; call occurs [#___memcpy_ff] ; |922| 
-	.dwpsn	"Rom.c",923,9
-        MOVZ      AR4,SP                ; |923| 
-        ADD       AR4,#-128             ; |923| 
-        MOVL      XAR5,#_$T38$39$0      ; |923| 
+        SUBB      XAR4,#64              ; |747| 
+        LCR       #___memcpy_ff         ; |747| 
+        ; call occurs [#___memcpy_ff] ; |747| 
+	.dwpsn	"Rom.c",748,9
+        MOVZ      AR4,SP                ; |748| 
+        ADD       AR4,#-128             ; |748| 
+        MOVL      XAR5,#_$T34$35$0      ; |748| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |923| 
-        ; call occurs [#___memcpy_ff] ; |923| 
-	.dwpsn	"Rom.c",924,9
-        MOVZ      AR4,SP                ; |924| 
-        ADD       AR4,#-192             ; |924| 
-        MOVL      XAR5,#_$T39$40$0      ; |924| 
+        LCR       #___memcpy_ff         ; |748| 
+        ; call occurs [#___memcpy_ff] ; |748| 
+	.dwpsn	"Rom.c",749,9
+        MOVZ      AR4,SP                ; |749| 
+        ADD       AR4,#-192             ; |749| 
+        MOVL      XAR5,#_$T35$36$0      ; |749| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |924| 
-        ; call occurs [#___memcpy_ff] ; |924| 
-	.dwpsn	"Rom.c",929,2
-        MOVZ      AR4,SP                ; |929| 
-        MOVB      XAR5,#64              ; |929| 
+        LCR       #___memcpy_ff         ; |749| 
+        ; call occurs [#___memcpy_ff] ; |749| 
+	.dwpsn	"Rom.c",754,2
+        MOVZ      AR4,SP                ; |754| 
+        MOVB      XAR5,#64              ; |754| 
         MOVB      ACC,#17
-        SUBB      XAR4,#64              ; |929| 
-        LCR       #_SpiReadRom          ; |929| 
-        ; call occurs [#_SpiReadRom] ; |929| 
-	.dwpsn	"Rom.c",931,2
-        MOVL      XAR0,#140             ; |931| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |931| 
-        MOVZ      AR7,AL                ; |931| 
-	.dwpsn	"Rom.c",932,2
-        MOV       ACC,*-SP[63] << #8    ; |932| 
-        OR        AR7,AL                ; |932| 
-	.dwpsn	"Rom.c",934,2
-        MOVZ      AR6,SP                ; |934| 
-        ADD       AR6,#-200             ; |934| 
-        MOV       AL,AR7                ; |934| 
-        LCR       #U$$TOFD              ; |934| 
-        ; call occurs [#U$$TOFD] ; |934| 
-        MOVZ      AR4,SP                ; |934| 
-        MOVZ      AR6,SP                ; |934| 
-        ADD       AR4,#-200             ; |934| 
-        ADD       AR6,#-196             ; |934| 
-        MOVL      XAR5,#FL1             ; |934| 
-        LCR       #FD$$MPY              ; |934| 
-        ; call occurs [#FD$$MPY] ; |934| 
-        MOVZ      AR4,SP                ; |934| 
-        ADD       AR4,#-196             ; |934| 
-        LCR       #FD$$TOL              ; |934| 
-        ; call occurs [#FD$$TOL] ; |934| 
+        SUBB      XAR4,#64              ; |754| 
+        LCR       #_SpiReadRom          ; |754| 
+        ; call occurs [#_SpiReadRom] ; |754| 
+	.dwpsn	"Rom.c",756,2
+        MOVL      XAR0,#140             ; |756| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |756| 
+        MOVZ      AR7,AL                ; |756| 
+	.dwpsn	"Rom.c",757,2
+        MOV       ACC,*-SP[63] << #8    ; |757| 
+        OR        AR7,AL                ; |757| 
+	.dwpsn	"Rom.c",759,2
+        MOVZ      AR6,SP                ; |759| 
+        ADD       AR6,#-200             ; |759| 
+        MOV       AL,AR7                ; |759| 
+        LCR       #U$$TOFD              ; |759| 
+        ; call occurs [#U$$TOFD] ; |759| 
+        MOVZ      AR4,SP                ; |759| 
+        MOVZ      AR6,SP                ; |759| 
+        ADD       AR4,#-200             ; |759| 
+        ADD       AR6,#-196             ; |759| 
+        MOVL      XAR5,#FL1             ; |759| 
+        LCR       #FD$$MPY              ; |759| 
+        ; call occurs [#FD$$MPY] ; |759| 
+        MOVZ      AR4,SP                ; |759| 
+        ADD       AR4,#-196             ; |759| 
+        LCR       #FD$$TOL              ; |759| 
+        ; call occurs [#FD$$TOL] ; |759| 
         MOVW      DP,#_g_q17turnmark_dist
-        MOVL      @_g_q17turnmark_dist,ACC ; |934| 
-	.dwpsn	"Rom.c",937,2
-        MOVZ      AR4,SP                ; |937| 
+        MOVL      @_g_q17turnmark_dist,ACC ; |759| 
+	.dwpsn	"Rom.c",762,2
+        MOVZ      AR4,SP                ; |762| 
         MOVB      ACC,#18
-        ADD       AR4,#-128             ; |937| 
-        MOVB      XAR5,#64              ; |937| 
-        LCR       #_SpiReadRom          ; |937| 
-        ; call occurs [#_SpiReadRom] ; |937| 
-	.dwpsn	"Rom.c",939,2
-        MOVL      XAR0,#76              ; |939| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |939| 
-        MOVZ      AR7,AL                ; |939| 
-	.dwpsn	"Rom.c",940,2
-        MOVL      XAR0,#77              ; |940| 
-        MOV       ACC,*+FP[AR0] << #8   ; |940| 
-        OR        AR7,AL                ; |940| 
-	.dwpsn	"Rom.c",942,2
+        ADD       AR4,#-128             ; |762| 
+        MOVB      XAR5,#64              ; |762| 
+        LCR       #_SpiReadRom          ; |762| 
+        ; call occurs [#_SpiReadRom] ; |762| 
+	.dwpsn	"Rom.c",764,2
+        MOVL      XAR0,#76              ; |764| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |764| 
+        MOVZ      AR7,AL                ; |764| 
+	.dwpsn	"Rom.c",765,2
+        MOVL      XAR0,#77              ; |765| 
+        MOV       ACC,*+FP[AR0] << #8   ; |765| 
+        OR        AR7,AL                ; |765| 
+	.dwpsn	"Rom.c",767,2
         MOVW      DP,#_g_u16turnmark_limit
-        MOV       @_g_u16turnmark_limit,AR7 ; |942| 
-	.dwpsn	"Rom.c",946,2
-        MOVZ      AR4,SP                ; |946| 
+        MOV       @_g_u16turnmark_limit,AR7 ; |767| 
+	.dwpsn	"Rom.c",771,2
+        MOVZ      AR4,SP                ; |771| 
         MOVB      ACC,#19
-        ADD       AR4,#-192             ; |946| 
-        MOVB      XAR5,#64              ; |946| 
-        LCR       #_SpiReadRom          ; |946| 
-        ; call occurs [#_SpiReadRom] ; |946| 
-	.dwpsn	"Rom.c",948,2
-        MOVL      XAR0,#12              ; |948| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |948| 
-        MOVZ      AR7,AL                ; |948| 
-	.dwpsn	"Rom.c",949,2
-        MOVL      XAR0,#13              ; |949| 
-        MOV       ACC,*+FP[AR0] << #8   ; |949| 
-        OR        AR7,AL                ; |949| 
-	.dwpsn	"Rom.c",951,2
-        MOVZ      AR6,SP                ; |951| 
-        ADD       AR6,#-200             ; |951| 
-        MOV       AL,AR7                ; |951| 
-        LCR       #U$$TOFD              ; |951| 
-        ; call occurs [#U$$TOFD] ; |951| 
-        MOVZ      AR4,SP                ; |951| 
-        MOVZ      AR6,SP                ; |951| 
-        ADD       AR4,#-200             ; |951| 
-        ADD       AR6,#-196             ; |951| 
-        MOVL      XAR5,#FL1             ; |951| 
-        LCR       #FD$$MPY              ; |951| 
-        ; call occurs [#FD$$MPY] ; |951| 
-;*** 951	-----------------------    return;
-        MOVZ      AR4,SP                ; |951| 
-        ADD       AR4,#-196             ; |951| 
-        LCR       #FD$$TOL              ; |951| 
-        ; call occurs [#FD$$TOL] ; |951| 
+        ADD       AR4,#-192             ; |771| 
+        MOVB      XAR5,#64              ; |771| 
+        LCR       #_SpiReadRom          ; |771| 
+        ; call occurs [#_SpiReadRom] ; |771| 
+	.dwpsn	"Rom.c",773,2
+        MOVL      XAR0,#12              ; |773| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |773| 
+        MOVZ      AR7,AL                ; |773| 
+	.dwpsn	"Rom.c",774,2
+        MOVL      XAR0,#13              ; |774| 
+        MOV       ACC,*+FP[AR0] << #8   ; |774| 
+        OR        AR7,AL                ; |774| 
+	.dwpsn	"Rom.c",776,2
+        MOVZ      AR6,SP                ; |776| 
+        ADD       AR6,#-200             ; |776| 
+        MOV       AL,AR7                ; |776| 
+        LCR       #U$$TOFD              ; |776| 
+        ; call occurs [#U$$TOFD] ; |776| 
+        MOVZ      AR4,SP                ; |776| 
+        MOVZ      AR6,SP                ; |776| 
+        ADD       AR4,#-200             ; |776| 
+        ADD       AR6,#-196             ; |776| 
+        MOVL      XAR5,#FL1             ; |776| 
+        LCR       #FD$$MPY              ; |776| 
+        ; call occurs [#FD$$MPY] ; |776| 
+;*** 776	-----------------------    return;
+        MOVZ      AR4,SP                ; |776| 
+        ADD       AR4,#-196             ; |776| 
+        LCR       #FD$$TOL              ; |776| 
+        ; call occurs [#FD$$TOL] ; |776| 
         MOVW      DP,#_g_q17sen_valmax
-        MOVL      @_g_q17sen_valmax,ACC ; |951| 
-	.dwpsn	"Rom.c",957,1
+        MOVL      @_g_q17sen_valmax,ACC ; |776| 
+	.dwpsn	"Rom.c",782,1
         ADD       SP,#-200
 	.dwcfa	0x1d, -4
         MOVL      XAR2,*--SP
@@ -1314,22 +1215,22 @@ DW$133	.dwtag  DW_TAG_variable, DW_AT_name("read_buf3"), DW_AT_symbol_name("_rea
 	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$129, DW_AT_end_file("Rom.c")
-	.dwattr DW$129, DW_AT_end_line(0x3bd)
-	.dwattr DW$129, DW_AT_end_column(0x01)
+	.dwattr DW$116, DW_AT_end_file("Rom.c")
+	.dwattr DW$116, DW_AT_end_line(0x30e)
+	.dwattr DW$116, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$129
+	.dwendtag DW$116
 
 	.sect	".text"
 	.global	_pid_write_rom
 
-DW$134	.dwtag  DW_TAG_subprogram, DW_AT_name("pid_write_rom"), DW_AT_symbol_name("_pid_write_rom")
-	.dwattr DW$134, DW_AT_low_pc(_pid_write_rom)
-	.dwattr DW$134, DW_AT_high_pc(0x00)
-	.dwattr DW$134, DW_AT_begin_file("Rom.c")
-	.dwattr DW$134, DW_AT_begin_line(0x242)
-	.dwattr DW$134, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",579,1
+DW$121	.dwtag  DW_TAG_subprogram, DW_AT_name("pid_write_rom"), DW_AT_symbol_name("_pid_write_rom")
+	.dwattr DW$121, DW_AT_low_pc(_pid_write_rom)
+	.dwattr DW$121, DW_AT_high_pc(0x00)
+	.dwattr DW$121, DW_AT_begin_file("Rom.c")
+	.dwattr DW$121, DW_AT_begin_line(0x244)
+	.dwattr DW$121, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",581,1
 
 	.dwfde DW$CIE
 
@@ -1349,29 +1250,29 @@ DW$134	.dwtag  DW_TAG_subprogram, DW_AT_name("pid_write_rom"), DW_AT_symbol_name
 ;*                                                             *
 ;***************************************************************
 _pid_write_rom:
-;*** 579	-----------------------    return;
+;*** 581	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
-	.dwpsn	"Rom.c",581,1
+	.dwpsn	"Rom.c",583,1
         LRETR
         ; return occurs
-	.dwattr DW$134, DW_AT_end_file("Rom.c")
-	.dwattr DW$134, DW_AT_end_line(0x245)
-	.dwattr DW$134, DW_AT_end_column(0x01)
+	.dwattr DW$121, DW_AT_end_file("Rom.c")
+	.dwattr DW$121, DW_AT_end_line(0x247)
+	.dwattr DW$121, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$134
+	.dwendtag DW$121
 
 	.sect	".text"
 	.global	_maxmin_write_rom
 
-DW$135	.dwtag  DW_TAG_subprogram, DW_AT_name("maxmin_write_rom"), DW_AT_symbol_name("_maxmin_write_rom")
-	.dwattr DW$135, DW_AT_low_pc(_maxmin_write_rom)
-	.dwattr DW$135, DW_AT_high_pc(0x00)
-	.dwattr DW$135, DW_AT_begin_file("Rom.c")
-	.dwattr DW$135, DW_AT_begin_line(0x4c)
-	.dwattr DW$135, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",77,1
+DW$122	.dwtag  DW_TAG_subprogram, DW_AT_name("maxmin_write_rom"), DW_AT_symbol_name("_maxmin_write_rom")
+	.dwattr DW$122, DW_AT_low_pc(_maxmin_write_rom)
+	.dwattr DW$122, DW_AT_high_pc(0x00)
+	.dwattr DW$122, DW_AT_begin_file("Rom.c")
+	.dwattr DW$122, DW_AT_begin_line(0x4e)
+	.dwattr DW$122, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",79,1
 
 	.dwfde DW$CIE
 
@@ -1391,75 +1292,75 @@ DW$135	.dwtag  DW_TAG_subprogram, DW_AT_name("maxmin_write_rom"), DW_AT_symbol_n
 ;*                                                             *
 ;***************************************************************
 _maxmin_write_rom:
-;*** 79	-----------------------    write_buf[] = {...};
-;*** 81	-----------------------    memset(&write_buf, 0, 256uL);
-;*** 88	-----------------------    C$1 = &g_sen[0];
-;*** 88	-----------------------    write_buf[0] = (*C$1).iq17min_value>>17&0xffL;
-;*** 89	-----------------------    write_buf[1] = (*C$1).iq17min_value>>17>>8&0xffL;
-;*** 91	-----------------------    write_buf[2] = *((volatile long *)C$1+20L)>>17&0xffL;
-;*** 92	-----------------------    write_buf[3] = ((volatile long *)g_sen)[10]>>17>>8&0xffL;
-;*** 94	-----------------------    write_buf[4] = *((volatile long *)C$1+38L)>>17&0xffL;
-;*** 95	-----------------------    write_buf[5] = ((volatile long *)g_sen)[19]>>17>>8&0xffL;
-;*** 97	-----------------------    write_buf[6] = *((volatile long *)C$1+56L)>>17&0xffL;
-;*** 98	-----------------------    write_buf[7] = ((volatile long *)g_sen)[28]>>17>>8&0xffL;
-;*** 100	-----------------------    write_buf[8] = *((volatile long *)C$1+74L)>>17&0xffL;
-;*** 101	-----------------------    write_buf[9] = ((volatile long *)g_sen)[37]>>17>>8&0xffL;
-;*** 103	-----------------------    write_buf[10] = *((volatile long *)C$1+92L)>>17&0xffL;
-;*** 104	-----------------------    write_buf[11] = ((volatile long *)g_sen)[46]>>17>>8&0xffL;
-;*** 106	-----------------------    write_buf[12] = *((volatile long *)C$1+110L)>>17&0xffL;
-;*** 107	-----------------------    write_buf[13] = ((volatile long *)g_sen)[55]>>17>>8&0xffL;
-;*** 109	-----------------------    write_buf[14] = *((volatile long *)C$1+128L)>>17&0xffL;
-;*** 110	-----------------------    write_buf[15] = ((volatile long *)g_sen)[64]>>17>>8&0xffL;
-;*** 112	-----------------------    write_buf[16] = *((volatile long *)C$1+146L)>>17&0xffL;
-;*** 113	-----------------------    write_buf[17] = ((volatile long *)g_sen)[73]>>17>>8&0xffL;
-;*** 115	-----------------------    write_buf[18] = *((volatile long *)C$1+164L)>>17&0xffL;
-;*** 116	-----------------------    write_buf[19] = ((volatile long *)g_sen)[82]>>17>>8&0xffL;
-;*** 118	-----------------------    write_buf[20] = *((volatile long *)C$1+182L)>>17&0xffL;
-;*** 119	-----------------------    write_buf[21] = ((volatile long *)g_sen)[91]>>17>>8&0xffL;
-;*** 121	-----------------------    write_buf[22] = *((volatile long *)C$1+200L)>>17&0xffL;
-;*** 122	-----------------------    write_buf[23] = ((volatile long *)g_sen)[100]>>17>>8&0xffL;
-;*** 124	-----------------------    write_buf[24] = *((volatile long *)C$1+218L)>>17&0xffL;
-;*** 125	-----------------------    write_buf[25] = ((volatile long *)g_sen)[109]>>17>>8&0xffL;
-;*** 127	-----------------------    write_buf[26] = *((volatile long *)C$1+236L)>>17&0xffL;
-;*** 128	-----------------------    write_buf[27] = ((volatile long *)g_sen)[118]>>17>>8&0xffL;
-;*** 130	-----------------------    write_buf[28] = *((volatile long *)C$1+254L)>>17&0xffL;
-;*** 131	-----------------------    write_buf[29] = ((volatile long *)g_sen)[127]>>17>>8&0xffL;
-;*** 133	-----------------------    write_buf[30] = *((volatile long *)C$1+272L)>>17&0xffL;
-;*** 134	-----------------------    write_buf[31] = ((volatile long *)g_sen)[136]>>17>>8&0xffL;
-;*** 138	-----------------------    write_buf[32] = (*C$1).iq17max_value>>17&0xffL;
-;*** 139	-----------------------    write_buf[33] = (*C$1).iq17max_value>>17>>8&0xffL;
-;*** 141	-----------------------    write_buf[34] = *((volatile long *)C$1+22L)>>17&0xffL;
-;*** 142	-----------------------    write_buf[35] = ((volatile long *)g_sen)[11]>>17>>8&0xffL;
-;*** 144	-----------------------    write_buf[36] = *((volatile long *)C$1+40L)>>17&0xffL;
-;*** 145	-----------------------    write_buf[37] = ((volatile long *)g_sen)[20]>>17>>8&0xffL;
-;*** 147	-----------------------    write_buf[38] = *((volatile long *)C$1+58L)>>17&0xffL;
-;*** 148	-----------------------    write_buf[39] = ((volatile long *)g_sen)[29]>>17>>8&0xffL;
-;*** 150	-----------------------    write_buf[40] = *((volatile long *)C$1+76L)>>17&0xffL;
-;*** 151	-----------------------    write_buf[41] = ((volatile long *)g_sen)[38]>>17>>8&0xffL;
-;*** 153	-----------------------    write_buf[42] = *((volatile long *)C$1+94L)>>17&0xffL;
-;*** 154	-----------------------    write_buf[43] = ((volatile long *)g_sen)[47]>>17>>8&0xffL;
-;*** 156	-----------------------    write_buf[44] = *((volatile long *)C$1+112L)>>17&0xffL;
-;*** 157	-----------------------    write_buf[45] = ((volatile long *)g_sen)[56]>>17>>8&0xffL;
-;*** 159	-----------------------    write_buf[46] = *((volatile long *)C$1+130L)>>17&0xffL;
-;*** 160	-----------------------    write_buf[47] = ((volatile long *)g_sen)[65]>>17>>8&0xffL;
-;*** 162	-----------------------    write_buf[48] = *((volatile long *)C$1+148L)>>17&0xffL;
-;*** 163	-----------------------    write_buf[49] = ((volatile long *)g_sen)[74]>>17>>8&0xffL;
-;*** 165	-----------------------    write_buf[50] = *((volatile long *)C$1+166L)>>17&0xffL;
-;*** 166	-----------------------    write_buf[51] = ((volatile long *)g_sen)[83]>>17>>8&0xffL;
-;*** 168	-----------------------    write_buf[52] = *((volatile long *)C$1+184L)>>17&0xffL;
-;*** 169	-----------------------    write_buf[53] = ((volatile long *)g_sen)[92]>>17>>8&0xffL;
-;*** 171	-----------------------    write_buf[54] = *((volatile long *)C$1+202L)>>17&0xffL;
-;*** 172	-----------------------    write_buf[55] = ((volatile long *)g_sen)[101]>>17>>8&0xffL;
-;*** 174	-----------------------    write_buf[56] = *((volatile long *)C$1+220L)>>17&0xffL;
-;*** 175	-----------------------    write_buf[57] = ((volatile long *)g_sen)[110]>>17>>8&0xffL;
-;*** 177	-----------------------    write_buf[58] = *((volatile long *)C$1+238L)>>17&0xffL;
-;*** 178	-----------------------    write_buf[59] = ((volatile long *)g_sen)[119]>>17>>8&0xffL;
-;*** 180	-----------------------    write_buf[60] = *((volatile long *)C$1+256L)>>17&0xffL;
-;*** 181	-----------------------    write_buf[61] = ((volatile long *)g_sen)[128]>>17>>8&0xffL;
-;*** 183	-----------------------    write_buf[62] = *((volatile long *)C$1+274L)>>17&0xffL;
-;*** 184	-----------------------    write_buf[63] = ((volatile long *)g_sen)[137]>>17>>8&0xffL;
-;*** 187	-----------------------    SpiWriteRom(1u, 0u, 256u, &write_buf);
-;*** 187	-----------------------    return;
+;*** 81	-----------------------    write_buf[] = {...};
+;*** 83	-----------------------    memset(&write_buf, 0, 256uL);
+;*** 90	-----------------------    C$1 = &g_sen[0];
+;*** 90	-----------------------    write_buf[0] = (*C$1).iq17min_value>>17&0xffL;
+;*** 91	-----------------------    write_buf[1] = (*C$1).iq17min_value>>17>>8&0xffL;
+;*** 93	-----------------------    write_buf[2] = *((volatile long *)C$1+20L)>>17&0xffL;
+;*** 94	-----------------------    write_buf[3] = ((volatile long *)g_sen)[10]>>17>>8&0xffL;
+;*** 96	-----------------------    write_buf[4] = *((volatile long *)C$1+38L)>>17&0xffL;
+;*** 97	-----------------------    write_buf[5] = ((volatile long *)g_sen)[19]>>17>>8&0xffL;
+;*** 99	-----------------------    write_buf[6] = *((volatile long *)C$1+56L)>>17&0xffL;
+;*** 100	-----------------------    write_buf[7] = ((volatile long *)g_sen)[28]>>17>>8&0xffL;
+;*** 102	-----------------------    write_buf[8] = *((volatile long *)C$1+74L)>>17&0xffL;
+;*** 103	-----------------------    write_buf[9] = ((volatile long *)g_sen)[37]>>17>>8&0xffL;
+;*** 105	-----------------------    write_buf[10] = *((volatile long *)C$1+92L)>>17&0xffL;
+;*** 106	-----------------------    write_buf[11] = ((volatile long *)g_sen)[46]>>17>>8&0xffL;
+;*** 108	-----------------------    write_buf[12] = *((volatile long *)C$1+110L)>>17&0xffL;
+;*** 109	-----------------------    write_buf[13] = ((volatile long *)g_sen)[55]>>17>>8&0xffL;
+;*** 111	-----------------------    write_buf[14] = *((volatile long *)C$1+128L)>>17&0xffL;
+;*** 112	-----------------------    write_buf[15] = ((volatile long *)g_sen)[64]>>17>>8&0xffL;
+;*** 114	-----------------------    write_buf[16] = *((volatile long *)C$1+146L)>>17&0xffL;
+;*** 115	-----------------------    write_buf[17] = ((volatile long *)g_sen)[73]>>17>>8&0xffL;
+;*** 117	-----------------------    write_buf[18] = *((volatile long *)C$1+164L)>>17&0xffL;
+;*** 118	-----------------------    write_buf[19] = ((volatile long *)g_sen)[82]>>17>>8&0xffL;
+;*** 120	-----------------------    write_buf[20] = *((volatile long *)C$1+182L)>>17&0xffL;
+;*** 121	-----------------------    write_buf[21] = ((volatile long *)g_sen)[91]>>17>>8&0xffL;
+;*** 123	-----------------------    write_buf[22] = *((volatile long *)C$1+200L)>>17&0xffL;
+;*** 124	-----------------------    write_buf[23] = ((volatile long *)g_sen)[100]>>17>>8&0xffL;
+;*** 126	-----------------------    write_buf[24] = *((volatile long *)C$1+218L)>>17&0xffL;
+;*** 127	-----------------------    write_buf[25] = ((volatile long *)g_sen)[109]>>17>>8&0xffL;
+;*** 129	-----------------------    write_buf[26] = *((volatile long *)C$1+236L)>>17&0xffL;
+;*** 130	-----------------------    write_buf[27] = ((volatile long *)g_sen)[118]>>17>>8&0xffL;
+;*** 132	-----------------------    write_buf[28] = *((volatile long *)C$1+254L)>>17&0xffL;
+;*** 133	-----------------------    write_buf[29] = ((volatile long *)g_sen)[127]>>17>>8&0xffL;
+;*** 135	-----------------------    write_buf[30] = *((volatile long *)C$1+272L)>>17&0xffL;
+;*** 136	-----------------------    write_buf[31] = ((volatile long *)g_sen)[136]>>17>>8&0xffL;
+;*** 140	-----------------------    write_buf[32] = (*C$1).iq17max_value>>17&0xffL;
+;*** 141	-----------------------    write_buf[33] = (*C$1).iq17max_value>>17>>8&0xffL;
+;*** 143	-----------------------    write_buf[34] = *((volatile long *)C$1+22L)>>17&0xffL;
+;*** 144	-----------------------    write_buf[35] = ((volatile long *)g_sen)[11]>>17>>8&0xffL;
+;*** 146	-----------------------    write_buf[36] = *((volatile long *)C$1+40L)>>17&0xffL;
+;*** 147	-----------------------    write_buf[37] = ((volatile long *)g_sen)[20]>>17>>8&0xffL;
+;*** 149	-----------------------    write_buf[38] = *((volatile long *)C$1+58L)>>17&0xffL;
+;*** 150	-----------------------    write_buf[39] = ((volatile long *)g_sen)[29]>>17>>8&0xffL;
+;*** 152	-----------------------    write_buf[40] = *((volatile long *)C$1+76L)>>17&0xffL;
+;*** 153	-----------------------    write_buf[41] = ((volatile long *)g_sen)[38]>>17>>8&0xffL;
+;*** 155	-----------------------    write_buf[42] = *((volatile long *)C$1+94L)>>17&0xffL;
+;*** 156	-----------------------    write_buf[43] = ((volatile long *)g_sen)[47]>>17>>8&0xffL;
+;*** 158	-----------------------    write_buf[44] = *((volatile long *)C$1+112L)>>17&0xffL;
+;*** 159	-----------------------    write_buf[45] = ((volatile long *)g_sen)[56]>>17>>8&0xffL;
+;*** 161	-----------------------    write_buf[46] = *((volatile long *)C$1+130L)>>17&0xffL;
+;*** 162	-----------------------    write_buf[47] = ((volatile long *)g_sen)[65]>>17>>8&0xffL;
+;*** 164	-----------------------    write_buf[48] = *((volatile long *)C$1+148L)>>17&0xffL;
+;*** 165	-----------------------    write_buf[49] = ((volatile long *)g_sen)[74]>>17>>8&0xffL;
+;*** 167	-----------------------    write_buf[50] = *((volatile long *)C$1+166L)>>17&0xffL;
+;*** 168	-----------------------    write_buf[51] = ((volatile long *)g_sen)[83]>>17>>8&0xffL;
+;*** 170	-----------------------    write_buf[52] = *((volatile long *)C$1+184L)>>17&0xffL;
+;*** 171	-----------------------    write_buf[53] = ((volatile long *)g_sen)[92]>>17>>8&0xffL;
+;*** 173	-----------------------    write_buf[54] = *((volatile long *)C$1+202L)>>17&0xffL;
+;*** 174	-----------------------    write_buf[55] = ((volatile long *)g_sen)[101]>>17>>8&0xffL;
+;*** 176	-----------------------    write_buf[56] = *((volatile long *)C$1+220L)>>17&0xffL;
+;*** 177	-----------------------    write_buf[57] = ((volatile long *)g_sen)[110]>>17>>8&0xffL;
+;*** 179	-----------------------    write_buf[58] = *((volatile long *)C$1+238L)>>17&0xffL;
+;*** 180	-----------------------    write_buf[59] = ((volatile long *)g_sen)[119]>>17>>8&0xffL;
+;*** 182	-----------------------    write_buf[60] = *((volatile long *)C$1+256L)>>17&0xffL;
+;*** 183	-----------------------    write_buf[61] = ((volatile long *)g_sen)[128]>>17>>8&0xffL;
+;*** 185	-----------------------    write_buf[62] = *((volatile long *)C$1+274L)>>17&0xffL;
+;*** 186	-----------------------    write_buf[63] = ((volatile long *)g_sen)[137]>>17>>8&0xffL;
+;*** 189	-----------------------    SpiWriteRom(1u, 0u, 256u, &write_buf);
+;*** 189	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -1471,520 +1372,520 @@ _maxmin_write_rom:
         ADD       SP,#256
 	.dwcfa	0x1d, -260
 ;* AR5   assigned to C$1
-DW$136	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
-	.dwattr DW$136, DW_AT_type(*DW$T$70)
-	.dwattr DW$136, DW_AT_location[DW_OP_reg14]
-DW$137	.dwtag  DW_TAG_variable, DW_AT_name("write_buf"), DW_AT_symbol_name("_write_buf")
-	.dwattr DW$137, DW_AT_type(*DW$T$23)
-	.dwattr DW$137, DW_AT_location[DW_OP_breg20 -256]
-	.dwpsn	"Rom.c",79,9
-        MOVZ      AR4,SP                ; |79| 
-        ADD       AR4,#-256             ; |79| 
-        MOVL      XAR5,#_$T0$1$0        ; |79| 
-        MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |79| 
-        ; call occurs [#___memcpy_ff] ; |79| 
-	.dwpsn	"Rom.c",81,2
+DW$123	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
+	.dwattr DW$123, DW_AT_type(*DW$T$60)
+	.dwattr DW$123, DW_AT_location[DW_OP_reg14]
+DW$124	.dwtag  DW_TAG_variable, DW_AT_name("write_buf"), DW_AT_symbol_name("_write_buf")
+	.dwattr DW$124, DW_AT_type(*DW$T$32)
+	.dwattr DW$124, DW_AT_location[DW_OP_breg20 -256]
+	.dwpsn	"Rom.c",81,9
         MOVZ      AR4,SP                ; |81| 
         ADD       AR4,#-256             ; |81| 
+        MOVL      XAR5,#_$T0$1$0        ; |81| 
+        MOV       ACC,#1 << 8
+        LCR       #___memcpy_ff         ; |81| 
+        ; call occurs [#___memcpy_ff] ; |81| 
+	.dwpsn	"Rom.c",83,2
+        MOVZ      AR4,SP                ; |83| 
+        ADD       AR4,#-256             ; |83| 
         MOVB      XAR5,#0
         MOV       ACC,#1 << 8
-        LCR       #_memset              ; |81| 
-        ; call occurs [#_memset] ; |81| 
-	.dwpsn	"Rom.c",88,2
-        MOVL      XAR5,#_g_sen          ; |88| 
-        MOV       T,#17                 ; |88| 
-        MOVL      ACC,*+XAR5[2]         ; |88| 
-        ASRL      ACC,T                 ; |88| 
-        ANDB      AL,#0xff              ; |88| 
-        MOV       *+FP[4],AL            ; |88| 
-	.dwpsn	"Rom.c",89,2
-        MOV       T,#25                 ; |89| 
-        MOVL      ACC,*+XAR5[2]         ; |89| 
-        ASRL      ACC,T                 ; |89| 
-        ANDB      AL,#0xff              ; |89| 
-        MOV       *+FP[5],AL            ; |89| 
+        LCR       #_memset              ; |83| 
+        ; call occurs [#_memset] ; |83| 
+	.dwpsn	"Rom.c",90,2
+        MOVL      XAR5,#_g_sen          ; |90| 
+        MOV       T,#17                 ; |90| 
+        MOVL      ACC,*+XAR5[2]         ; |90| 
+        ASRL      ACC,T                 ; |90| 
+        ANDB      AL,#0xff              ; |90| 
+        MOV       *+FP[4],AL            ; |90| 
 	.dwpsn	"Rom.c",91,2
-        MOVB      XAR0,#20              ; |91| 
-        MOV       T,#17                 ; |91| 
-        MOVL      ACC,*+XAR5[AR0]       ; |91| 
+        MOV       T,#25                 ; |91| 
+        MOVL      ACC,*+XAR5[2]         ; |91| 
         ASRL      ACC,T                 ; |91| 
         ANDB      AL,#0xff              ; |91| 
-        MOV       *+FP[6],AL            ; |91| 
-	.dwpsn	"Rom.c",92,2
-        MOVW      DP,#_g_sen+20
-        MOV       T,#25                 ; |92| 
-        MOVL      ACC,@_g_sen+20        ; |92| 
-        ASRL      ACC,T                 ; |92| 
-        ANDB      AL,#0xff              ; |92| 
-        MOV       *+FP[7],AL            ; |92| 
+        MOV       *+FP[5],AL            ; |91| 
+	.dwpsn	"Rom.c",93,2
+        MOVB      XAR0,#20              ; |93| 
+        MOV       T,#17                 ; |93| 
+        MOVL      ACC,*+XAR5[AR0]       ; |93| 
+        ASRL      ACC,T                 ; |93| 
+        ANDB      AL,#0xff              ; |93| 
+        MOV       *+FP[6],AL            ; |93| 
 	.dwpsn	"Rom.c",94,2
-        MOVB      XAR0,#38              ; |94| 
-        MOVL      ACC,*+XAR5[AR0]       ; |94| 
-        MOVL      XAR0,#8               ; |94| 
-        MOV       T,#17                 ; |94| 
+        MOVW      DP,#_g_sen+20
+        MOV       T,#25                 ; |94| 
+        MOVL      ACC,@_g_sen+20        ; |94| 
         ASRL      ACC,T                 ; |94| 
         ANDB      AL,#0xff              ; |94| 
-        MOV       *+FP[AR0],AL          ; |94| 
-	.dwpsn	"Rom.c",95,2
-        MOV       T,#25                 ; |95| 
-        MOVL      XAR0,#9               ; |95| 
-        MOVL      ACC,@_g_sen+38        ; |95| 
-        ASRL      ACC,T                 ; |95| 
-        ANDB      AL,#0xff              ; |95| 
-        MOV       *+FP[AR0],AL          ; |95| 
+        MOV       *+FP[7],AL            ; |94| 
+	.dwpsn	"Rom.c",96,2
+        MOVB      XAR0,#38              ; |96| 
+        MOVL      ACC,*+XAR5[AR0]       ; |96| 
+        MOVL      XAR0,#8               ; |96| 
+        MOV       T,#17                 ; |96| 
+        ASRL      ACC,T                 ; |96| 
+        ANDB      AL,#0xff              ; |96| 
+        MOV       *+FP[AR0],AL          ; |96| 
 	.dwpsn	"Rom.c",97,2
-        MOVB      XAR0,#56              ; |97| 
-        MOVL      ACC,*+XAR5[AR0]       ; |97| 
-        MOVL      XAR0,#10              ; |97| 
-        MOV       T,#17                 ; |97| 
+        MOV       T,#25                 ; |97| 
+        MOVL      XAR0,#9               ; |97| 
+        MOVL      ACC,@_g_sen+38        ; |97| 
         ASRL      ACC,T                 ; |97| 
         ANDB      AL,#0xff              ; |97| 
         MOV       *+FP[AR0],AL          ; |97| 
-	.dwpsn	"Rom.c",98,2
-        MOV       T,#25                 ; |98| 
-        MOVL      XAR0,#11              ; |98| 
-        MOVL      ACC,@_g_sen+56        ; |98| 
-        ASRL      ACC,T                 ; |98| 
-        ANDB      AL,#0xff              ; |98| 
-        MOV       *+FP[AR0],AL          ; |98| 
+	.dwpsn	"Rom.c",99,2
+        MOVB      XAR0,#56              ; |99| 
+        MOVL      ACC,*+XAR5[AR0]       ; |99| 
+        MOVL      XAR0,#10              ; |99| 
+        MOV       T,#17                 ; |99| 
+        ASRL      ACC,T                 ; |99| 
+        ANDB      AL,#0xff              ; |99| 
+        MOV       *+FP[AR0],AL          ; |99| 
 	.dwpsn	"Rom.c",100,2
-        MOVB      XAR0,#74              ; |100| 
-        MOVL      ACC,*+XAR5[AR0]       ; |100| 
-        MOVL      XAR0,#12              ; |100| 
-        MOV       T,#17                 ; |100| 
+        MOV       T,#25                 ; |100| 
+        MOVL      XAR0,#11              ; |100| 
+        MOVL      ACC,@_g_sen+56        ; |100| 
         ASRL      ACC,T                 ; |100| 
         ANDB      AL,#0xff              ; |100| 
         MOV       *+FP[AR0],AL          ; |100| 
-	.dwpsn	"Rom.c",101,2
-        MOVW      DP,#_g_sen+74
-        MOV       T,#25                 ; |101| 
-        MOVL      XAR0,#13              ; |101| 
-        MOVL      ACC,@_g_sen+74        ; |101| 
-        ASRL      ACC,T                 ; |101| 
-        ANDB      AL,#0xff              ; |101| 
-        MOV       *+FP[AR0],AL          ; |101| 
+	.dwpsn	"Rom.c",102,2
+        MOVB      XAR0,#74              ; |102| 
+        MOVL      ACC,*+XAR5[AR0]       ; |102| 
+        MOVL      XAR0,#12              ; |102| 
+        MOV       T,#17                 ; |102| 
+        ASRL      ACC,T                 ; |102| 
+        ANDB      AL,#0xff              ; |102| 
+        MOV       *+FP[AR0],AL          ; |102| 
 	.dwpsn	"Rom.c",103,2
-        MOVB      XAR0,#92              ; |103| 
-        MOVL      ACC,*+XAR5[AR0]       ; |103| 
-        MOVL      XAR0,#14              ; |103| 
-        MOV       T,#17                 ; |103| 
+        MOVW      DP,#_g_sen+74
+        MOV       T,#25                 ; |103| 
+        MOVL      XAR0,#13              ; |103| 
+        MOVL      ACC,@_g_sen+74        ; |103| 
         ASRL      ACC,T                 ; |103| 
         ANDB      AL,#0xff              ; |103| 
         MOV       *+FP[AR0],AL          ; |103| 
-	.dwpsn	"Rom.c",104,2
-        MOV       T,#25                 ; |104| 
-        MOVL      XAR0,#15              ; |104| 
-        MOVL      ACC,@_g_sen+92        ; |104| 
-        ASRL      ACC,T                 ; |104| 
-        ANDB      AL,#0xff              ; |104| 
-        MOV       *+FP[AR0],AL          ; |104| 
+	.dwpsn	"Rom.c",105,2
+        MOVB      XAR0,#92              ; |105| 
+        MOVL      ACC,*+XAR5[AR0]       ; |105| 
+        MOVL      XAR0,#14              ; |105| 
+        MOV       T,#17                 ; |105| 
+        ASRL      ACC,T                 ; |105| 
+        ANDB      AL,#0xff              ; |105| 
+        MOV       *+FP[AR0],AL          ; |105| 
 	.dwpsn	"Rom.c",106,2
-        MOVB      XAR0,#110             ; |106| 
-        MOVL      ACC,*+XAR5[AR0]       ; |106| 
-        MOVL      XAR0,#16              ; |106| 
-        MOV       T,#17                 ; |106| 
+        MOV       T,#25                 ; |106| 
+        MOVL      XAR0,#15              ; |106| 
+        MOVL      ACC,@_g_sen+92        ; |106| 
         ASRL      ACC,T                 ; |106| 
         ANDB      AL,#0xff              ; |106| 
         MOV       *+FP[AR0],AL          ; |106| 
-	.dwpsn	"Rom.c",107,2
-        MOV       T,#25                 ; |107| 
-        MOVL      XAR0,#17              ; |107| 
-        MOVL      ACC,@_g_sen+110       ; |107| 
-        ASRL      ACC,T                 ; |107| 
-        ANDB      AL,#0xff              ; |107| 
-        MOV       *+FP[AR0],AL          ; |107| 
+	.dwpsn	"Rom.c",108,2
+        MOVB      XAR0,#110             ; |108| 
+        MOVL      ACC,*+XAR5[AR0]       ; |108| 
+        MOVL      XAR0,#16              ; |108| 
+        MOV       T,#17                 ; |108| 
+        ASRL      ACC,T                 ; |108| 
+        ANDB      AL,#0xff              ; |108| 
+        MOV       *+FP[AR0],AL          ; |108| 
 	.dwpsn	"Rom.c",109,2
-        MOVB      XAR0,#128             ; |109| 
-        MOVL      ACC,*+XAR5[AR0]       ; |109| 
-        MOVL      XAR0,#18              ; |109| 
-        MOV       T,#17                 ; |109| 
+        MOV       T,#25                 ; |109| 
+        MOVL      XAR0,#17              ; |109| 
+        MOVL      ACC,@_g_sen+110       ; |109| 
         ASRL      ACC,T                 ; |109| 
         ANDB      AL,#0xff              ; |109| 
         MOV       *+FP[AR0],AL          ; |109| 
-	.dwpsn	"Rom.c",110,2
-        MOVW      DP,#_g_sen+128
-        MOV       T,#25                 ; |110| 
-        MOVL      XAR0,#19              ; |110| 
-        MOVL      ACC,@_g_sen+128       ; |110| 
-        ASRL      ACC,T                 ; |110| 
-        ANDB      AL,#0xff              ; |110| 
-        MOV       *+FP[AR0],AL          ; |110| 
+	.dwpsn	"Rom.c",111,2
+        MOVB      XAR0,#128             ; |111| 
+        MOVL      ACC,*+XAR5[AR0]       ; |111| 
+        MOVL      XAR0,#18              ; |111| 
+        MOV       T,#17                 ; |111| 
+        ASRL      ACC,T                 ; |111| 
+        ANDB      AL,#0xff              ; |111| 
+        MOV       *+FP[AR0],AL          ; |111| 
 	.dwpsn	"Rom.c",112,2
-        MOVB      XAR0,#146             ; |112| 
-        MOVL      ACC,*+XAR5[AR0]       ; |112| 
-        MOVL      XAR0,#20              ; |112| 
-        MOV       T,#17                 ; |112| 
+        MOVW      DP,#_g_sen+128
+        MOV       T,#25                 ; |112| 
+        MOVL      XAR0,#19              ; |112| 
+        MOVL      ACC,@_g_sen+128       ; |112| 
         ASRL      ACC,T                 ; |112| 
         ANDB      AL,#0xff              ; |112| 
         MOV       *+FP[AR0],AL          ; |112| 
-	.dwpsn	"Rom.c",113,2
-        MOV       T,#25                 ; |113| 
-        MOVL      XAR0,#21              ; |113| 
-        MOVL      ACC,@_g_sen+146       ; |113| 
-        ASRL      ACC,T                 ; |113| 
-        ANDB      AL,#0xff              ; |113| 
-        MOV       *+FP[AR0],AL          ; |113| 
+	.dwpsn	"Rom.c",114,2
+        MOVB      XAR0,#146             ; |114| 
+        MOVL      ACC,*+XAR5[AR0]       ; |114| 
+        MOVL      XAR0,#20              ; |114| 
+        MOV       T,#17                 ; |114| 
+        ASRL      ACC,T                 ; |114| 
+        ANDB      AL,#0xff              ; |114| 
+        MOV       *+FP[AR0],AL          ; |114| 
 	.dwpsn	"Rom.c",115,2
-        MOVB      XAR0,#164             ; |115| 
-        MOVL      ACC,*+XAR5[AR0]       ; |115| 
-        MOVL      XAR0,#22              ; |115| 
-        MOV       T,#17                 ; |115| 
+        MOV       T,#25                 ; |115| 
+        MOVL      XAR0,#21              ; |115| 
+        MOVL      ACC,@_g_sen+146       ; |115| 
         ASRL      ACC,T                 ; |115| 
         ANDB      AL,#0xff              ; |115| 
         MOV       *+FP[AR0],AL          ; |115| 
-	.dwpsn	"Rom.c",116,2
-        MOV       T,#25                 ; |116| 
-        MOVL      XAR0,#23              ; |116| 
-        MOVL      ACC,@_g_sen+164       ; |116| 
-        ASRL      ACC,T                 ; |116| 
-        ANDB      AL,#0xff              ; |116| 
-        MOV       *+FP[AR0],AL          ; |116| 
-	.dwpsn	"Rom.c",118,3
-        MOVB      XAR0,#182             ; |118| 
-        MOVL      ACC,*+XAR5[AR0]       ; |118| 
-        MOVL      XAR0,#24              ; |118| 
-        MOV       T,#17                 ; |118| 
+	.dwpsn	"Rom.c",117,2
+        MOVB      XAR0,#164             ; |117| 
+        MOVL      ACC,*+XAR5[AR0]       ; |117| 
+        MOVL      XAR0,#22              ; |117| 
+        MOV       T,#17                 ; |117| 
+        ASRL      ACC,T                 ; |117| 
+        ANDB      AL,#0xff              ; |117| 
+        MOV       *+FP[AR0],AL          ; |117| 
+	.dwpsn	"Rom.c",118,2
+        MOV       T,#25                 ; |118| 
+        MOVL      XAR0,#23              ; |118| 
+        MOVL      ACC,@_g_sen+164       ; |118| 
         ASRL      ACC,T                 ; |118| 
         ANDB      AL,#0xff              ; |118| 
         MOV       *+FP[AR0],AL          ; |118| 
-	.dwpsn	"Rom.c",119,2
-        MOV       T,#25                 ; |119| 
-        MOVL      XAR0,#25              ; |119| 
-        MOVL      ACC,@_g_sen+182       ; |119| 
-        ASRL      ACC,T                 ; |119| 
-        ANDB      AL,#0xff              ; |119| 
-        MOV       *+FP[AR0],AL          ; |119| 
-	.dwpsn	"Rom.c",121,3
-        MOVB      XAR0,#200             ; |121| 
-        MOVL      ACC,*+XAR5[AR0]       ; |121| 
-        MOVL      XAR0,#26              ; |121| 
-        MOV       T,#17                 ; |121| 
+	.dwpsn	"Rom.c",120,3
+        MOVB      XAR0,#182             ; |120| 
+        MOVL      ACC,*+XAR5[AR0]       ; |120| 
+        MOVL      XAR0,#24              ; |120| 
+        MOV       T,#17                 ; |120| 
+        ASRL      ACC,T                 ; |120| 
+        ANDB      AL,#0xff              ; |120| 
+        MOV       *+FP[AR0],AL          ; |120| 
+	.dwpsn	"Rom.c",121,2
+        MOV       T,#25                 ; |121| 
+        MOVL      XAR0,#25              ; |121| 
+        MOVL      ACC,@_g_sen+182       ; |121| 
         ASRL      ACC,T                 ; |121| 
         ANDB      AL,#0xff              ; |121| 
         MOV       *+FP[AR0],AL          ; |121| 
-	.dwpsn	"Rom.c",122,2
+	.dwpsn	"Rom.c",123,3
+        MOVB      XAR0,#200             ; |123| 
+        MOVL      ACC,*+XAR5[AR0]       ; |123| 
+        MOVL      XAR0,#26              ; |123| 
+        MOV       T,#17                 ; |123| 
+        ASRL      ACC,T                 ; |123| 
+        ANDB      AL,#0xff              ; |123| 
+        MOV       *+FP[AR0],AL          ; |123| 
+	.dwpsn	"Rom.c",124,2
         MOVW      DP,#_g_sen+200
-        MOV       T,#25                 ; |122| 
-        MOVL      XAR0,#27              ; |122| 
-        MOVL      ACC,@_g_sen+200       ; |122| 
-        ASRL      ACC,T                 ; |122| 
-        ANDB      AL,#0xff              ; |122| 
-        MOV       *+FP[AR0],AL          ; |122| 
-	.dwpsn	"Rom.c",124,3
-        MOVB      XAR0,#218             ; |124| 
-        MOVL      ACC,*+XAR5[AR0]       ; |124| 
-        MOVL      XAR0,#28              ; |124| 
-        MOV       T,#17                 ; |124| 
+        MOV       T,#25                 ; |124| 
+        MOVL      XAR0,#27              ; |124| 
+        MOVL      ACC,@_g_sen+200       ; |124| 
         ASRL      ACC,T                 ; |124| 
         ANDB      AL,#0xff              ; |124| 
         MOV       *+FP[AR0],AL          ; |124| 
-	.dwpsn	"Rom.c",125,2
-        MOV       T,#25                 ; |125| 
-        MOVL      XAR0,#29              ; |125| 
-        MOVL      ACC,@_g_sen+218       ; |125| 
-        ASRL      ACC,T                 ; |125| 
-        ANDB      AL,#0xff              ; |125| 
-        MOV       *+FP[AR0],AL          ; |125| 
-	.dwpsn	"Rom.c",127,3
-        MOVB      XAR0,#236             ; |127| 
-        MOVL      ACC,*+XAR5[AR0]       ; |127| 
-        MOVL      XAR0,#30              ; |127| 
-        MOV       T,#17                 ; |127| 
+	.dwpsn	"Rom.c",126,3
+        MOVB      XAR0,#218             ; |126| 
+        MOVL      ACC,*+XAR5[AR0]       ; |126| 
+        MOVL      XAR0,#28              ; |126| 
+        MOV       T,#17                 ; |126| 
+        ASRL      ACC,T                 ; |126| 
+        ANDB      AL,#0xff              ; |126| 
+        MOV       *+FP[AR0],AL          ; |126| 
+	.dwpsn	"Rom.c",127,2
+        MOV       T,#25                 ; |127| 
+        MOVL      XAR0,#29              ; |127| 
+        MOVL      ACC,@_g_sen+218       ; |127| 
         ASRL      ACC,T                 ; |127| 
         ANDB      AL,#0xff              ; |127| 
         MOV       *+FP[AR0],AL          ; |127| 
-	.dwpsn	"Rom.c",128,2
-        MOV       T,#25                 ; |128| 
-        MOVL      XAR0,#31              ; |128| 
-        MOVL      ACC,@_g_sen+236       ; |128| 
-        ASRL      ACC,T                 ; |128| 
-        ANDB      AL,#0xff              ; |128| 
-        MOV       *+FP[AR0],AL          ; |128| 
-	.dwpsn	"Rom.c",130,3
-        MOVB      XAR0,#254             ; |130| 
-        MOVL      ACC,*+XAR5[AR0]       ; |130| 
-        MOVL      XAR0,#32              ; |130| 
-        MOV       T,#17                 ; |130| 
+	.dwpsn	"Rom.c",129,3
+        MOVB      XAR0,#236             ; |129| 
+        MOVL      ACC,*+XAR5[AR0]       ; |129| 
+        MOVL      XAR0,#30              ; |129| 
+        MOV       T,#17                 ; |129| 
+        ASRL      ACC,T                 ; |129| 
+        ANDB      AL,#0xff              ; |129| 
+        MOV       *+FP[AR0],AL          ; |129| 
+	.dwpsn	"Rom.c",130,2
+        MOV       T,#25                 ; |130| 
+        MOVL      XAR0,#31              ; |130| 
+        MOVL      ACC,@_g_sen+236       ; |130| 
         ASRL      ACC,T                 ; |130| 
         ANDB      AL,#0xff              ; |130| 
         MOV       *+FP[AR0],AL          ; |130| 
-	.dwpsn	"Rom.c",131,2
-        MOV       T,#25                 ; |131| 
-        MOVL      XAR0,#33              ; |131| 
-        MOVL      ACC,@_g_sen+254       ; |131| 
-        ASRL      ACC,T                 ; |131| 
-        ANDB      AL,#0xff              ; |131| 
-        MOV       *+FP[AR0],AL          ; |131| 
-	.dwpsn	"Rom.c",133,3
-        MOVL      XAR0,#272             ; |133| 
-        MOVL      ACC,*+XAR5[AR0]       ; |133| 
-        MOVL      XAR0,#34              ; |133| 
-        MOV       T,#17                 ; |133| 
+	.dwpsn	"Rom.c",132,3
+        MOVB      XAR0,#254             ; |132| 
+        MOVL      ACC,*+XAR5[AR0]       ; |132| 
+        MOVL      XAR0,#32              ; |132| 
+        MOV       T,#17                 ; |132| 
+        ASRL      ACC,T                 ; |132| 
+        ANDB      AL,#0xff              ; |132| 
+        MOV       *+FP[AR0],AL          ; |132| 
+	.dwpsn	"Rom.c",133,2
+        MOV       T,#25                 ; |133| 
+        MOVL      XAR0,#33              ; |133| 
+        MOVL      ACC,@_g_sen+254       ; |133| 
         ASRL      ACC,T                 ; |133| 
         ANDB      AL,#0xff              ; |133| 
         MOV       *+FP[AR0],AL          ; |133| 
-	.dwpsn	"Rom.c",134,2
+	.dwpsn	"Rom.c",135,3
+        MOVL      XAR0,#272             ; |135| 
+        MOVL      ACC,*+XAR5[AR0]       ; |135| 
+        MOVL      XAR0,#34              ; |135| 
+        MOV       T,#17                 ; |135| 
+        ASRL      ACC,T                 ; |135| 
+        ANDB      AL,#0xff              ; |135| 
+        MOV       *+FP[AR0],AL          ; |135| 
+	.dwpsn	"Rom.c",136,2
         MOVW      DP,#_g_sen+272
-        MOV       T,#25                 ; |134| 
-        MOVL      XAR0,#35              ; |134| 
-        MOVL      ACC,@_g_sen+272       ; |134| 
-        ASRL      ACC,T                 ; |134| 
-        ANDB      AL,#0xff              ; |134| 
-        MOV       *+FP[AR0],AL          ; |134| 
-	.dwpsn	"Rom.c",138,2
-        MOV       T,#17                 ; |138| 
-        MOVL      XAR0,#36              ; |138| 
-        MOVL      ACC,*+XAR5[4]         ; |138| 
-        ASRL      ACC,T                 ; |138| 
-        ANDB      AL,#0xff              ; |138| 
-        MOV       *+FP[AR0],AL          ; |138| 
-	.dwpsn	"Rom.c",139,2
-        MOV       T,#25                 ; |139| 
-        MOVL      XAR0,#37              ; |139| 
-        MOVL      ACC,*+XAR5[4]         ; |139| 
-        ASRL      ACC,T                 ; |139| 
-        ANDB      AL,#0xff              ; |139| 
-        MOV       *+FP[AR0],AL          ; |139| 
+        MOV       T,#25                 ; |136| 
+        MOVL      XAR0,#35              ; |136| 
+        MOVL      ACC,@_g_sen+272       ; |136| 
+        ASRL      ACC,T                 ; |136| 
+        ANDB      AL,#0xff              ; |136| 
+        MOV       *+FP[AR0],AL          ; |136| 
+	.dwpsn	"Rom.c",140,2
+        MOV       T,#17                 ; |140| 
+        MOVL      XAR0,#36              ; |140| 
+        MOVL      ACC,*+XAR5[4]         ; |140| 
+        ASRL      ACC,T                 ; |140| 
+        ANDB      AL,#0xff              ; |140| 
+        MOV       *+FP[AR0],AL          ; |140| 
 	.dwpsn	"Rom.c",141,2
-        MOVB      XAR0,#22              ; |141| 
-        MOVL      ACC,*+XAR5[AR0]       ; |141| 
-        MOVL      XAR0,#38              ; |141| 
-        MOV       T,#17                 ; |141| 
+        MOV       T,#25                 ; |141| 
+        MOVL      XAR0,#37              ; |141| 
+        MOVL      ACC,*+XAR5[4]         ; |141| 
         ASRL      ACC,T                 ; |141| 
         ANDB      AL,#0xff              ; |141| 
         MOV       *+FP[AR0],AL          ; |141| 
-	.dwpsn	"Rom.c",142,2
-        MOVW      DP,#_g_sen+22
-        MOV       T,#25                 ; |142| 
-        MOVL      XAR0,#39              ; |142| 
-        MOVL      ACC,@_g_sen+22        ; |142| 
-        ASRL      ACC,T                 ; |142| 
-        ANDB      AL,#0xff              ; |142| 
-        MOV       *+FP[AR0],AL          ; |142| 
+	.dwpsn	"Rom.c",143,2
+        MOVB      XAR0,#22              ; |143| 
+        MOVL      ACC,*+XAR5[AR0]       ; |143| 
+        MOVL      XAR0,#38              ; |143| 
+        MOV       T,#17                 ; |143| 
+        ASRL      ACC,T                 ; |143| 
+        ANDB      AL,#0xff              ; |143| 
+        MOV       *+FP[AR0],AL          ; |143| 
 	.dwpsn	"Rom.c",144,2
-        MOVB      XAR0,#40              ; |144| 
-        MOVL      ACC,*+XAR5[AR0]       ; |144| 
-        MOVL      XAR0,#40              ; |144| 
-        MOV       T,#17                 ; |144| 
+        MOVW      DP,#_g_sen+22
+        MOV       T,#25                 ; |144| 
+        MOVL      XAR0,#39              ; |144| 
+        MOVL      ACC,@_g_sen+22        ; |144| 
         ASRL      ACC,T                 ; |144| 
         ANDB      AL,#0xff              ; |144| 
         MOV       *+FP[AR0],AL          ; |144| 
-	.dwpsn	"Rom.c",145,2
-        MOV       T,#25                 ; |145| 
-        MOVL      XAR0,#41              ; |145| 
-        MOVL      ACC,@_g_sen+40        ; |145| 
-        ASRL      ACC,T                 ; |145| 
-        ANDB      AL,#0xff              ; |145| 
-        MOV       *+FP[AR0],AL          ; |145| 
+	.dwpsn	"Rom.c",146,2
+        MOVB      XAR0,#40              ; |146| 
+        MOVL      ACC,*+XAR5[AR0]       ; |146| 
+        MOVL      XAR0,#40              ; |146| 
+        MOV       T,#17                 ; |146| 
+        ASRL      ACC,T                 ; |146| 
+        ANDB      AL,#0xff              ; |146| 
+        MOV       *+FP[AR0],AL          ; |146| 
 	.dwpsn	"Rom.c",147,2
-        MOVB      XAR0,#58              ; |147| 
-        MOVL      ACC,*+XAR5[AR0]       ; |147| 
-        MOVL      XAR0,#42              ; |147| 
-        MOV       T,#17                 ; |147| 
+        MOV       T,#25                 ; |147| 
+        MOVL      XAR0,#41              ; |147| 
+        MOVL      ACC,@_g_sen+40        ; |147| 
         ASRL      ACC,T                 ; |147| 
         ANDB      AL,#0xff              ; |147| 
         MOV       *+FP[AR0],AL          ; |147| 
-	.dwpsn	"Rom.c",148,2
-        MOV       T,#25                 ; |148| 
-        MOVL      XAR0,#43              ; |148| 
-        MOVL      ACC,@_g_sen+58        ; |148| 
-        ASRL      ACC,T                 ; |148| 
-        ANDB      AL,#0xff              ; |148| 
-        MOV       *+FP[AR0],AL          ; |148| 
+	.dwpsn	"Rom.c",149,2
+        MOVB      XAR0,#58              ; |149| 
+        MOVL      ACC,*+XAR5[AR0]       ; |149| 
+        MOVL      XAR0,#42              ; |149| 
+        MOV       T,#17                 ; |149| 
+        ASRL      ACC,T                 ; |149| 
+        ANDB      AL,#0xff              ; |149| 
+        MOV       *+FP[AR0],AL          ; |149| 
 	.dwpsn	"Rom.c",150,2
-        MOVB      XAR0,#76              ; |150| 
-        MOVL      ACC,*+XAR5[AR0]       ; |150| 
-        MOVL      XAR0,#44              ; |150| 
-        MOV       T,#17                 ; |150| 
+        MOV       T,#25                 ; |150| 
+        MOVL      XAR0,#43              ; |150| 
+        MOVL      ACC,@_g_sen+58        ; |150| 
         ASRL      ACC,T                 ; |150| 
         ANDB      AL,#0xff              ; |150| 
         MOV       *+FP[AR0],AL          ; |150| 
-	.dwpsn	"Rom.c",151,2
-        MOVW      DP,#_g_sen+76
-        MOV       T,#25                 ; |151| 
-        MOVL      XAR0,#45              ; |151| 
-        MOVL      ACC,@_g_sen+76        ; |151| 
-        ASRL      ACC,T                 ; |151| 
-        ANDB      AL,#0xff              ; |151| 
-        MOV       *+FP[AR0],AL          ; |151| 
+	.dwpsn	"Rom.c",152,2
+        MOVB      XAR0,#76              ; |152| 
+        MOVL      ACC,*+XAR5[AR0]       ; |152| 
+        MOVL      XAR0,#44              ; |152| 
+        MOV       T,#17                 ; |152| 
+        ASRL      ACC,T                 ; |152| 
+        ANDB      AL,#0xff              ; |152| 
+        MOV       *+FP[AR0],AL          ; |152| 
 	.dwpsn	"Rom.c",153,2
-        MOVB      XAR0,#94              ; |153| 
-        MOVL      ACC,*+XAR5[AR0]       ; |153| 
-        MOVL      XAR0,#46              ; |153| 
-        MOV       T,#17                 ; |153| 
+        MOVW      DP,#_g_sen+76
+        MOV       T,#25                 ; |153| 
+        MOVL      XAR0,#45              ; |153| 
+        MOVL      ACC,@_g_sen+76        ; |153| 
         ASRL      ACC,T                 ; |153| 
         ANDB      AL,#0xff              ; |153| 
         MOV       *+FP[AR0],AL          ; |153| 
-	.dwpsn	"Rom.c",154,2
-        MOV       T,#25                 ; |154| 
-        MOVL      XAR0,#47              ; |154| 
-        MOVL      ACC,@_g_sen+94        ; |154| 
-        ASRL      ACC,T                 ; |154| 
-        ANDB      AL,#0xff              ; |154| 
-        MOV       *+FP[AR0],AL          ; |154| 
+	.dwpsn	"Rom.c",155,2
+        MOVB      XAR0,#94              ; |155| 
+        MOVL      ACC,*+XAR5[AR0]       ; |155| 
+        MOVL      XAR0,#46              ; |155| 
+        MOV       T,#17                 ; |155| 
+        ASRL      ACC,T                 ; |155| 
+        ANDB      AL,#0xff              ; |155| 
+        MOV       *+FP[AR0],AL          ; |155| 
 	.dwpsn	"Rom.c",156,2
-        MOVB      XAR0,#112             ; |156| 
-        MOVL      ACC,*+XAR5[AR0]       ; |156| 
-        MOVL      XAR0,#48              ; |156| 
-        MOV       T,#17                 ; |156| 
+        MOV       T,#25                 ; |156| 
+        MOVL      XAR0,#47              ; |156| 
+        MOVL      ACC,@_g_sen+94        ; |156| 
         ASRL      ACC,T                 ; |156| 
         ANDB      AL,#0xff              ; |156| 
         MOV       *+FP[AR0],AL          ; |156| 
-	.dwpsn	"Rom.c",157,2
-        MOV       T,#25                 ; |157| 
-        MOVL      XAR0,#49              ; |157| 
-        MOVL      ACC,@_g_sen+112       ; |157| 
-        ASRL      ACC,T                 ; |157| 
-        ANDB      AL,#0xff              ; |157| 
-        MOV       *+FP[AR0],AL          ; |157| 
+	.dwpsn	"Rom.c",158,2
+        MOVB      XAR0,#112             ; |158| 
+        MOVL      ACC,*+XAR5[AR0]       ; |158| 
+        MOVL      XAR0,#48              ; |158| 
+        MOV       T,#17                 ; |158| 
+        ASRL      ACC,T                 ; |158| 
+        ANDB      AL,#0xff              ; |158| 
+        MOV       *+FP[AR0],AL          ; |158| 
 	.dwpsn	"Rom.c",159,2
-        MOVB      XAR0,#130             ; |159| 
-        MOVL      ACC,*+XAR5[AR0]       ; |159| 
-        MOVL      XAR0,#50              ; |159| 
-        MOV       T,#17                 ; |159| 
+        MOV       T,#25                 ; |159| 
+        MOVL      XAR0,#49              ; |159| 
+        MOVL      ACC,@_g_sen+112       ; |159| 
         ASRL      ACC,T                 ; |159| 
         ANDB      AL,#0xff              ; |159| 
         MOV       *+FP[AR0],AL          ; |159| 
-	.dwpsn	"Rom.c",160,2
-        MOVW      DP,#_g_sen+130
-        MOV       T,#25                 ; |160| 
-        MOVL      XAR0,#51              ; |160| 
-        MOVL      ACC,@_g_sen+130       ; |160| 
-        ASRL      ACC,T                 ; |160| 
-        ANDB      AL,#0xff              ; |160| 
-        MOV       *+FP[AR0],AL          ; |160| 
+	.dwpsn	"Rom.c",161,2
+        MOVB      XAR0,#130             ; |161| 
+        MOVL      ACC,*+XAR5[AR0]       ; |161| 
+        MOVL      XAR0,#50              ; |161| 
+        MOV       T,#17                 ; |161| 
+        ASRL      ACC,T                 ; |161| 
+        ANDB      AL,#0xff              ; |161| 
+        MOV       *+FP[AR0],AL          ; |161| 
 	.dwpsn	"Rom.c",162,2
-        MOVB      XAR0,#148             ; |162| 
-        MOVL      ACC,*+XAR5[AR0]       ; |162| 
-        MOVL      XAR0,#52              ; |162| 
-        MOV       T,#17                 ; |162| 
+        MOVW      DP,#_g_sen+130
+        MOV       T,#25                 ; |162| 
+        MOVL      XAR0,#51              ; |162| 
+        MOVL      ACC,@_g_sen+130       ; |162| 
         ASRL      ACC,T                 ; |162| 
         ANDB      AL,#0xff              ; |162| 
         MOV       *+FP[AR0],AL          ; |162| 
-	.dwpsn	"Rom.c",163,2
-        MOV       T,#25                 ; |163| 
-        MOVL      XAR0,#53              ; |163| 
-        MOVL      ACC,@_g_sen+148       ; |163| 
-        ASRL      ACC,T                 ; |163| 
-        ANDB      AL,#0xff              ; |163| 
-        MOV       *+FP[AR0],AL          ; |163| 
+	.dwpsn	"Rom.c",164,2
+        MOVB      XAR0,#148             ; |164| 
+        MOVL      ACC,*+XAR5[AR0]       ; |164| 
+        MOVL      XAR0,#52              ; |164| 
+        MOV       T,#17                 ; |164| 
+        ASRL      ACC,T                 ; |164| 
+        ANDB      AL,#0xff              ; |164| 
+        MOV       *+FP[AR0],AL          ; |164| 
 	.dwpsn	"Rom.c",165,2
-        MOVB      XAR0,#166             ; |165| 
-        MOVL      ACC,*+XAR5[AR0]       ; |165| 
-        MOVL      XAR0,#54              ; |165| 
-        MOV       T,#17                 ; |165| 
+        MOV       T,#25                 ; |165| 
+        MOVL      XAR0,#53              ; |165| 
+        MOVL      ACC,@_g_sen+148       ; |165| 
         ASRL      ACC,T                 ; |165| 
         ANDB      AL,#0xff              ; |165| 
         MOV       *+FP[AR0],AL          ; |165| 
-	.dwpsn	"Rom.c",166,2
-        MOV       T,#25                 ; |166| 
-        MOVL      XAR0,#55              ; |166| 
-        MOVL      ACC,@_g_sen+166       ; |166| 
-        ASRL      ACC,T                 ; |166| 
-        ANDB      AL,#0xff              ; |166| 
-        MOV       *+FP[AR0],AL          ; |166| 
+	.dwpsn	"Rom.c",167,2
+        MOVB      XAR0,#166             ; |167| 
+        MOVL      ACC,*+XAR5[AR0]       ; |167| 
+        MOVL      XAR0,#54              ; |167| 
+        MOV       T,#17                 ; |167| 
+        ASRL      ACC,T                 ; |167| 
+        ANDB      AL,#0xff              ; |167| 
+        MOV       *+FP[AR0],AL          ; |167| 
 	.dwpsn	"Rom.c",168,2
-        MOVB      XAR0,#184             ; |168| 
-        MOVL      ACC,*+XAR5[AR0]       ; |168| 
-        MOVL      XAR0,#56              ; |168| 
-        MOV       T,#17                 ; |168| 
+        MOV       T,#25                 ; |168| 
+        MOVL      XAR0,#55              ; |168| 
+        MOVL      ACC,@_g_sen+166       ; |168| 
         ASRL      ACC,T                 ; |168| 
         ANDB      AL,#0xff              ; |168| 
         MOV       *+FP[AR0],AL          ; |168| 
-	.dwpsn	"Rom.c",169,2
-        MOV       T,#25                 ; |169| 
-        MOVL      XAR0,#57              ; |169| 
-        MOVL      ACC,@_g_sen+184       ; |169| 
-        ASRL      ACC,T                 ; |169| 
-        ANDB      AL,#0xff              ; |169| 
-        MOV       *+FP[AR0],AL          ; |169| 
+	.dwpsn	"Rom.c",170,2
+        MOVB      XAR0,#184             ; |170| 
+        MOVL      ACC,*+XAR5[AR0]       ; |170| 
+        MOVL      XAR0,#56              ; |170| 
+        MOV       T,#17                 ; |170| 
+        ASRL      ACC,T                 ; |170| 
+        ANDB      AL,#0xff              ; |170| 
+        MOV       *+FP[AR0],AL          ; |170| 
 	.dwpsn	"Rom.c",171,2
-        MOVB      XAR0,#202             ; |171| 
-        MOVL      ACC,*+XAR5[AR0]       ; |171| 
-        MOVL      XAR0,#58              ; |171| 
-        MOV       T,#17                 ; |171| 
+        MOV       T,#25                 ; |171| 
+        MOVL      XAR0,#57              ; |171| 
+        MOVL      ACC,@_g_sen+184       ; |171| 
         ASRL      ACC,T                 ; |171| 
         ANDB      AL,#0xff              ; |171| 
         MOV       *+FP[AR0],AL          ; |171| 
-	.dwpsn	"Rom.c",172,2
-        MOVW      DP,#_g_sen+202
-        MOV       T,#25                 ; |172| 
-        MOVL      XAR0,#59              ; |172| 
-        MOVL      ACC,@_g_sen+202       ; |172| 
-        ASRL      ACC,T                 ; |172| 
-        ANDB      AL,#0xff              ; |172| 
-        MOV       *+FP[AR0],AL          ; |172| 
+	.dwpsn	"Rom.c",173,2
+        MOVB      XAR0,#202             ; |173| 
+        MOVL      ACC,*+XAR5[AR0]       ; |173| 
+        MOVL      XAR0,#58              ; |173| 
+        MOV       T,#17                 ; |173| 
+        ASRL      ACC,T                 ; |173| 
+        ANDB      AL,#0xff              ; |173| 
+        MOV       *+FP[AR0],AL          ; |173| 
 	.dwpsn	"Rom.c",174,2
-        MOVB      XAR0,#220             ; |174| 
-        MOVL      ACC,*+XAR5[AR0]       ; |174| 
-        MOVL      XAR0,#60              ; |174| 
-        MOV       T,#17                 ; |174| 
+        MOVW      DP,#_g_sen+202
+        MOV       T,#25                 ; |174| 
+        MOVL      XAR0,#59              ; |174| 
+        MOVL      ACC,@_g_sen+202       ; |174| 
         ASRL      ACC,T                 ; |174| 
         ANDB      AL,#0xff              ; |174| 
         MOV       *+FP[AR0],AL          ; |174| 
-	.dwpsn	"Rom.c",175,2
-        MOV       T,#25                 ; |175| 
-        MOVL      XAR0,#61              ; |175| 
-        MOVL      ACC,@_g_sen+220       ; |175| 
-        ASRL      ACC,T                 ; |175| 
-        ANDB      AL,#0xff              ; |175| 
-        MOV       *+FP[AR0],AL          ; |175| 
+	.dwpsn	"Rom.c",176,2
+        MOVB      XAR0,#220             ; |176| 
+        MOVL      ACC,*+XAR5[AR0]       ; |176| 
+        MOVL      XAR0,#60              ; |176| 
+        MOV       T,#17                 ; |176| 
+        ASRL      ACC,T                 ; |176| 
+        ANDB      AL,#0xff              ; |176| 
+        MOV       *+FP[AR0],AL          ; |176| 
 	.dwpsn	"Rom.c",177,2
-        MOVB      XAR0,#238             ; |177| 
-        MOVL      ACC,*+XAR5[AR0]       ; |177| 
-        MOVL      XAR0,#62              ; |177| 
-        MOV       T,#17                 ; |177| 
+        MOV       T,#25                 ; |177| 
+        MOVL      XAR0,#61              ; |177| 
+        MOVL      ACC,@_g_sen+220       ; |177| 
         ASRL      ACC,T                 ; |177| 
         ANDB      AL,#0xff              ; |177| 
         MOV       *+FP[AR0],AL          ; |177| 
-	.dwpsn	"Rom.c",178,2
-        MOV       T,#25                 ; |178| 
-        MOVL      XAR0,#63              ; |178| 
-        MOVL      ACC,@_g_sen+238       ; |178| 
-        ASRL      ACC,T                 ; |178| 
-        ANDB      AL,#0xff              ; |178| 
-        MOV       *+FP[AR0],AL          ; |178| 
+	.dwpsn	"Rom.c",179,2
+        MOVB      XAR0,#238             ; |179| 
+        MOVL      ACC,*+XAR5[AR0]       ; |179| 
+        MOVL      XAR0,#62              ; |179| 
+        MOV       T,#17                 ; |179| 
+        ASRL      ACC,T                 ; |179| 
+        ANDB      AL,#0xff              ; |179| 
+        MOV       *+FP[AR0],AL          ; |179| 
 	.dwpsn	"Rom.c",180,2
-        MOVL      XAR0,#256             ; |180| 
-        MOVL      ACC,*+XAR5[AR0]       ; |180| 
-        MOVL      XAR0,#64              ; |180| 
-        MOV       T,#17                 ; |180| 
+        MOV       T,#25                 ; |180| 
+        MOVL      XAR0,#63              ; |180| 
+        MOVL      ACC,@_g_sen+238       ; |180| 
         ASRL      ACC,T                 ; |180| 
         ANDB      AL,#0xff              ; |180| 
         MOV       *+FP[AR0],AL          ; |180| 
-	.dwpsn	"Rom.c",181,2
-        MOVW      DP,#_g_sen+256
-        MOV       T,#25                 ; |181| 
-        MOVL      XAR0,#65              ; |181| 
-        MOVL      ACC,@_g_sen+256       ; |181| 
-        ASRL      ACC,T                 ; |181| 
-        ANDB      AL,#0xff              ; |181| 
-        MOV       *+FP[AR0],AL          ; |181| 
+	.dwpsn	"Rom.c",182,2
+        MOVL      XAR0,#256             ; |182| 
+        MOVL      ACC,*+XAR5[AR0]       ; |182| 
+        MOVL      XAR0,#64              ; |182| 
+        MOV       T,#17                 ; |182| 
+        ASRL      ACC,T                 ; |182| 
+        ANDB      AL,#0xff              ; |182| 
+        MOV       *+FP[AR0],AL          ; |182| 
 	.dwpsn	"Rom.c",183,2
-        MOVL      XAR0,#274             ; |183| 
-        MOVL      ACC,*+XAR5[AR0]       ; |183| 
-        MOVL      XAR0,#66              ; |183| 
-        MOV       T,#17                 ; |183| 
+        MOVW      DP,#_g_sen+256
+        MOV       T,#25                 ; |183| 
+        MOVL      XAR0,#65              ; |183| 
+        MOVL      ACC,@_g_sen+256       ; |183| 
         ASRL      ACC,T                 ; |183| 
         ANDB      AL,#0xff              ; |183| 
         MOV       *+FP[AR0],AL          ; |183| 
-	.dwpsn	"Rom.c",184,2
-        MOV       T,#25                 ; |184| 
-        MOVL      XAR0,#67              ; |184| 
-        MOVL      ACC,@_g_sen+274       ; |184| 
-        ASRL      ACC,T                 ; |184| 
-        ANDB      AL,#0xff              ; |184| 
-        MOV       *+FP[AR0],AL          ; |184| 
+	.dwpsn	"Rom.c",185,2
+        MOVL      XAR0,#274             ; |185| 
+        MOVL      ACC,*+XAR5[AR0]       ; |185| 
+        MOVL      XAR0,#66              ; |185| 
+        MOV       T,#17                 ; |185| 
+        ASRL      ACC,T                 ; |185| 
+        ANDB      AL,#0xff              ; |185| 
+        MOV       *+FP[AR0],AL          ; |185| 
+	.dwpsn	"Rom.c",186,2
+        MOV       T,#25                 ; |186| 
+        MOVL      XAR0,#67              ; |186| 
+        MOVL      ACC,@_g_sen+274       ; |186| 
+        ASRL      ACC,T                 ; |186| 
+        ANDB      AL,#0xff              ; |186| 
+        MOV       *+FP[AR0],AL          ; |186| 
         MOVB      AH,#0
-	.dwpsn	"Rom.c",187,2
-        MOVZ      AR4,SP                ; |187| 
-        MOVL      XAR5,#256             ; |187| 
-        MOVB      AL,#1                 ; |187| 
-        ADD       AR4,#-256             ; |187| 
-        LCR       #_SpiWriteRom         ; |187| 
-        ; call occurs [#_SpiWriteRom] ; |187| 
-	.dwpsn	"Rom.c",190,1
+	.dwpsn	"Rom.c",189,2
+        MOVZ      AR4,SP                ; |189| 
+        MOVL      XAR5,#256             ; |189| 
+        MOVB      AL,#1                 ; |189| 
+        ADD       AR4,#-256             ; |189| 
+        LCR       #_SpiWriteRom         ; |189| 
+        ; call occurs [#_SpiWriteRom] ; |189| 
+	.dwpsn	"Rom.c",192,1
         ADD       SP,#-256
 	.dwcfa	0x1d, -4
         MOVL      XAR2,*--SP
@@ -1992,32 +1893,32 @@ DW$137	.dwtag  DW_TAG_variable, DW_AT_name("write_buf"), DW_AT_symbol_name("_wri
 	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$135, DW_AT_end_file("Rom.c")
-	.dwattr DW$135, DW_AT_end_line(0xbe)
-	.dwattr DW$135, DW_AT_end_column(0x01)
+	.dwattr DW$122, DW_AT_end_file("Rom.c")
+	.dwattr DW$122, DW_AT_end_line(0xc0)
+	.dwattr DW$122, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$135
+	.dwendtag DW$122
 
 	.sect	".text"
 	.global	_maxmin_read_rom
 
-DW$138	.dwtag  DW_TAG_subprogram, DW_AT_name("maxmin_read_rom"), DW_AT_symbol_name("_maxmin_read_rom")
-	.dwattr DW$138, DW_AT_low_pc(_maxmin_read_rom)
-	.dwattr DW$138, DW_AT_high_pc(0x00)
-	.dwattr DW$138, DW_AT_begin_file("Rom.c")
-	.dwattr DW$138, DW_AT_begin_line(0xc0)
-	.dwattr DW$138, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",193,1
+DW$125	.dwtag  DW_TAG_subprogram, DW_AT_name("maxmin_read_rom"), DW_AT_symbol_name("_maxmin_read_rom")
+	.dwattr DW$125, DW_AT_low_pc(_maxmin_read_rom)
+	.dwattr DW$125, DW_AT_high_pc(0x00)
+	.dwattr DW$125, DW_AT_begin_file("Rom.c")
+	.dwattr DW$125, DW_AT_begin_line(0xc2)
+	.dwattr DW$125, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",195,1
 
 	.dwfde DW$CIE
 
 ;***************************************************************
-;* FNAME: _maxmin_read_rom              FR SIZE: 274           *
+;* FNAME: _maxmin_read_rom              FR SIZE: 264           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
 ;* FUNCTION PROPERTIES                                         *
-;*                           10 Parameter, 258 Auto,  6 SOE     *
+;*                            2 Parameter, 256 Auto,  6 SOE     *
 ;***************************************************************
 
 
@@ -2027,78 +1928,77 @@ DW$138	.dwtag  DW_TAG_subprogram, DW_AT_name("maxmin_read_rom"), DW_AT_symbol_na
 ;*                                                             *
 ;***************************************************************
 _maxmin_read_rom:
-;*** 196	-----------------------    read_buf[] = {...};
-;*** 198	-----------------------    memset(&read_buf, 0, 256uL);
-;*** 201	-----------------------    SpiReadRom(1u, 0u, 256u, &read_buf);
-;*** 205	-----------------------    C$1 = &g_sen[0];
-;*** 205	-----------------------    (*C$1).iq17min_value = (long)(read_buf[0]&0xffu)<<17;
-;*** 206	-----------------------    (*C$1).iq17min_value |= (long)(read_buf[1]<<8)<<17;
-;*** 208	-----------------------    *((volatile long *)C$1+20L) = (long)(read_buf[2]&0xffu)<<17;
-;*** 209	-----------------------    ((volatile long *)g_sen)[10] |= (long)(read_buf[3]<<8)<<17;
-;*** 211	-----------------------    *((volatile long *)C$1+38L) = (long)(read_buf[4]&0xffu)<<17;
-;*** 212	-----------------------    ((volatile long *)g_sen)[19] |= (long)(read_buf[5]<<8)<<17;
-;*** 214	-----------------------    *((volatile long *)C$1+56L) = (long)(read_buf[6]&0xffu)<<17;
-;*** 215	-----------------------    ((volatile long *)g_sen)[28] |= (long)(read_buf[7]<<8)<<17;
-;*** 217	-----------------------    *((volatile long *)C$1+74L) = (long)(read_buf[8]&0xffu)<<17;
-;*** 218	-----------------------    ((volatile long *)g_sen)[37] |= (long)(read_buf[9]<<8)<<17;
-;*** 220	-----------------------    *((volatile long *)C$1+92L) = (long)(read_buf[10]&0xffu)<<17;
-;*** 221	-----------------------    ((volatile long *)g_sen)[46] |= (long)(read_buf[11]<<8)<<17;
-;*** 223	-----------------------    *((volatile long *)C$1+110L) = (long)(read_buf[12]&0xffu)<<17;
-;*** 224	-----------------------    ((volatile long *)g_sen)[55] |= (long)(read_buf[13]<<8)<<17;
-;*** 226	-----------------------    *((volatile long *)C$1+128L) = (long)(read_buf[14]&0xffu)<<17;
-;*** 227	-----------------------    ((volatile long *)g_sen)[64] |= (long)(read_buf[15]<<8)<<17;
-;*** 229	-----------------------    *((volatile long *)C$1+146L) = (long)(read_buf[16]&0xffu)<<17;
-;*** 230	-----------------------    ((volatile long *)g_sen)[73] |= (long)(read_buf[17]<<8)<<17;
-;*** 232	-----------------------    *((volatile long *)C$1+164L) = (long)(read_buf[18]&0xffu)<<17;
-;*** 233	-----------------------    ((volatile long *)g_sen)[82] |= (long)(read_buf[19]<<8)<<17;
-;*** 235	-----------------------    *((volatile long *)C$1+182L) = (long)(read_buf[20]&0xffu)<<17;
-;*** 236	-----------------------    ((volatile long *)g_sen)[91] |= (long)(read_buf[21]<<8)<<17;
-;*** 238	-----------------------    *((volatile long *)C$1+200L) = (long)(read_buf[22]&0xffu)<<17;
-;*** 239	-----------------------    ((volatile long *)g_sen)[100] |= (long)(read_buf[23]<<8)<<17;
-;*** 241	-----------------------    *((volatile long *)C$1+218L) = (long)(read_buf[24]&0xffu)<<17;
-;*** 242	-----------------------    ((volatile long *)g_sen)[109] |= (long)(read_buf[25]<<8)<<17;
-;*** 244	-----------------------    *((volatile long *)C$1+236L) = (long)(read_buf[26]&0xffu)<<17;
-;*** 245	-----------------------    ((volatile long *)g_sen)[118] |= (long)(read_buf[27]<<8)<<17;
-;*** 247	-----------------------    *((volatile long *)C$1+254L) = (long)(read_buf[28]&0xffu)<<17;
-;*** 248	-----------------------    ((volatile long *)g_sen)[127] |= (long)(read_buf[29]<<8)<<17;
-;*** 250	-----------------------    *((volatile long *)C$1+272L) = (long)(read_buf[30]&0xffu)<<17;
-;*** 251	-----------------------    ((volatile long *)g_sen)[136] |= (long)(read_buf[31]<<8)<<17;
-;*** 257	-----------------------    (*C$1).iq17max_value = (long)(read_buf[32]&0xffu)<<17;
-;*** 258	-----------------------    (*C$1).iq17max_value |= (long)(read_buf[33]<<8)<<17;
-;*** 260	-----------------------    *((volatile long *)C$1+22L) = (long)(read_buf[34]&0xffu)<<17;
-;*** 261	-----------------------    ((volatile long *)g_sen)[11] |= (long)(read_buf[35]<<8)<<17;
-;*** 263	-----------------------    *((volatile long *)C$1+40L) = (long)(read_buf[36]&0xffu)<<17;
-;*** 264	-----------------------    ((volatile long *)g_sen)[20] |= (long)(read_buf[37]<<8)<<17;
-;*** 266	-----------------------    *((volatile long *)C$1+58L) = (long)(read_buf[38]&0xffu)<<17;
-;*** 267	-----------------------    ((volatile long *)g_sen)[29] |= (long)(read_buf[39]<<8)<<17;
-;*** 269	-----------------------    *((volatile long *)C$1+76L) = (long)(read_buf[40]&0xffu)<<17;
-;*** 270	-----------------------    ((volatile long *)g_sen)[38] |= (long)(read_buf[41]<<8)<<17;
-;*** 272	-----------------------    *((volatile long *)C$1+94L) = (long)(read_buf[42]&0xffu)<<17;
-;*** 273	-----------------------    ((volatile long *)g_sen)[47] |= (long)(read_buf[43]<<8)<<17;
-;*** 275	-----------------------    *((volatile long *)C$1+112L) = (long)(read_buf[44]&0xffu)<<17;
-;*** 276	-----------------------    ((volatile long *)g_sen)[56] |= (long)(read_buf[45]<<8)<<17;
-;*** 278	-----------------------    *((volatile long *)C$1+130L) = (long)(read_buf[46]&0xffu)<<17;
-;*** 279	-----------------------    ((volatile long *)g_sen)[65] |= (long)(read_buf[47]<<8)<<17;
-;*** 281	-----------------------    *((volatile long *)C$1+148L) = (long)(read_buf[48]&0xffu)<<17;
-;*** 282	-----------------------    ((volatile long *)g_sen)[74] |= (long)(read_buf[49]<<8)<<17;
-;*** 284	-----------------------    *((volatile long *)C$1+166L) = (long)(read_buf[50]&0xffu)<<17;
-;*** 285	-----------------------    ((volatile long *)g_sen)[83] |= (long)(read_buf[51]<<8)<<17;
-;*** 287	-----------------------    *((volatile long *)C$1+184L) = (long)(read_buf[52]&0xffu)<<17;
-;*** 288	-----------------------    ((volatile long *)g_sen)[92] |= (long)(read_buf[53]<<8)<<17;
-;*** 290	-----------------------    *((volatile long *)C$1+202L) = (long)(read_buf[54]&0xffu)<<17;
-;*** 291	-----------------------    ((volatile long *)g_sen)[101] |= (long)(read_buf[55]<<8)<<17;
-;*** 293	-----------------------    *((volatile long *)C$1+220L) = (long)(read_buf[56]&0xffu)<<17;
-;*** 294	-----------------------    ((volatile long *)g_sen)[110] |= (long)(read_buf[57]<<8)<<17;
-;*** 296	-----------------------    *((volatile long *)C$1+238L) = (long)(read_buf[58]&0xffu)<<17;
-;*** 297	-----------------------    ((volatile long *)g_sen)[119] |= (long)(read_buf[59]<<8)<<17;
-;*** 299	-----------------------    *((volatile long *)C$1+256L) = (long)(read_buf[60]&0xffu)<<17;
-;*** 300	-----------------------    ((volatile long *)g_sen)[128] |= (long)(read_buf[61]<<8)<<17;
-;*** 302	-----------------------    *((volatile long *)C$1+274L) = (long)(read_buf[62]&0xffu)<<17;
-;*** 303	-----------------------    ((volatile long *)g_sen)[137] |= (long)(read_buf[63]<<8)<<17;
+;*** 198	-----------------------    read_buf[] = {...};
+;*** 200	-----------------------    memset(&read_buf, 0, 256uL);
+;*** 203	-----------------------    SpiReadRom(1u, 0u, 256u, &read_buf);
+;*** 207	-----------------------    C$1 = &g_sen[0];
+;*** 207	-----------------------    (*C$1).iq17min_value = (long)(read_buf[0]&0xffu)<<17;
+;*** 208	-----------------------    (*C$1).iq17min_value |= (long)(read_buf[1]<<8)<<17;
+;*** 210	-----------------------    *((volatile long *)C$1+20L) = (long)(read_buf[2]&0xffu)<<17;
+;*** 211	-----------------------    ((volatile long *)g_sen)[10] |= (long)(read_buf[3]<<8)<<17;
+;*** 213	-----------------------    *((volatile long *)C$1+38L) = (long)(read_buf[4]&0xffu)<<17;
+;*** 214	-----------------------    ((volatile long *)g_sen)[19] |= (long)(read_buf[5]<<8)<<17;
+;*** 216	-----------------------    *((volatile long *)C$1+56L) = (long)(read_buf[6]&0xffu)<<17;
+;*** 217	-----------------------    ((volatile long *)g_sen)[28] |= (long)(read_buf[7]<<8)<<17;
+;*** 219	-----------------------    *((volatile long *)C$1+74L) = (long)(read_buf[8]&0xffu)<<17;
+;*** 220	-----------------------    ((volatile long *)g_sen)[37] |= (long)(read_buf[9]<<8)<<17;
+;*** 222	-----------------------    *((volatile long *)C$1+92L) = (long)(read_buf[10]&0xffu)<<17;
+;*** 223	-----------------------    ((volatile long *)g_sen)[46] |= (long)(read_buf[11]<<8)<<17;
+;*** 225	-----------------------    *((volatile long *)C$1+110L) = (long)(read_buf[12]&0xffu)<<17;
+;*** 226	-----------------------    ((volatile long *)g_sen)[55] |= (long)(read_buf[13]<<8)<<17;
+;*** 228	-----------------------    *((volatile long *)C$1+128L) = (long)(read_buf[14]&0xffu)<<17;
+;*** 229	-----------------------    ((volatile long *)g_sen)[64] |= (long)(read_buf[15]<<8)<<17;
+;*** 231	-----------------------    *((volatile long *)C$1+146L) = (long)(read_buf[16]&0xffu)<<17;
+;*** 232	-----------------------    ((volatile long *)g_sen)[73] |= (long)(read_buf[17]<<8)<<17;
+;*** 234	-----------------------    *((volatile long *)C$1+164L) = (long)(read_buf[18]&0xffu)<<17;
+;*** 235	-----------------------    ((volatile long *)g_sen)[82] |= (long)(read_buf[19]<<8)<<17;
+;*** 237	-----------------------    *((volatile long *)C$1+182L) = (long)(read_buf[20]&0xffu)<<17;
+;*** 238	-----------------------    ((volatile long *)g_sen)[91] |= (long)(read_buf[21]<<8)<<17;
+;*** 240	-----------------------    *((volatile long *)C$1+200L) = (long)(read_buf[22]&0xffu)<<17;
+;*** 241	-----------------------    ((volatile long *)g_sen)[100] |= (long)(read_buf[23]<<8)<<17;
+;*** 243	-----------------------    *((volatile long *)C$1+218L) = (long)(read_buf[24]&0xffu)<<17;
+;*** 244	-----------------------    ((volatile long *)g_sen)[109] |= (long)(read_buf[25]<<8)<<17;
+;*** 246	-----------------------    *((volatile long *)C$1+236L) = (long)(read_buf[26]&0xffu)<<17;
+;*** 247	-----------------------    ((volatile long *)g_sen)[118] |= (long)(read_buf[27]<<8)<<17;
+;*** 249	-----------------------    *((volatile long *)C$1+254L) = (long)(read_buf[28]&0xffu)<<17;
+;*** 250	-----------------------    ((volatile long *)g_sen)[127] |= (long)(read_buf[29]<<8)<<17;
+;*** 252	-----------------------    *((volatile long *)C$1+272L) = (long)(read_buf[30]&0xffu)<<17;
+;*** 253	-----------------------    ((volatile long *)g_sen)[136] |= (long)(read_buf[31]<<8)<<17;
+;*** 259	-----------------------    (*C$1).iq17max_value = (long)(read_buf[32]&0xffu)<<17;
+;*** 260	-----------------------    (*C$1).iq17max_value |= (long)(read_buf[33]<<8)<<17;
+;*** 262	-----------------------    *((volatile long *)C$1+22L) = (long)(read_buf[34]&0xffu)<<17;
+;*** 263	-----------------------    ((volatile long *)g_sen)[11] |= (long)(read_buf[35]<<8)<<17;
+;*** 265	-----------------------    *((volatile long *)C$1+40L) = (long)(read_buf[36]&0xffu)<<17;
+;*** 266	-----------------------    ((volatile long *)g_sen)[20] |= (long)(read_buf[37]<<8)<<17;
+;*** 268	-----------------------    *((volatile long *)C$1+58L) = (long)(read_buf[38]&0xffu)<<17;
+;*** 269	-----------------------    ((volatile long *)g_sen)[29] |= (long)(read_buf[39]<<8)<<17;
+;*** 271	-----------------------    *((volatile long *)C$1+76L) = (long)(read_buf[40]&0xffu)<<17;
+;*** 272	-----------------------    ((volatile long *)g_sen)[38] |= (long)(read_buf[41]<<8)<<17;
+;*** 274	-----------------------    *((volatile long *)C$1+94L) = (long)(read_buf[42]&0xffu)<<17;
+;*** 275	-----------------------    ((volatile long *)g_sen)[47] |= (long)(read_buf[43]<<8)<<17;
+;*** 277	-----------------------    *((volatile long *)C$1+112L) = (long)(read_buf[44]&0xffu)<<17;
+;*** 278	-----------------------    ((volatile long *)g_sen)[56] |= (long)(read_buf[45]<<8)<<17;
+;*** 280	-----------------------    *((volatile long *)C$1+130L) = (long)(read_buf[46]&0xffu)<<17;
+;*** 281	-----------------------    ((volatile long *)g_sen)[65] |= (long)(read_buf[47]<<8)<<17;
+;*** 283	-----------------------    *((volatile long *)C$1+148L) = (long)(read_buf[48]&0xffu)<<17;
+;*** 284	-----------------------    ((volatile long *)g_sen)[74] |= (long)(read_buf[49]<<8)<<17;
+;*** 286	-----------------------    *((volatile long *)C$1+166L) = (long)(read_buf[50]&0xffu)<<17;
+;*** 287	-----------------------    ((volatile long *)g_sen)[83] |= (long)(read_buf[51]<<8)<<17;
+;*** 289	-----------------------    *((volatile long *)C$1+184L) = (long)(read_buf[52]&0xffu)<<17;
+;*** 290	-----------------------    ((volatile long *)g_sen)[92] |= (long)(read_buf[53]<<8)<<17;
+;*** 292	-----------------------    *((volatile long *)C$1+202L) = (long)(read_buf[54]&0xffu)<<17;
+;*** 293	-----------------------    ((volatile long *)g_sen)[101] |= (long)(read_buf[55]<<8)<<17;
+;*** 295	-----------------------    *((volatile long *)C$1+220L) = (long)(read_buf[56]&0xffu)<<17;
+;*** 296	-----------------------    ((volatile long *)g_sen)[110] |= (long)(read_buf[57]<<8)<<17;
+;*** 298	-----------------------    *((volatile long *)C$1+238L) = (long)(read_buf[58]&0xffu)<<17;
+;*** 299	-----------------------    ((volatile long *)g_sen)[119] |= (long)(read_buf[59]<<8)<<17;
+;*** 301	-----------------------    *((volatile long *)C$1+256L) = (long)(read_buf[60]&0xffu)<<17;
+;*** 302	-----------------------    ((volatile long *)g_sen)[128] |= (long)(read_buf[61]<<8)<<17;
+;*** 304	-----------------------    *((volatile long *)C$1+274L) = (long)(read_buf[62]&0xffu)<<17;
+;*** 305	-----------------------    ((volatile long *)g_sen)[137] |= (long)(read_buf[63]<<8)<<17;
 ;***  	-----------------------    #pragma MUST_ITERATE(16, 16, 16)
 ;***  	-----------------------    #pragma LOOP_FLAGS(5120u)
 ;***  	-----------------------    U$447 = C$1;
-;***  	-----------------------    U$445 = 0L;
 ;***  	-----------------------    L$1 = 15;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
@@ -2114,606 +2014,574 @@ _maxmin_read_rom:
 	.dwcfa	0x1d, -8
         MOVZ      AR2,SP
         SUBB      FP,#8
-        ADD       SP,#268
-	.dwcfa	0x1d, -276
+        ADD       SP,#258
+	.dwcfa	0x1d, -266
 ;* AR4   assigned to C$1
-DW$139	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
-	.dwattr DW$139, DW_AT_type(*DW$T$70)
-	.dwattr DW$139, DW_AT_location[DW_OP_reg12]
+DW$126	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
+	.dwattr DW$126, DW_AT_type(*DW$T$60)
+	.dwattr DW$126, DW_AT_location[DW_OP_reg12]
 ;* AR3   assigned to L$1
-DW$140	.dwtag  DW_TAG_variable, DW_AT_name("L$1"), DW_AT_symbol_name("L$1")
-	.dwattr DW$140, DW_AT_type(*DW$T$10)
-	.dwattr DW$140, DW_AT_location[DW_OP_reg10]
-DW$141	.dwtag  DW_TAG_variable, DW_AT_name("U$445"), DW_AT_symbol_name("U$445")
-	.dwattr DW$141, DW_AT_type(*DW$T$12)
-	.dwattr DW$141, DW_AT_location[DW_OP_breg20 -268]
+DW$127	.dwtag  DW_TAG_variable, DW_AT_name("L$1"), DW_AT_symbol_name("L$1")
+	.dwattr DW$127, DW_AT_type(*DW$T$10)
+	.dwattr DW$127, DW_AT_location[DW_OP_reg10]
 ;* AR1   assigned to U$447
-DW$142	.dwtag  DW_TAG_variable, DW_AT_name("U$447"), DW_AT_symbol_name("U$447")
-	.dwattr DW$142, DW_AT_type(*DW$T$70)
-	.dwattr DW$142, DW_AT_location[DW_OP_reg6]
-DW$143	.dwtag  DW_TAG_variable, DW_AT_name("read_buf"), DW_AT_symbol_name("_read_buf")
-	.dwattr DW$143, DW_AT_type(*DW$T$23)
-	.dwattr DW$143, DW_AT_location[DW_OP_breg20 -266]
-	.dwpsn	"Rom.c",196,9
-        MOVZ      AR4,SP                ; |196| 
-        ADD       AR4,#-266             ; |196| 
-        MOVL      XAR5,#_$T1$2$0        ; |196| 
-        MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |196| 
-        ; call occurs [#___memcpy_ff] ; |196| 
-	.dwpsn	"Rom.c",198,2
+DW$128	.dwtag  DW_TAG_variable, DW_AT_name("U$447"), DW_AT_symbol_name("U$447")
+	.dwattr DW$128, DW_AT_type(*DW$T$60)
+	.dwattr DW$128, DW_AT_location[DW_OP_reg6]
+DW$129	.dwtag  DW_TAG_variable, DW_AT_name("read_buf"), DW_AT_symbol_name("_read_buf")
+	.dwattr DW$129, DW_AT_type(*DW$T$32)
+	.dwattr DW$129, DW_AT_location[DW_OP_breg20 -258]
+	.dwpsn	"Rom.c",198,9
         MOVZ      AR4,SP                ; |198| 
-        ADD       AR4,#-266             ; |198| 
+        ADD       AR4,#-258             ; |198| 
+        MOVL      XAR5,#_$T1$2$0        ; |198| 
+        MOV       ACC,#1 << 8
+        LCR       #___memcpy_ff         ; |198| 
+        ; call occurs [#___memcpy_ff] ; |198| 
+	.dwpsn	"Rom.c",200,2
+        MOVZ      AR4,SP                ; |200| 
+        ADD       AR4,#-258             ; |200| 
         MOVB      XAR5,#0
         MOV       ACC,#1 << 8
-        LCR       #_memset              ; |198| 
-        ; call occurs [#_memset] ; |198| 
-	.dwpsn	"Rom.c",201,2
-        MOVZ      AR4,SP                ; |201| 
-        MOVL      XAR5,#256             ; |201| 
+        LCR       #_memset              ; |200| 
+        ; call occurs [#_memset] ; |200| 
+	.dwpsn	"Rom.c",203,2
+        MOVZ      AR4,SP                ; |203| 
+        MOVL      XAR5,#256             ; |203| 
         MOVB      ACC,#1
-        ADD       AR4,#-266             ; |201| 
-        LCR       #_SpiReadRom          ; |201| 
-        ; call occurs [#_SpiReadRom] ; |201| 
-	.dwpsn	"Rom.c",205,2
-        MOVL      XAR0,#10              ; |205| 
-        MOV       AL,*+FP[AR0]          ; |205| 
-        ANDB      AL,#0xff              ; |205| 
-        MOV       T,#17                 ; |205| 
+        ADD       AR4,#-258             ; |203| 
+        LCR       #_SpiReadRom          ; |203| 
+        ; call occurs [#_SpiReadRom] ; |203| 
+	.dwpsn	"Rom.c",207,2
+        MOVL      XAR0,#8               ; |207| 
+        MOV       AL,*+FP[AR0]          ; |207| 
+        ANDB      AL,#0xff              ; |207| 
+        MOV       T,#17                 ; |207| 
         MOVU      ACC,AL
-        MOVL      XAR4,#_g_sen          ; |205| 
-        LSLL      ACC,T                 ; |205| 
-        MOVL      *+XAR4[2],ACC         ; |205| 
-	.dwpsn	"Rom.c",206,2
-        MOVL      XAR0,#11              ; |206| 
-        MOV       ACC,*+FP[AR0] << #8   ; |206| 
-        MOVU      ACC,AL
-        LSLL      ACC,T                 ; |206| 
-        OR        *+XAR4[2],AL          ; |206| 
-        OR        *+XAR4[3],AH          ; |206| 
+        MOVL      XAR4,#_g_sen          ; |207| 
+        LSLL      ACC,T                 ; |207| 
+        MOVL      *+XAR4[2],ACC         ; |207| 
 	.dwpsn	"Rom.c",208,2
-        MOVL      XAR0,#12              ; |208| 
-        MOV       AL,*+FP[AR0]          ; |208| 
-        ANDB      AL,#0xff              ; |208| 
+        MOVL      XAR0,#9               ; |208| 
+        MOV       ACC,*+FP[AR0] << #8   ; |208| 
         MOVU      ACC,AL
-        MOVB      XAR0,#20              ; |208| 
         LSLL      ACC,T                 ; |208| 
-        MOVL      *+XAR4[AR0],ACC       ; |208| 
-	.dwpsn	"Rom.c",209,2
-        MOVL      XAR0,#13              ; |209| 
-        MOV       ACC,*+FP[AR0] << #8   ; |209| 
+        OR        *+XAR4[2],AL          ; |208| 
+        OR        *+XAR4[3],AH          ; |208| 
+	.dwpsn	"Rom.c",210,2
+        MOVL      XAR0,#10              ; |210| 
+        MOV       AL,*+FP[AR0]          ; |210| 
+        ANDB      AL,#0xff              ; |210| 
+        MOVU      ACC,AL
+        MOVB      XAR0,#20              ; |210| 
+        LSLL      ACC,T                 ; |210| 
+        MOVL      *+XAR4[AR0],ACC       ; |210| 
+	.dwpsn	"Rom.c",211,2
+        MOVL      XAR0,#11              ; |211| 
+        MOV       ACC,*+FP[AR0] << #8   ; |211| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+20
-        LSLL      ACC,T                 ; |209| 
-        OR        @_g_sen+20,AL         ; |209| 
-        OR        @_g_sen+21,AH         ; |209| 
-	.dwpsn	"Rom.c",211,2
-        MOVL      XAR0,#14              ; |211| 
-        MOV       AL,*+FP[AR0]          ; |211| 
-        ANDB      AL,#0xff              ; |211| 
-        MOVU      ACC,AL
-        MOVB      XAR0,#38              ; |211| 
         LSLL      ACC,T                 ; |211| 
-        MOVL      *+XAR4[AR0],ACC       ; |211| 
-	.dwpsn	"Rom.c",212,2
-        MOVL      XAR0,#15              ; |212| 
-        MOV       ACC,*+FP[AR0] << #8   ; |212| 
+        OR        @_g_sen+20,AL         ; |211| 
+        OR        @_g_sen+21,AH         ; |211| 
+	.dwpsn	"Rom.c",213,2
+        MOVL      XAR0,#12              ; |213| 
+        MOV       AL,*+FP[AR0]          ; |213| 
+        ANDB      AL,#0xff              ; |213| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |212| 
-        OR        @_g_sen+38,AL         ; |212| 
-        OR        @_g_sen+39,AH         ; |212| 
+        MOVB      XAR0,#38              ; |213| 
+        LSLL      ACC,T                 ; |213| 
+        MOVL      *+XAR4[AR0],ACC       ; |213| 
 	.dwpsn	"Rom.c",214,2
-        MOVL      XAR0,#16              ; |214| 
-        MOV       AL,*+FP[AR0]          ; |214| 
-        ANDB      AL,#0xff              ; |214| 
+        MOVL      XAR0,#13              ; |214| 
+        MOV       ACC,*+FP[AR0] << #8   ; |214| 
         MOVU      ACC,AL
-        MOVB      XAR0,#56              ; |214| 
         LSLL      ACC,T                 ; |214| 
-        MOVL      *+XAR4[AR0],ACC       ; |214| 
-	.dwpsn	"Rom.c",215,2
-        MOVL      XAR0,#17              ; |215| 
-        MOV       ACC,*+FP[AR0] << #8   ; |215| 
+        OR        @_g_sen+38,AL         ; |214| 
+        OR        @_g_sen+39,AH         ; |214| 
+	.dwpsn	"Rom.c",216,2
+        MOVL      XAR0,#14              ; |216| 
+        MOV       AL,*+FP[AR0]          ; |216| 
+        ANDB      AL,#0xff              ; |216| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |215| 
-        OR        @_g_sen+56,AL         ; |215| 
-        OR        @_g_sen+57,AH         ; |215| 
+        MOVB      XAR0,#56              ; |216| 
+        LSLL      ACC,T                 ; |216| 
+        MOVL      *+XAR4[AR0],ACC       ; |216| 
 	.dwpsn	"Rom.c",217,2
-        MOVL      XAR0,#18              ; |217| 
-        MOV       AL,*+FP[AR0]          ; |217| 
-        ANDB      AL,#0xff              ; |217| 
+        MOVL      XAR0,#15              ; |217| 
+        MOV       ACC,*+FP[AR0] << #8   ; |217| 
         MOVU      ACC,AL
-        MOVB      XAR0,#74              ; |217| 
         LSLL      ACC,T                 ; |217| 
-        MOVL      *+XAR4[AR0],ACC       ; |217| 
-	.dwpsn	"Rom.c",218,2
-        MOVL      XAR0,#19              ; |218| 
-        MOV       ACC,*+FP[AR0] << #8   ; |218| 
+        OR        @_g_sen+56,AL         ; |217| 
+        OR        @_g_sen+57,AH         ; |217| 
+	.dwpsn	"Rom.c",219,2
+        MOVL      XAR0,#16              ; |219| 
+        MOV       AL,*+FP[AR0]          ; |219| 
+        ANDB      AL,#0xff              ; |219| 
+        MOVU      ACC,AL
+        MOVB      XAR0,#74              ; |219| 
+        LSLL      ACC,T                 ; |219| 
+        MOVL      *+XAR4[AR0],ACC       ; |219| 
+	.dwpsn	"Rom.c",220,2
+        MOVL      XAR0,#17              ; |220| 
+        MOV       ACC,*+FP[AR0] << #8   ; |220| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+74
-        LSLL      ACC,T                 ; |218| 
-        OR        @_g_sen+74,AL         ; |218| 
-        OR        @_g_sen+75,AH         ; |218| 
-	.dwpsn	"Rom.c",220,2
-        MOVL      XAR0,#20              ; |220| 
-        MOV       AL,*+FP[AR0]          ; |220| 
-        ANDB      AL,#0xff              ; |220| 
-        MOVU      ACC,AL
-        MOVB      XAR0,#92              ; |220| 
         LSLL      ACC,T                 ; |220| 
-        MOVL      *+XAR4[AR0],ACC       ; |220| 
-	.dwpsn	"Rom.c",221,2
-        MOVL      XAR0,#21              ; |221| 
-        MOV       ACC,*+FP[AR0] << #8   ; |221| 
+        OR        @_g_sen+74,AL         ; |220| 
+        OR        @_g_sen+75,AH         ; |220| 
+	.dwpsn	"Rom.c",222,2
+        MOVL      XAR0,#18              ; |222| 
+        MOV       AL,*+FP[AR0]          ; |222| 
+        ANDB      AL,#0xff              ; |222| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |221| 
-        OR        @_g_sen+92,AL         ; |221| 
-        OR        @_g_sen+93,AH         ; |221| 
+        MOVB      XAR0,#92              ; |222| 
+        LSLL      ACC,T                 ; |222| 
+        MOVL      *+XAR4[AR0],ACC       ; |222| 
 	.dwpsn	"Rom.c",223,2
-        MOVL      XAR0,#22              ; |223| 
-        MOV       AL,*+FP[AR0]          ; |223| 
-        ANDB      AL,#0xff              ; |223| 
+        MOVL      XAR0,#19              ; |223| 
+        MOV       ACC,*+FP[AR0] << #8   ; |223| 
         MOVU      ACC,AL
-        MOVB      XAR0,#110             ; |223| 
         LSLL      ACC,T                 ; |223| 
-        MOVL      *+XAR4[AR0],ACC       ; |223| 
-	.dwpsn	"Rom.c",224,2
-        MOVL      XAR0,#23              ; |224| 
-        MOV       ACC,*+FP[AR0] << #8   ; |224| 
+        OR        @_g_sen+92,AL         ; |223| 
+        OR        @_g_sen+93,AH         ; |223| 
+	.dwpsn	"Rom.c",225,2
+        MOVL      XAR0,#20              ; |225| 
+        MOV       AL,*+FP[AR0]          ; |225| 
+        ANDB      AL,#0xff              ; |225| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |224| 
-        OR        @_g_sen+110,AL        ; |224| 
-        OR        @_g_sen+111,AH        ; |224| 
+        MOVB      XAR0,#110             ; |225| 
+        LSLL      ACC,T                 ; |225| 
+        MOVL      *+XAR4[AR0],ACC       ; |225| 
 	.dwpsn	"Rom.c",226,2
-        MOVL      XAR0,#24              ; |226| 
-        MOV       AL,*+FP[AR0]          ; |226| 
-        ANDB      AL,#0xff              ; |226| 
+        MOVL      XAR0,#21              ; |226| 
+        MOV       ACC,*+FP[AR0] << #8   ; |226| 
         MOVU      ACC,AL
-        MOVB      XAR0,#128             ; |226| 
         LSLL      ACC,T                 ; |226| 
-        MOVL      *+XAR4[AR0],ACC       ; |226| 
-	.dwpsn	"Rom.c",227,2
-        MOVL      XAR0,#25              ; |227| 
-        MOV       ACC,*+FP[AR0] << #8   ; |227| 
+        OR        @_g_sen+110,AL        ; |226| 
+        OR        @_g_sen+111,AH        ; |226| 
+	.dwpsn	"Rom.c",228,2
+        MOVL      XAR0,#22              ; |228| 
+        MOV       AL,*+FP[AR0]          ; |228| 
+        ANDB      AL,#0xff              ; |228| 
+        MOVU      ACC,AL
+        MOVB      XAR0,#128             ; |228| 
+        LSLL      ACC,T                 ; |228| 
+        MOVL      *+XAR4[AR0],ACC       ; |228| 
+	.dwpsn	"Rom.c",229,2
+        MOVL      XAR0,#23              ; |229| 
+        MOV       ACC,*+FP[AR0] << #8   ; |229| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+128
-        LSLL      ACC,T                 ; |227| 
-        OR        @_g_sen+128,AL        ; |227| 
-        OR        @_g_sen+129,AH        ; |227| 
-	.dwpsn	"Rom.c",229,2
-        MOVL      XAR0,#26              ; |229| 
-        MOV       AL,*+FP[AR0]          ; |229| 
-        ANDB      AL,#0xff              ; |229| 
-        MOVU      ACC,AL
-        MOVB      XAR0,#146             ; |229| 
         LSLL      ACC,T                 ; |229| 
-        MOVL      *+XAR4[AR0],ACC       ; |229| 
-	.dwpsn	"Rom.c",230,2
-        MOVL      XAR0,#27              ; |230| 
-        MOV       ACC,*+FP[AR0] << #8   ; |230| 
+        OR        @_g_sen+128,AL        ; |229| 
+        OR        @_g_sen+129,AH        ; |229| 
+	.dwpsn	"Rom.c",231,2
+        MOVL      XAR0,#24              ; |231| 
+        MOV       AL,*+FP[AR0]          ; |231| 
+        ANDB      AL,#0xff              ; |231| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |230| 
-        OR        @_g_sen+146,AL        ; |230| 
-        OR        @_g_sen+147,AH        ; |230| 
+        MOVB      XAR0,#146             ; |231| 
+        LSLL      ACC,T                 ; |231| 
+        MOVL      *+XAR4[AR0],ACC       ; |231| 
 	.dwpsn	"Rom.c",232,2
-        MOVL      XAR0,#28              ; |232| 
-        MOV       AL,*+FP[AR0]          ; |232| 
-        ANDB      AL,#0xff              ; |232| 
+        MOVL      XAR0,#25              ; |232| 
+        MOV       ACC,*+FP[AR0] << #8   ; |232| 
         MOVU      ACC,AL
-        MOVB      XAR0,#164             ; |232| 
         LSLL      ACC,T                 ; |232| 
-        MOVL      *+XAR4[AR0],ACC       ; |232| 
-	.dwpsn	"Rom.c",233,2
-        MOVL      XAR0,#29              ; |233| 
-        MOV       ACC,*+FP[AR0] << #8   ; |233| 
+        OR        @_g_sen+146,AL        ; |232| 
+        OR        @_g_sen+147,AH        ; |232| 
+	.dwpsn	"Rom.c",234,2
+        MOVL      XAR0,#26              ; |234| 
+        MOV       AL,*+FP[AR0]          ; |234| 
+        ANDB      AL,#0xff              ; |234| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |233| 
-        OR        @_g_sen+164,AL        ; |233| 
-        OR        @_g_sen+165,AH        ; |233| 
+        MOVB      XAR0,#164             ; |234| 
+        LSLL      ACC,T                 ; |234| 
+        MOVL      *+XAR4[AR0],ACC       ; |234| 
 	.dwpsn	"Rom.c",235,2
-        MOVL      XAR0,#30              ; |235| 
-        MOV       AL,*+FP[AR0]          ; |235| 
-        ANDB      AL,#0xff              ; |235| 
+        MOVL      XAR0,#27              ; |235| 
+        MOV       ACC,*+FP[AR0] << #8   ; |235| 
         MOVU      ACC,AL
-        MOVB      XAR0,#182             ; |235| 
         LSLL      ACC,T                 ; |235| 
-        MOVL      *+XAR4[AR0],ACC       ; |235| 
-	.dwpsn	"Rom.c",236,2
-        MOVL      XAR0,#31              ; |236| 
-        MOV       ACC,*+FP[AR0] << #8   ; |236| 
+        OR        @_g_sen+164,AL        ; |235| 
+        OR        @_g_sen+165,AH        ; |235| 
+	.dwpsn	"Rom.c",237,2
+        MOVL      XAR0,#28              ; |237| 
+        MOV       AL,*+FP[AR0]          ; |237| 
+        ANDB      AL,#0xff              ; |237| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |236| 
-        OR        @_g_sen+182,AL        ; |236| 
-        OR        @_g_sen+183,AH        ; |236| 
+        MOVB      XAR0,#182             ; |237| 
+        LSLL      ACC,T                 ; |237| 
+        MOVL      *+XAR4[AR0],ACC       ; |237| 
 	.dwpsn	"Rom.c",238,2
-        MOVL      XAR0,#32              ; |238| 
-        MOV       AL,*+FP[AR0]          ; |238| 
-        ANDB      AL,#0xff              ; |238| 
+        MOVL      XAR0,#29              ; |238| 
+        MOV       ACC,*+FP[AR0] << #8   ; |238| 
         MOVU      ACC,AL
-        MOVB      XAR0,#200             ; |238| 
         LSLL      ACC,T                 ; |238| 
-        MOVL      *+XAR4[AR0],ACC       ; |238| 
-	.dwpsn	"Rom.c",239,2
-        MOVL      XAR0,#33              ; |239| 
-        MOV       ACC,*+FP[AR0] << #8   ; |239| 
+        OR        @_g_sen+182,AL        ; |238| 
+        OR        @_g_sen+183,AH        ; |238| 
+	.dwpsn	"Rom.c",240,2
+        MOVL      XAR0,#30              ; |240| 
+        MOV       AL,*+FP[AR0]          ; |240| 
+        ANDB      AL,#0xff              ; |240| 
+        MOVU      ACC,AL
+        MOVB      XAR0,#200             ; |240| 
+        LSLL      ACC,T                 ; |240| 
+        MOVL      *+XAR4[AR0],ACC       ; |240| 
+	.dwpsn	"Rom.c",241,2
+        MOVL      XAR0,#31              ; |241| 
+        MOV       ACC,*+FP[AR0] << #8   ; |241| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+200
-        LSLL      ACC,T                 ; |239| 
-        OR        @_g_sen+200,AL        ; |239| 
-        OR        @_g_sen+201,AH        ; |239| 
-	.dwpsn	"Rom.c",241,2
-        MOVL      XAR0,#34              ; |241| 
-        MOV       AL,*+FP[AR0]          ; |241| 
-        ANDB      AL,#0xff              ; |241| 
-        MOVU      ACC,AL
-        MOVB      XAR0,#218             ; |241| 
         LSLL      ACC,T                 ; |241| 
-        MOVL      *+XAR4[AR0],ACC       ; |241| 
-	.dwpsn	"Rom.c",242,2
-        MOVL      XAR0,#35              ; |242| 
-        MOV       ACC,*+FP[AR0] << #8   ; |242| 
+        OR        @_g_sen+200,AL        ; |241| 
+        OR        @_g_sen+201,AH        ; |241| 
+	.dwpsn	"Rom.c",243,2
+        MOVL      XAR0,#32              ; |243| 
+        MOV       AL,*+FP[AR0]          ; |243| 
+        ANDB      AL,#0xff              ; |243| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |242| 
-        OR        @_g_sen+218,AL        ; |242| 
-        OR        @_g_sen+219,AH        ; |242| 
+        MOVB      XAR0,#218             ; |243| 
+        LSLL      ACC,T                 ; |243| 
+        MOVL      *+XAR4[AR0],ACC       ; |243| 
 	.dwpsn	"Rom.c",244,2
-        MOVL      XAR0,#36              ; |244| 
-        MOV       AL,*+FP[AR0]          ; |244| 
-        ANDB      AL,#0xff              ; |244| 
+        MOVL      XAR0,#33              ; |244| 
+        MOV       ACC,*+FP[AR0] << #8   ; |244| 
         MOVU      ACC,AL
-        MOVB      XAR0,#236             ; |244| 
         LSLL      ACC,T                 ; |244| 
-        MOVL      *+XAR4[AR0],ACC       ; |244| 
-	.dwpsn	"Rom.c",245,2
-        MOVL      XAR0,#37              ; |245| 
-        MOV       ACC,*+FP[AR0] << #8   ; |245| 
+        OR        @_g_sen+218,AL        ; |244| 
+        OR        @_g_sen+219,AH        ; |244| 
+	.dwpsn	"Rom.c",246,2
+        MOVL      XAR0,#34              ; |246| 
+        MOV       AL,*+FP[AR0]          ; |246| 
+        ANDB      AL,#0xff              ; |246| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |245| 
-        OR        @_g_sen+236,AL        ; |245| 
-        OR        @_g_sen+237,AH        ; |245| 
+        MOVB      XAR0,#236             ; |246| 
+        LSLL      ACC,T                 ; |246| 
+        MOVL      *+XAR4[AR0],ACC       ; |246| 
 	.dwpsn	"Rom.c",247,2
-        MOVL      XAR0,#38              ; |247| 
-        MOV       AL,*+FP[AR0]          ; |247| 
-        ANDB      AL,#0xff              ; |247| 
+        MOVL      XAR0,#35              ; |247| 
+        MOV       ACC,*+FP[AR0] << #8   ; |247| 
         MOVU      ACC,AL
-        MOVB      XAR0,#254             ; |247| 
         LSLL      ACC,T                 ; |247| 
-        MOVL      *+XAR4[AR0],ACC       ; |247| 
-	.dwpsn	"Rom.c",248,2
-        MOVL      XAR0,#39              ; |248| 
-        MOV       ACC,*+FP[AR0] << #8   ; |248| 
+        OR        @_g_sen+236,AL        ; |247| 
+        OR        @_g_sen+237,AH        ; |247| 
+	.dwpsn	"Rom.c",249,2
+        MOVL      XAR0,#36              ; |249| 
+        MOV       AL,*+FP[AR0]          ; |249| 
+        ANDB      AL,#0xff              ; |249| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |248| 
-        OR        @_g_sen+254,AL        ; |248| 
-        OR        @_g_sen+255,AH        ; |248| 
+        MOVB      XAR0,#254             ; |249| 
+        LSLL      ACC,T                 ; |249| 
+        MOVL      *+XAR4[AR0],ACC       ; |249| 
 	.dwpsn	"Rom.c",250,2
-        MOVL      XAR0,#40              ; |250| 
-        MOV       AL,*+FP[AR0]          ; |250| 
-        MOVL      XAR0,#272             ; |250| 
-        ANDB      AL,#0xff              ; |250| 
+        MOVL      XAR0,#37              ; |250| 
+        MOV       ACC,*+FP[AR0] << #8   ; |250| 
         MOVU      ACC,AL
         LSLL      ACC,T                 ; |250| 
-        MOVL      *+XAR4[AR0],ACC       ; |250| 
-	.dwpsn	"Rom.c",251,2
-        MOVL      XAR0,#41              ; |251| 
-        MOV       ACC,*+FP[AR0] << #8   ; |251| 
+        OR        @_g_sen+254,AL        ; |250| 
+        OR        @_g_sen+255,AH        ; |250| 
+	.dwpsn	"Rom.c",252,2
+        MOVL      XAR0,#38              ; |252| 
+        MOV       AL,*+FP[AR0]          ; |252| 
+        MOVL      XAR0,#272             ; |252| 
+        ANDB      AL,#0xff              ; |252| 
+        MOVU      ACC,AL
+        LSLL      ACC,T                 ; |252| 
+        MOVL      *+XAR4[AR0],ACC       ; |252| 
+	.dwpsn	"Rom.c",253,2
+        MOVL      XAR0,#39              ; |253| 
+        MOV       ACC,*+FP[AR0] << #8   ; |253| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+272
-        LSLL      ACC,T                 ; |251| 
-        OR        @_g_sen+272,AL        ; |251| 
-        OR        @_g_sen+273,AH        ; |251| 
-	.dwpsn	"Rom.c",257,2
-        MOVL      XAR0,#42              ; |257| 
-        MOV       AL,*+FP[AR0]          ; |257| 
-        ANDB      AL,#0xff              ; |257| 
+        LSLL      ACC,T                 ; |253| 
+        OR        @_g_sen+272,AL        ; |253| 
+        OR        @_g_sen+273,AH        ; |253| 
+	.dwpsn	"Rom.c",259,2
+        MOVL      XAR0,#40              ; |259| 
+        MOV       AL,*+FP[AR0]          ; |259| 
+        ANDB      AL,#0xff              ; |259| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |257| 
-        MOVL      *+XAR4[4],ACC         ; |257| 
-	.dwpsn	"Rom.c",258,2
-        MOVL      XAR0,#43              ; |258| 
-        MOV       ACC,*+FP[AR0] << #8   ; |258| 
-        MOVU      ACC,AL
-        LSLL      ACC,T                 ; |258| 
-        OR        *+XAR4[4],AL          ; |258| 
-        OR        *+XAR4[5],AH          ; |258| 
+        LSLL      ACC,T                 ; |259| 
+        MOVL      *+XAR4[4],ACC         ; |259| 
 	.dwpsn	"Rom.c",260,2
-        MOVL      XAR0,#44              ; |260| 
-        MOV       AL,*+FP[AR0]          ; |260| 
-        ANDB      AL,#0xff              ; |260| 
+        MOVL      XAR0,#41              ; |260| 
+        MOV       ACC,*+FP[AR0] << #8   ; |260| 
         MOVU      ACC,AL
-        MOVB      XAR0,#22              ; |260| 
         LSLL      ACC,T                 ; |260| 
-        MOVL      *+XAR4[AR0],ACC       ; |260| 
-	.dwpsn	"Rom.c",261,2
-        MOVL      XAR0,#45              ; |261| 
-        MOV       ACC,*+FP[AR0] << #8   ; |261| 
+        OR        *+XAR4[4],AL          ; |260| 
+        OR        *+XAR4[5],AH          ; |260| 
+	.dwpsn	"Rom.c",262,2
+        MOVL      XAR0,#42              ; |262| 
+        MOV       AL,*+FP[AR0]          ; |262| 
+        ANDB      AL,#0xff              ; |262| 
+        MOVU      ACC,AL
+        MOVB      XAR0,#22              ; |262| 
+        LSLL      ACC,T                 ; |262| 
+        MOVL      *+XAR4[AR0],ACC       ; |262| 
+	.dwpsn	"Rom.c",263,2
+        MOVL      XAR0,#43              ; |263| 
+        MOV       ACC,*+FP[AR0] << #8   ; |263| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+22
-        LSLL      ACC,T                 ; |261| 
-        OR        @_g_sen+22,AL         ; |261| 
-        OR        @_g_sen+23,AH         ; |261| 
-	.dwpsn	"Rom.c",263,2
-        MOVL      XAR0,#46              ; |263| 
-        MOV       AL,*+FP[AR0]          ; |263| 
-        ANDB      AL,#0xff              ; |263| 
-        MOVU      ACC,AL
-        MOVB      XAR0,#40              ; |263| 
         LSLL      ACC,T                 ; |263| 
-        MOVL      *+XAR4[AR0],ACC       ; |263| 
-	.dwpsn	"Rom.c",264,2
-        MOVL      XAR0,#47              ; |264| 
-        MOV       ACC,*+FP[AR0] << #8   ; |264| 
+        OR        @_g_sen+22,AL         ; |263| 
+        OR        @_g_sen+23,AH         ; |263| 
+	.dwpsn	"Rom.c",265,2
+        MOVL      XAR0,#44              ; |265| 
+        MOV       AL,*+FP[AR0]          ; |265| 
+        ANDB      AL,#0xff              ; |265| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |264| 
-        OR        @_g_sen+40,AL         ; |264| 
-        OR        @_g_sen+41,AH         ; |264| 
+        MOVB      XAR0,#40              ; |265| 
+        LSLL      ACC,T                 ; |265| 
+        MOVL      *+XAR4[AR0],ACC       ; |265| 
 	.dwpsn	"Rom.c",266,2
-        MOVL      XAR0,#48              ; |266| 
-        MOV       AL,*+FP[AR0]          ; |266| 
-        ANDB      AL,#0xff              ; |266| 
+        MOVL      XAR0,#45              ; |266| 
+        MOV       ACC,*+FP[AR0] << #8   ; |266| 
         MOVU      ACC,AL
-        MOVB      XAR0,#58              ; |266| 
         LSLL      ACC,T                 ; |266| 
-        MOVL      *+XAR4[AR0],ACC       ; |266| 
-	.dwpsn	"Rom.c",267,2
-        MOVL      XAR0,#49              ; |267| 
-        MOV       ACC,*+FP[AR0] << #8   ; |267| 
+        OR        @_g_sen+40,AL         ; |266| 
+        OR        @_g_sen+41,AH         ; |266| 
+	.dwpsn	"Rom.c",268,2
+        MOVL      XAR0,#46              ; |268| 
+        MOV       AL,*+FP[AR0]          ; |268| 
+        ANDB      AL,#0xff              ; |268| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |267| 
-        OR        @_g_sen+58,AL         ; |267| 
-        OR        @_g_sen+59,AH         ; |267| 
+        MOVB      XAR0,#58              ; |268| 
+        LSLL      ACC,T                 ; |268| 
+        MOVL      *+XAR4[AR0],ACC       ; |268| 
 	.dwpsn	"Rom.c",269,2
-        MOVL      XAR0,#50              ; |269| 
-        MOV       AL,*+FP[AR0]          ; |269| 
-        ANDB      AL,#0xff              ; |269| 
+        MOVL      XAR0,#47              ; |269| 
+        MOV       ACC,*+FP[AR0] << #8   ; |269| 
         MOVU      ACC,AL
-        MOVB      XAR0,#76              ; |269| 
         LSLL      ACC,T                 ; |269| 
-        MOVL      *+XAR4[AR0],ACC       ; |269| 
-	.dwpsn	"Rom.c",270,2
-        MOVL      XAR0,#51              ; |270| 
-        MOV       ACC,*+FP[AR0] << #8   ; |270| 
+        OR        @_g_sen+58,AL         ; |269| 
+        OR        @_g_sen+59,AH         ; |269| 
+	.dwpsn	"Rom.c",271,2
+        MOVL      XAR0,#48              ; |271| 
+        MOV       AL,*+FP[AR0]          ; |271| 
+        ANDB      AL,#0xff              ; |271| 
+        MOVU      ACC,AL
+        MOVB      XAR0,#76              ; |271| 
+        LSLL      ACC,T                 ; |271| 
+        MOVL      *+XAR4[AR0],ACC       ; |271| 
+	.dwpsn	"Rom.c",272,2
+        MOVL      XAR0,#49              ; |272| 
+        MOV       ACC,*+FP[AR0] << #8   ; |272| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+76
-        LSLL      ACC,T                 ; |270| 
-        OR        @_g_sen+76,AL         ; |270| 
-        OR        @_g_sen+77,AH         ; |270| 
-	.dwpsn	"Rom.c",272,2
-        MOVL      XAR0,#52              ; |272| 
-        MOV       AL,*+FP[AR0]          ; |272| 
-        ANDB      AL,#0xff              ; |272| 
-        MOVU      ACC,AL
-        MOVB      XAR0,#94              ; |272| 
         LSLL      ACC,T                 ; |272| 
-        MOVL      *+XAR4[AR0],ACC       ; |272| 
-	.dwpsn	"Rom.c",273,2
-        MOVL      XAR0,#53              ; |273| 
-        MOV       ACC,*+FP[AR0] << #8   ; |273| 
+        OR        @_g_sen+76,AL         ; |272| 
+        OR        @_g_sen+77,AH         ; |272| 
+	.dwpsn	"Rom.c",274,2
+        MOVL      XAR0,#50              ; |274| 
+        MOV       AL,*+FP[AR0]          ; |274| 
+        ANDB      AL,#0xff              ; |274| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |273| 
-        OR        @_g_sen+94,AL         ; |273| 
-        OR        @_g_sen+95,AH         ; |273| 
+        MOVB      XAR0,#94              ; |274| 
+        LSLL      ACC,T                 ; |274| 
+        MOVL      *+XAR4[AR0],ACC       ; |274| 
 	.dwpsn	"Rom.c",275,2
-        MOVL      XAR0,#54              ; |275| 
-        MOV       AL,*+FP[AR0]          ; |275| 
-        ANDB      AL,#0xff              ; |275| 
+        MOVL      XAR0,#51              ; |275| 
+        MOV       ACC,*+FP[AR0] << #8   ; |275| 
         MOVU      ACC,AL
-        MOVB      XAR0,#112             ; |275| 
         LSLL      ACC,T                 ; |275| 
-        MOVL      *+XAR4[AR0],ACC       ; |275| 
-	.dwpsn	"Rom.c",276,2
-        MOVL      XAR0,#55              ; |276| 
-        MOV       ACC,*+FP[AR0] << #8   ; |276| 
+        OR        @_g_sen+94,AL         ; |275| 
+        OR        @_g_sen+95,AH         ; |275| 
+	.dwpsn	"Rom.c",277,2
+        MOVL      XAR0,#52              ; |277| 
+        MOV       AL,*+FP[AR0]          ; |277| 
+        ANDB      AL,#0xff              ; |277| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |276| 
-        OR        @_g_sen+112,AL        ; |276| 
-        OR        @_g_sen+113,AH        ; |276| 
+        MOVB      XAR0,#112             ; |277| 
+        LSLL      ACC,T                 ; |277| 
+        MOVL      *+XAR4[AR0],ACC       ; |277| 
 	.dwpsn	"Rom.c",278,2
-        MOVL      XAR0,#56              ; |278| 
-        MOV       AL,*+FP[AR0]          ; |278| 
-        ANDB      AL,#0xff              ; |278| 
+        MOVL      XAR0,#53              ; |278| 
+        MOV       ACC,*+FP[AR0] << #8   ; |278| 
         MOVU      ACC,AL
-        MOVB      XAR0,#130             ; |278| 
         LSLL      ACC,T                 ; |278| 
-        MOVL      *+XAR4[AR0],ACC       ; |278| 
-	.dwpsn	"Rom.c",279,2
-        MOVL      XAR0,#57              ; |279| 
-        MOV       ACC,*+FP[AR0] << #8   ; |279| 
+        OR        @_g_sen+112,AL        ; |278| 
+        OR        @_g_sen+113,AH        ; |278| 
+	.dwpsn	"Rom.c",280,2
+        MOVL      XAR0,#54              ; |280| 
+        MOV       AL,*+FP[AR0]          ; |280| 
+        ANDB      AL,#0xff              ; |280| 
+        MOVU      ACC,AL
+        MOVB      XAR0,#130             ; |280| 
+        LSLL      ACC,T                 ; |280| 
+        MOVL      *+XAR4[AR0],ACC       ; |280| 
+	.dwpsn	"Rom.c",281,2
+        MOVL      XAR0,#55              ; |281| 
+        MOV       ACC,*+FP[AR0] << #8   ; |281| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+130
-        LSLL      ACC,T                 ; |279| 
-        OR        @_g_sen+130,AL        ; |279| 
-        OR        @_g_sen+131,AH        ; |279| 
-	.dwpsn	"Rom.c",281,2
-        MOVL      XAR0,#58              ; |281| 
-        MOV       AL,*+FP[AR0]          ; |281| 
-        ANDB      AL,#0xff              ; |281| 
-        MOVU      ACC,AL
-        MOVB      XAR0,#148             ; |281| 
         LSLL      ACC,T                 ; |281| 
-        MOVL      *+XAR4[AR0],ACC       ; |281| 
-	.dwpsn	"Rom.c",282,2
-        MOVL      XAR0,#59              ; |282| 
-        MOV       ACC,*+FP[AR0] << #8   ; |282| 
+        OR        @_g_sen+130,AL        ; |281| 
+        OR        @_g_sen+131,AH        ; |281| 
+	.dwpsn	"Rom.c",283,2
+        MOVL      XAR0,#56              ; |283| 
+        MOV       AL,*+FP[AR0]          ; |283| 
+        ANDB      AL,#0xff              ; |283| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |282| 
-        OR        @_g_sen+148,AL        ; |282| 
-        OR        @_g_sen+149,AH        ; |282| 
+        MOVB      XAR0,#148             ; |283| 
+        LSLL      ACC,T                 ; |283| 
+        MOVL      *+XAR4[AR0],ACC       ; |283| 
 	.dwpsn	"Rom.c",284,2
-        MOVL      XAR0,#60              ; |284| 
-        MOV       AL,*+FP[AR0]          ; |284| 
-        ANDB      AL,#0xff              ; |284| 
+        MOVL      XAR0,#57              ; |284| 
+        MOV       ACC,*+FP[AR0] << #8   ; |284| 
         MOVU      ACC,AL
-        MOVB      XAR0,#166             ; |284| 
         LSLL      ACC,T                 ; |284| 
-        MOVL      *+XAR4[AR0],ACC       ; |284| 
-	.dwpsn	"Rom.c",285,2
-        MOVL      XAR0,#61              ; |285| 
-        MOV       ACC,*+FP[AR0] << #8   ; |285| 
+        OR        @_g_sen+148,AL        ; |284| 
+        OR        @_g_sen+149,AH        ; |284| 
+	.dwpsn	"Rom.c",286,2
+        MOVL      XAR0,#58              ; |286| 
+        MOV       AL,*+FP[AR0]          ; |286| 
+        ANDB      AL,#0xff              ; |286| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |285| 
-        OR        @_g_sen+166,AL        ; |285| 
-        OR        @_g_sen+167,AH        ; |285| 
+        MOVB      XAR0,#166             ; |286| 
+        LSLL      ACC,T                 ; |286| 
+        MOVL      *+XAR4[AR0],ACC       ; |286| 
 	.dwpsn	"Rom.c",287,2
-        MOVL      XAR0,#62              ; |287| 
-        MOV       AL,*+FP[AR0]          ; |287| 
-        ANDB      AL,#0xff              ; |287| 
+        MOVL      XAR0,#59              ; |287| 
+        MOV       ACC,*+FP[AR0] << #8   ; |287| 
         MOVU      ACC,AL
-        MOVB      XAR0,#184             ; |287| 
         LSLL      ACC,T                 ; |287| 
-        MOVL      *+XAR4[AR0],ACC       ; |287| 
-	.dwpsn	"Rom.c",288,2
-        MOVL      XAR0,#63              ; |288| 
-        MOV       ACC,*+FP[AR0] << #8   ; |288| 
+        OR        @_g_sen+166,AL        ; |287| 
+        OR        @_g_sen+167,AH        ; |287| 
+	.dwpsn	"Rom.c",289,2
+        MOVL      XAR0,#60              ; |289| 
+        MOV       AL,*+FP[AR0]          ; |289| 
+        ANDB      AL,#0xff              ; |289| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |288| 
-        OR        @_g_sen+184,AL        ; |288| 
-        OR        @_g_sen+185,AH        ; |288| 
+        MOVB      XAR0,#184             ; |289| 
+        LSLL      ACC,T                 ; |289| 
+        MOVL      *+XAR4[AR0],ACC       ; |289| 
 	.dwpsn	"Rom.c",290,2
-        MOVL      XAR0,#64              ; |290| 
-        MOV       AL,*+FP[AR0]          ; |290| 
-        ANDB      AL,#0xff              ; |290| 
+        MOVL      XAR0,#61              ; |290| 
+        MOV       ACC,*+FP[AR0] << #8   ; |290| 
         MOVU      ACC,AL
-        MOVB      XAR0,#202             ; |290| 
         LSLL      ACC,T                 ; |290| 
-        MOVL      *+XAR4[AR0],ACC       ; |290| 
-	.dwpsn	"Rom.c",291,2
-        MOVL      XAR0,#65              ; |291| 
-        MOV       ACC,*+FP[AR0] << #8   ; |291| 
+        OR        @_g_sen+184,AL        ; |290| 
+        OR        @_g_sen+185,AH        ; |290| 
+	.dwpsn	"Rom.c",292,2
+        MOVL      XAR0,#62              ; |292| 
+        MOV       AL,*+FP[AR0]          ; |292| 
+        ANDB      AL,#0xff              ; |292| 
+        MOVU      ACC,AL
+        MOVB      XAR0,#202             ; |292| 
+        LSLL      ACC,T                 ; |292| 
+        MOVL      *+XAR4[AR0],ACC       ; |292| 
+	.dwpsn	"Rom.c",293,2
+        MOVL      XAR0,#63              ; |293| 
+        MOV       ACC,*+FP[AR0] << #8   ; |293| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+202
-        LSLL      ACC,T                 ; |291| 
-        OR        @_g_sen+202,AL        ; |291| 
-        OR        @_g_sen+203,AH        ; |291| 
-	.dwpsn	"Rom.c",293,2
-        MOVL      XAR0,#66              ; |293| 
-        MOV       AL,*+FP[AR0]          ; |293| 
-        ANDB      AL,#0xff              ; |293| 
-        MOVU      ACC,AL
-        MOVB      XAR0,#220             ; |293| 
         LSLL      ACC,T                 ; |293| 
-        MOVL      *+XAR4[AR0],ACC       ; |293| 
-	.dwpsn	"Rom.c",294,2
-        MOVL      XAR0,#67              ; |294| 
-        MOV       ACC,*+FP[AR0] << #8   ; |294| 
+        OR        @_g_sen+202,AL        ; |293| 
+        OR        @_g_sen+203,AH        ; |293| 
+	.dwpsn	"Rom.c",295,2
+        MOVL      XAR0,#64              ; |295| 
+        MOV       AL,*+FP[AR0]          ; |295| 
+        ANDB      AL,#0xff              ; |295| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |294| 
-        OR        @_g_sen+220,AL        ; |294| 
-        OR        @_g_sen+221,AH        ; |294| 
+        MOVB      XAR0,#220             ; |295| 
+        LSLL      ACC,T                 ; |295| 
+        MOVL      *+XAR4[AR0],ACC       ; |295| 
 	.dwpsn	"Rom.c",296,2
-        MOVL      XAR0,#68              ; |296| 
-        MOV       AL,*+FP[AR0]          ; |296| 
-        ANDB      AL,#0xff              ; |296| 
+        MOVL      XAR0,#65              ; |296| 
+        MOV       ACC,*+FP[AR0] << #8   ; |296| 
         MOVU      ACC,AL
-        MOVB      XAR0,#238             ; |296| 
         LSLL      ACC,T                 ; |296| 
-        MOVL      *+XAR4[AR0],ACC       ; |296| 
-	.dwpsn	"Rom.c",297,2
-        MOVL      XAR0,#69              ; |297| 
-        MOV       ACC,*+FP[AR0] << #8   ; |297| 
+        OR        @_g_sen+220,AL        ; |296| 
+        OR        @_g_sen+221,AH        ; |296| 
+	.dwpsn	"Rom.c",298,2
+        MOVL      XAR0,#66              ; |298| 
+        MOV       AL,*+FP[AR0]          ; |298| 
+        ANDB      AL,#0xff              ; |298| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |297| 
-        OR        @_g_sen+238,AL        ; |297| 
-        OR        @_g_sen+239,AH        ; |297| 
+        MOVB      XAR0,#238             ; |298| 
+        LSLL      ACC,T                 ; |298| 
+        MOVL      *+XAR4[AR0],ACC       ; |298| 
 	.dwpsn	"Rom.c",299,2
-        MOVL      XAR0,#70              ; |299| 
-        MOV       AL,*+FP[AR0]          ; |299| 
-        MOVL      XAR0,#256             ; |299| 
-        ANDB      AL,#0xff              ; |299| 
+        MOVL      XAR0,#67              ; |299| 
+        MOV       ACC,*+FP[AR0] << #8   ; |299| 
         MOVU      ACC,AL
         LSLL      ACC,T                 ; |299| 
-        MOVL      *+XAR4[AR0],ACC       ; |299| 
-	.dwpsn	"Rom.c",300,2
-        MOVL      XAR0,#71              ; |300| 
-        MOV       ACC,*+FP[AR0] << #8   ; |300| 
+        OR        @_g_sen+238,AL        ; |299| 
+        OR        @_g_sen+239,AH        ; |299| 
+	.dwpsn	"Rom.c",301,2
+        MOVL      XAR0,#68              ; |301| 
+        MOV       AL,*+FP[AR0]          ; |301| 
+        MOVL      XAR0,#256             ; |301| 
+        ANDB      AL,#0xff              ; |301| 
+        MOVU      ACC,AL
+        LSLL      ACC,T                 ; |301| 
+        MOVL      *+XAR4[AR0],ACC       ; |301| 
+	.dwpsn	"Rom.c",302,2
+        MOVL      XAR0,#69              ; |302| 
+        MOV       ACC,*+FP[AR0] << #8   ; |302| 
         MOVU      ACC,AL
         MOVW      DP,#_g_sen+256
-        LSLL      ACC,T                 ; |300| 
-        OR        @_g_sen+256,AL        ; |300| 
-        OR        @_g_sen+257,AH        ; |300| 
-	.dwpsn	"Rom.c",302,2
-        MOVL      XAR0,#72              ; |302| 
-        MOV       AL,*+FP[AR0]          ; |302| 
-        MOVL      XAR0,#274             ; |302| 
-        ANDB      AL,#0xff              ; |302| 
-        MOVU      ACC,AL
         LSLL      ACC,T                 ; |302| 
-        MOVL      *+XAR4[AR0],ACC       ; |302| 
-	.dwpsn	"Rom.c",303,2
-        MOVL      XAR0,#73              ; |303| 
-        MOV       ACC,*+FP[AR0] << #8   ; |303| 
+        OR        @_g_sen+256,AL        ; |302| 
+        OR        @_g_sen+257,AH        ; |302| 
+	.dwpsn	"Rom.c",304,2
+        MOVL      XAR0,#70              ; |304| 
+        MOV       AL,*+FP[AR0]          ; |304| 
+        MOVL      XAR0,#274             ; |304| 
+        ANDB      AL,#0xff              ; |304| 
         MOVU      ACC,AL
-        LSLL      ACC,T                 ; |303| 
-        OR        @_g_sen+274,AL        ; |303| 
-        MOVL      XAR0,#8
-        OR        @_g_sen+275,AH        ; |303| 
-        MOVB      ACC,#0
-        MOVB      XAR3,#15
-        MOVL      *+FP[AR0],ACC
+        LSLL      ACC,T                 ; |304| 
+        MOVL      *+XAR4[AR0],ACC       ; |304| 
+	.dwpsn	"Rom.c",305,2
+        MOVL      XAR0,#71              ; |305| 
+        MOV       ACC,*+FP[AR0] << #8   ; |305| 
+        MOVU      ACC,AL
         MOVL      XAR1,XAR4
+        LSLL      ACC,T                 ; |305| 
+        MOVB      XAR3,#15
+        OR        @_g_sen+274,AL        ; |305| 
+        OR        @_g_sen+275,AH        ; |305| 
 L1:    
 DW$L$_maxmin_read_rom$2$B:
 ;***	-----------------------g2:
-;*** 307	-----------------------    (*U$447).iq17sub_value_inverse = _IQ17div(131072L, (*U$447).iq17max_value-(*U$447).iq17min_value);
-;*** 310	-----------------------    (*U$447).iq17sub_value_inverse_127mpy = __IQmpy((*U$447).iq17sub_value_inverse, 16646144L, 17);
-;*** 311	-----------------------    TxPrintf("[%ld] : %5ld | %5ld | %5ld |\n", U$445, (*U$447).iq17min_value>>17, (*U$447).iq17max_value>>17, (*U$447).iq17sub_value_inverse>>17);
-;*** 305	-----------------------    ++U$445;
-;*** 305	-----------------------    U$447 += 18;
-;*** 305	-----------------------    if ( (--L$1) != (-1) ) goto g2;
+;*** 309	-----------------------    (*U$447).iq17sub_value_inverse = _IQ17div(131072L, (*U$447).iq17max_value-(*U$447).iq17min_value);
+;*** 312	-----------------------    (*U$447).iq17sub_value_inverse_127mpy = __IQmpy((*U$447).iq17sub_value_inverse, 16646144L, 17);
+;*** 307	-----------------------    U$447 += 18;
+;*** 307	-----------------------    if ( (--L$1) != (-1) ) goto g2;
 ;***  	-----------------------    return;
-	.dwpsn	"Rom.c",307,5
-        MOVL      ACC,*+XAR1[4]         ; |307| 
-        SUBL      ACC,*+XAR1[2]         ; |307| 
-        MOVL      *-SP[2],ACC           ; |307| 
+	.dwpsn	"Rom.c",309,5
+        MOVL      ACC,*+XAR1[4]         ; |309| 
+        SUBL      ACC,*+XAR1[2]         ; |309| 
+        MOVL      *-SP[2],ACC           ; |309| 
         MOV       AL,#0
         MOV       AH,#2
-        LCR       #__IQ17div            ; |307| 
-        ; call occurs [#__IQ17div] ; |307| 
-        MOVB      XAR0,#8               ; |307| 
-        MOVL      *+XAR1[AR0],ACC       ; |307| 
-	.dwpsn	"Rom.c",310,5
+        LCR       #__IQ17div            ; |309| 
+        ; call occurs [#__IQ17div] ; |309| 
+        MOVB      XAR0,#8               ; |309| 
+        MOVL      *+XAR1[AR0],ACC       ; |309| 
+	.dwpsn	"Rom.c",312,5
         MOV       AH,#254
         MOV       AL,#0
-        MOVL      XT,*+XAR1[AR0]        ; |310| 
-        IMPYL     P,XT,ACC              ; |310| 
-        QMPYL     ACC,XT,ACC            ; |310| 
-        MOVB      XAR0,#10              ; |310| 
-        LSL64     ACC:P,#15             ; |310| 
-        MOVL      *+XAR1[AR0],ACC       ; |310| 
-	.dwpsn	"Rom.c",311,5
-        MOVL      XAR0,#8               ; |311| 
-        MOVL      XAR4,#FSL3            ; |311| 
-        MOVL      *-SP[2],XAR4          ; |311| 
-        MOVL      ACC,*+FP[AR0]         ; |311| 
-        MOVL      *-SP[4],ACC           ; |311| 
-        MOV       T,#17                 ; |311| 
-        MOVL      ACC,*+XAR1[2]         ; |311| 
-        ASRL      ACC,T                 ; |311| 
-        MOVL      *-SP[6],ACC           ; |311| 
-        MOVL      ACC,*+XAR1[4]         ; |311| 
-        ASRL      ACC,T                 ; |311| 
-        MOVB      XAR0,#8               ; |311| 
-        MOVL      *-SP[8],ACC           ; |311| 
-        MOVL      ACC,*+XAR1[AR0]       ; |311| 
-        ASRL      ACC,T                 ; |311| 
-        MOVL      *-SP[10],ACC          ; |311| 
-        LCR       #_TxPrintf            ; |311| 
-        ; call occurs [#_TxPrintf] ; |311| 
-	.dwpsn	"Rom.c",305,25
-        MOVL      XAR0,#8
-        MOVL      ACC,*+FP[AR0]
-        MOVL      XAR0,#8               ; |305| 
-        ADDB      ACC,#1                ; |305| 
-        MOVL      *+FP[AR0],ACC         ; |305| 
-        MOVB      XAR4,#18              ; |305| 
-        MOVL      ACC,XAR1              ; |305| 
-        ADDU      ACC,AR4               ; |305| 
-        MOVL      XAR1,ACC              ; |305| 
-	.dwpsn	"Rom.c",305,15
-        BANZ      L1,AR3--              ; |305| 
-        ; branchcc occurs ; |305| 
+        MOVL      XT,*+XAR1[AR0]        ; |312| 
+        IMPYL     P,XT,ACC              ; |312| 
+        QMPYL     ACC,XT,ACC            ; |312| 
+        MOVB      XAR0,#10              ; |312| 
+        LSL64     ACC:P,#15             ; |312| 
+        MOVL      *+XAR1[AR0],ACC       ; |312| 
+	.dwpsn	"Rom.c",307,25
+        MOVB      XAR4,#18              ; |307| 
+        MOVL      ACC,XAR1              ; |307| 
+        ADDU      ACC,AR4               ; |307| 
+        MOVL      XAR1,ACC              ; |307| 
+	.dwpsn	"Rom.c",307,15
+        BANZ      L1,AR3--              ; |307| 
+        ; branchcc occurs ; |307| 
 DW$L$_maxmin_read_rom$2$E:
-	.dwpsn	"Rom.c",317,1
-        ADD       SP,#-268
+	.dwpsn	"Rom.c",319,1
+        ADD       SP,#-258
 	.dwcfa	0x1d, -8
         MOVL      XAR3,*--SP
 	.dwcfa	0x1d, -6
@@ -2727,32 +2595,32 @@ DW$L$_maxmin_read_rom$2$E:
         LRETR
         ; return occurs
 
-DW$144	.dwtag  DW_TAG_loop
-	.dwattr DW$144, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L1:1:1768050237")
-	.dwattr DW$144, DW_AT_begin_file("Rom.c")
-	.dwattr DW$144, DW_AT_begin_line(0x131)
-	.dwattr DW$144, DW_AT_end_line(0x139)
-DW$145	.dwtag  DW_TAG_loop_range
-	.dwattr DW$145, DW_AT_low_pc(DW$L$_maxmin_read_rom$2$B)
-	.dwattr DW$145, DW_AT_high_pc(DW$L$_maxmin_read_rom$2$E)
-	.dwendtag DW$144
+DW$130	.dwtag  DW_TAG_loop
+	.dwattr DW$130, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L1:1:1768460752")
+	.dwattr DW$130, DW_AT_begin_file("Rom.c")
+	.dwattr DW$130, DW_AT_begin_line(0x133)
+	.dwattr DW$130, DW_AT_end_line(0x13b)
+DW$131	.dwtag  DW_TAG_loop_range
+	.dwattr DW$131, DW_AT_low_pc(DW$L$_maxmin_read_rom$2$B)
+	.dwattr DW$131, DW_AT_high_pc(DW$L$_maxmin_read_rom$2$E)
+	.dwendtag DW$130
 
-	.dwattr DW$138, DW_AT_end_file("Rom.c")
-	.dwattr DW$138, DW_AT_end_line(0x13d)
-	.dwattr DW$138, DW_AT_end_column(0x01)
+	.dwattr DW$125, DW_AT_end_file("Rom.c")
+	.dwattr DW$125, DW_AT_end_line(0x13f)
+	.dwattr DW$125, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$138
+	.dwendtag DW$125
 
 	.sect	".text"
 	.global	_mark_write_rom
 
-DW$146	.dwtag  DW_TAG_subprogram, DW_AT_name("mark_write_rom"), DW_AT_symbol_name("_mark_write_rom")
-	.dwattr DW$146, DW_AT_low_pc(_mark_write_rom)
-	.dwattr DW$146, DW_AT_high_pc(0x00)
-	.dwattr DW$146, DW_AT_begin_file("Rom.c")
-	.dwattr DW$146, DW_AT_begin_line(0x400)
-	.dwattr DW$146, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",1025,1
+DW$132	.dwtag  DW_TAG_subprogram, DW_AT_name("mark_write_rom"), DW_AT_symbol_name("_mark_write_rom")
+	.dwattr DW$132, DW_AT_low_pc(_mark_write_rom)
+	.dwattr DW$132, DW_AT_high_pc(0x00)
+	.dwattr DW$132, DW_AT_begin_file("Rom.c")
+	.dwattr DW$132, DW_AT_begin_line(0x351)
+	.dwattr DW$132, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",850,1
 
 	.dwfde DW$CIE
 
@@ -2772,54 +2640,54 @@ DW$146	.dwtag  DW_TAG_subprogram, DW_AT_name("mark_write_rom"), DW_AT_symbol_nam
 ;*                                                             *
 ;***************************************************************
 _mark_write_rom:
-;** 1030	-----------------------    mark_sarr[0] = g_int32mark_cnt&0xffL;
-;** 1031	-----------------------    mark_sarr[1] = (unsigned)g_int32mark_cnt>>8;
-;** 1033	-----------------------    SpiWriteRom(28u, 0u, 2u, &mark_sarr);
-;** 1033	-----------------------    return;
+;*** 855	-----------------------    mark_sarr[0] = g_int32mark_cnt&0xffL;
+;*** 856	-----------------------    mark_sarr[1] = (unsigned)g_int32mark_cnt>>8;
+;*** 858	-----------------------    SpiWriteRom(28u, 0u, 2u, &mark_sarr);
+;*** 858	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
         ADDB      SP,#2
 	.dwcfa	0x1d, -4
-DW$147	.dwtag  DW_TAG_variable, DW_AT_name("mark_sarr"), DW_AT_symbol_name("_mark_sarr")
-	.dwattr DW$147, DW_AT_type(*DW$T$45)
-	.dwattr DW$147, DW_AT_location[DW_OP_breg20 -2]
-	.dwpsn	"Rom.c",1030,2
+DW$133	.dwtag  DW_TAG_variable, DW_AT_name("mark_sarr"), DW_AT_symbol_name("_mark_sarr")
+	.dwattr DW$133, DW_AT_type(*DW$T$38)
+	.dwattr DW$133, DW_AT_location[DW_OP_breg20 -2]
+	.dwpsn	"Rom.c",855,2
         MOVW      DP,#_g_int32mark_cnt
-        MOVB      AL.LSB,@_g_int32mark_cnt ; |1030| 
-        MOV       *-SP[2],AL            ; |1030| 
-	.dwpsn	"Rom.c",1031,2
-        MOV       AL,@_g_int32mark_cnt  ; |1031| 
-        LSR       AL,8                  ; |1031| 
-        MOV       *-SP[1],AL            ; |1031| 
-	.dwpsn	"Rom.c",1033,2
-        MOVZ      AR4,SP                ; |1033| 
-        MOVB      XAR5,#2               ; |1033| 
+        MOVB      AL.LSB,@_g_int32mark_cnt ; |855| 
+        MOV       *-SP[2],AL            ; |855| 
+	.dwpsn	"Rom.c",856,2
+        MOV       AL,@_g_int32mark_cnt  ; |856| 
+        LSR       AL,8                  ; |856| 
+        MOV       *-SP[1],AL            ; |856| 
+	.dwpsn	"Rom.c",858,2
+        MOVZ      AR4,SP                ; |858| 
+        MOVB      XAR5,#2               ; |858| 
         MOVB      ACC,#28
-        SUBB      XAR4,#2               ; |1033| 
-        LCR       #_SpiWriteRom         ; |1033| 
-        ; call occurs [#_SpiWriteRom] ; |1033| 
-	.dwpsn	"Rom.c",1035,1
+        SUBB      XAR4,#2               ; |858| 
+        LCR       #_SpiWriteRom         ; |858| 
+        ; call occurs [#_SpiWriteRom] ; |858| 
+	.dwpsn	"Rom.c",860,1
         SUBB      SP,#2
 	.dwcfa	0x1d, -2
         LRETR
         ; return occurs
-	.dwattr DW$146, DW_AT_end_file("Rom.c")
-	.dwattr DW$146, DW_AT_end_line(0x40b)
-	.dwattr DW$146, DW_AT_end_column(0x01)
+	.dwattr DW$132, DW_AT_end_file("Rom.c")
+	.dwattr DW$132, DW_AT_end_line(0x35c)
+	.dwattr DW$132, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$146
+	.dwendtag DW$132
 
 	.sect	".text"
 	.global	_mark_read_rom
 
-DW$148	.dwtag  DW_TAG_subprogram, DW_AT_name("mark_read_rom"), DW_AT_symbol_name("_mark_read_rom")
-	.dwattr DW$148, DW_AT_low_pc(_mark_read_rom)
-	.dwattr DW$148, DW_AT_high_pc(0x00)
-	.dwattr DW$148, DW_AT_begin_file("Rom.c")
-	.dwattr DW$148, DW_AT_begin_line(0x40d)
-	.dwattr DW$148, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",1038,1
+DW$134	.dwtag  DW_TAG_subprogram, DW_AT_name("mark_read_rom"), DW_AT_symbol_name("_mark_read_rom")
+	.dwattr DW$134, DW_AT_low_pc(_mark_read_rom)
+	.dwattr DW$134, DW_AT_high_pc(0x00)
+	.dwattr DW$134, DW_AT_begin_file("Rom.c")
+	.dwattr DW$134, DW_AT_begin_line(0x35e)
+	.dwattr DW$134, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",863,1
 
 	.dwfde DW$CIE
 
@@ -2839,73 +2707,73 @@ DW$148	.dwtag  DW_TAG_subprogram, DW_AT_name("mark_read_rom"), DW_AT_symbol_name
 ;*                                                             *
 ;***************************************************************
 _mark_read_rom:
-;** 1040	-----------------------    mark_larr[] = {...};
-;** 1042	-----------------------    SpiReadRom(28u, 0u, 2u, &mark_larr);
-;** 1045	-----------------------    g_int32total_cnt = mark_larr[1]<<8|(long)(mark_larr[0]&0xffu);
-;** 1045	-----------------------    return;
+;*** 865	-----------------------    mark_larr[] = {...};
+;*** 867	-----------------------    SpiReadRom(28u, 0u, 2u, &mark_larr);
+;*** 870	-----------------------    g_int32total_cnt = mark_larr[1]<<8|(long)(mark_larr[0]&0xffu);
+;*** 870	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
         ADDB      SP,#2
 	.dwcfa	0x1d, -4
-DW$149	.dwtag  DW_TAG_variable, DW_AT_name("mark_larr"), DW_AT_symbol_name("_mark_larr")
-	.dwattr DW$149, DW_AT_type(*DW$T$45)
-	.dwattr DW$149, DW_AT_location[DW_OP_breg20 -2]
-	.dwpsn	"Rom.c",1040,9
-        MOVZ      AR4,SP                ; |1040| 
+DW$135	.dwtag  DW_TAG_variable, DW_AT_name("mark_larr"), DW_AT_symbol_name("_mark_larr")
+	.dwattr DW$135, DW_AT_type(*DW$T$38)
+	.dwattr DW$135, DW_AT_location[DW_OP_breg20 -2]
+	.dwpsn	"Rom.c",865,9
+        MOVZ      AR4,SP                ; |865| 
         MOVB      ACC,#2
-        MOVL      XAR5,#_$T45$46$0      ; |1040| 
-        SUBB      XAR4,#2               ; |1040| 
-        LCR       #___memcpy_ff         ; |1040| 
-        ; call occurs [#___memcpy_ff] ; |1040| 
-	.dwpsn	"Rom.c",1042,2
-        MOVZ      AR4,SP                ; |1042| 
-        MOVB      XAR5,#2               ; |1042| 
+        MOVL      XAR5,#_$T41$42$0      ; |865| 
+        SUBB      XAR4,#2               ; |865| 
+        LCR       #___memcpy_ff         ; |865| 
+        ; call occurs [#___memcpy_ff] ; |865| 
+	.dwpsn	"Rom.c",867,2
+        MOVZ      AR4,SP                ; |867| 
+        MOVB      XAR5,#2               ; |867| 
         MOVB      ACC,#28
-        SUBB      XAR4,#2               ; |1042| 
-        LCR       #_SpiReadRom          ; |1042| 
-        ; call occurs [#_SpiReadRom] ; |1042| 
-	.dwpsn	"Rom.c",1045,2
-        MOV       AL,*-SP[2]            ; |1045| 
-        ANDB      AL,#0xff              ; |1045| 
+        SUBB      XAR4,#2               ; |867| 
+        LCR       #_SpiReadRom          ; |867| 
+        ; call occurs [#_SpiReadRom] ; |867| 
+	.dwpsn	"Rom.c",870,2
+        MOV       AL,*-SP[2]            ; |870| 
+        ANDB      AL,#0xff              ; |870| 
         MOVZ      AR7,AL
-        MOV       ACC,*-SP[1] << #8     ; |1045| 
-        MOVZ      AR6,AL                ; |1045| 
-        MOVL      ACC,XAR7              ; |1045| 
-        OR        ACC,AR6               ; |1045| 
+        MOV       ACC,*-SP[1] << #8     ; |870| 
+        MOVZ      AR6,AL                ; |870| 
+        MOVL      ACC,XAR7              ; |870| 
+        OR        ACC,AR6               ; |870| 
         MOVW      DP,#_g_int32total_cnt
-        MOVL      @_g_int32total_cnt,ACC ; |1045| 
-	.dwpsn	"Rom.c",1047,1
+        MOVL      @_g_int32total_cnt,ACC ; |870| 
+	.dwpsn	"Rom.c",872,1
         SUBB      SP,#2
 	.dwcfa	0x1d, -2
         LRETR
         ; return occurs
-	.dwattr DW$148, DW_AT_end_file("Rom.c")
-	.dwattr DW$148, DW_AT_end_line(0x417)
-	.dwattr DW$148, DW_AT_end_column(0x01)
+	.dwattr DW$134, DW_AT_end_file("Rom.c")
+	.dwattr DW$134, DW_AT_end_line(0x368)
+	.dwattr DW$134, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$148
+	.dwendtag DW$134
 
 	.sect	".text"
 	.global	_handle_write_rom
 
-DW$150	.dwtag  DW_TAG_subprogram, DW_AT_name("handle_write_rom"), DW_AT_symbol_name("_handle_write_rom")
-	.dwattr DW$150, DW_AT_low_pc(_handle_write_rom)
-	.dwattr DW$150, DW_AT_high_pc(0x00)
-	.dwattr DW$150, DW_AT_begin_file("Rom.c")
-	.dwattr DW$150, DW_AT_begin_line(0x2fa)
-	.dwattr DW$150, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",763,1
+DW$136	.dwtag  DW_TAG_subprogram, DW_AT_name("handle_write_rom"), DW_AT_symbol_name("_handle_write_rom")
+	.dwattr DW$136, DW_AT_low_pc(_handle_write_rom)
+	.dwattr DW$136, DW_AT_high_pc(0x00)
+	.dwattr DW$136, DW_AT_begin_file("Rom.c")
+	.dwattr DW$136, DW_AT_begin_line(0x24b)
+	.dwattr DW$136, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",588,1
 
 	.dwfde DW$CIE
 
 ;***************************************************************
-;* FNAME: _handle_write_rom             FR SIZE: 270           *
+;* FNAME: _handle_write_rom             FR SIZE: 266           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
 ;* FUNCTION PROPERTIES                                         *
-;*                            4 Parameter, 264 Auto,  2 SOE     *
+;*                            0 Parameter, 264 Auto,  2 SOE     *
 ;***************************************************************
 
 
@@ -2915,22 +2783,27 @@ DW$150	.dwtag  DW_TAG_subprogram, DW_AT_name("handle_write_rom"), DW_AT_symbol_n
 ;*                                                             *
 ;***************************************************************
 _handle_write_rom:
-;*** 765	-----------------------    q16out_corner_limit = __IQmpy(g_q16out_corner_limit, 65536000L, 16)+52428L;
-;*** 766	-----------------------    q16in_corner_limit = __IQmpy(g_q16in_corner_limit, 65536000L, 16)+52428L;
-;*** 767	-----------------------    q16out_corner_fast_limit = __IQmpy(g_q16out_corner_fast_limit, 65536000L, 16)+52428L;
-;*** 768	-----------------------    q16in_corner_fast_limit = __IQmpy(g_q16in_corner_fast_limit, 65536000L, 16)+52428L;
-;*** 769	-----------------------    write_buf1[] = {...};
-;*** 770	-----------------------    write_buf2[] = {...};
-;*** 771	-----------------------    write_buf3[] = {...};
-;*** 772	-----------------------    write_buf4[] = {...};
-;*** 775	-----------------------    memset(&write_buf1, 0, 64uL);
-;*** 776	-----------------------    memset(&write_buf2, 0, 64uL);
-;*** 777	-----------------------    memset(&write_buf3, 0, 64uL);
-;*** 778	-----------------------    memset(&write_buf4, 0, 64uL);
-;*** 784	-----------------------    write_buf1[0] = q16out_corner_limit>>16&0xffuL;
-;*** 785	-----------------------    write_buf1[1] = (unsigned)(q16out_corner_limit>>16)>>8;
-;*** 787	-----------------------    TxPrintf("OS:%f\n", _IQ16toF(q16out_corner_limit));
-;*** 788	-----------------------    SpiWriteRom(29u, 0u, 64u, &write_buf1);
+;*** 590	-----------------------    q16out_corner_limit = __IQmpy(g_q16out_corner_limit, 65536000L, 16)+52428L;
+;*** 591	-----------------------    q16in_corner_limit = __IQmpy(g_q16in_corner_limit, 65536000L, 16)+52428L;
+;*** 592	-----------------------    q16out_corner_fast_limit = __IQmpy(g_q16out_corner_fast_limit, 65536000L, 16)+52428L;
+;*** 593	-----------------------    q16in_corner_fast_limit = __IQmpy(g_q16in_corner_fast_limit, 65536000L, 16)+52428L;
+;*** 594	-----------------------    write_buf1[] = {...};
+;*** 595	-----------------------    write_buf2[] = {...};
+;*** 596	-----------------------    write_buf3[] = {...};
+;*** 597	-----------------------    write_buf4[] = {...};
+;*** 600	-----------------------    memset(&write_buf1, 0, 64uL);
+;*** 601	-----------------------    memset(&write_buf2, 0, 64uL);
+;*** 602	-----------------------    memset(&write_buf3, 0, 64uL);
+;*** 603	-----------------------    memset(&write_buf4, 0, 64uL);
+;*** 609	-----------------------    write_buf1[0] = q16out_corner_limit>>16&0xffuL;
+;*** 610	-----------------------    write_buf1[1] = (unsigned)(q16out_corner_limit>>16)>>8;
+;*** 613	-----------------------    SpiWriteRom(29u, 0u, 64u, &write_buf1);
+;*** 618	-----------------------    write_buf2[0] = q16out_corner_fast_limit>>16&0xffuL;
+;*** 619	-----------------------    write_buf2[1] = (unsigned)(q16out_corner_fast_limit>>16)>>8;
+;*** 622	-----------------------    SpiWriteRom(30u, 0u, 64u, &write_buf2);
+;*** 627	-----------------------    write_buf3[0] = q16in_corner_limit>>16&0xffuL;
+;*** 628	-----------------------    write_buf3[1] = (unsigned)(q16in_corner_limit>>16)>>8;
+;*** 631	-----------------------    SpiWriteRom(31u, 0u, 64u, &write_buf3);
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -2939,287 +2812,243 @@ _handle_write_rom:
 	.dwcfa	0x1d, -4
         MOVZ      AR2,SP
         SUBB      FP,#4
-        ADD       SP,#268
-	.dwcfa	0x1d, -272
-DW$151	.dwtag  DW_TAG_variable, DW_AT_name("q16out_corner_limit"), DW_AT_symbol_name("_q16out_corner_limit")
-	.dwattr DW$151, DW_AT_type(*DW$T$61)
-	.dwattr DW$151, DW_AT_location[DW_OP_breg20 -262]
-DW$152	.dwtag  DW_TAG_variable, DW_AT_name("q16in_corner_limit"), DW_AT_symbol_name("_q16in_corner_limit")
-	.dwattr DW$152, DW_AT_type(*DW$T$61)
-	.dwattr DW$152, DW_AT_location[DW_OP_breg20 -264]
-DW$153	.dwtag  DW_TAG_variable, DW_AT_name("q16out_corner_fast_limit"), DW_AT_symbol_name("_q16out_corner_fast_limit")
-	.dwattr DW$153, DW_AT_type(*DW$T$61)
-	.dwattr DW$153, DW_AT_location[DW_OP_breg20 -266]
-DW$154	.dwtag  DW_TAG_variable, DW_AT_name("q16in_corner_fast_limit"), DW_AT_symbol_name("_q16in_corner_fast_limit")
-	.dwattr DW$154, DW_AT_type(*DW$T$61)
-	.dwattr DW$154, DW_AT_location[DW_OP_breg20 -268]
-DW$155	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
-	.dwattr DW$155, DW_AT_type(*DW$T$44)
-	.dwattr DW$155, DW_AT_location[DW_OP_breg20 -68]
-DW$156	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
-	.dwattr DW$156, DW_AT_type(*DW$T$44)
-	.dwattr DW$156, DW_AT_location[DW_OP_breg20 -132]
-DW$157	.dwtag  DW_TAG_variable, DW_AT_name("write_buf3"), DW_AT_symbol_name("_write_buf3")
-	.dwattr DW$157, DW_AT_type(*DW$T$44)
-	.dwattr DW$157, DW_AT_location[DW_OP_breg20 -196]
-DW$158	.dwtag  DW_TAG_variable, DW_AT_name("write_buf4"), DW_AT_symbol_name("_write_buf4")
-	.dwattr DW$158, DW_AT_type(*DW$T$44)
-	.dwattr DW$158, DW_AT_location[DW_OP_breg20 -260]
-	.dwpsn	"Rom.c",765,11
+        ADD       SP,#264
+	.dwcfa	0x1d, -268
+DW$137	.dwtag  DW_TAG_variable, DW_AT_name("q16out_corner_limit"), DW_AT_symbol_name("_q16out_corner_limit")
+	.dwattr DW$137, DW_AT_type(*DW$T$53)
+	.dwattr DW$137, DW_AT_location[DW_OP_breg20 -258]
+DW$138	.dwtag  DW_TAG_variable, DW_AT_name("q16in_corner_limit"), DW_AT_symbol_name("_q16in_corner_limit")
+	.dwattr DW$138, DW_AT_type(*DW$T$53)
+	.dwattr DW$138, DW_AT_location[DW_OP_breg20 -260]
+DW$139	.dwtag  DW_TAG_variable, DW_AT_name("q16out_corner_fast_limit"), DW_AT_symbol_name("_q16out_corner_fast_limit")
+	.dwattr DW$139, DW_AT_type(*DW$T$53)
+	.dwattr DW$139, DW_AT_location[DW_OP_breg20 -262]
+DW$140	.dwtag  DW_TAG_variable, DW_AT_name("q16in_corner_fast_limit"), DW_AT_symbol_name("_q16in_corner_fast_limit")
+	.dwattr DW$140, DW_AT_type(*DW$T$53)
+	.dwattr DW$140, DW_AT_location[DW_OP_breg20 -264]
+DW$141	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
+	.dwattr DW$141, DW_AT_type(*DW$T$37)
+	.dwattr DW$141, DW_AT_location[DW_OP_breg20 -64]
+DW$142	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
+	.dwattr DW$142, DW_AT_type(*DW$T$37)
+	.dwattr DW$142, DW_AT_location[DW_OP_breg20 -128]
+DW$143	.dwtag  DW_TAG_variable, DW_AT_name("write_buf3"), DW_AT_symbol_name("_write_buf3")
+	.dwattr DW$143, DW_AT_type(*DW$T$37)
+	.dwattr DW$143, DW_AT_location[DW_OP_breg20 -192]
+DW$144	.dwtag  DW_TAG_variable, DW_AT_name("write_buf4"), DW_AT_symbol_name("_write_buf4")
+	.dwattr DW$144, DW_AT_type(*DW$T$37)
+	.dwattr DW$144, DW_AT_location[DW_OP_breg20 -256]
+	.dwpsn	"Rom.c",590,11
         MOVW      DP,#_g_q16out_corner_limit
         MOV       ACC,#2000 << 15
-        MOVL      XT,@_g_q16out_corner_limit ; |765| 
-        IMPYL     P,XT,ACC              ; |765| 
-        MOVL      XAR0,#10              ; |765| 
-        QMPYL     ACC,XT,ACC            ; |765| 
-        LSL64     ACC:P,#16             ; |765| 
-        ADD       ACC,#13107 << 2       ; |765| 
-        MOVL      *+FP[AR0],ACC         ; |765| 
-	.dwpsn	"Rom.c",766,11
+        MOVL      XT,@_g_q16out_corner_limit ; |590| 
+        IMPYL     P,XT,ACC              ; |590| 
+        MOVL      XAR0,#10              ; |590| 
+        QMPYL     ACC,XT,ACC            ; |590| 
+        LSL64     ACC:P,#16             ; |590| 
+        ADD       ACC,#13107 << 2       ; |590| 
+        MOVL      *+FP[AR0],ACC         ; |590| 
+	.dwpsn	"Rom.c",591,11
         MOVW      DP,#_g_q16in_corner_limit
         MOV       ACC,#2000 << 15
-        MOVL      XT,@_g_q16in_corner_limit ; |766| 
-        IMPYL     P,XT,ACC              ; |766| 
-        MOVL      XAR0,#8               ; |766| 
-        QMPYL     ACC,XT,ACC            ; |766| 
-        LSL64     ACC:P,#16             ; |766| 
-        ADD       ACC,#13107 << 2       ; |766| 
-        MOVL      *+FP[AR0],ACC         ; |766| 
-	.dwpsn	"Rom.c",767,11
+        MOVL      XT,@_g_q16in_corner_limit ; |591| 
+        IMPYL     P,XT,ACC              ; |591| 
+        MOVL      XAR0,#8               ; |591| 
+        QMPYL     ACC,XT,ACC            ; |591| 
+        LSL64     ACC:P,#16             ; |591| 
+        ADD       ACC,#13107 << 2       ; |591| 
+        MOVL      *+FP[AR0],ACC         ; |591| 
+	.dwpsn	"Rom.c",592,11
         MOVW      DP,#_g_q16out_corner_fast_limit
         MOV       ACC,#2000 << 15
-        MOVL      XT,@_g_q16out_corner_fast_limit ; |767| 
-        IMPYL     P,XT,ACC              ; |767| 
-        QMPYL     ACC,XT,ACC            ; |767| 
-        LSL64     ACC:P,#16             ; |767| 
-        ADD       ACC,#13107 << 2       ; |767| 
-        MOVL      *+FP[6],ACC           ; |767| 
-	.dwpsn	"Rom.c",768,11
+        MOVL      XT,@_g_q16out_corner_fast_limit ; |592| 
+        IMPYL     P,XT,ACC              ; |592| 
+        QMPYL     ACC,XT,ACC            ; |592| 
+        LSL64     ACC:P,#16             ; |592| 
+        ADD       ACC,#13107 << 2       ; |592| 
+        MOVL      *+FP[6],ACC           ; |592| 
+	.dwpsn	"Rom.c",593,11
         MOVW      DP,#_g_q16in_corner_fast_limit
         MOV       ACC,#2000 << 15
-        MOVL      XT,@_g_q16in_corner_fast_limit ; |768| 
-        IMPYL     P,XT,ACC              ; |768| 
-        QMPYL     ACC,XT,ACC            ; |768| 
-        LSL64     ACC:P,#16             ; |768| 
-        ADD       ACC,#13107 << 2       ; |768| 
-        MOVL      *+FP[4],ACC           ; |768| 
-	.dwpsn	"Rom.c",769,9
-        MOVZ      AR4,SP                ; |769| 
-        MOVL      XAR5,#_$T26$27$0      ; |769| 
-        SUBB      XAR4,#68              ; |769| 
+        MOVL      XT,@_g_q16in_corner_fast_limit ; |593| 
+        IMPYL     P,XT,ACC              ; |593| 
+        QMPYL     ACC,XT,ACC            ; |593| 
+        LSL64     ACC:P,#16             ; |593| 
+        ADD       ACC,#13107 << 2       ; |593| 
+        MOVL      *+FP[4],ACC           ; |593| 
+	.dwpsn	"Rom.c",594,9
+        MOVZ      AR4,SP                ; |594| 
+        MOVL      XAR5,#_$T22$23$0      ; |594| 
+        SUBB      XAR4,#64              ; |594| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |769| 
-        ; call occurs [#___memcpy_ff] ; |769| 
-	.dwpsn	"Rom.c",770,9
-        MOVZ      AR4,SP                ; |770| 
-        ADD       AR4,#-132             ; |770| 
-        MOVL      XAR5,#_$T27$28$0      ; |770| 
+        LCR       #___memcpy_ff         ; |594| 
+        ; call occurs [#___memcpy_ff] ; |594| 
+	.dwpsn	"Rom.c",595,9
+        MOVZ      AR4,SP                ; |595| 
+        ADD       AR4,#-128             ; |595| 
+        MOVL      XAR5,#_$T23$24$0      ; |595| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |770| 
-        ; call occurs [#___memcpy_ff] ; |770| 
-	.dwpsn	"Rom.c",771,9
-        MOVZ      AR4,SP                ; |771| 
-        ADD       AR4,#-196             ; |771| 
-        MOVL      XAR5,#_$T28$29$0      ; |771| 
+        LCR       #___memcpy_ff         ; |595| 
+        ; call occurs [#___memcpy_ff] ; |595| 
+	.dwpsn	"Rom.c",596,9
+        MOVZ      AR4,SP                ; |596| 
+        ADD       AR4,#-192             ; |596| 
+        MOVL      XAR5,#_$T24$25$0      ; |596| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |771| 
-        ; call occurs [#___memcpy_ff] ; |771| 
-	.dwpsn	"Rom.c",772,9
-        MOVZ      AR4,SP                ; |772| 
-        ADD       AR4,#-260             ; |772| 
-        MOVL      XAR5,#_$T29$30$0      ; |772| 
+        LCR       #___memcpy_ff         ; |596| 
+        ; call occurs [#___memcpy_ff] ; |596| 
+	.dwpsn	"Rom.c",597,9
+        MOVZ      AR4,SP                ; |597| 
+        ADD       AR4,#-256             ; |597| 
+        MOVL      XAR5,#_$T25$26$0      ; |597| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |772| 
-        ; call occurs [#___memcpy_ff] ; |772| 
-	.dwpsn	"Rom.c",775,2
-        MOVZ      AR4,SP                ; |775| 
+        LCR       #___memcpy_ff         ; |597| 
+        ; call occurs [#___memcpy_ff] ; |597| 
+	.dwpsn	"Rom.c",600,2
+        MOVZ      AR4,SP                ; |600| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        SUBB      XAR4,#68              ; |775| 
-        LCR       #_memset              ; |775| 
-        ; call occurs [#_memset] ; |775| 
-	.dwpsn	"Rom.c",776,2
-        MOVZ      AR4,SP                ; |776| 
-        ADD       AR4,#-132             ; |776| 
+        SUBB      XAR4,#64              ; |600| 
+        LCR       #_memset              ; |600| 
+        ; call occurs [#_memset] ; |600| 
+	.dwpsn	"Rom.c",601,2
+        MOVZ      AR4,SP                ; |601| 
+        ADD       AR4,#-128             ; |601| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        LCR       #_memset              ; |776| 
-        ; call occurs [#_memset] ; |776| 
-	.dwpsn	"Rom.c",777,2
-        MOVZ      AR4,SP                ; |777| 
-        ADD       AR4,#-196             ; |777| 
+        LCR       #_memset              ; |601| 
+        ; call occurs [#_memset] ; |601| 
+	.dwpsn	"Rom.c",602,2
+        MOVZ      AR4,SP                ; |602| 
+        ADD       AR4,#-192             ; |602| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        LCR       #_memset              ; |777| 
-        ; call occurs [#_memset] ; |777| 
-	.dwpsn	"Rom.c",778,2
-        MOVZ      AR4,SP                ; |778| 
-        ADD       AR4,#-260             ; |778| 
+        LCR       #_memset              ; |602| 
+        ; call occurs [#_memset] ; |602| 
+	.dwpsn	"Rom.c",603,2
+        MOVZ      AR4,SP                ; |603| 
+        ADD       AR4,#-256             ; |603| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        LCR       #_memset              ; |778| 
-        ; call occurs [#_memset] ; |778| 
-	.dwpsn	"Rom.c",784,2
+        LCR       #_memset              ; |603| 
+        ; call occurs [#_memset] ; |603| 
+	.dwpsn	"Rom.c",609,2
         MOVL      XAR0,#10
         MOVL      ACC,*+FP[AR0]
-        MOVL      XAR0,#204             ; |784| 
-        MOVU      ACC,AH                ; |784| 
-        ANDB      AL,#0xff              ; |784| 
-        MOV       *+FP[AR0],AL          ; |784| 
-	.dwpsn	"Rom.c",785,2
+        MOVL      XAR0,#204             ; |609| 
+        MOVU      ACC,AH                ; |609| 
+        ANDB      AL,#0xff              ; |609| 
+        MOV       *+FP[AR0],AL          ; |609| 
+        MOVB      AH,#0
+	.dwpsn	"Rom.c",610,2
         MOVL      XAR0,#11
         MOV       AL,*+FP[AR0]
-        MOVL      XAR0,#205             ; |785| 
-        LSR       AL,8                  ; |785| 
-        MOV       *+FP[AR0],AL          ; |785| 
-	.dwpsn	"Rom.c",787,5
-        MOVL      XAR0,#10
-        MOVL      ACC,*+FP[AR0]
-        LCR       #__IQ16toF            ; |787| 
-        ; call occurs [#__IQ16toF] ; |787| 
-        MOVL      XAR4,#FSL4            ; |787| 
-        MOVL      *-SP[2],XAR4          ; |787| 
-        MOVL      *-SP[4],ACC           ; |787| 
-        LCR       #_TxPrintf            ; |787| 
-        ; call occurs [#_TxPrintf] ; |787| 
-	.dwpsn	"Rom.c",788,2
-        MOVZ      AR4,SP                ; |788| 
-        MOVB      XAR5,#64              ; |788| 
-        SUBB      XAR4,#68              ; |788| 
-        MOVB      ACC,#29
-        LCR       #_SpiWriteRom         ; |788| 
-        ; call occurs [#_SpiWriteRom] ; |788| 
-;*** 793	-----------------------    write_buf2[0] = q16out_corner_fast_limit>>16&0xffuL;
-;*** 794	-----------------------    write_buf2[1] = (unsigned)(q16out_corner_fast_limit>>16)>>8;
-;*** 796	-----------------------    TxPrintf("OF:%f\n", _IQ16toF(q16out_corner_fast_limit));
-;*** 797	-----------------------    SpiWriteRom(30u, 0u, 64u, &write_buf2);
-;*** 802	-----------------------    write_buf3[0] = q16in_corner_limit>>16&0xffuL;
-;*** 803	-----------------------    write_buf3[1] = (unsigned)(q16in_corner_limit>>16)>>8;
-;*** 805	-----------------------    TxPrintf("IS:%f\n", _IQ16toF(q16in_corner_limit));
-;*** 806	-----------------------    SpiWriteRom(31u, 0u, 64u, &write_buf3);
-;*** 811	-----------------------    write_buf4[0] = q16in_corner_fast_limit>>16&0xffuL;
-;*** 812	-----------------------    write_buf4[1] = (unsigned)(q16in_corner_fast_limit>>16)>>8;
-;*** 814	-----------------------    TxPrintf("IF:%f\n", _IQ16toF(q16in_corner_fast_limit));
-;*** 815	-----------------------    SpiWriteRom(32u, 0u, 64u, &write_buf4);
-;*** 815	-----------------------    return;
-	.dwpsn	"Rom.c",793,2
-        MOVL      XAR0,#140             ; |793| 
+        LSR       AL,8                  ; |610| 
+        MOV       *-SP[63],AL           ; |610| 
+	.dwpsn	"Rom.c",613,2
+        MOVZ      AR4,SP                ; |613| 
+        MOVB      XAR5,#64              ; |613| 
+        MOVB      AL,#29                ; |613| 
+        SUBB      XAR4,#64              ; |613| 
+        LCR       #_SpiWriteRom         ; |613| 
+        ; call occurs [#_SpiWriteRom] ; |613| 
+	.dwpsn	"Rom.c",618,2
+        MOVL      XAR0,#140             ; |618| 
         MOVL      ACC,*+FP[6]
-        MOVU      ACC,AH                ; |793| 
-        ANDB      AL,#0xff              ; |793| 
-        MOV       *+FP[AR0],AL          ; |793| 
-	.dwpsn	"Rom.c",794,2
-        MOVL      XAR0,#141             ; |794| 
+        MOVU      ACC,AH                ; |618| 
+        ANDB      AL,#0xff              ; |618| 
+        MOV       *+FP[AR0],AL          ; |618| 
+        MOVB      AH,#0
+	.dwpsn	"Rom.c",619,2
+        MOVL      XAR0,#141             ; |619| 
         MOV       AL,*+FP[7]
-        LSR       AL,8                  ; |794| 
-        MOV       *+FP[AR0],AL          ; |794| 
-	.dwpsn	"Rom.c",796,5
-        MOVL      ACC,*+FP[6]
-        LCR       #__IQ16toF            ; |796| 
-        ; call occurs [#__IQ16toF] ; |796| 
-        MOVL      XAR4,#FSL5            ; |796| 
-        MOVL      *-SP[2],XAR4          ; |796| 
-        MOVL      *-SP[4],ACC           ; |796| 
-        LCR       #_TxPrintf            ; |796| 
-        ; call occurs [#_TxPrintf] ; |796| 
-	.dwpsn	"Rom.c",797,2
-        MOVZ      AR4,SP                ; |797| 
-        MOVB      ACC,#30
-        ADD       AR4,#-132             ; |797| 
-        MOVB      XAR5,#64              ; |797| 
-        LCR       #_SpiWriteRom         ; |797| 
-        ; call occurs [#_SpiWriteRom] ; |797| 
-	.dwpsn	"Rom.c",802,2
+        LSR       AL,8                  ; |619| 
+        MOV       *+FP[AR0],AL          ; |619| 
+	.dwpsn	"Rom.c",622,2
+        MOVZ      AR4,SP                ; |622| 
+        MOVB      AL,#30                ; |622| 
+        ADD       AR4,#-128             ; |622| 
+        MOVB      XAR5,#64              ; |622| 
+        LCR       #_SpiWriteRom         ; |622| 
+        ; call occurs [#_SpiWriteRom] ; |622| 
+	.dwpsn	"Rom.c",627,2
         MOVL      XAR0,#8
         MOVL      ACC,*+FP[AR0]
-        MOVL      XAR0,#76              ; |802| 
-        MOVU      ACC,AH                ; |802| 
-        ANDB      AL,#0xff              ; |802| 
-        MOV       *+FP[AR0],AL          ; |802| 
-	.dwpsn	"Rom.c",803,2
+        MOVL      XAR0,#76              ; |627| 
+        MOVU      ACC,AH                ; |627| 
+        ANDB      AL,#0xff              ; |627| 
+        MOV       *+FP[AR0],AL          ; |627| 
+        MOVB      AH,#0
+	.dwpsn	"Rom.c",628,2
         MOVL      XAR0,#9
         MOV       AL,*+FP[AR0]
-        MOVL      XAR0,#77              ; |803| 
-        LSR       AL,8                  ; |803| 
-        MOV       *+FP[AR0],AL          ; |803| 
-	.dwpsn	"Rom.c",805,5
-        MOVL      XAR0,#8
-        MOVL      ACC,*+FP[AR0]
-        LCR       #__IQ16toF            ; |805| 
-        ; call occurs [#__IQ16toF] ; |805| 
-        MOVL      XAR4,#FSL6            ; |805| 
-        MOVL      *-SP[2],XAR4          ; |805| 
-        MOVL      *-SP[4],ACC           ; |805| 
-        LCR       #_TxPrintf            ; |805| 
-        ; call occurs [#_TxPrintf] ; |805| 
-	.dwpsn	"Rom.c",806,2
-        MOVZ      AR4,SP                ; |806| 
-        MOVB      ACC,#31
-        ADD       AR4,#-196             ; |806| 
-        MOVB      XAR5,#64              ; |806| 
-        LCR       #_SpiWriteRom         ; |806| 
-        ; call occurs [#_SpiWriteRom] ; |806| 
-	.dwpsn	"Rom.c",811,2
-        MOVL      XAR0,#12              ; |811| 
+        MOVL      XAR0,#77              ; |628| 
+        LSR       AL,8                  ; |628| 
+        MOV       *+FP[AR0],AL          ; |628| 
+	.dwpsn	"Rom.c",631,2
+        MOVZ      AR4,SP                ; |631| 
+        MOVB      AL,#31                ; |631| 
+        ADD       AR4,#-192             ; |631| 
+        MOVB      XAR5,#64              ; |631| 
+        LCR       #_SpiWriteRom         ; |631| 
+        ; call occurs [#_SpiWriteRom] ; |631| 
+;*** 636	-----------------------    write_buf4[0] = q16in_corner_fast_limit>>16&0xffuL;
+;*** 637	-----------------------    write_buf4[1] = (unsigned)(q16in_corner_fast_limit>>16)>>8;
+;*** 640	-----------------------    SpiWriteRom(32u, 0u, 64u, &write_buf4);
+;*** 640	-----------------------    return;
+	.dwpsn	"Rom.c",636,2
+        MOVL      XAR0,#12              ; |636| 
         MOVL      ACC,*+FP[4]
-        MOVU      ACC,AH                ; |811| 
-        ANDB      AL,#0xff              ; |811| 
-        MOV       *+FP[AR0],AL          ; |811| 
-	.dwpsn	"Rom.c",812,2
-        MOVL      XAR0,#13              ; |812| 
+        MOVU      ACC,AH                ; |636| 
+        ANDB      AL,#0xff              ; |636| 
+        MOV       *+FP[AR0],AL          ; |636| 
+        MOVB      AH,#0
+	.dwpsn	"Rom.c",637,2
+        MOVL      XAR0,#13              ; |637| 
         MOV       AL,*+FP[5]
-        LSR       AL,8                  ; |812| 
-        MOV       *+FP[AR0],AL          ; |812| 
-	.dwpsn	"Rom.c",814,5
-        MOVL      ACC,*+FP[4]
-        LCR       #__IQ16toF            ; |814| 
-        ; call occurs [#__IQ16toF] ; |814| 
-        MOVL      XAR4,#FSL7            ; |814| 
-        MOVL      *-SP[2],XAR4          ; |814| 
-        MOVL      *-SP[4],ACC           ; |814| 
-        LCR       #_TxPrintf            ; |814| 
-        ; call occurs [#_TxPrintf] ; |814| 
-	.dwpsn	"Rom.c",815,2
-        MOVZ      AR4,SP                ; |815| 
-        MOVB      ACC,#32
-        ADD       AR4,#-260             ; |815| 
-        MOVB      XAR5,#64              ; |815| 
-        LCR       #_SpiWriteRom         ; |815| 
-        ; call occurs [#_SpiWriteRom] ; |815| 
-	.dwpsn	"Rom.c",817,1
-        ADD       SP,#-268
+        LSR       AL,8                  ; |637| 
+        MOV       *+FP[AR0],AL          ; |637| 
+	.dwpsn	"Rom.c",640,2
+        MOVZ      AR4,SP                ; |640| 
+        MOVB      AL,#32                ; |640| 
+        ADD       AR4,#-256             ; |640| 
+        MOVB      XAR5,#64              ; |640| 
+        LCR       #_SpiWriteRom         ; |640| 
+        ; call occurs [#_SpiWriteRom] ; |640| 
+	.dwpsn	"Rom.c",642,1
+        ADD       SP,#-264
 	.dwcfa	0x1d, -4
         MOVL      XAR2,*--SP
 	.dwcfa	0x1d, -2
 	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$150, DW_AT_end_file("Rom.c")
-	.dwattr DW$150, DW_AT_end_line(0x331)
-	.dwattr DW$150, DW_AT_end_column(0x01)
+	.dwattr DW$136, DW_AT_end_file("Rom.c")
+	.dwattr DW$136, DW_AT_end_line(0x282)
+	.dwattr DW$136, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$150
+	.dwendtag DW$136
 
 	.sect	".text"
 	.global	_handle_read_rom
 
-DW$159	.dwtag  DW_TAG_subprogram, DW_AT_name("handle_read_rom"), DW_AT_symbol_name("_handle_read_rom")
-	.dwattr DW$159, DW_AT_low_pc(_handle_read_rom)
-	.dwattr DW$159, DW_AT_high_pc(0x00)
-	.dwattr DW$159, DW_AT_begin_file("Rom.c")
-	.dwattr DW$159, DW_AT_begin_line(0x334)
-	.dwattr DW$159, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",821,1
+DW$145	.dwtag  DW_TAG_subprogram, DW_AT_name("handle_read_rom"), DW_AT_symbol_name("_handle_read_rom")
+	.dwattr DW$145, DW_AT_low_pc(_handle_read_rom)
+	.dwattr DW$145, DW_AT_high_pc(0x00)
+	.dwattr DW$145, DW_AT_begin_file("Rom.c")
+	.dwattr DW$145, DW_AT_begin_line(0x285)
+	.dwattr DW$145, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",646,1
 
 	.dwfde DW$CIE
 
 ;***************************************************************
-;* FNAME: _handle_read_rom              FR SIZE: 272           *
+;* FNAME: _handle_read_rom              FR SIZE: 268           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
 ;* FUNCTION PROPERTIES                                         *
-;*                            4 Parameter, 264 Auto,  4 SOE     *
+;*                            2 Parameter, 264 Auto,  2 SOE     *
 ;***************************************************************
 
 
@@ -3229,331 +3058,261 @@ DW$159	.dwtag  DW_TAG_subprogram, DW_AT_name("handle_read_rom"), DW_AT_symbol_na
 ;*                                                             *
 ;***************************************************************
 _handle_read_rom:
-;*** 823	-----------------------    read_buf1[] = {...};
-;*** 824	-----------------------    read_buf2[] = {...};
-;*** 825	-----------------------    read_buf3[] = {...};
-;*** 826	-----------------------    read_buf4[] = {...};
-;*** 833	-----------------------    SpiReadRom(29u, 0u, 64u, &read_buf1);
-;*** 835	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
-;*** 836	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
-;*** 838	-----------------------    C$4 = (long)((long double)Rom_Data_Buffer*65536.0L);
-;*** 838	-----------------------    TxPrintf("OS:%f\n", _IQ16toF(C$4));
-;*** 839	-----------------------    g_q16out_corner_limit = _IQ16div(C$4, 65536000L);
+;*** 648	-----------------------    read_buf1[] = {...};
+;*** 649	-----------------------    read_buf2[] = {...};
+;*** 650	-----------------------    read_buf3[] = {...};
+;*** 651	-----------------------    read_buf4[] = {...};
+;*** 658	-----------------------    SpiReadRom(29u, 0u, 64u, &read_buf1);
+;*** 660	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
+;*** 661	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
+;*** 664	-----------------------    g_q16out_corner_limit = _IQ16div((long)((long double)Rom_Data_Buffer*65536.0L), 65536000L);
+;*** 667	-----------------------    SpiReadRom(30u, 0u, 64u, &read_buf2);
+;*** 669	-----------------------    Rom_Data_Buffer = read_buf2[0]&0xffu;
+;*** 670	-----------------------    Rom_Data_Buffer |= read_buf2[1]<<8;
+;*** 673	-----------------------    g_q16out_corner_fast_limit = _IQ16div((long)((long double)Rom_Data_Buffer*65536.0L), 65536000L);
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
-        MOVL      *SP++,XAR1
-	.dwcfa	0x80, 7, 2
-	.dwcfa	0x1d, -4
         MOVL      *SP++,XAR2
-	.dwcfa	0x80, 9, 4
-	.dwcfa	0x1d, -6
-        MOVZ      AR2,SP
-        SUBB      FP,#6
-        ADD       SP,#268
-	.dwcfa	0x1d, -274
-;* AR1   assigned to C$1
-DW$160	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
-	.dwattr DW$160, DW_AT_type(*DW$T$12)
-	.dwattr DW$160, DW_AT_location[DW_OP_reg6]
-;* AR1   assigned to C$2
-DW$161	.dwtag  DW_TAG_variable, DW_AT_name("C$2"), DW_AT_symbol_name("C$2")
-	.dwattr DW$161, DW_AT_type(*DW$T$12)
-	.dwattr DW$161, DW_AT_location[DW_OP_reg6]
-;* AR1   assigned to C$3
-DW$162	.dwtag  DW_TAG_variable, DW_AT_name("C$3"), DW_AT_symbol_name("C$3")
-	.dwattr DW$162, DW_AT_type(*DW$T$12)
-	.dwattr DW$162, DW_AT_location[DW_OP_reg6]
-;* AR1   assigned to C$4
-DW$163	.dwtag  DW_TAG_variable, DW_AT_name("C$4"), DW_AT_symbol_name("C$4")
-	.dwattr DW$163, DW_AT_type(*DW$T$12)
-	.dwattr DW$163, DW_AT_location[DW_OP_reg6]
-;* AR7   assigned to _Rom_Data_Buffer
-DW$164	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$164, DW_AT_type(*DW$T$21)
-	.dwattr DW$164, DW_AT_location[DW_OP_reg18]
-DW$165	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
-	.dwattr DW$165, DW_AT_type(*DW$T$44)
-	.dwattr DW$165, DW_AT_location[DW_OP_breg20 -68]
-DW$166	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
-	.dwattr DW$166, DW_AT_type(*DW$T$44)
-	.dwattr DW$166, DW_AT_location[DW_OP_breg20 -132]
-DW$167	.dwtag  DW_TAG_variable, DW_AT_name("read_buf3"), DW_AT_symbol_name("_read_buf3")
-	.dwattr DW$167, DW_AT_type(*DW$T$44)
-	.dwattr DW$167, DW_AT_location[DW_OP_breg20 -196]
-DW$168	.dwtag  DW_TAG_variable, DW_AT_name("read_buf4"), DW_AT_symbol_name("_read_buf4")
-	.dwattr DW$168, DW_AT_type(*DW$T$44)
-	.dwattr DW$168, DW_AT_location[DW_OP_breg20 -260]
-	.dwpsn	"Rom.c",823,9
-        MOVZ      AR4,SP                ; |823| 
-        MOVL      XAR5,#_$T30$31$0      ; |823| 
-        MOVB      ACC,#64
-        SUBB      XAR4,#68              ; |823| 
-        LCR       #___memcpy_ff         ; |823| 
-        ; call occurs [#___memcpy_ff] ; |823| 
-	.dwpsn	"Rom.c",824,9
-        MOVZ      AR4,SP                ; |824| 
-        ADD       AR4,#-132             ; |824| 
-        MOVL      XAR5,#_$T31$32$0      ; |824| 
-        MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |824| 
-        ; call occurs [#___memcpy_ff] ; |824| 
-	.dwpsn	"Rom.c",825,9
-        MOVZ      AR4,SP                ; |825| 
-        ADD       AR4,#-196             ; |825| 
-        MOVL      XAR5,#_$T32$33$0      ; |825| 
-        MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |825| 
-        ; call occurs [#___memcpy_ff] ; |825| 
-	.dwpsn	"Rom.c",826,9
-        MOVZ      AR4,SP                ; |826| 
-        ADD       AR4,#-260             ; |826| 
-        MOVL      XAR5,#_$T33$34$0      ; |826| 
-        MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |826| 
-        ; call occurs [#___memcpy_ff] ; |826| 
-	.dwpsn	"Rom.c",833,2
-        MOVZ      AR4,SP                ; |833| 
-        MOVB      XAR5,#64              ; |833| 
-        MOVB      ACC,#29
-        SUBB      XAR4,#68              ; |833| 
-        LCR       #_SpiReadRom          ; |833| 
-        ; call occurs [#_SpiReadRom] ; |833| 
-	.dwpsn	"Rom.c",835,2
-        MOVL      XAR0,#206             ; |835| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |835| 
-        MOVZ      AR7,AL                ; |835| 
-	.dwpsn	"Rom.c",836,2
-        MOVL      XAR0,#207             ; |836| 
-        MOV       ACC,*+FP[AR0] << #8   ; |836| 
-        OR        AR7,AL                ; |836| 
-	.dwpsn	"Rom.c",838,2
-        MOVZ      AR6,SP                ; |838| 
-        ADD       AR6,#-268             ; |838| 
-        MOV       AL,AR7                ; |838| 
-        LCR       #U$$TOFD              ; |838| 
-        ; call occurs [#U$$TOFD] ; |838| 
-        MOVZ      AR4,SP                ; |838| 
-        MOVZ      AR6,SP                ; |838| 
-        ADD       AR4,#-268             ; |838| 
-        ADD       AR6,#-264             ; |838| 
-        MOVL      XAR5,#FL2             ; |838| 
-        LCR       #FD$$MPY              ; |838| 
-        ; call occurs [#FD$$MPY] ; |838| 
-        MOVZ      AR4,SP                ; |838| 
-        ADD       AR4,#-264             ; |838| 
-        LCR       #FD$$TOL              ; |838| 
-        ; call occurs [#FD$$TOL] ; |838| 
-        MOVL      XAR1,ACC              ; |838| 
-        LCR       #__IQ16toF            ; |838| 
-        ; call occurs [#__IQ16toF] ; |838| 
-        MOVL      XAR4,#FSL4            ; |838| 
-        MOVL      *-SP[2],XAR4          ; |838| 
-        MOVL      *-SP[4],ACC           ; |838| 
-        LCR       #_TxPrintf            ; |838| 
-        ; call occurs [#_TxPrintf] ; |838| 
-	.dwpsn	"Rom.c",839,2
-        MOV       PH,#1000
-        MOV       PL,#0
-        MOVL      *-SP[2],P             ; |839| 
-        MOVL      ACC,XAR1              ; |839| 
-        LCR       #__IQ16div            ; |839| 
-        ; call occurs [#__IQ16div] ; |839| 
-;*** 842	-----------------------    SpiReadRom(30u, 0u, 64u, &read_buf2);
-;*** 844	-----------------------    Rom_Data_Buffer = read_buf2[0]&0xffu;
-;*** 845	-----------------------    Rom_Data_Buffer |= read_buf2[1]<<8;
-;*** 847	-----------------------    C$3 = (long)((long double)Rom_Data_Buffer*65536.0L);
-;*** 847	-----------------------    TxPrintf("OF:%f\n", _IQ16toF(C$3));
-;*** 848	-----------------------    g_q16out_corner_fast_limit = _IQ16div(C$3, 65536000L);
-;*** 852	-----------------------    SpiReadRom(31u, 0u, 64u, &read_buf3);
-;*** 854	-----------------------    Rom_Data_Buffer = read_buf3[0]&0xffu;
-;*** 855	-----------------------    Rom_Data_Buffer |= read_buf3[1]<<8;
-;*** 857	-----------------------    C$2 = (long)((long double)Rom_Data_Buffer*65536.0L);
-        MOVW      DP,#_g_q16out_corner_limit
-        MOVL      @_g_q16out_corner_limit,ACC ; |839| 
-	.dwpsn	"Rom.c",842,2
-        MOVZ      AR4,SP                ; |842| 
-        MOVB      ACC,#30
-        ADD       AR4,#-132             ; |842| 
-        MOVB      XAR5,#64              ; |842| 
-        LCR       #_SpiReadRom          ; |842| 
-        ; call occurs [#_SpiReadRom] ; |842| 
-	.dwpsn	"Rom.c",844,2
-        MOVL      XAR0,#142             ; |844| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |844| 
-        MOVZ      AR7,AL                ; |844| 
-	.dwpsn	"Rom.c",845,2
-        MOVL      XAR0,#143             ; |845| 
-        MOV       ACC,*+FP[AR0] << #8   ; |845| 
-        OR        AR7,AL                ; |845| 
-	.dwpsn	"Rom.c",847,5
-        MOVZ      AR6,SP                ; |847| 
-        ADD       AR6,#-268             ; |847| 
-        MOV       AL,AR7                ; |847| 
-        LCR       #U$$TOFD              ; |847| 
-        ; call occurs [#U$$TOFD] ; |847| 
-        MOVZ      AR4,SP                ; |847| 
-        MOVZ      AR6,SP                ; |847| 
-        ADD       AR4,#-268             ; |847| 
-        ADD       AR6,#-264             ; |847| 
-        MOVL      XAR5,#FL2             ; |847| 
-        LCR       #FD$$MPY              ; |847| 
-        ; call occurs [#FD$$MPY] ; |847| 
-        MOVZ      AR4,SP                ; |847| 
-        ADD       AR4,#-264             ; |847| 
-        LCR       #FD$$TOL              ; |847| 
-        ; call occurs [#FD$$TOL] ; |847| 
-        MOVL      XAR1,ACC              ; |847| 
-        LCR       #__IQ16toF            ; |847| 
-        ; call occurs [#__IQ16toF] ; |847| 
-        MOVL      XAR4,#FSL5            ; |847| 
-        MOVL      *-SP[2],XAR4          ; |847| 
-        MOVL      *-SP[4],ACC           ; |847| 
-        LCR       #_TxPrintf            ; |847| 
-        ; call occurs [#_TxPrintf] ; |847| 
-	.dwpsn	"Rom.c",848,2
-        MOV       PH,#1000
-        MOV       PL,#0
-        MOVL      *-SP[2],P             ; |848| 
-        MOVL      ACC,XAR1              ; |848| 
-        LCR       #__IQ16div            ; |848| 
-        ; call occurs [#__IQ16div] ; |848| 
-        MOVW      DP,#_g_q16out_corner_fast_limit
-        MOVL      @_g_q16out_corner_fast_limit,ACC ; |848| 
-	.dwpsn	"Rom.c",852,2
-        MOVZ      AR4,SP                ; |852| 
-        MOVB      ACC,#31
-        ADD       AR4,#-196             ; |852| 
-        MOVB      XAR5,#64              ; |852| 
-        LCR       #_SpiReadRom          ; |852| 
-        ; call occurs [#_SpiReadRom] ; |852| 
-	.dwpsn	"Rom.c",854,2
-        MOVL      XAR0,#78              ; |854| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |854| 
-        MOVZ      AR7,AL                ; |854| 
-	.dwpsn	"Rom.c",855,2
-        MOVL      XAR0,#79              ; |855| 
-        MOV       ACC,*+FP[AR0] << #8   ; |855| 
-        OR        AR7,AL                ; |855| 
-	.dwpsn	"Rom.c",857,5
-        MOVZ      AR6,SP                ; |857| 
-        ADD       AR6,#-268             ; |857| 
-        MOV       AL,AR7                ; |857| 
-        LCR       #U$$TOFD              ; |857| 
-        ; call occurs [#U$$TOFD] ; |857| 
-        MOVZ      AR4,SP                ; |857| 
-        MOVZ      AR6,SP                ; |857| 
-        ADD       AR4,#-268             ; |857| 
-        ADD       AR6,#-264             ; |857| 
-        MOVL      XAR5,#FL2             ; |857| 
-        LCR       #FD$$MPY              ; |857| 
-        ; call occurs [#FD$$MPY] ; |857| 
-        MOVZ      AR4,SP                ; |857| 
-        ADD       AR4,#-264             ; |857| 
-        LCR       #FD$$TOL              ; |857| 
-        ; call occurs [#FD$$TOL] ; |857| 
-;*** 857	-----------------------    TxPrintf("IS:%f\n", _IQ16toF(C$2));
-;*** 858	-----------------------    g_q16in_corner_limit = _IQ16div(C$2, 65536000L);
-;*** 862	-----------------------    SpiReadRom(32u, 0u, 64u, &read_buf4);
-;*** 864	-----------------------    Rom_Data_Buffer = read_buf4[0]&0xffu;
-;*** 865	-----------------------    Rom_Data_Buffer |= read_buf4[1]<<8;
-;*** 867	-----------------------    C$1 = (long)((long double)Rom_Data_Buffer*65536.0L);
-;*** 867	-----------------------    TxPrintf("IF:%f\n", _IQ16toF(C$1));
-;*** 868	-----------------------    g_q16in_corner_fast_limit = _IQ16div(C$1, 65536000L);
-;*** 868	-----------------------    return;
-        MOVL      XAR1,ACC              ; |857| 
-        LCR       #__IQ16toF            ; |857| 
-        ; call occurs [#__IQ16toF] ; |857| 
-        MOVL      XAR4,#FSL6            ; |857| 
-        MOVL      *-SP[2],XAR4          ; |857| 
-        MOVL      *-SP[4],ACC           ; |857| 
-        LCR       #_TxPrintf            ; |857| 
-        ; call occurs [#_TxPrintf] ; |857| 
-	.dwpsn	"Rom.c",858,2
-        MOV       PH,#1000
-        MOV       PL,#0
-        MOVL      *-SP[2],P             ; |858| 
-        MOVL      ACC,XAR1              ; |858| 
-        LCR       #__IQ16div            ; |858| 
-        ; call occurs [#__IQ16div] ; |858| 
-        MOVW      DP,#_g_q16in_corner_limit
-        MOVL      @_g_q16in_corner_limit,ACC ; |858| 
-	.dwpsn	"Rom.c",862,2
-        MOVZ      AR4,SP                ; |862| 
-        MOVB      ACC,#32
-        ADD       AR4,#-260             ; |862| 
-        MOVB      XAR5,#64              ; |862| 
-        LCR       #_SpiReadRom          ; |862| 
-        ; call occurs [#_SpiReadRom] ; |862| 
-	.dwpsn	"Rom.c",864,2
-        MOVL      XAR0,#14              ; |864| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |864| 
-        MOVZ      AR7,AL                ; |864| 
-	.dwpsn	"Rom.c",865,2
-        MOVL      XAR0,#15              ; |865| 
-        MOV       ACC,*+FP[AR0] << #8   ; |865| 
-        OR        AR7,AL                ; |865| 
-	.dwpsn	"Rom.c",867,5
-        MOVZ      AR6,SP                ; |867| 
-        ADD       AR6,#-268             ; |867| 
-        MOV       AL,AR7                ; |867| 
-        LCR       #U$$TOFD              ; |867| 
-        ; call occurs [#U$$TOFD] ; |867| 
-        MOVZ      AR4,SP                ; |867| 
-        MOVZ      AR6,SP                ; |867| 
-        ADD       AR4,#-268             ; |867| 
-        ADD       AR6,#-264             ; |867| 
-        MOVL      XAR5,#FL2             ; |867| 
-        LCR       #FD$$MPY              ; |867| 
-        ; call occurs [#FD$$MPY] ; |867| 
-        MOVZ      AR4,SP                ; |867| 
-        ADD       AR4,#-264             ; |867| 
-        LCR       #FD$$TOL              ; |867| 
-        ; call occurs [#FD$$TOL] ; |867| 
-        MOVL      XAR1,ACC              ; |867| 
-        LCR       #__IQ16toF            ; |867| 
-        ; call occurs [#__IQ16toF] ; |867| 
-        MOVL      XAR4,#FSL7            ; |867| 
-        MOVL      *-SP[2],XAR4          ; |867| 
-        MOVL      *-SP[4],ACC           ; |867| 
-        LCR       #_TxPrintf            ; |867| 
-        ; call occurs [#_TxPrintf] ; |867| 
-	.dwpsn	"Rom.c",868,2
-        MOV       PH,#1000
-        MOV       PL,#0
-        MOVL      *-SP[2],P             ; |868| 
-        MOVL      ACC,XAR1              ; |868| 
-        LCR       #__IQ16div            ; |868| 
-        ; call occurs [#__IQ16div] ; |868| 
-        MOVW      DP,#_g_q16in_corner_fast_limit
-        MOVL      @_g_q16in_corner_fast_limit,ACC ; |868| 
-	.dwpsn	"Rom.c",871,1
-        ADD       SP,#-268
-	.dwcfa	0x1d, -6
-        MOVL      XAR2,*--SP
+	.dwcfa	0x80, 9, 2
 	.dwcfa	0x1d, -4
-	.dwcfa	0xc0, 9
-        MOVL      XAR1,*--SP
+        MOVZ      AR2,SP
+        SUBB      FP,#4
+        ADD       SP,#266
+	.dwcfa	0x1d, -270
+;* AR7   assigned to _Rom_Data_Buffer
+DW$146	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
+	.dwattr DW$146, DW_AT_type(*DW$T$21)
+	.dwattr DW$146, DW_AT_location[DW_OP_reg18]
+DW$147	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
+	.dwattr DW$147, DW_AT_type(*DW$T$37)
+	.dwattr DW$147, DW_AT_location[DW_OP_breg20 -66]
+DW$148	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
+	.dwattr DW$148, DW_AT_type(*DW$T$37)
+	.dwattr DW$148, DW_AT_location[DW_OP_breg20 -130]
+DW$149	.dwtag  DW_TAG_variable, DW_AT_name("read_buf3"), DW_AT_symbol_name("_read_buf3")
+	.dwattr DW$149, DW_AT_type(*DW$T$37)
+	.dwattr DW$149, DW_AT_location[DW_OP_breg20 -194]
+DW$150	.dwtag  DW_TAG_variable, DW_AT_name("read_buf4"), DW_AT_symbol_name("_read_buf4")
+	.dwattr DW$150, DW_AT_type(*DW$T$37)
+	.dwattr DW$150, DW_AT_location[DW_OP_breg20 -258]
+	.dwpsn	"Rom.c",648,9
+        MOVZ      AR4,SP                ; |648| 
+        MOVL      XAR5,#_$T26$27$0      ; |648| 
+        MOVB      ACC,#64
+        SUBB      XAR4,#66              ; |648| 
+        LCR       #___memcpy_ff         ; |648| 
+        ; call occurs [#___memcpy_ff] ; |648| 
+	.dwpsn	"Rom.c",649,9
+        MOVZ      AR4,SP                ; |649| 
+        ADD       AR4,#-130             ; |649| 
+        MOVL      XAR5,#_$T27$28$0      ; |649| 
+        MOVB      ACC,#64
+        LCR       #___memcpy_ff         ; |649| 
+        ; call occurs [#___memcpy_ff] ; |649| 
+	.dwpsn	"Rom.c",650,9
+        MOVZ      AR4,SP                ; |650| 
+        ADD       AR4,#-194             ; |650| 
+        MOVL      XAR5,#_$T28$29$0      ; |650| 
+        MOVB      ACC,#64
+        LCR       #___memcpy_ff         ; |650| 
+        ; call occurs [#___memcpy_ff] ; |650| 
+	.dwpsn	"Rom.c",651,9
+        MOVZ      AR4,SP                ; |651| 
+        ADD       AR4,#-258             ; |651| 
+        MOVL      XAR5,#_$T29$30$0      ; |651| 
+        MOVB      ACC,#64
+        LCR       #___memcpy_ff         ; |651| 
+        ; call occurs [#___memcpy_ff] ; |651| 
+	.dwpsn	"Rom.c",658,2
+        MOVZ      AR4,SP                ; |658| 
+        MOVB      XAR5,#64              ; |658| 
+        MOVB      ACC,#29
+        SUBB      XAR4,#66              ; |658| 
+        LCR       #_SpiReadRom          ; |658| 
+        ; call occurs [#_SpiReadRom] ; |658| 
+	.dwpsn	"Rom.c",660,2
+        MOVL      XAR0,#204             ; |660| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |660| 
+        MOVZ      AR7,AL                ; |660| 
+	.dwpsn	"Rom.c",661,2
+        MOVL      XAR0,#205             ; |661| 
+        MOV       ACC,*+FP[AR0] << #8   ; |661| 
+        OR        AR7,AL                ; |661| 
+	.dwpsn	"Rom.c",664,2
+        MOVZ      AR6,SP                ; |664| 
+        ADD       AR6,#-266             ; |664| 
+        MOV       AL,AR7                ; |664| 
+        LCR       #U$$TOFD              ; |664| 
+        ; call occurs [#U$$TOFD] ; |664| 
+        MOVZ      AR4,SP                ; |664| 
+        MOVZ      AR6,SP                ; |664| 
+        ADD       AR4,#-266             ; |664| 
+        ADD       AR6,#-262             ; |664| 
+        MOVL      XAR5,#FL2             ; |664| 
+        LCR       #FD$$MPY              ; |664| 
+        ; call occurs [#FD$$MPY] ; |664| 
+        MOVZ      AR4,SP                ; |664| 
+        ADD       AR4,#-262             ; |664| 
+        LCR       #FD$$TOL              ; |664| 
+        ; call occurs [#FD$$TOL] ; |664| 
+        MOV       PH,#1000
+        MOV       PL,#0
+        MOVL      *-SP[2],P             ; |664| 
+        LCR       #__IQ16div            ; |664| 
+        ; call occurs [#__IQ16div] ; |664| 
+        MOVW      DP,#_g_q16out_corner_limit
+        MOVL      @_g_q16out_corner_limit,ACC ; |664| 
+	.dwpsn	"Rom.c",667,2
+        MOVZ      AR4,SP                ; |667| 
+        MOVB      ACC,#30
+        ADD       AR4,#-130             ; |667| 
+        MOVB      XAR5,#64              ; |667| 
+        LCR       #_SpiReadRom          ; |667| 
+        ; call occurs [#_SpiReadRom] ; |667| 
+	.dwpsn	"Rom.c",669,2
+        MOVL      XAR0,#140             ; |669| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |669| 
+        MOVZ      AR7,AL                ; |669| 
+	.dwpsn	"Rom.c",670,2
+        MOVL      XAR0,#141             ; |670| 
+        MOV       ACC,*+FP[AR0] << #8   ; |670| 
+        OR        AR7,AL                ; |670| 
+	.dwpsn	"Rom.c",673,2
+        MOVZ      AR6,SP                ; |673| 
+        ADD       AR6,#-266             ; |673| 
+        MOV       AL,AR7                ; |673| 
+        LCR       #U$$TOFD              ; |673| 
+        ; call occurs [#U$$TOFD] ; |673| 
+;*** 677	-----------------------    SpiReadRom(31u, 0u, 64u, &read_buf3);
+;*** 679	-----------------------    Rom_Data_Buffer = read_buf3[0]&0xffu;
+;*** 680	-----------------------    Rom_Data_Buffer |= read_buf3[1]<<8;
+;*** 683	-----------------------    g_q16in_corner_limit = _IQ16div((long)((long double)Rom_Data_Buffer*65536.0L), 65536000L);
+;*** 687	-----------------------    SpiReadRom(32u, 0u, 64u, &read_buf4);
+;*** 689	-----------------------    Rom_Data_Buffer = read_buf4[0]&0xffu;
+;*** 690	-----------------------    Rom_Data_Buffer |= read_buf4[1]<<8;
+;*** 693	-----------------------    g_q16in_corner_fast_limit = _IQ16div((long)((long double)Rom_Data_Buffer*65536.0L), 65536000L);
+        MOVZ      AR4,SP                ; |673| 
+        MOVZ      AR6,SP                ; |673| 
+        ADD       AR4,#-266             ; |673| 
+        ADD       AR6,#-262             ; |673| 
+        MOVL      XAR5,#FL2             ; |673| 
+        LCR       #FD$$MPY              ; |673| 
+        ; call occurs [#FD$$MPY] ; |673| 
+        MOVZ      AR4,SP                ; |673| 
+        ADD       AR4,#-262             ; |673| 
+        LCR       #FD$$TOL              ; |673| 
+        ; call occurs [#FD$$TOL] ; |673| 
+        MOV       PH,#1000
+        MOV       PL,#0
+        MOVL      *-SP[2],P             ; |673| 
+        LCR       #__IQ16div            ; |673| 
+        ; call occurs [#__IQ16div] ; |673| 
+        MOVW      DP,#_g_q16out_corner_fast_limit
+        MOVL      @_g_q16out_corner_fast_limit,ACC ; |673| 
+	.dwpsn	"Rom.c",677,2
+        MOVZ      AR4,SP                ; |677| 
+        MOVB      ACC,#31
+        ADD       AR4,#-194             ; |677| 
+        MOVB      XAR5,#64              ; |677| 
+        LCR       #_SpiReadRom          ; |677| 
+        ; call occurs [#_SpiReadRom] ; |677| 
+	.dwpsn	"Rom.c",679,2
+        MOVL      XAR0,#76              ; |679| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |679| 
+        MOVZ      AR7,AL                ; |679| 
+	.dwpsn	"Rom.c",680,2
+        MOVL      XAR0,#77              ; |680| 
+        MOV       ACC,*+FP[AR0] << #8   ; |680| 
+        OR        AR7,AL                ; |680| 
+	.dwpsn	"Rom.c",683,2
+        MOVZ      AR6,SP                ; |683| 
+        ADD       AR6,#-266             ; |683| 
+        MOV       AL,AR7                ; |683| 
+        LCR       #U$$TOFD              ; |683| 
+        ; call occurs [#U$$TOFD] ; |683| 
+        MOVZ      AR4,SP                ; |683| 
+        MOVZ      AR6,SP                ; |683| 
+        ADD       AR4,#-266             ; |683| 
+        ADD       AR6,#-262             ; |683| 
+        MOVL      XAR5,#FL2             ; |683| 
+        LCR       #FD$$MPY              ; |683| 
+        ; call occurs [#FD$$MPY] ; |683| 
+        MOVZ      AR4,SP                ; |683| 
+        ADD       AR4,#-262             ; |683| 
+        LCR       #FD$$TOL              ; |683| 
+        ; call occurs [#FD$$TOL] ; |683| 
+        MOV       PH,#1000
+        MOV       PL,#0
+        MOVL      *-SP[2],P             ; |683| 
+        LCR       #__IQ16div            ; |683| 
+        ; call occurs [#__IQ16div] ; |683| 
+        MOVW      DP,#_g_q16in_corner_limit
+        MOVL      @_g_q16in_corner_limit,ACC ; |683| 
+	.dwpsn	"Rom.c",687,2
+        MOVZ      AR4,SP                ; |687| 
+        MOVB      ACC,#32
+        ADD       AR4,#-258             ; |687| 
+        MOVB      XAR5,#64              ; |687| 
+        LCR       #_SpiReadRom          ; |687| 
+        ; call occurs [#_SpiReadRom] ; |687| 
+	.dwpsn	"Rom.c",689,2
+        MOVL      XAR0,#12              ; |689| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |689| 
+        MOVZ      AR7,AL                ; |689| 
+	.dwpsn	"Rom.c",690,2
+        MOVL      XAR0,#13              ; |690| 
+        MOV       ACC,*+FP[AR0] << #8   ; |690| 
+        OR        AR7,AL                ; |690| 
+	.dwpsn	"Rom.c",693,2
+        MOVZ      AR6,SP                ; |693| 
+        ADD       AR6,#-266             ; |693| 
+        MOV       AL,AR7                ; |693| 
+        LCR       #U$$TOFD              ; |693| 
+        ; call occurs [#U$$TOFD] ; |693| 
+        MOVZ      AR4,SP                ; |693| 
+        MOVZ      AR6,SP                ; |693| 
+        ADD       AR4,#-266             ; |693| 
+        ADD       AR6,#-262             ; |693| 
+        MOVL      XAR5,#FL2             ; |693| 
+        LCR       #FD$$MPY              ; |693| 
+        ; call occurs [#FD$$MPY] ; |693| 
+;*** 693	-----------------------    return;
+        MOVZ      AR4,SP                ; |693| 
+        ADD       AR4,#-262             ; |693| 
+        LCR       #FD$$TOL              ; |693| 
+        ; call occurs [#FD$$TOL] ; |693| 
+        MOV       PH,#1000
+        MOV       PL,#0
+        MOVL      *-SP[2],P             ; |693| 
+        LCR       #__IQ16div            ; |693| 
+        ; call occurs [#__IQ16div] ; |693| 
+        MOVW      DP,#_g_q16in_corner_fast_limit
+        MOVL      @_g_q16in_corner_fast_limit,ACC ; |693| 
+	.dwpsn	"Rom.c",696,1
+        ADD       SP,#-266
+	.dwcfa	0x1d, -4
+        MOVL      XAR2,*--SP
 	.dwcfa	0x1d, -2
-	.dwcfa	0xc0, 7
+	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$159, DW_AT_end_file("Rom.c")
-	.dwattr DW$159, DW_AT_end_line(0x367)
-	.dwattr DW$159, DW_AT_end_column(0x01)
+	.dwattr DW$145, DW_AT_end_file("Rom.c")
+	.dwattr DW$145, DW_AT_end_line(0x2b8)
+	.dwattr DW$145, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$159
+	.dwendtag DW$145
 
 	.sect	".text"
 	.global	_fast_infor_write_rom
 
-DW$169	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_write_rom"), DW_AT_symbol_name("_fast_infor_write_rom")
-	.dwattr DW$169, DW_AT_low_pc(_fast_infor_write_rom)
-	.dwattr DW$169, DW_AT_high_pc(0x00)
-	.dwattr DW$169, DW_AT_begin_file("Rom.c")
-	.dwattr DW$169, DW_AT_begin_line(0x419)
-	.dwattr DW$169, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",1050,1
+DW$151	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_write_rom"), DW_AT_symbol_name("_fast_infor_write_rom")
+	.dwattr DW$151, DW_AT_low_pc(_fast_infor_write_rom)
+	.dwattr DW$151, DW_AT_high_pc(0x00)
+	.dwattr DW$151, DW_AT_begin_file("Rom.c")
+	.dwattr DW$151, DW_AT_begin_line(0x36a)
+	.dwattr DW$151, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",875,1
 
 	.dwfde DW$CIE
 
@@ -3573,19 +3332,19 @@ DW$169	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_write_rom"), DW_AT_symb
 ;*                                                             *
 ;***************************************************************
 _fast_infor_write_rom:
-;** 1054	-----------------------    dist_sarr[] = {...};
-;** 1055	-----------------------    turn_sarr[] = {...};
-;** 1056	-----------------------    ldist_sarr[] = {...};
-;** 1057	-----------------------    rdist_sarr[] = {...};
-;** 1058	-----------------------    posint_sarr[] = {...};
-;** 1059	-----------------------    memset(&dist_sarr, 0, 256uL);
-;** 1060	-----------------------    memset(&turn_sarr, 0, 256uL);
-;** 1061	-----------------------    memset(&ldist_sarr, 0, 256uL);
-;** 1062	-----------------------    memset(&rdist_sarr, 0, 256uL);
-;** 1063	-----------------------    memset(&posint_sarr, 0, 256uL);
+;*** 879	-----------------------    dist_sarr[] = {...};
+;*** 880	-----------------------    turn_sarr[] = {...};
+;*** 881	-----------------------    ldist_sarr[] = {...};
+;*** 882	-----------------------    rdist_sarr[] = {...};
+;*** 883	-----------------------    angle_sarr[] = {...};
+;*** 886	-----------------------    memset(&dist_sarr, 0, 256uL);
+;*** 887	-----------------------    memset(&turn_sarr, 0, 256uL);
+;*** 888	-----------------------    memset(&ldist_sarr, 0, 256uL);
+;*** 889	-----------------------    memset(&rdist_sarr, 0, 256uL);
+;*** 890	-----------------------    memset(&angle_sarr, 0, 256uL);
 ;***  	-----------------------    #pragma MUST_ITERATE(128, 128, 128)
 ;***  	-----------------------    #pragma LOOP_FLAGS(4096u)
-;***  	-----------------------    U$46 = &posint_sarr[0];
+;***  	-----------------------    U$45 = &angle_sarr[0];
 ;***  	-----------------------    U$42 = &rdist_sarr[0];
 ;***  	-----------------------    U$39 = &ldist_sarr[0];
 ;***  	-----------------------    U$34 = &turn_sarr[0];
@@ -3608,145 +3367,145 @@ _fast_infor_write_rom:
         SUBB      FP,#8
         ADD       SP,#1282
 	.dwcfa	0x1d, -1290
-DW$170	.dwtag  DW_TAG_variable, DW_AT_name("L$1"), DW_AT_symbol_name("L$1")
-	.dwattr DW$170, DW_AT_type(*DW$T$10)
-	.dwattr DW$170, DW_AT_location[DW_OP_breg20 -1281]
-DW$171	.dwtag  DW_TAG_variable, DW_AT_name("L$2"), DW_AT_symbol_name("L$2")
-	.dwattr DW$171, DW_AT_type(*DW$T$10)
-	.dwattr DW$171, DW_AT_location[DW_OP_breg20 -1281]
+DW$152	.dwtag  DW_TAG_variable, DW_AT_name("L$1"), DW_AT_symbol_name("L$1")
+	.dwattr DW$152, DW_AT_type(*DW$T$10)
+	.dwattr DW$152, DW_AT_location[DW_OP_breg20 -1281]
+DW$153	.dwtag  DW_TAG_variable, DW_AT_name("L$2"), DW_AT_symbol_name("L$2")
+	.dwattr DW$153, DW_AT_type(*DW$T$10)
+	.dwattr DW$153, DW_AT_location[DW_OP_breg20 -1281]
 ;* PL    assigned to U$27
-DW$172	.dwtag  DW_TAG_variable, DW_AT_name("U$27"), DW_AT_symbol_name("U$27")
-	.dwattr DW$172, DW_AT_type(*DW$T$82)
-	.dwattr DW$172, DW_AT_location[DW_OP_reg2]
+DW$154	.dwtag  DW_TAG_variable, DW_AT_name("U$27"), DW_AT_symbol_name("U$27")
+	.dwattr DW$154, DW_AT_type(*DW$T$65)
+	.dwattr DW$154, DW_AT_location[DW_OP_reg2]
 ;* PL    assigned to U$27
-DW$173	.dwtag  DW_TAG_variable, DW_AT_name("U$27"), DW_AT_symbol_name("U$27")
-	.dwattr DW$173, DW_AT_type(*DW$T$82)
-	.dwattr DW$173, DW_AT_location[DW_OP_reg2]
+DW$155	.dwtag  DW_TAG_variable, DW_AT_name("U$27"), DW_AT_symbol_name("U$27")
+	.dwattr DW$155, DW_AT_type(*DW$T$65)
+	.dwattr DW$155, DW_AT_location[DW_OP_reg2]
 ;* AR3   assigned to U$29
-DW$174	.dwtag  DW_TAG_variable, DW_AT_name("U$29"), DW_AT_symbol_name("U$29")
-	.dwattr DW$174, DW_AT_type(*DW$T$39)
-	.dwattr DW$174, DW_AT_location[DW_OP_reg10]
+DW$156	.dwtag  DW_TAG_variable, DW_AT_name("U$29"), DW_AT_symbol_name("U$29")
+	.dwattr DW$156, DW_AT_type(*DW$T$31)
+	.dwattr DW$156, DW_AT_location[DW_OP_reg10]
 ;* AR3   assigned to U$29
-DW$175	.dwtag  DW_TAG_variable, DW_AT_name("U$29"), DW_AT_symbol_name("U$29")
-	.dwattr DW$175, DW_AT_type(*DW$T$39)
-	.dwattr DW$175, DW_AT_location[DW_OP_reg10]
+DW$157	.dwtag  DW_TAG_variable, DW_AT_name("U$29"), DW_AT_symbol_name("U$29")
+	.dwattr DW$157, DW_AT_type(*DW$T$31)
+	.dwattr DW$157, DW_AT_location[DW_OP_reg10]
 ;* AR1   assigned to U$34
-DW$176	.dwtag  DW_TAG_variable, DW_AT_name("U$34"), DW_AT_symbol_name("U$34")
-	.dwattr DW$176, DW_AT_type(*DW$T$39)
-	.dwattr DW$176, DW_AT_location[DW_OP_reg6]
+DW$158	.dwtag  DW_TAG_variable, DW_AT_name("U$34"), DW_AT_symbol_name("U$34")
+	.dwattr DW$158, DW_AT_type(*DW$T$31)
+	.dwattr DW$158, DW_AT_location[DW_OP_reg6]
 ;* AR1   assigned to U$34
-DW$177	.dwtag  DW_TAG_variable, DW_AT_name("U$34"), DW_AT_symbol_name("U$34")
-	.dwattr DW$177, DW_AT_type(*DW$T$39)
-	.dwattr DW$177, DW_AT_location[DW_OP_reg6]
+DW$159	.dwtag  DW_TAG_variable, DW_AT_name("U$34"), DW_AT_symbol_name("U$34")
+	.dwattr DW$159, DW_AT_type(*DW$T$31)
+	.dwattr DW$159, DW_AT_location[DW_OP_reg6]
 ;* AR6   assigned to U$39
-DW$178	.dwtag  DW_TAG_variable, DW_AT_name("U$39"), DW_AT_symbol_name("U$39")
-	.dwattr DW$178, DW_AT_type(*DW$T$39)
-	.dwattr DW$178, DW_AT_location[DW_OP_reg16]
+DW$160	.dwtag  DW_TAG_variable, DW_AT_name("U$39"), DW_AT_symbol_name("U$39")
+	.dwattr DW$160, DW_AT_type(*DW$T$31)
+	.dwattr DW$160, DW_AT_location[DW_OP_reg16]
 ;* AR6   assigned to U$39
-DW$179	.dwtag  DW_TAG_variable, DW_AT_name("U$39"), DW_AT_symbol_name("U$39")
-	.dwattr DW$179, DW_AT_type(*DW$T$39)
-	.dwattr DW$179, DW_AT_location[DW_OP_reg16]
+DW$161	.dwtag  DW_TAG_variable, DW_AT_name("U$39"), DW_AT_symbol_name("U$39")
+	.dwattr DW$161, DW_AT_type(*DW$T$31)
+	.dwattr DW$161, DW_AT_location[DW_OP_reg16]
 ;* AR5   assigned to U$42
-DW$180	.dwtag  DW_TAG_variable, DW_AT_name("U$42"), DW_AT_symbol_name("U$42")
-	.dwattr DW$180, DW_AT_type(*DW$T$39)
-	.dwattr DW$180, DW_AT_location[DW_OP_reg14]
+DW$162	.dwtag  DW_TAG_variable, DW_AT_name("U$42"), DW_AT_symbol_name("U$42")
+	.dwattr DW$162, DW_AT_type(*DW$T$31)
+	.dwattr DW$162, DW_AT_location[DW_OP_reg14]
 ;* AR5   assigned to U$42
-DW$181	.dwtag  DW_TAG_variable, DW_AT_name("U$42"), DW_AT_symbol_name("U$42")
-	.dwattr DW$181, DW_AT_type(*DW$T$39)
-	.dwattr DW$181, DW_AT_location[DW_OP_reg14]
-;* AR4   assigned to U$46
-DW$182	.dwtag  DW_TAG_variable, DW_AT_name("U$46"), DW_AT_symbol_name("U$46")
-	.dwattr DW$182, DW_AT_type(*DW$T$39)
-	.dwattr DW$182, DW_AT_location[DW_OP_reg12]
-;* AR4   assigned to U$46
-DW$183	.dwtag  DW_TAG_variable, DW_AT_name("U$46"), DW_AT_symbol_name("U$46")
-	.dwattr DW$183, DW_AT_type(*DW$T$39)
-	.dwattr DW$183, DW_AT_location[DW_OP_reg12]
-DW$184	.dwtag  DW_TAG_variable, DW_AT_name("dist_sarr"), DW_AT_symbol_name("_dist_sarr")
-	.dwattr DW$184, DW_AT_type(*DW$T$23)
-	.dwattr DW$184, DW_AT_location[DW_OP_breg20 -256]
-DW$185	.dwtag  DW_TAG_variable, DW_AT_name("turn_sarr"), DW_AT_symbol_name("_turn_sarr")
-	.dwattr DW$185, DW_AT_type(*DW$T$23)
-	.dwattr DW$185, DW_AT_location[DW_OP_breg20 -512]
-DW$186	.dwtag  DW_TAG_variable, DW_AT_name("ldist_sarr"), DW_AT_symbol_name("_ldist_sarr")
-	.dwattr DW$186, DW_AT_type(*DW$T$23)
-	.dwattr DW$186, DW_AT_location[DW_OP_breg20 -768]
-DW$187	.dwtag  DW_TAG_variable, DW_AT_name("rdist_sarr"), DW_AT_symbol_name("_rdist_sarr")
-	.dwattr DW$187, DW_AT_type(*DW$T$23)
-	.dwattr DW$187, DW_AT_location[DW_OP_breg20 -1024]
-DW$188	.dwtag  DW_TAG_variable, DW_AT_name("posint_sarr"), DW_AT_symbol_name("_posint_sarr")
-	.dwattr DW$188, DW_AT_type(*DW$T$23)
-	.dwattr DW$188, DW_AT_location[DW_OP_breg20 -1280]
-	.dwpsn	"Rom.c",1054,9
-        MOVZ      AR4,SP                ; |1054| 
-        ADD       AR4,#-256             ; |1054| 
-        MOVL      XAR5,#_$T46$47$0      ; |1054| 
+DW$163	.dwtag  DW_TAG_variable, DW_AT_name("U$42"), DW_AT_symbol_name("U$42")
+	.dwattr DW$163, DW_AT_type(*DW$T$31)
+	.dwattr DW$163, DW_AT_location[DW_OP_reg14]
+;* AR4   assigned to U$45
+DW$164	.dwtag  DW_TAG_variable, DW_AT_name("U$45"), DW_AT_symbol_name("U$45")
+	.dwattr DW$164, DW_AT_type(*DW$T$31)
+	.dwattr DW$164, DW_AT_location[DW_OP_reg12]
+;* AR4   assigned to U$45
+DW$165	.dwtag  DW_TAG_variable, DW_AT_name("U$45"), DW_AT_symbol_name("U$45")
+	.dwattr DW$165, DW_AT_type(*DW$T$31)
+	.dwattr DW$165, DW_AT_location[DW_OP_reg12]
+DW$166	.dwtag  DW_TAG_variable, DW_AT_name("dist_sarr"), DW_AT_symbol_name("_dist_sarr")
+	.dwattr DW$166, DW_AT_type(*DW$T$32)
+	.dwattr DW$166, DW_AT_location[DW_OP_breg20 -256]
+DW$167	.dwtag  DW_TAG_variable, DW_AT_name("turn_sarr"), DW_AT_symbol_name("_turn_sarr")
+	.dwattr DW$167, DW_AT_type(*DW$T$32)
+	.dwattr DW$167, DW_AT_location[DW_OP_breg20 -512]
+DW$168	.dwtag  DW_TAG_variable, DW_AT_name("ldist_sarr"), DW_AT_symbol_name("_ldist_sarr")
+	.dwattr DW$168, DW_AT_type(*DW$T$32)
+	.dwattr DW$168, DW_AT_location[DW_OP_breg20 -768]
+DW$169	.dwtag  DW_TAG_variable, DW_AT_name("rdist_sarr"), DW_AT_symbol_name("_rdist_sarr")
+	.dwattr DW$169, DW_AT_type(*DW$T$32)
+	.dwattr DW$169, DW_AT_location[DW_OP_breg20 -1024]
+DW$170	.dwtag  DW_TAG_variable, DW_AT_name("angle_sarr"), DW_AT_symbol_name("_angle_sarr")
+	.dwattr DW$170, DW_AT_type(*DW$T$32)
+	.dwattr DW$170, DW_AT_location[DW_OP_breg20 -1280]
+	.dwpsn	"Rom.c",879,9
+        MOVZ      AR4,SP                ; |879| 
+        ADD       AR4,#-256             ; |879| 
+        MOVL      XAR5,#_$T42$43$0      ; |879| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1054| 
-        ; call occurs [#___memcpy_ff] ; |1054| 
-	.dwpsn	"Rom.c",1055,9
-        MOVZ      AR4,SP                ; |1055| 
-        ADD       AR4,#-512             ; |1055| 
-        MOVL      XAR5,#_$T47$48$0      ; |1055| 
+        LCR       #___memcpy_ff         ; |879| 
+        ; call occurs [#___memcpy_ff] ; |879| 
+	.dwpsn	"Rom.c",880,9
+        MOVZ      AR4,SP                ; |880| 
+        ADD       AR4,#-512             ; |880| 
+        MOVL      XAR5,#_$T43$44$0      ; |880| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1055| 
-        ; call occurs [#___memcpy_ff] ; |1055| 
-	.dwpsn	"Rom.c",1056,9
-        MOVZ      AR4,SP                ; |1056| 
-        ADD       AR4,#-768             ; |1056| 
-        MOVL      XAR5,#_$T48$49$0      ; |1056| 
+        LCR       #___memcpy_ff         ; |880| 
+        ; call occurs [#___memcpy_ff] ; |880| 
+	.dwpsn	"Rom.c",881,9
+        MOVZ      AR4,SP                ; |881| 
+        ADD       AR4,#-768             ; |881| 
+        MOVL      XAR5,#_$T44$45$0      ; |881| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1056| 
-        ; call occurs [#___memcpy_ff] ; |1056| 
-	.dwpsn	"Rom.c",1057,9
-        MOVZ      AR4,SP                ; |1057| 
-        ADD       AR4,#-1024            ; |1057| 
-        MOVL      XAR5,#_$T49$50$0      ; |1057| 
+        LCR       #___memcpy_ff         ; |881| 
+        ; call occurs [#___memcpy_ff] ; |881| 
+	.dwpsn	"Rom.c",882,9
+        MOVZ      AR4,SP                ; |882| 
+        ADD       AR4,#-1024            ; |882| 
+        MOVL      XAR5,#_$T45$46$0      ; |882| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1057| 
-        ; call occurs [#___memcpy_ff] ; |1057| 
-	.dwpsn	"Rom.c",1058,12
-        MOVZ      AR4,SP                ; |1058| 
-        ADD       AR4,#-1280            ; |1058| 
-        MOVL      XAR5,#_$T50$51$0      ; |1058| 
+        LCR       #___memcpy_ff         ; |882| 
+        ; call occurs [#___memcpy_ff] ; |882| 
+	.dwpsn	"Rom.c",883,12
+        MOVZ      AR4,SP                ; |883| 
+        ADD       AR4,#-1280            ; |883| 
+        MOVL      XAR5,#_$T46$47$0      ; |883| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1058| 
-        ; call occurs [#___memcpy_ff] ; |1058| 
-	.dwpsn	"Rom.c",1059,2
-        MOVZ      AR4,SP                ; |1059| 
-        ADD       AR4,#-256             ; |1059| 
+        LCR       #___memcpy_ff         ; |883| 
+        ; call occurs [#___memcpy_ff] ; |883| 
+	.dwpsn	"Rom.c",886,2
+        MOVZ      AR4,SP                ; |886| 
+        ADD       AR4,#-256             ; |886| 
         MOVB      XAR5,#0
         MOV       ACC,#1 << 8
-        LCR       #_memset              ; |1059| 
-        ; call occurs [#_memset] ; |1059| 
-	.dwpsn	"Rom.c",1060,2
-        MOVZ      AR4,SP                ; |1060| 
-        ADD       AR4,#-512             ; |1060| 
+        LCR       #_memset              ; |886| 
+        ; call occurs [#_memset] ; |886| 
+	.dwpsn	"Rom.c",887,2
+        MOVZ      AR4,SP                ; |887| 
+        ADD       AR4,#-512             ; |887| 
         MOVB      XAR5,#0
         MOV       ACC,#1 << 8
-        LCR       #_memset              ; |1060| 
-        ; call occurs [#_memset] ; |1060| 
-	.dwpsn	"Rom.c",1061,2
-        MOVZ      AR4,SP                ; |1061| 
-        ADD       AR4,#-768             ; |1061| 
+        LCR       #_memset              ; |887| 
+        ; call occurs [#_memset] ; |887| 
+	.dwpsn	"Rom.c",888,2
+        MOVZ      AR4,SP                ; |888| 
+        ADD       AR4,#-768             ; |888| 
         MOVB      XAR5,#0
         MOV       ACC,#1 << 8
-        LCR       #_memset              ; |1061| 
-        ; call occurs [#_memset] ; |1061| 
-	.dwpsn	"Rom.c",1062,2
-        MOVZ      AR4,SP                ; |1062| 
-        ADD       AR4,#-1024            ; |1062| 
+        LCR       #_memset              ; |888| 
+        ; call occurs [#_memset] ; |888| 
+	.dwpsn	"Rom.c",889,2
+        MOVZ      AR4,SP                ; |889| 
+        ADD       AR4,#-1024            ; |889| 
         MOVB      XAR5,#0
         MOV       ACC,#1 << 8
-        LCR       #_memset              ; |1062| 
-        ; call occurs [#_memset] ; |1062| 
-	.dwpsn	"Rom.c",1063,5
-        MOVZ      AR4,SP                ; |1063| 
-        ADD       AR4,#-1280            ; |1063| 
+        LCR       #_memset              ; |889| 
+        ; call occurs [#_memset] ; |889| 
+	.dwpsn	"Rom.c",890,5
+        MOVZ      AR4,SP                ; |890| 
+        ADD       AR4,#-1280            ; |890| 
         MOVB      XAR5,#0
         MOV       ACC,#1 << 8
-        LCR       #_memset              ; |1063| 
-        ; call occurs [#_memset] ; |1063| 
+        LCR       #_memset              ; |890| 
+        ; call occurs [#_memset] ; |890| 
         MOVZ      AR3,SP
         MOVZ      AR1,SP
         MOVZ      AR5,SP
@@ -3757,7 +3516,6 @@ DW$188	.dwtag  DW_TAG_variable, DW_AT_name("posint_sarr"), DW_AT_symbol_name("_p
         ADD       AR1,#-512
         ADD       AR5,#-1024
         ADD       AR4,#-1280
-        SETC      SXM
         ADD       AR6,#-768
         MOV       *+FP[AR0],#127
         MOVL      XAR7,#_g_fast_info
@@ -3765,160 +3523,160 @@ DW$188	.dwtag  DW_TAG_variable, DW_AT_name("posint_sarr"), DW_AT_symbol_name("_p
 L2:    
 DW$L$_fast_infor_write_rom$2$B:
 ;***	-----------------------g2:
-;** 1068	-----------------------    *U$29++ = (*U$27).u16dist&0xffu;
-;** 1069	-----------------------    *U$29++ = (*U$27).u16dist>>8;
-;** 1071	-----------------------    *U$34++ = (*U$27).u16turn_way&0xffu;
-;** 1072	-----------------------    *U$34++ = (*U$27).u16turn_way>>8;
-;** 1074	-----------------------    *U$39++ = (*U$27).q17l_dist>>17&0xffL;
-;** 1075	-----------------------    *U$39++ = (unsigned)((*U$27).q17l_dist>>17)>>8;
-;** 1077	-----------------------    *U$42++ = (*U$27).q17r_dist>>17&0xffL;
-;** 1078	-----------------------    *U$42++ = (unsigned)((*U$27).q17r_dist>>17)>>8;
-;** 1080	-----------------------    *U$46++ = ABS((*U$27).iq7pos_integral_val)>>7&0xffL;
-;** 1081	-----------------------    *U$46++ = (unsigned)(ABS((*U$27).iq7pos_integral_val)>>7)>>8;
-;** 1066	-----------------------    U$27 += 42;
-;** 1066	-----------------------    if ( (--L$1) != (-1) ) goto g2;
-	.dwpsn	"Rom.c",1068,3
-        MOVL      XAR7,P                ; |1068| 
-        MOVB      XAR0,#41              ; |1068| 
-        MOV       AL,*+XAR7[AR0]        ; |1068| 
-        ANDB      AL,#0xff              ; |1068| 
-        MOV       *XAR3++,AL            ; |1068| 
-	.dwpsn	"Rom.c",1069,3
-        MOVL      XAR7,P                ; |1069| 
-        MOV       AL,*+XAR7[AR0]        ; |1069| 
-        LSR       AL,8                  ; |1069| 
-        MOV       *XAR3++,AL            ; |1069| 
-	.dwpsn	"Rom.c",1071,3
-        MOVL      XAR7,P                ; |1071| 
-        MOVB      XAR0,#38              ; |1071| 
-        MOV       AL,*+XAR7[AR0]        ; |1071| 
-        ANDB      AL,#0xff              ; |1071| 
-        MOV       *XAR1++,AL            ; |1071| 
-	.dwpsn	"Rom.c",1072,3
-        MOVL      XAR7,P                ; |1072| 
-        MOV       AL,*+XAR7[AR0]        ; |1072| 
-        LSR       AL,8                  ; |1072| 
-        MOV       *XAR1++,AL            ; |1072| 
-	.dwpsn	"Rom.c",1074,3
-        MOVL      XAR7,P                ; |1074| 
-        MOVB      XAR0,#18              ; |1074| 
-        MOV       T,#17                 ; |1074| 
-        MOVL      ACC,*+XAR7[AR0]       ; |1074| 
-        ASRL      ACC,T                 ; |1074| 
-        ANDB      AL,#0xff              ; |1074| 
-        MOV       *XAR6++,AL            ; |1074| 
-	.dwpsn	"Rom.c",1075,3
-        MOVL      XAR7,P                ; |1075| 
-        MOV       T,#17                 ; |1075| 
-        MOVL      ACC,*+XAR7[AR0]       ; |1075| 
-        ASRL      ACC,T                 ; |1075| 
-        LSR       AL,8                  ; |1075| 
-        MOV       *XAR6++,AL            ; |1075| 
-	.dwpsn	"Rom.c",1077,3
-        MOVL      XAR7,P                ; |1077| 
-        MOVB      XAR0,#16              ; |1077| 
-        MOV       T,#17                 ; |1077| 
-        MOVL      ACC,*+XAR7[AR0]       ; |1077| 
-        ASRL      ACC,T                 ; |1077| 
-        ANDB      AL,#0xff              ; |1077| 
-        MOV       *XAR5++,AL            ; |1077| 
-	.dwpsn	"Rom.c",1078,3
-        MOVL      XAR7,P                ; |1078| 
-        MOV       T,#17                 ; |1078| 
-        MOVL      ACC,*+XAR7[AR0]       ; |1078| 
-        ASRL      ACC,T                 ; |1078| 
-        LSR       AL,8                  ; |1078| 
-        MOV       *XAR5++,AL            ; |1078| 
-	.dwpsn	"Rom.c",1080,9
-        MOVL      XAR7,P
-        MOVL      ACC,*+XAR7[6]         ; |1080| 
-        ABS       ACC                   ; |1080| 
-        SFR       ACC,7                 ; |1080| 
-        ANDB      AL,#0xff              ; |1080| 
-        MOV       *XAR4++,AL            ; |1080| 
-	.dwpsn	"Rom.c",1081,3
-        MOVL      XAR7,P
-        MOVL      ACC,*+XAR7[6]         ; |1081| 
-        ABS       ACC                   ; |1081| 
-        SFR       ACC,7                 ; |1081| 
-        LSR       AL,8                  ; |1081| 
-        MOV       *XAR4++,AL            ; |1081| 
-	.dwpsn	"Rom.c",1066,23
-        MOVL      ACC,P                 ; |1066| 
-        MOVB      XAR7,#42              ; |1066| 
-        ADDU      ACC,AR7               ; |1066| 
-        MOVL      P,ACC                 ; |1066| 
-	.dwpsn	"Rom.c",1066,14
+;*** 896	-----------------------    *U$29++ = (*U$27).u16dist&0xffu;
+;*** 897	-----------------------    *U$29++ = (*U$27).u16dist>>8;
+;*** 899	-----------------------    *U$34++ = (*U$27).u16turn_way&0xffu;
+;*** 900	-----------------------    *U$34++ = (*U$27).u16turn_way>>8;
+;*** 902	-----------------------    *U$39++ = (*U$27).q17l_dist>>17&0xffL;
+;*** 903	-----------------------    *U$39++ = (unsigned)((*U$27).q17l_dist>>17)>>8;
+;*** 905	-----------------------    *U$42++ = (*U$27).q17r_dist>>17&0xffL;
+;*** 906	-----------------------    *U$42++ = (unsigned)((*U$27).q17r_dist>>17)>>8;
+;*** 908	-----------------------    *U$45++ = (*U$27).q17angle>>17&0xffL;
+;*** 909	-----------------------    *U$45++ = (unsigned)((*U$27).q17angle>>17)>>8;
+;*** 894	-----------------------    U$27 += 42;
+;*** 894	-----------------------    if ( (--L$1) != (-1) ) goto g2;
+	.dwpsn	"Rom.c",896,3
+        MOVL      XAR7,P                ; |896| 
+        MOVB      XAR0,#41              ; |896| 
+        MOV       AL,*+XAR7[AR0]        ; |896| 
+        ANDB      AL,#0xff              ; |896| 
+        MOV       *XAR3++,AL            ; |896| 
+	.dwpsn	"Rom.c",897,3
+        MOVL      XAR7,P                ; |897| 
+        MOV       AL,*+XAR7[AR0]        ; |897| 
+        LSR       AL,8                  ; |897| 
+        MOV       *XAR3++,AL            ; |897| 
+	.dwpsn	"Rom.c",899,3
+        MOVL      XAR7,P                ; |899| 
+        MOVB      XAR0,#38              ; |899| 
+        MOV       AL,*+XAR7[AR0]        ; |899| 
+        ANDB      AL,#0xff              ; |899| 
+        MOV       *XAR1++,AL            ; |899| 
+	.dwpsn	"Rom.c",900,3
+        MOVL      XAR7,P                ; |900| 
+        MOV       AL,*+XAR7[AR0]        ; |900| 
+        LSR       AL,8                  ; |900| 
+        MOV       *XAR1++,AL            ; |900| 
+	.dwpsn	"Rom.c",902,3
+        MOVL      XAR7,P                ; |902| 
+        MOVB      XAR0,#18              ; |902| 
+        MOV       T,#17                 ; |902| 
+        MOVL      ACC,*+XAR7[AR0]       ; |902| 
+        ASRL      ACC,T                 ; |902| 
+        ANDB      AL,#0xff              ; |902| 
+        MOV       *XAR6++,AL            ; |902| 
+	.dwpsn	"Rom.c",903,3
+        MOVL      XAR7,P                ; |903| 
+        MOV       T,#17                 ; |903| 
+        MOVL      ACC,*+XAR7[AR0]       ; |903| 
+        ASRL      ACC,T                 ; |903| 
+        LSR       AL,8                  ; |903| 
+        MOV       *XAR6++,AL            ; |903| 
+	.dwpsn	"Rom.c",905,3
+        MOVL      XAR7,P                ; |905| 
+        MOVB      XAR0,#16              ; |905| 
+        MOV       T,#17                 ; |905| 
+        MOVL      ACC,*+XAR7[AR0]       ; |905| 
+        ASRL      ACC,T                 ; |905| 
+        ANDB      AL,#0xff              ; |905| 
+        MOV       *XAR5++,AL            ; |905| 
+	.dwpsn	"Rom.c",906,3
+        MOVL      XAR7,P                ; |906| 
+        MOV       T,#17                 ; |906| 
+        MOVL      ACC,*+XAR7[AR0]       ; |906| 
+        ASRL      ACC,T                 ; |906| 
+        LSR       AL,8                  ; |906| 
+        MOV       *XAR5++,AL            ; |906| 
+	.dwpsn	"Rom.c",908,3
+        MOVL      XAR7,P                ; |908| 
+        MOVB      XAR0,#36              ; |908| 
+        MOV       T,#17                 ; |908| 
+        MOVL      ACC,*+XAR7[AR0]       ; |908| 
+        ASRL      ACC,T                 ; |908| 
+        ANDB      AL,#0xff              ; |908| 
+        MOV       *XAR4++,AL            ; |908| 
+	.dwpsn	"Rom.c",909,3
+        MOVL      XAR7,P                ; |909| 
+        MOV       T,#17                 ; |909| 
+        MOVL      ACC,*+XAR7[AR0]       ; |909| 
+        ASRL      ACC,T                 ; |909| 
+        LSR       AL,8                  ; |909| 
+        MOV       *XAR4++,AL            ; |909| 
+	.dwpsn	"Rom.c",894,23
+        MOVL      ACC,P                 ; |894| 
+        MOVB      XAR7,#42              ; |894| 
+        ADDU      ACC,AR7               ; |894| 
+        MOVL      P,ACC                 ; |894| 
+	.dwpsn	"Rom.c",894,14
         MOVL      XAR0,#9
         MOVZ      AR7,*+FP[AR0]
-        MOVL      XAR0,#9               ; |1066| 
-        SUBB      XAR7,#1               ; |1066| 
-        MOV       *+FP[AR0],AR7         ; |1066| 
-        MOVZ      AR0,AR7               ; |1066| 
-        CMP       AR0,#-1               ; |1066| 
-        BF        L2,NEQ                ; |1066| 
-        ; branchcc occurs ; |1066| 
+        MOVL      XAR0,#9               ; |894| 
+        SUBB      XAR7,#1               ; |894| 
+        MOV       *+FP[AR0],AR7         ; |894| 
+        MOVZ      AR0,AR7               ; |894| 
+        CMP       AR0,#-1               ; |894| 
+        BF        L2,NEQ                ; |894| 
+        ; branchcc occurs ; |894| 
 DW$L$_fast_infor_write_rom$2$E:
-;** 1084	-----------------------    SpiWriteRom(20u, 0u, 256u, &dist_sarr);
-;** 1085	-----------------------    SpiWriteRom(22u, 0u, 256u, &turn_sarr);
-;** 1086	-----------------------    SpiWriteRom(24u, 0u, 256u, &ldist_sarr);
-;** 1087	-----------------------    SpiWriteRom(26u, 0u, 256u, &rdist_sarr);
-;** 1088	-----------------------    SpiWriteRom(36u, 0u, 256u, &posint_sarr);
+;*** 916	-----------------------    SpiWriteRom(20u, 0u, 256u, &dist_sarr);
+;*** 917	-----------------------    SpiWriteRom(22u, 0u, 256u, &turn_sarr);
+;*** 918	-----------------------    SpiWriteRom(24u, 0u, 256u, &ldist_sarr);
+;*** 919	-----------------------    SpiWriteRom(26u, 0u, 256u, &rdist_sarr);
+;*** 920	-----------------------    SpiWriteRom(36u, 0u, 256u, &angle_sarr);
 ;***  	-----------------------    #pragma MUST_ITERATE(128, 128, 128)
 ;***  	-----------------------    #pragma LOOP_FLAGS(4096u)
 ;***  	-----------------------    U$27 = &g_fast_info[128];
-;***  	-----------------------    U$46 = &posint_sarr[0];
+;***  	-----------------------    U$45 = &angle_sarr[0];
 ;***  	-----------------------    U$42 = &rdist_sarr[0];
 ;***  	-----------------------    U$39 = &ldist_sarr[0];
 ;***  	-----------------------    U$34 = &turn_sarr[0];
 ;***  	-----------------------    U$29 = &dist_sarr[0];
 ;***  	-----------------------    L$2 = 127;
-	.dwpsn	"Rom.c",1084,2
-        MOVZ      AR4,SP                ; |1084| 
-        MOVL      XAR5,#256             ; |1084| 
+	.dwpsn	"Rom.c",916,2
+        MOVZ      AR4,SP                ; |916| 
+        MOVL      XAR5,#256             ; |916| 
         MOVB      ACC,#20
-        ADD       AR4,#-256             ; |1084| 
-        LCR       #_SpiWriteRom         ; |1084| 
-        ; call occurs [#_SpiWriteRom] ; |1084| 
-	.dwpsn	"Rom.c",1085,2
-        MOVZ      AR4,SP                ; |1085| 
-        MOVL      XAR5,#256             ; |1085| 
+        ADD       AR4,#-256             ; |916| 
+        LCR       #_SpiWriteRom         ; |916| 
+        ; call occurs [#_SpiWriteRom] ; |916| 
+	.dwpsn	"Rom.c",917,2
+        MOVZ      AR4,SP                ; |917| 
+        MOVL      XAR5,#256             ; |917| 
         MOVB      ACC,#22
-        ADD       AR4,#-512             ; |1085| 
-        LCR       #_SpiWriteRom         ; |1085| 
-        ; call occurs [#_SpiWriteRom] ; |1085| 
-	.dwpsn	"Rom.c",1086,2
-        MOVZ      AR4,SP                ; |1086| 
-        MOVL      XAR5,#256             ; |1086| 
+        ADD       AR4,#-512             ; |917| 
+        LCR       #_SpiWriteRom         ; |917| 
+        ; call occurs [#_SpiWriteRom] ; |917| 
+	.dwpsn	"Rom.c",918,2
+        MOVZ      AR4,SP                ; |918| 
+        MOVL      XAR5,#256             ; |918| 
         MOVB      ACC,#24
-        ADD       AR4,#-768             ; |1086| 
-        LCR       #_SpiWriteRom         ; |1086| 
-        ; call occurs [#_SpiWriteRom] ; |1086| 
-	.dwpsn	"Rom.c",1087,2
-        MOVZ      AR4,SP                ; |1087| 
-        MOVL      XAR5,#256             ; |1087| 
+        ADD       AR4,#-768             ; |918| 
+        LCR       #_SpiWriteRom         ; |918| 
+        ; call occurs [#_SpiWriteRom] ; |918| 
+	.dwpsn	"Rom.c",919,2
+        MOVZ      AR4,SP                ; |919| 
+        MOVL      XAR5,#256             ; |919| 
         MOVB      ACC,#26
-        ADD       AR4,#-1024            ; |1087| 
-        LCR       #_SpiWriteRom         ; |1087| 
-        ; call occurs [#_SpiWriteRom] ; |1087| 
-	.dwpsn	"Rom.c",1088,5
-        MOVZ      AR4,SP                ; |1088| 
-        MOVL      XAR5,#256             ; |1088| 
+        ADD       AR4,#-1024            ; |919| 
+        LCR       #_SpiWriteRom         ; |919| 
+        ; call occurs [#_SpiWriteRom] ; |919| 
+	.dwpsn	"Rom.c",920,5
+        MOVZ      AR4,SP                ; |920| 
+        MOVL      XAR5,#256             ; |920| 
         MOVB      ACC,#36
-        ADD       AR4,#-1280            ; |1088| 
-        LCR       #_SpiWriteRom         ; |1088| 
-        ; call occurs [#_SpiWriteRom] ; |1088| 
+        ADD       AR4,#-1280            ; |920| 
+        LCR       #_SpiWriteRom         ; |920| 
+        ; call occurs [#_SpiWriteRom] ; |920| 
         MOVL      XAR4,#_g_fast_info+5376
         MOVZ      AR3,SP
-        MOVZ      AR1,SP
         MOVL      P,XAR4
+        MOVZ      AR1,SP
         MOVZ      AR5,SP
         MOVZ      AR6,SP
         MOVL      XAR0,#9
         MOVZ      AR4,SP
         ADD       AR3,#-256
         ADD       AR1,#-512
-        SETC      SXM
         ADD       AR5,#-1024
         ADD       AR6,#-768
         MOV       *+FP[AR0],#127
@@ -3926,142 +3684,143 @@ DW$L$_fast_infor_write_rom$2$E:
 L3:    
 DW$L$_fast_infor_write_rom$4$B:
 ;***	-----------------------g4:
-;** 1093	-----------------------    *U$29++ = (*U$27).u16dist&0xffu;
-;** 1094	-----------------------    *U$29++ = (*U$27).u16dist>>8;
-;** 1096	-----------------------    *U$34++ = (*U$27).u16turn_way&0xffu;
-;** 1097	-----------------------    *U$34++ = (*U$27).u16turn_way>>8;
-;** 1099	-----------------------    *U$39++ = (*U$27).q17l_dist>>17&0xffL;
-;** 1100	-----------------------    *U$39++ = (unsigned)((*U$27).q17l_dist>>17)>>8;
-;** 1102	-----------------------    *U$42++ = (*U$27).q17r_dist>>17&0xffL;
-;** 1103	-----------------------    *U$42++ = (unsigned)((*U$27).q17r_dist>>17)>>8;
-;** 1105	-----------------------    *U$46++ = ABS((*U$27).iq7pos_integral_val)>>7&0xffL;
-;** 1106	-----------------------    *U$46++ = (unsigned)(ABS((*U$27).iq7pos_integral_val)>>7)>>8;
-;** 1091	-----------------------    U$27 += 42;
-;** 1091	-----------------------    if ( (--L$2) != (-1) ) goto g4;
-	.dwpsn	"Rom.c",1093,3
-        MOVL      XAR7,P                ; |1093| 
-        MOVB      XAR0,#41              ; |1093| 
-        MOV       AL,*+XAR7[AR0]        ; |1093| 
-        ANDB      AL,#0xff              ; |1093| 
-        MOV       *XAR3++,AL            ; |1093| 
-	.dwpsn	"Rom.c",1094,3
-        MOVL      XAR7,P                ; |1094| 
-        MOV       AL,*+XAR7[AR0]        ; |1094| 
-        LSR       AL,8                  ; |1094| 
-        MOV       *XAR3++,AL            ; |1094| 
-	.dwpsn	"Rom.c",1096,3
-        MOVL      XAR7,P                ; |1096| 
-        MOVB      XAR0,#38              ; |1096| 
-        MOV       AL,*+XAR7[AR0]        ; |1096| 
-        ANDB      AL,#0xff              ; |1096| 
-        MOV       *XAR1++,AL            ; |1096| 
-	.dwpsn	"Rom.c",1097,3
-        MOVL      XAR7,P                ; |1097| 
-        MOV       AL,*+XAR7[AR0]        ; |1097| 
-        LSR       AL,8                  ; |1097| 
-        MOV       *XAR1++,AL            ; |1097| 
-	.dwpsn	"Rom.c",1099,3
-        MOVL      XAR7,P                ; |1099| 
-        MOVB      XAR0,#18              ; |1099| 
-        MOV       T,#17                 ; |1099| 
-        MOVL      ACC,*+XAR7[AR0]       ; |1099| 
-        ASRL      ACC,T                 ; |1099| 
-        ANDB      AL,#0xff              ; |1099| 
-        MOV       *XAR6++,AL            ; |1099| 
-	.dwpsn	"Rom.c",1100,3
-        MOVL      XAR7,P                ; |1100| 
-        MOV       T,#17                 ; |1100| 
-        MOVL      ACC,*+XAR7[AR0]       ; |1100| 
-        ASRL      ACC,T                 ; |1100| 
-        LSR       AL,8                  ; |1100| 
-        MOV       *XAR6++,AL            ; |1100| 
-	.dwpsn	"Rom.c",1102,3
-        MOVL      XAR7,P                ; |1102| 
-        MOVB      XAR0,#16              ; |1102| 
-        MOV       T,#17                 ; |1102| 
-        MOVL      ACC,*+XAR7[AR0]       ; |1102| 
-        ASRL      ACC,T                 ; |1102| 
-        ANDB      AL,#0xff              ; |1102| 
-        MOV       *XAR5++,AL            ; |1102| 
-	.dwpsn	"Rom.c",1103,3
-        MOVL      XAR7,P                ; |1103| 
-        MOV       T,#17                 ; |1103| 
-        MOVL      ACC,*+XAR7[AR0]       ; |1103| 
-        ASRL      ACC,T                 ; |1103| 
-        LSR       AL,8                  ; |1103| 
-        MOV       *XAR5++,AL            ; |1103| 
-	.dwpsn	"Rom.c",1105,9
-        MOVL      XAR7,P
-        MOVL      ACC,*+XAR7[6]         ; |1105| 
-        ABS       ACC                   ; |1105| 
-        SFR       ACC,7                 ; |1105| 
-        ANDB      AL,#0xff              ; |1105| 
-        MOV       *XAR4++,AL            ; |1105| 
-	.dwpsn	"Rom.c",1106,3
-        MOVL      XAR7,P
-        MOVL      ACC,*+XAR7[6]         ; |1106| 
-        ABS       ACC                   ; |1106| 
-        SFR       ACC,7                 ; |1106| 
-        LSR       AL,8                  ; |1106| 
-        MOV       *XAR4++,AL            ; |1106| 
-	.dwpsn	"Rom.c",1091,25
-        MOVL      ACC,P                 ; |1091| 
-        MOVB      XAR7,#42              ; |1091| 
-        ADDU      ACC,AR7               ; |1091| 
-        MOVL      P,ACC                 ; |1091| 
-	.dwpsn	"Rom.c",1091,16
+;*** 927	-----------------------    *U$29++ = (*U$27).u16dist&0xffu;
+;*** 928	-----------------------    *U$29++ = (*U$27).u16dist>>8;
+;*** 930	-----------------------    *U$34++ = (*U$27).u16turn_way&0xffu;
+;*** 931	-----------------------    *U$34++ = (*U$27).u16turn_way>>8;
+;*** 933	-----------------------    *U$39++ = (*U$27).q17l_dist>>17&0xffL;
+;*** 934	-----------------------    *U$39++ = (unsigned)((*U$27).q17l_dist>>17)>>8;
+;*** 936	-----------------------    *U$42++ = (*U$27).q17r_dist>>17&0xffL;
+;*** 937	-----------------------    *U$42++ = (unsigned)((*U$27).q17r_dist>>17)>>8;
+;*** 939	-----------------------    *U$45++ = (unsigned)((*U$27).q17angle>>17)>>8;
+;*** 940	-----------------------    *U$45++ = (unsigned)((*U$27).q17angle>>17)>>8;
+;*** 925	-----------------------    U$27 += 42;
+;*** 925	-----------------------    if ( (--L$2) != (-1) ) goto g4;
+	.dwpsn	"Rom.c",927,3
+        MOVL      XAR7,P                ; |927| 
+        MOVB      XAR0,#41              ; |927| 
+        MOV       AL,*+XAR7[AR0]        ; |927| 
+        ANDB      AL,#0xff              ; |927| 
+        MOV       *XAR3++,AL            ; |927| 
+	.dwpsn	"Rom.c",928,3
+        MOVL      XAR7,P                ; |928| 
+        MOV       AL,*+XAR7[AR0]        ; |928| 
+        LSR       AL,8                  ; |928| 
+        MOV       *XAR3++,AL            ; |928| 
+	.dwpsn	"Rom.c",930,3
+        MOVL      XAR7,P                ; |930| 
+        MOVB      XAR0,#38              ; |930| 
+        MOV       AL,*+XAR7[AR0]        ; |930| 
+        ANDB      AL,#0xff              ; |930| 
+        MOV       *XAR1++,AL            ; |930| 
+	.dwpsn	"Rom.c",931,3
+        MOVL      XAR7,P                ; |931| 
+        MOV       AL,*+XAR7[AR0]        ; |931| 
+        LSR       AL,8                  ; |931| 
+        MOV       *XAR1++,AL            ; |931| 
+	.dwpsn	"Rom.c",933,3
+        MOVL      XAR7,P                ; |933| 
+        MOVB      XAR0,#18              ; |933| 
+        MOV       T,#17                 ; |933| 
+        MOVL      ACC,*+XAR7[AR0]       ; |933| 
+        ASRL      ACC,T                 ; |933| 
+        ANDB      AL,#0xff              ; |933| 
+        MOV       *XAR6++,AL            ; |933| 
+	.dwpsn	"Rom.c",934,3
+        MOVL      XAR7,P                ; |934| 
+        MOV       T,#17                 ; |934| 
+        MOVL      ACC,*+XAR7[AR0]       ; |934| 
+        ASRL      ACC,T                 ; |934| 
+        LSR       AL,8                  ; |934| 
+        MOV       *XAR6++,AL            ; |934| 
+	.dwpsn	"Rom.c",936,3
+        MOVL      XAR7,P                ; |936| 
+        MOVB      XAR0,#16              ; |936| 
+        MOV       T,#17                 ; |936| 
+        MOVL      ACC,*+XAR7[AR0]       ; |936| 
+        ASRL      ACC,T                 ; |936| 
+        ANDB      AL,#0xff              ; |936| 
+        MOV       *XAR5++,AL            ; |936| 
+	.dwpsn	"Rom.c",937,3
+        MOVL      XAR7,P                ; |937| 
+        MOV       T,#17                 ; |937| 
+        MOVL      ACC,*+XAR7[AR0]       ; |937| 
+        ASRL      ACC,T                 ; |937| 
+        LSR       AL,8                  ; |937| 
+        MOV       *XAR5++,AL            ; |937| 
+	.dwpsn	"Rom.c",939,9
+        MOVL      XAR7,P                ; |939| 
+        MOVB      XAR0,#36              ; |939| 
+        MOV       T,#17                 ; |939| 
+        MOVL      ACC,*+XAR7[AR0]       ; |939| 
+        ASRL      ACC,T                 ; |939| 
+        LSR       AL,8                  ; |939| 
+        MOV       *XAR4++,AL            ; |939| 
+	.dwpsn	"Rom.c",940,3
+        MOVL      XAR7,P                ; |940| 
+        MOV       T,#17                 ; |940| 
+        MOVL      ACC,*+XAR7[AR0]       ; |940| 
+        ASRL      ACC,T                 ; |940| 
+        LSR       AL,8                  ; |940| 
+        MOV       *XAR4++,AL            ; |940| 
+	.dwpsn	"Rom.c",925,25
+        MOVL      ACC,P                 ; |925| 
+        MOVB      XAR7,#42              ; |925| 
+        ADDU      ACC,AR7               ; |925| 
+        MOVL      P,ACC                 ; |925| 
+	.dwpsn	"Rom.c",925,16
         MOVL      XAR0,#9
         MOVZ      AR7,*+FP[AR0]
-        MOVL      XAR0,#9               ; |1091| 
-        SUBB      XAR7,#1               ; |1091| 
-        MOV       *+FP[AR0],AR7         ; |1091| 
-        MOVZ      AR0,AR7               ; |1091| 
-        CMP       AR0,#-1               ; |1091| 
-        BF        L3,NEQ                ; |1091| 
-        ; branchcc occurs ; |1091| 
+        MOVL      XAR0,#9               ; |925| 
+        SUBB      XAR7,#1               ; |925| 
+        MOV       *+FP[AR0],AR7         ; |925| 
+        MOVZ      AR0,AR7               ; |925| 
+        CMP       AR0,#-1               ; |925| 
+        BF        L3,NEQ                ; |925| 
+        ; branchcc occurs ; |925| 
 DW$L$_fast_infor_write_rom$4$E:
-;** 1110	-----------------------    SpiWriteRom(21u, 0u, 256u, &dist_sarr);
-;** 1111	-----------------------    SpiWriteRom(23u, 0u, 256u, &turn_sarr);
-;** 1112	-----------------------    SpiWriteRom(25u, 0u, 256u, &ldist_sarr);
-;** 1113	-----------------------    SpiWriteRom(27u, 0u, 256u, &rdist_sarr);
-;** 1114	-----------------------    SpiWriteRom(37u, 0u, 256u, &posint_sarr);
-;** 1114	-----------------------    return;
-	.dwpsn	"Rom.c",1110,2
-        MOVZ      AR4,SP                ; |1110| 
-        MOVL      XAR5,#256             ; |1110| 
+;*** 948	-----------------------    SpiWriteRom(21u, 0u, 256u, &dist_sarr);
+;*** 949	-----------------------    SpiWriteRom(23u, 0u, 256u, &turn_sarr);
+;*** 950	-----------------------    SpiWriteRom(25u, 0u, 256u, &ldist_sarr);
+;*** 951	-----------------------    SpiWriteRom(27u, 0u, 256u, &rdist_sarr);
+;*** 952	-----------------------    SpiWriteRom(37u, 0u, 256u, &angle_sarr);
+;*** 952	-----------------------    return;
+	.dwpsn	"Rom.c",948,2
+        MOVZ      AR4,SP                ; |948| 
+        MOVL      XAR5,#256             ; |948| 
         MOVB      ACC,#21
-        ADD       AR4,#-256             ; |1110| 
-        LCR       #_SpiWriteRom         ; |1110| 
-        ; call occurs [#_SpiWriteRom] ; |1110| 
-	.dwpsn	"Rom.c",1111,2
-        MOVZ      AR4,SP                ; |1111| 
-        MOVL      XAR5,#256             ; |1111| 
+        ADD       AR4,#-256             ; |948| 
+        LCR       #_SpiWriteRom         ; |948| 
+        ; call occurs [#_SpiWriteRom] ; |948| 
+	.dwpsn	"Rom.c",949,2
+        MOVZ      AR4,SP                ; |949| 
+        MOVL      XAR5,#256             ; |949| 
         MOVB      ACC,#23
-        ADD       AR4,#-512             ; |1111| 
-        LCR       #_SpiWriteRom         ; |1111| 
-        ; call occurs [#_SpiWriteRom] ; |1111| 
-	.dwpsn	"Rom.c",1112,2
-        MOVZ      AR4,SP                ; |1112| 
-        MOVL      XAR5,#256             ; |1112| 
+        ADD       AR4,#-512             ; |949| 
+        LCR       #_SpiWriteRom         ; |949| 
+        ; call occurs [#_SpiWriteRom] ; |949| 
+	.dwpsn	"Rom.c",950,2
+        MOVZ      AR4,SP                ; |950| 
+        MOVL      XAR5,#256             ; |950| 
         MOVB      ACC,#25
-        ADD       AR4,#-768             ; |1112| 
-        LCR       #_SpiWriteRom         ; |1112| 
-        ; call occurs [#_SpiWriteRom] ; |1112| 
-	.dwpsn	"Rom.c",1113,2
-        MOVZ      AR4,SP                ; |1113| 
-        MOVL      XAR5,#256             ; |1113| 
+        ADD       AR4,#-768             ; |950| 
+        LCR       #_SpiWriteRom         ; |950| 
+        ; call occurs [#_SpiWriteRom] ; |950| 
+	.dwpsn	"Rom.c",951,2
+        MOVZ      AR4,SP                ; |951| 
+        MOVL      XAR5,#256             ; |951| 
         MOVB      ACC,#27
-        ADD       AR4,#-1024            ; |1113| 
-        LCR       #_SpiWriteRom         ; |1113| 
-        ; call occurs [#_SpiWriteRom] ; |1113| 
-	.dwpsn	"Rom.c",1114,5
-        MOVZ      AR4,SP                ; |1114| 
-        MOVL      XAR5,#256             ; |1114| 
+        ADD       AR4,#-1024            ; |951| 
+        LCR       #_SpiWriteRom         ; |951| 
+        ; call occurs [#_SpiWriteRom] ; |951| 
+	.dwpsn	"Rom.c",952,5
+        MOVZ      AR4,SP                ; |952| 
+        MOVL      XAR5,#256             ; |952| 
         MOVB      ACC,#37
-        ADD       AR4,#-1280            ; |1114| 
-        LCR       #_SpiWriteRom         ; |1114| 
-        ; call occurs [#_SpiWriteRom] ; |1114| 
-	.dwpsn	"Rom.c",1116,1
+        ADD       AR4,#-1280            ; |952| 
+        LCR       #_SpiWriteRom         ; |952| 
+        ; call occurs [#_SpiWriteRom] ; |952| 
+	.dwpsn	"Rom.c",955,1
         ADD       SP,#-1282
 	.dwcfa	0x1d, -8
         MOVL      XAR3,*--SP
@@ -4076,53 +3835,53 @@ DW$L$_fast_infor_write_rom$4$E:
         LRETR
         ; return occurs
 
-DW$189	.dwtag  DW_TAG_loop
-	.dwattr DW$189, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L3:1:1768050237")
-	.dwattr DW$189, DW_AT_begin_file("Rom.c")
-	.dwattr DW$189, DW_AT_begin_line(0x443)
-	.dwattr DW$189, DW_AT_end_line(0x453)
-DW$190	.dwtag  DW_TAG_loop_range
-	.dwattr DW$190, DW_AT_low_pc(DW$L$_fast_infor_write_rom$4$B)
-	.dwattr DW$190, DW_AT_high_pc(DW$L$_fast_infor_write_rom$4$E)
-	.dwendtag DW$189
+DW$171	.dwtag  DW_TAG_loop
+	.dwattr DW$171, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L3:1:1768460752")
+	.dwattr DW$171, DW_AT_begin_file("Rom.c")
+	.dwattr DW$171, DW_AT_begin_line(0x39d)
+	.dwattr DW$171, DW_AT_end_line(0x3b1)
+DW$172	.dwtag  DW_TAG_loop_range
+	.dwattr DW$172, DW_AT_low_pc(DW$L$_fast_infor_write_rom$4$B)
+	.dwattr DW$172, DW_AT_high_pc(DW$L$_fast_infor_write_rom$4$E)
+	.dwendtag DW$171
 
 
-DW$191	.dwtag  DW_TAG_loop
-	.dwattr DW$191, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L2:1:1768050237")
-	.dwattr DW$191, DW_AT_begin_file("Rom.c")
-	.dwattr DW$191, DW_AT_begin_line(0x42a)
-	.dwattr DW$191, DW_AT_end_line(0x43a)
-DW$192	.dwtag  DW_TAG_loop_range
-	.dwattr DW$192, DW_AT_low_pc(DW$L$_fast_infor_write_rom$2$B)
-	.dwattr DW$192, DW_AT_high_pc(DW$L$_fast_infor_write_rom$2$E)
-	.dwendtag DW$191
+DW$173	.dwtag  DW_TAG_loop
+	.dwattr DW$173, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L2:1:1768460752")
+	.dwattr DW$173, DW_AT_begin_file("Rom.c")
+	.dwattr DW$173, DW_AT_begin_line(0x37e)
+	.dwattr DW$173, DW_AT_end_line(0x392)
+DW$174	.dwtag  DW_TAG_loop_range
+	.dwattr DW$174, DW_AT_low_pc(DW$L$_fast_infor_write_rom$2$B)
+	.dwattr DW$174, DW_AT_high_pc(DW$L$_fast_infor_write_rom$2$E)
+	.dwendtag DW$173
 
-	.dwattr DW$169, DW_AT_end_file("Rom.c")
-	.dwattr DW$169, DW_AT_end_line(0x45c)
-	.dwattr DW$169, DW_AT_end_column(0x01)
+	.dwattr DW$151, DW_AT_end_file("Rom.c")
+	.dwattr DW$151, DW_AT_end_line(0x3bb)
+	.dwattr DW$151, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$169
+	.dwendtag DW$151
 
 	.sect	".text"
 	.global	_fast_infor_read_rom
 
-DW$193	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_read_rom"), DW_AT_symbol_name("_fast_infor_read_rom")
-	.dwattr DW$193, DW_AT_low_pc(_fast_infor_read_rom)
-	.dwattr DW$193, DW_AT_high_pc(0x00)
-	.dwattr DW$193, DW_AT_begin_file("Rom.c")
-	.dwattr DW$193, DW_AT_begin_line(0x45e)
-	.dwattr DW$193, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",1119,1
+DW$175	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_read_rom"), DW_AT_symbol_name("_fast_infor_read_rom")
+	.dwattr DW$175, DW_AT_low_pc(_fast_infor_read_rom)
+	.dwattr DW$175, DW_AT_high_pc(0x00)
+	.dwattr DW$175, DW_AT_begin_file("Rom.c")
+	.dwattr DW$175, DW_AT_begin_line(0x3bd)
+	.dwattr DW$175, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",958,1
 
 	.dwfde DW$CIE
 
 ;***************************************************************
-;* FNAME: _fast_infor_read_rom          FR SIZE: 1308           *
+;* FNAME: _fast_infor_read_rom          FR SIZE: 1306           *
 ;*                                                             *
 ;* FUNCTION ENVIRONMENT                                        *
 ;*                                                             *
 ;* FUNCTION PROPERTIES                                         *
-;*                            0 Parameter, 1302 Auto,  6 SOE     *
+;*                            0 Parameter, 1300 Auto,  6 SOE     *
 ;***************************************************************
 
 
@@ -4132,19 +3891,19 @@ DW$193	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_read_rom"), DW_AT_symbo
 ;*                                                             *
 ;***************************************************************
 _fast_infor_read_rom:
-;** 1121	-----------------------    dist_larr[] = {...};
-;** 1122	-----------------------    turn_larr[] = {...};
-;** 1123	-----------------------    ldist_larr[] = {...};
-;** 1124	-----------------------    rdist_larr[] = {...};
-;** 1125	-----------------------    posint_larr[] = {...};
-;** 1128	-----------------------    SpiReadRom(20u, 0u, 256u, &dist_larr);
-;** 1129	-----------------------    SpiReadRom(22u, 0u, 256u, &turn_larr);
-;** 1130	-----------------------    SpiReadRom(24u, 0u, 256u, &ldist_larr);
-;** 1131	-----------------------    SpiReadRom(26u, 0u, 256u, &rdist_larr);
-;** 1132	-----------------------    SpiReadRom(36u, 0u, 256u, &posint_larr);
+;*** 960	-----------------------    dist_larr[] = {...};
+;*** 961	-----------------------    turn_larr[] = {...};
+;*** 962	-----------------------    ldist_larr[] = {...};
+;*** 963	-----------------------    rdist_larr[] = {...};
+;*** 964	-----------------------    angle_sarr[] = {...};
+;*** 969	-----------------------    SpiReadRom(20u, 0u, 256u, &dist_larr);
+;*** 970	-----------------------    SpiReadRom(22u, 0u, 256u, &turn_larr);
+;*** 971	-----------------------    SpiReadRom(24u, 0u, 256u, &ldist_larr);
+;*** 972	-----------------------    SpiReadRom(26u, 0u, 256u, &rdist_larr);
+;*** 973	-----------------------    SpiReadRom(36u, 0u, 256u, &angle_sarr);
 ;***  	-----------------------    #pragma MUST_ITERATE(128, 128, 128)
 ;***  	-----------------------    #pragma LOOP_FLAGS(4096u)
-;***  	-----------------------    U$68 = &posint_larr[0];
+;***  	-----------------------    U$68 = &angle_sarr[0];
 ;***  	-----------------------    U$57 = &rdist_larr[0];
 ;***  	-----------------------    U$45 = &ldist_larr[0];
 ;***  	-----------------------    U$40 = &turn_larr[0];
@@ -4165,709 +3924,693 @@ _fast_infor_read_rom:
 	.dwcfa	0x1d, -8
         MOVZ      AR2,SP
         SUBB      FP,#8
-        ADD       SP,#1302
-	.dwcfa	0x1d, -1310
-DW$194	.dwtag  DW_TAG_variable, DW_AT_name("L$1"), DW_AT_symbol_name("L$1")
-	.dwattr DW$194, DW_AT_type(*DW$T$10)
-	.dwattr DW$194, DW_AT_location[DW_OP_breg20 -1289]
-DW$195	.dwtag  DW_TAG_variable, DW_AT_name("L$2"), DW_AT_symbol_name("L$2")
-	.dwattr DW$195, DW_AT_type(*DW$T$10)
-	.dwattr DW$195, DW_AT_location[DW_OP_breg20 -1289]
-DW$196	.dwtag  DW_TAG_variable, DW_AT_name("U$28"), DW_AT_symbol_name("U$28")
-	.dwattr DW$196, DW_AT_type(*DW$T$39)
-	.dwattr DW$196, DW_AT_location[DW_OP_breg20 -1298]
-DW$197	.dwtag  DW_TAG_variable, DW_AT_name("U$28"), DW_AT_symbol_name("U$28")
-	.dwattr DW$197, DW_AT_type(*DW$T$39)
-	.dwattr DW$197, DW_AT_location[DW_OP_breg20 -1298]
-DW$198	.dwtag  DW_TAG_variable, DW_AT_name("U$36"), DW_AT_symbol_name("U$36")
-	.dwattr DW$198, DW_AT_type(*DW$T$82)
-	.dwattr DW$198, DW_AT_location[DW_OP_breg20 -1296]
-DW$199	.dwtag  DW_TAG_variable, DW_AT_name("U$36"), DW_AT_symbol_name("U$36")
-	.dwattr DW$199, DW_AT_type(*DW$T$82)
-	.dwattr DW$199, DW_AT_location[DW_OP_breg20 -1296]
-DW$200	.dwtag  DW_TAG_variable, DW_AT_name("U$40"), DW_AT_symbol_name("U$40")
-	.dwattr DW$200, DW_AT_type(*DW$T$39)
-	.dwattr DW$200, DW_AT_location[DW_OP_breg20 -1294]
-DW$201	.dwtag  DW_TAG_variable, DW_AT_name("U$40"), DW_AT_symbol_name("U$40")
-	.dwattr DW$201, DW_AT_type(*DW$T$39)
-	.dwattr DW$201, DW_AT_location[DW_OP_breg20 -1294]
-DW$202	.dwtag  DW_TAG_variable, DW_AT_name("U$45"), DW_AT_symbol_name("U$45")
-	.dwattr DW$202, DW_AT_type(*DW$T$39)
-	.dwattr DW$202, DW_AT_location[DW_OP_breg20 -1292]
-DW$203	.dwtag  DW_TAG_variable, DW_AT_name("U$45"), DW_AT_symbol_name("U$45")
-	.dwattr DW$203, DW_AT_type(*DW$T$39)
-	.dwattr DW$203, DW_AT_location[DW_OP_breg20 -1292]
-DW$204	.dwtag  DW_TAG_variable, DW_AT_name("U$57"), DW_AT_symbol_name("U$57")
-	.dwattr DW$204, DW_AT_type(*DW$T$39)
-	.dwattr DW$204, DW_AT_location[DW_OP_breg20 -1302]
-DW$205	.dwtag  DW_TAG_variable, DW_AT_name("U$57"), DW_AT_symbol_name("U$57")
-	.dwattr DW$205, DW_AT_type(*DW$T$39)
-	.dwattr DW$205, DW_AT_location[DW_OP_breg20 -1302]
+        ADD       SP,#1300
+	.dwcfa	0x1d, -1308
+DW$176	.dwtag  DW_TAG_variable, DW_AT_name("L$1"), DW_AT_symbol_name("L$1")
+	.dwattr DW$176, DW_AT_type(*DW$T$10)
+	.dwattr DW$176, DW_AT_location[DW_OP_breg20 -1289]
+DW$177	.dwtag  DW_TAG_variable, DW_AT_name("L$2"), DW_AT_symbol_name("L$2")
+	.dwattr DW$177, DW_AT_type(*DW$T$10)
+	.dwattr DW$177, DW_AT_location[DW_OP_breg20 -1289]
+DW$178	.dwtag  DW_TAG_variable, DW_AT_name("U$28"), DW_AT_symbol_name("U$28")
+	.dwattr DW$178, DW_AT_type(*DW$T$31)
+	.dwattr DW$178, DW_AT_location[DW_OP_breg20 -1300]
+DW$179	.dwtag  DW_TAG_variable, DW_AT_name("U$28"), DW_AT_symbol_name("U$28")
+	.dwattr DW$179, DW_AT_type(*DW$T$31)
+	.dwattr DW$179, DW_AT_location[DW_OP_breg20 -1300]
+DW$180	.dwtag  DW_TAG_variable, DW_AT_name("U$36"), DW_AT_symbol_name("U$36")
+	.dwattr DW$180, DW_AT_type(*DW$T$65)
+	.dwattr DW$180, DW_AT_location[DW_OP_breg20 -1298]
+DW$181	.dwtag  DW_TAG_variable, DW_AT_name("U$36"), DW_AT_symbol_name("U$36")
+	.dwattr DW$181, DW_AT_type(*DW$T$65)
+	.dwattr DW$181, DW_AT_location[DW_OP_breg20 -1298]
+DW$182	.dwtag  DW_TAG_variable, DW_AT_name("U$40"), DW_AT_symbol_name("U$40")
+	.dwattr DW$182, DW_AT_type(*DW$T$31)
+	.dwattr DW$182, DW_AT_location[DW_OP_breg20 -1296]
+DW$183	.dwtag  DW_TAG_variable, DW_AT_name("U$40"), DW_AT_symbol_name("U$40")
+	.dwattr DW$183, DW_AT_type(*DW$T$31)
+	.dwattr DW$183, DW_AT_location[DW_OP_breg20 -1296]
+DW$184	.dwtag  DW_TAG_variable, DW_AT_name("U$45"), DW_AT_symbol_name("U$45")
+	.dwattr DW$184, DW_AT_type(*DW$T$31)
+	.dwattr DW$184, DW_AT_location[DW_OP_breg20 -1294]
+DW$185	.dwtag  DW_TAG_variable, DW_AT_name("U$45"), DW_AT_symbol_name("U$45")
+	.dwattr DW$185, DW_AT_type(*DW$T$31)
+	.dwattr DW$185, DW_AT_location[DW_OP_breg20 -1294]
+DW$186	.dwtag  DW_TAG_variable, DW_AT_name("U$57"), DW_AT_symbol_name("U$57")
+	.dwattr DW$186, DW_AT_type(*DW$T$31)
+	.dwattr DW$186, DW_AT_location[DW_OP_breg20 -1292]
+DW$187	.dwtag  DW_TAG_variable, DW_AT_name("U$57"), DW_AT_symbol_name("U$57")
+	.dwattr DW$187, DW_AT_type(*DW$T$31)
+	.dwattr DW$187, DW_AT_location[DW_OP_breg20 -1292]
 ;* AR3   assigned to U$68
-DW$206	.dwtag  DW_TAG_variable, DW_AT_name("U$68"), DW_AT_symbol_name("U$68")
-	.dwattr DW$206, DW_AT_type(*DW$T$39)
-	.dwattr DW$206, DW_AT_location[DW_OP_reg10]
+DW$188	.dwtag  DW_TAG_variable, DW_AT_name("U$68"), DW_AT_symbol_name("U$68")
+	.dwattr DW$188, DW_AT_type(*DW$T$31)
+	.dwattr DW$188, DW_AT_location[DW_OP_reg10]
 ;* AR3   assigned to U$68
-DW$207	.dwtag  DW_TAG_variable, DW_AT_name("U$68"), DW_AT_symbol_name("U$68")
-	.dwattr DW$207, DW_AT_type(*DW$T$39)
-	.dwattr DW$207, DW_AT_location[DW_OP_reg10]
-DW$208	.dwtag  DW_TAG_variable, DW_AT_name("dist_larr"), DW_AT_symbol_name("_dist_larr")
-	.dwattr DW$208, DW_AT_type(*DW$T$23)
-	.dwattr DW$208, DW_AT_location[DW_OP_breg20 -256]
-DW$209	.dwtag  DW_TAG_variable, DW_AT_name("turn_larr"), DW_AT_symbol_name("_turn_larr")
-	.dwattr DW$209, DW_AT_type(*DW$T$23)
-	.dwattr DW$209, DW_AT_location[DW_OP_breg20 -512]
-DW$210	.dwtag  DW_TAG_variable, DW_AT_name("ldist_larr"), DW_AT_symbol_name("_ldist_larr")
-	.dwattr DW$210, DW_AT_type(*DW$T$23)
-	.dwattr DW$210, DW_AT_location[DW_OP_breg20 -768]
-DW$211	.dwtag  DW_TAG_variable, DW_AT_name("rdist_larr"), DW_AT_symbol_name("_rdist_larr")
-	.dwattr DW$211, DW_AT_type(*DW$T$23)
-	.dwattr DW$211, DW_AT_location[DW_OP_breg20 -1024]
-DW$212	.dwtag  DW_TAG_variable, DW_AT_name("posint_larr"), DW_AT_symbol_name("_posint_larr")
-	.dwattr DW$212, DW_AT_type(*DW$T$23)
-	.dwattr DW$212, DW_AT_location[DW_OP_breg20 -1280]
-	.dwpsn	"Rom.c",1121,9
-        MOVZ      AR4,SP                ; |1121| 
-        ADD       AR4,#-256             ; |1121| 
-        MOVL      XAR5,#_$T51$52$0      ; |1121| 
+DW$189	.dwtag  DW_TAG_variable, DW_AT_name("U$68"), DW_AT_symbol_name("U$68")
+	.dwattr DW$189, DW_AT_type(*DW$T$31)
+	.dwattr DW$189, DW_AT_location[DW_OP_reg10]
+DW$190	.dwtag  DW_TAG_variable, DW_AT_name("dist_larr"), DW_AT_symbol_name("_dist_larr")
+	.dwattr DW$190, DW_AT_type(*DW$T$32)
+	.dwattr DW$190, DW_AT_location[DW_OP_breg20 -256]
+DW$191	.dwtag  DW_TAG_variable, DW_AT_name("turn_larr"), DW_AT_symbol_name("_turn_larr")
+	.dwattr DW$191, DW_AT_type(*DW$T$32)
+	.dwattr DW$191, DW_AT_location[DW_OP_breg20 -512]
+DW$192	.dwtag  DW_TAG_variable, DW_AT_name("ldist_larr"), DW_AT_symbol_name("_ldist_larr")
+	.dwattr DW$192, DW_AT_type(*DW$T$32)
+	.dwattr DW$192, DW_AT_location[DW_OP_breg20 -768]
+DW$193	.dwtag  DW_TAG_variable, DW_AT_name("rdist_larr"), DW_AT_symbol_name("_rdist_larr")
+	.dwattr DW$193, DW_AT_type(*DW$T$32)
+	.dwattr DW$193, DW_AT_location[DW_OP_breg20 -1024]
+DW$194	.dwtag  DW_TAG_variable, DW_AT_name("angle_sarr"), DW_AT_symbol_name("_angle_sarr")
+	.dwattr DW$194, DW_AT_type(*DW$T$32)
+	.dwattr DW$194, DW_AT_location[DW_OP_breg20 -1280]
+	.dwpsn	"Rom.c",960,9
+        MOVZ      AR4,SP                ; |960| 
+        ADD       AR4,#-256             ; |960| 
+        MOVL      XAR5,#_$T47$48$0      ; |960| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1121| 
-        ; call occurs [#___memcpy_ff] ; |1121| 
-	.dwpsn	"Rom.c",1122,9
-        MOVZ      AR4,SP                ; |1122| 
-        ADD       AR4,#-512             ; |1122| 
-        MOVL      XAR5,#_$T52$53$0      ; |1122| 
+        LCR       #___memcpy_ff         ; |960| 
+        ; call occurs [#___memcpy_ff] ; |960| 
+	.dwpsn	"Rom.c",961,9
+        MOVZ      AR4,SP                ; |961| 
+        ADD       AR4,#-512             ; |961| 
+        MOVL      XAR5,#_$T48$49$0      ; |961| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1122| 
-        ; call occurs [#___memcpy_ff] ; |1122| 
-	.dwpsn	"Rom.c",1123,9
-        MOVZ      AR4,SP                ; |1123| 
-        ADD       AR4,#-768             ; |1123| 
-        MOVL      XAR5,#_$T53$54$0      ; |1123| 
+        LCR       #___memcpy_ff         ; |961| 
+        ; call occurs [#___memcpy_ff] ; |961| 
+	.dwpsn	"Rom.c",962,9
+        MOVZ      AR4,SP                ; |962| 
+        ADD       AR4,#-768             ; |962| 
+        MOVL      XAR5,#_$T49$50$0      ; |962| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1123| 
-        ; call occurs [#___memcpy_ff] ; |1123| 
-	.dwpsn	"Rom.c",1124,9
-        MOVZ      AR4,SP                ; |1124| 
-        ADD       AR4,#-1024            ; |1124| 
-        MOVL      XAR5,#_$T54$55$0      ; |1124| 
+        LCR       #___memcpy_ff         ; |962| 
+        ; call occurs [#___memcpy_ff] ; |962| 
+	.dwpsn	"Rom.c",963,9
+        MOVZ      AR4,SP                ; |963| 
+        ADD       AR4,#-1024            ; |963| 
+        MOVL      XAR5,#_$T50$51$0      ; |963| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1124| 
-        ; call occurs [#___memcpy_ff] ; |1124| 
-	.dwpsn	"Rom.c",1125,12
-        MOVZ      AR4,SP                ; |1125| 
-        ADD       AR4,#-1280            ; |1125| 
-        MOVL      XAR5,#_$T55$56$0      ; |1125| 
+        LCR       #___memcpy_ff         ; |963| 
+        ; call occurs [#___memcpy_ff] ; |963| 
+	.dwpsn	"Rom.c",964,12
+        MOVZ      AR4,SP                ; |964| 
+        ADD       AR4,#-1280            ; |964| 
+        MOVL      XAR5,#_$T51$52$0      ; |964| 
         MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |1125| 
-        ; call occurs [#___memcpy_ff] ; |1125| 
-	.dwpsn	"Rom.c",1128,2
-        MOVZ      AR4,SP                ; |1128| 
-        MOVL      XAR5,#256             ; |1128| 
+        LCR       #___memcpy_ff         ; |964| 
+        ; call occurs [#___memcpy_ff] ; |964| 
+	.dwpsn	"Rom.c",969,2
+        MOVZ      AR4,SP                ; |969| 
+        MOVL      XAR5,#256             ; |969| 
         MOVB      ACC,#20
-        ADD       AR4,#-256             ; |1128| 
-        LCR       #_SpiReadRom          ; |1128| 
-        ; call occurs [#_SpiReadRom] ; |1128| 
-	.dwpsn	"Rom.c",1129,2
-        MOVZ      AR4,SP                ; |1129| 
-        MOVL      XAR5,#256             ; |1129| 
+        ADD       AR4,#-256             ; |969| 
+        LCR       #_SpiReadRom          ; |969| 
+        ; call occurs [#_SpiReadRom] ; |969| 
+	.dwpsn	"Rom.c",970,2
+        MOVZ      AR4,SP                ; |970| 
+        MOVL      XAR5,#256             ; |970| 
         MOVB      ACC,#22
-        ADD       AR4,#-512             ; |1129| 
-        LCR       #_SpiReadRom          ; |1129| 
-        ; call occurs [#_SpiReadRom] ; |1129| 
-	.dwpsn	"Rom.c",1130,2
-        MOVZ      AR4,SP                ; |1130| 
-        MOVL      XAR5,#256             ; |1130| 
+        ADD       AR4,#-512             ; |970| 
+        LCR       #_SpiReadRom          ; |970| 
+        ; call occurs [#_SpiReadRom] ; |970| 
+	.dwpsn	"Rom.c",971,2
+        MOVZ      AR4,SP                ; |971| 
+        MOVL      XAR5,#256             ; |971| 
         MOVB      ACC,#24
-        ADD       AR4,#-768             ; |1130| 
-        LCR       #_SpiReadRom          ; |1130| 
-        ; call occurs [#_SpiReadRom] ; |1130| 
-	.dwpsn	"Rom.c",1131,2
-        MOVZ      AR4,SP                ; |1131| 
-        MOVL      XAR5,#256             ; |1131| 
+        ADD       AR4,#-768             ; |971| 
+        LCR       #_SpiReadRom          ; |971| 
+        ; call occurs [#_SpiReadRom] ; |971| 
+	.dwpsn	"Rom.c",972,2
+        MOVZ      AR4,SP                ; |972| 
+        MOVL      XAR5,#256             ; |972| 
         MOVB      ACC,#26
-        ADD       AR4,#-1024            ; |1131| 
-        LCR       #_SpiReadRom          ; |1131| 
-        ; call occurs [#_SpiReadRom] ; |1131| 
-	.dwpsn	"Rom.c",1132,5
-        MOVZ      AR4,SP                ; |1132| 
-        MOVL      XAR5,#256             ; |1132| 
+        ADD       AR4,#-1024            ; |972| 
+        LCR       #_SpiReadRom          ; |972| 
+        ; call occurs [#_SpiReadRom] ; |972| 
+	.dwpsn	"Rom.c",973,5
+        MOVZ      AR4,SP                ; |973| 
+        MOVL      XAR5,#256             ; |973| 
         MOVB      ACC,#36
-        ADD       AR4,#-1280            ; |1132| 
-        LCR       #_SpiReadRom          ; |1132| 
-        ; call occurs [#_SpiReadRom] ; |1132| 
+        ADD       AR4,#-1280            ; |973| 
+        LCR       #_SpiReadRom          ; |973| 
+        ; call occurs [#_SpiReadRom] ; |973| 
         MOVZ      AR4,SP
         ADD       AR4,#-1024
-        MOVL      XAR0,#8
+        MOVL      XAR0,#16
         MOVL      *+FP[AR0],XAR4
         MOVZ      AR4,SP
-        MOVL      XAR0,#18
+        MOVL      XAR0,#14
         ADD       AR4,#-768
         MOVL      *+FP[AR0],XAR4
         MOVZ      AR4,SP
-        MOVL      XAR0,#16
+        MOVL      XAR0,#12
         ADD       AR4,#-512
         MOVL      *+FP[AR0],XAR4
-        MOVL      XAR0,#14
+        MOVL      XAR0,#10
         MOVL      XAR4,#_g_fast_info
         MOVL      *+FP[AR0],XAR4
         MOVZ      AR4,SP
-        MOVL      XAR0,#12
+        MOVL      XAR0,#8
         ADD       AR4,#-256
         MOVZ      AR3,SP
         MOVL      *+FP[AR0],XAR4
-        MOVL      XAR0,#21
+        MOVL      XAR0,#19
         ADD       AR3,#-1280
         MOV       *+FP[AR0],#127
 L4:    
 DW$L$_fast_infor_read_rom$2$B:
 ;***	-----------------------g2:
-;** 1136	-----------------------    (*U$36).u16dist = *U$28++&0xffu;
-;** 1137	-----------------------    (*U$36).u16dist |= *U$28++<<8;
-;** 1139	-----------------------    (*U$36).u16turn_way = *U$40++&0xffu;
-;** 1140	-----------------------    (*U$36).u16turn_way |= *U$40++<<8;
-;** 1142	-----------------------    (*U$36).q17l_dist = (long)((long double)(*U$45++&0xffu)*1.31072e5L);
-;** 1143	-----------------------    (*U$36).q17l_dist |= (long)((long double)(*U$45++<<8)*1.31072e5L);
-;** 1145	-----------------------    (*U$36).q17r_dist = (long)((long double)(*U$57++&0xffu)*1.31072e5L);
-;** 1146	-----------------------    (*U$36).q17r_dist |= (long)((long double)(*U$57++<<8)*1.31072e5L);
-	.dwpsn	"Rom.c",1136,3
-        MOVL      XAR0,#12              ; |1136| 
-        MOVL      XAR4,*+FP[AR0]        ; |1136| 
-        MOVL      XAR0,#12              ; |1136| 
-        MOVB      AL.LSB,*XAR4++        ; |1136| 
-        MOVL      *+FP[AR0],XAR4        ; |1136| 
-        MOVL      XAR0,#14              ; |1136| 
-        MOVL      XAR4,*+FP[AR0]        ; |1136| 
-        MOVB      XAR1,#41              ; |1136| 
-        MOV       *+XAR4[AR1],AL        ; |1136| 
-	.dwpsn	"Rom.c",1137,3
-        MOVL      XAR0,#14              ; |1137| 
-        MOVL      XAR6,*+FP[AR0]        ; |1137| 
-        MOVL      XAR0,#12              ; |1137| 
-        MOVL      XAR5,*+FP[AR0]        ; |1137| 
+;*** 978	-----------------------    (*U$36).u16dist = *U$28++&0xffu;
+;*** 979	-----------------------    (*U$36).u16dist |= *U$28++<<8;
+;*** 981	-----------------------    (*U$36).u16turn_way = *U$40++&0xffu;
+;*** 982	-----------------------    (*U$36).u16turn_way |= *U$40++<<8;
+;*** 984	-----------------------    (*U$36).q17l_dist = (long)((long double)(*U$45++&0xffu)*1.31072e5L);
+;*** 985	-----------------------    (*U$36).q17l_dist |= (long)((long double)(*U$45++<<8)*1.31072e5L);
+;*** 987	-----------------------    (*U$36).q17r_dist = (long)((long double)(*U$57++&0xffu)*1.31072e5L);
+;*** 988	-----------------------    (*U$36).q17r_dist |= (long)((long double)(*U$57++<<8)*1.31072e5L);
+	.dwpsn	"Rom.c",978,3
+        MOVL      XAR0,#8               ; |978| 
+        MOVL      XAR4,*+FP[AR0]        ; |978| 
+        MOVL      XAR0,#8               ; |978| 
+        MOVB      AL.LSB,*XAR4++        ; |978| 
+        MOVL      *+FP[AR0],XAR4        ; |978| 
+        MOVL      XAR0,#10              ; |978| 
+        MOVL      XAR4,*+FP[AR0]        ; |978| 
+        MOVB      XAR1,#41              ; |978| 
+        MOV       *+XAR4[AR1],AL        ; |978| 
+	.dwpsn	"Rom.c",979,3
+        MOVL      XAR0,#10              ; |979| 
+        MOVL      XAR6,*+FP[AR0]        ; |979| 
+        MOVL      XAR0,#8               ; |979| 
+        MOVL      XAR5,*+FP[AR0]        ; |979| 
         MOVB      ACC,#41
-        MOVL      XAR0,#12              ; |1137| 
+        MOVL      XAR0,#8               ; |979| 
         ADDL      ACC,XAR6
-        MOVL      XAR4,ACC              ; |1137| 
-        MOV       ACC,*XAR5++ << #8     ; |1137| 
-        MOVL      *+FP[AR0],XAR5        ; |1137| 
-        OR        *+XAR4[0],AL          ; |1137| 
-	.dwpsn	"Rom.c",1139,3
-        MOVL      XAR0,#16              ; |1139| 
-        MOVL      XAR4,*+FP[AR0]        ; |1139| 
-        MOVL      XAR0,#16              ; |1139| 
-        MOVB      AL.LSB,*XAR4++        ; |1139| 
-        MOVL      *+FP[AR0],XAR4        ; |1139| 
-        MOVL      XAR0,#14              ; |1139| 
-        MOVL      XAR4,*+FP[AR0]        ; |1139| 
-        MOVB      XAR1,#38              ; |1139| 
-        MOV       *+XAR4[AR1],AL        ; |1139| 
-	.dwpsn	"Rom.c",1140,3
-        MOVL      XAR0,#14              ; |1140| 
-        MOVL      XAR6,*+FP[AR0]        ; |1140| 
-        MOVL      XAR0,#16              ; |1140| 
-        MOVL      XAR5,*+FP[AR0]        ; |1140| 
+        MOVL      XAR4,ACC              ; |979| 
+        MOV       ACC,*XAR5++ << #8     ; |979| 
+        MOVL      *+FP[AR0],XAR5        ; |979| 
+        OR        *+XAR4[0],AL          ; |979| 
+	.dwpsn	"Rom.c",981,3
+        MOVL      XAR0,#12              ; |981| 
+        MOVL      XAR4,*+FP[AR0]        ; |981| 
+        MOVL      XAR0,#12              ; |981| 
+        MOVB      AL.LSB,*XAR4++        ; |981| 
+        MOVL      *+FP[AR0],XAR4        ; |981| 
+        MOVL      XAR0,#10              ; |981| 
+        MOVL      XAR4,*+FP[AR0]        ; |981| 
+        MOVB      XAR1,#38              ; |981| 
+        MOV       *+XAR4[AR1],AL        ; |981| 
+	.dwpsn	"Rom.c",982,3
+        MOVL      XAR0,#10              ; |982| 
+        MOVL      XAR6,*+FP[AR0]        ; |982| 
+        MOVL      XAR0,#12              ; |982| 
+        MOVL      XAR5,*+FP[AR0]        ; |982| 
         MOVB      ACC,#38
-        MOVL      XAR0,#16              ; |1140| 
+        MOVL      XAR0,#12              ; |982| 
         ADDL      ACC,XAR6
-        MOVL      XAR4,ACC              ; |1140| 
-        MOV       ACC,*XAR5++ << #8     ; |1140| 
-        MOVL      *+FP[AR0],XAR5        ; |1140| 
-        OR        *+XAR4[0],AL          ; |1140| 
-	.dwpsn	"Rom.c",1142,3
-        MOVL      XAR0,#18
+        MOVL      XAR4,ACC              ; |982| 
+        MOV       ACC,*XAR5++ << #8     ; |982| 
+        MOVL      *+FP[AR0],XAR5        ; |982| 
+        OR        *+XAR4[0],AL          ; |982| 
+	.dwpsn	"Rom.c",984,3
+        MOVL      XAR0,#14
         MOVL      XAR4,*+FP[AR0]
-        MOVZ      AR6,SP                ; |1142| 
-        MOVL      XAR0,#18              ; |1142| 
-        AND       AL,*XAR4++,#0x00ff    ; |1142| 
-        ADD       AR6,#-1288            ; |1142| 
-        MOVL      *+FP[AR0],XAR4        ; |1142| 
-        LCR       #U$$TOFD              ; |1142| 
-        ; call occurs [#U$$TOFD] ; |1142| 
-        MOVZ      AR4,SP                ; |1142| 
-        MOVZ      AR6,SP                ; |1142| 
-        ADD       AR4,#-1288            ; |1142| 
-        ADD       AR6,#-1284            ; |1142| 
-        MOVL      XAR5,#FL1             ; |1142| 
-        LCR       #FD$$MPY              ; |1142| 
-        ; call occurs [#FD$$MPY] ; |1142| 
-        MOVZ      AR4,SP                ; |1142| 
-        ADD       AR4,#-1284            ; |1142| 
-        LCR       #FD$$TOL              ; |1142| 
-        ; call occurs [#FD$$TOL] ; |1142| 
-        MOVL      XAR0,#14              ; |1142| 
-        MOVL      XAR4,*+FP[AR0]        ; |1142| 
-        MOVB      XAR1,#18              ; |1142| 
-        MOVL      *+XAR4[AR1],ACC       ; |1142| 
-	.dwpsn	"Rom.c",1143,3
-        MOVL      XAR0,#14              ; |1143| 
-        MOVL      XAR6,*+FP[AR0]        ; |1143| 
-        MOVL      XAR0,#10              ; |1143| 
+        MOVZ      AR6,SP                ; |984| 
+        MOVL      XAR0,#14              ; |984| 
+        AND       AL,*XAR4++,#0x00ff    ; |984| 
+        ADD       AR6,#-1288            ; |984| 
+        MOVL      *+FP[AR0],XAR4        ; |984| 
+        LCR       #U$$TOFD              ; |984| 
+        ; call occurs [#U$$TOFD] ; |984| 
+        MOVZ      AR4,SP                ; |984| 
+        MOVZ      AR6,SP                ; |984| 
+        ADD       AR4,#-1288            ; |984| 
+        ADD       AR6,#-1284            ; |984| 
+        MOVL      XAR5,#FL1             ; |984| 
+        LCR       #FD$$MPY              ; |984| 
+        ; call occurs [#FD$$MPY] ; |984| 
+        MOVZ      AR4,SP                ; |984| 
+        ADD       AR4,#-1284            ; |984| 
+        LCR       #FD$$TOL              ; |984| 
+        ; call occurs [#FD$$TOL] ; |984| 
+        MOVL      XAR0,#10              ; |984| 
+        MOVL      XAR4,*+FP[AR0]        ; |984| 
+        MOVB      XAR1,#18              ; |984| 
+        MOVL      *+XAR4[AR1],ACC       ; |984| 
+	.dwpsn	"Rom.c",985,3
+        MOVL      XAR0,#10              ; |985| 
+        MOVL      XAR6,*+FP[AR0]        ; |985| 
+        MOVL      XAR0,#14              ; |985| 
         MOVB      ACC,#18
         ADDL      ACC,XAR6
-        MOVL      *+FP[AR0],ACC         ; |1143| 
-        MOVL      XAR0,#18              ; |1143| 
-        MOVZ      AR6,SP                ; |1143| 
-        MOVL      XAR4,*+FP[AR0]        ; |1143| 
-        MOVL      XAR0,#18              ; |1143| 
-        ADD       AR6,#-1288            ; |1143| 
-        MOV       ACC,*XAR4++ << #8     ; |1143| 
-        MOVL      *+FP[AR0],XAR4        ; |1143| 
-        LCR       #U$$TOFD              ; |1143| 
-        ; call occurs [#U$$TOFD] ; |1143| 
-        MOVZ      AR4,SP                ; |1143| 
-        MOVZ      AR6,SP                ; |1143| 
-        ADD       AR4,#-1288            ; |1143| 
-        ADD       AR6,#-1284            ; |1143| 
-        MOVL      XAR5,#FL1             ; |1143| 
-        LCR       #FD$$MPY              ; |1143| 
-        ; call occurs [#FD$$MPY] ; |1143| 
-        MOVZ      AR4,SP                ; |1143| 
-        ADD       AR4,#-1284            ; |1143| 
-        LCR       #FD$$TOL              ; |1143| 
-        ; call occurs [#FD$$TOL] ; |1143| 
-        MOVL      XAR0,#10              ; |1143| 
-        MOVL      XAR4,*+FP[AR0]        ; |1143| 
-        MOVL      XAR0,#10              ; |1143| 
-        OR        *+XAR4[0],AL          ; |1143| 
-        MOVL      XAR4,*+FP[AR0]        ; |1143| 
-        OR        *+XAR4[1],AH          ; |1143| 
-	.dwpsn	"Rom.c",1145,3
-        MOVL      XAR0,#8
+        MOVZ      AR6,SP                ; |985| 
+        MOVL      XAR4,*+FP[AR0]        ; |985| 
+        MOVL      XAR0,#14              ; |985| 
+        MOVL      XAR1,ACC              ; |985| 
+        ADD       AR6,#-1288            ; |985| 
+        MOV       ACC,*XAR4++ << #8     ; |985| 
+        MOVL      *+FP[AR0],XAR4        ; |985| 
+        LCR       #U$$TOFD              ; |985| 
+        ; call occurs [#U$$TOFD] ; |985| 
+        MOVZ      AR4,SP                ; |985| 
+        MOVZ      AR6,SP                ; |985| 
+        ADD       AR4,#-1288            ; |985| 
+        ADD       AR6,#-1284            ; |985| 
+        MOVL      XAR5,#FL1             ; |985| 
+        LCR       #FD$$MPY              ; |985| 
+        ; call occurs [#FD$$MPY] ; |985| 
+        MOVZ      AR4,SP                ; |985| 
+        ADD       AR4,#-1284            ; |985| 
+        LCR       #FD$$TOL              ; |985| 
+        ; call occurs [#FD$$TOL] ; |985| 
+        OR        *+XAR1[0],AL          ; |985| 
+        OR        *+XAR1[1],AH          ; |985| 
+	.dwpsn	"Rom.c",987,3
+        MOVL      XAR0,#16
         MOVL      XAR4,*+FP[AR0]
-        MOVZ      AR6,SP                ; |1145| 
-        MOVL      XAR0,#8               ; |1145| 
-        AND       AL,*XAR4++,#0x00ff    ; |1145| 
-        ADD       AR6,#-1288            ; |1145| 
-        MOVL      *+FP[AR0],XAR4        ; |1145| 
-        LCR       #U$$TOFD              ; |1145| 
-        ; call occurs [#U$$TOFD] ; |1145| 
-        MOVZ      AR4,SP                ; |1145| 
-        MOVZ      AR6,SP                ; |1145| 
-        ADD       AR4,#-1288            ; |1145| 
-        ADD       AR6,#-1284            ; |1145| 
-        MOVL      XAR5,#FL1             ; |1145| 
-        LCR       #FD$$MPY              ; |1145| 
-        ; call occurs [#FD$$MPY] ; |1145| 
-        MOVZ      AR4,SP                ; |1145| 
-        ADD       AR4,#-1284            ; |1145| 
-        LCR       #FD$$TOL              ; |1145| 
-        ; call occurs [#FD$$TOL] ; |1145| 
-        MOVL      XAR0,#14              ; |1145| 
-        MOVL      XAR4,*+FP[AR0]        ; |1145| 
-        MOVB      XAR1,#16              ; |1145| 
-        MOVL      *+XAR4[AR1],ACC       ; |1145| 
-	.dwpsn	"Rom.c",1146,3
-        MOVL      XAR0,#14              ; |1146| 
-        MOVL      XAR6,*+FP[AR0]        ; |1146| 
-        MOVL      XAR0,#10              ; |1146| 
+        MOVZ      AR6,SP                ; |987| 
+        MOVL      XAR0,#16              ; |987| 
+        AND       AL,*XAR4++,#0x00ff    ; |987| 
+        ADD       AR6,#-1288            ; |987| 
+        MOVL      *+FP[AR0],XAR4        ; |987| 
+        LCR       #U$$TOFD              ; |987| 
+        ; call occurs [#U$$TOFD] ; |987| 
+        MOVZ      AR4,SP                ; |987| 
+        MOVZ      AR6,SP                ; |987| 
+        ADD       AR4,#-1288            ; |987| 
+        ADD       AR6,#-1284            ; |987| 
+        MOVL      XAR5,#FL1             ; |987| 
+        LCR       #FD$$MPY              ; |987| 
+        ; call occurs [#FD$$MPY] ; |987| 
+        MOVZ      AR4,SP                ; |987| 
+        ADD       AR4,#-1284            ; |987| 
+        LCR       #FD$$TOL              ; |987| 
+        ; call occurs [#FD$$TOL] ; |987| 
+        MOVL      XAR0,#10              ; |987| 
+        MOVL      XAR4,*+FP[AR0]        ; |987| 
+        MOVB      XAR1,#16              ; |987| 
+        MOVL      *+XAR4[AR1],ACC       ; |987| 
+	.dwpsn	"Rom.c",988,3
+        MOVL      XAR0,#10              ; |988| 
+        MOVL      XAR6,*+FP[AR0]        ; |988| 
+        MOVL      XAR0,#16              ; |988| 
         MOVB      ACC,#16
         ADDL      ACC,XAR6
-        MOVL      *+FP[AR0],ACC         ; |1146| 
-        MOVL      XAR0,#8               ; |1146| 
-        MOVZ      AR6,SP                ; |1146| 
-        MOVL      XAR4,*+FP[AR0]        ; |1146| 
-        MOVL      XAR0,#8               ; |1146| 
-        ADD       AR6,#-1288            ; |1146| 
-        MOV       ACC,*XAR4++ << #8     ; |1146| 
-        MOVL      *+FP[AR0],XAR4        ; |1146| 
-        LCR       #U$$TOFD              ; |1146| 
-        ; call occurs [#U$$TOFD] ; |1146| 
-        MOVZ      AR4,SP                ; |1146| 
-        MOVZ      AR6,SP                ; |1146| 
-        ADD       AR4,#-1288            ; |1146| 
-        ADD       AR6,#-1284            ; |1146| 
-        MOVL      XAR5,#FL1             ; |1146| 
-        LCR       #FD$$MPY              ; |1146| 
-        ; call occurs [#FD$$MPY] ; |1146| 
+        MOVZ      AR6,SP                ; |988| 
+        MOVL      XAR4,*+FP[AR0]        ; |988| 
+        MOVL      XAR0,#16              ; |988| 
+        MOVL      XAR1,ACC              ; |988| 
+        ADD       AR6,#-1288            ; |988| 
+        MOV       ACC,*XAR4++ << #8     ; |988| 
+        MOVL      *+FP[AR0],XAR4        ; |988| 
+        LCR       #U$$TOFD              ; |988| 
+        ; call occurs [#U$$TOFD] ; |988| 
+        MOVZ      AR4,SP                ; |988| 
+        MOVZ      AR6,SP                ; |988| 
+        ADD       AR4,#-1288            ; |988| 
+        ADD       AR6,#-1284            ; |988| 
+        MOVL      XAR5,#FL1             ; |988| 
+        LCR       #FD$$MPY              ; |988| 
+        ; call occurs [#FD$$MPY] ; |988| 
 DW$L$_fast_infor_read_rom$2$E:
 DW$L$_fast_infor_read_rom$3$B:
-;** 1148	-----------------------    (*U$36).iq7pos_integral_val = (long)((long double)(*U$68++&0xffu)*128.0L);
-;** 1149	-----------------------    (*U$36).iq7pos_integral_val |= (long)((long double)(*U$68++<<8)*128.0L);
-;** 1134	-----------------------    U$36 += 42;
-;** 1134	-----------------------    if ( (--L$1) != (-1) ) goto g2;
-        MOVZ      AR4,SP                ; |1146| 
-        ADD       AR4,#-1284            ; |1146| 
-        LCR       #FD$$TOL              ; |1146| 
-        ; call occurs [#FD$$TOL] ; |1146| 
-        MOVL      XAR0,#10              ; |1146| 
-        MOVL      XAR4,*+FP[AR0]        ; |1146| 
-        MOVL      XAR0,#10              ; |1146| 
-        OR        *+XAR4[0],AL          ; |1146| 
-        MOVL      XAR4,*+FP[AR0]        ; |1146| 
-        OR        *+XAR4[1],AH          ; |1146| 
-	.dwpsn	"Rom.c",1148,3
-        MOVZ      AR6,SP                ; |1148| 
-        AND       AL,*XAR3++,#0x00ff    ; |1148| 
-        ADD       AR6,#-1288            ; |1148| 
-        LCR       #U$$TOFD              ; |1148| 
-        ; call occurs [#U$$TOFD] ; |1148| 
-        MOVZ      AR4,SP                ; |1148| 
-        MOVZ      AR6,SP                ; |1148| 
-        ADD       AR4,#-1288            ; |1148| 
-        ADD       AR6,#-1284            ; |1148| 
-        MOVL      XAR5,#FL3             ; |1148| 
-        LCR       #FD$$MPY              ; |1148| 
-        ; call occurs [#FD$$MPY] ; |1148| 
-        MOVZ      AR4,SP                ; |1148| 
-        ADD       AR4,#-1284            ; |1148| 
-        LCR       #FD$$TOL              ; |1148| 
-        ; call occurs [#FD$$TOL] ; |1148| 
-        MOVL      XAR0,#14              ; |1148| 
-        MOVL      XAR4,*+FP[AR0]        ; |1148| 
-        MOVL      *+XAR4[6],ACC         ; |1148| 
-	.dwpsn	"Rom.c",1149,3
-        MOVZ      AR6,SP                ; |1149| 
-        ADD       AR6,#-1288            ; |1149| 
-        MOV       ACC,*XAR3++ << #8     ; |1149| 
-        LCR       #U$$TOFD              ; |1149| 
-        ; call occurs [#U$$TOFD] ; |1149| 
-        MOVZ      AR4,SP                ; |1149| 
-        MOVZ      AR6,SP                ; |1149| 
-        ADD       AR4,#-1288            ; |1149| 
-        ADD       AR6,#-1284            ; |1149| 
-        MOVL      XAR5,#FL3             ; |1149| 
-        LCR       #FD$$MPY              ; |1149| 
-        ; call occurs [#FD$$MPY] ; |1149| 
-        MOVZ      AR4,SP                ; |1149| 
-        ADD       AR4,#-1284            ; |1149| 
-        LCR       #FD$$TOL              ; |1149| 
-        ; call occurs [#FD$$TOL] ; |1149| 
-        MOVL      XAR0,#14              ; |1149| 
-        MOVL      XAR4,*+FP[AR0]        ; |1149| 
-        MOVL      XAR0,#14              ; |1149| 
-        OR        *+XAR4[6],AL          ; |1149| 
-        MOVL      XAR4,*+FP[AR0]        ; |1149| 
-        OR        *+XAR4[7],AH          ; |1149| 
-	.dwpsn	"Rom.c",1134,23
-        MOVL      XAR0,#14              ; |1134| 
-        MOVL      ACC,*+FP[AR0]         ; |1134| 
-        MOVL      XAR0,#14              ; |1134| 
-        MOVB      XAR4,#42              ; |1134| 
-        ADDU      ACC,AR4               ; |1134| 
-        MOVL      *+FP[AR0],ACC         ; |1134| 
-	.dwpsn	"Rom.c",1134,14
-        MOVL      XAR0,#21
+;*** 990	-----------------------    (*U$36).q17angle = (long)((long double)(*U$68++&0xffu)*1.31072e5L);
+;*** 991	-----------------------    (*U$36).q17angle |= (long)((long double)(int)(*U$68++<<8)*1.31072e5L);
+;*** 976	-----------------------    U$36 += 42;
+;*** 976	-----------------------    if ( (--L$1) != (-1) ) goto g2;
+        MOVZ      AR4,SP                ; |988| 
+        ADD       AR4,#-1284            ; |988| 
+        LCR       #FD$$TOL              ; |988| 
+        ; call occurs [#FD$$TOL] ; |988| 
+        OR        *+XAR1[0],AL          ; |988| 
+        OR        *+XAR1[1],AH          ; |988| 
+	.dwpsn	"Rom.c",990,9
+        MOVZ      AR6,SP                ; |990| 
+        AND       AL,*XAR3++,#0x00ff    ; |990| 
+        ADD       AR6,#-1288            ; |990| 
+        LCR       #I$$TOFD              ; |990| 
+        ; call occurs [#I$$TOFD] ; |990| 
+        MOVZ      AR4,SP                ; |990| 
+        MOVZ      AR6,SP                ; |990| 
+        ADD       AR4,#-1288            ; |990| 
+        ADD       AR6,#-1284            ; |990| 
+        MOVL      XAR5,#FL1             ; |990| 
+        LCR       #FD$$MPY              ; |990| 
+        ; call occurs [#FD$$MPY] ; |990| 
+        MOVZ      AR4,SP                ; |990| 
+        ADD       AR4,#-1284            ; |990| 
+        LCR       #FD$$TOL              ; |990| 
+        ; call occurs [#FD$$TOL] ; |990| 
+        MOVL      XAR0,#10              ; |990| 
+        MOVL      XAR4,*+FP[AR0]        ; |990| 
+        MOVB      XAR1,#36              ; |990| 
+        MOVL      *+XAR4[AR1],ACC       ; |990| 
+	.dwpsn	"Rom.c",991,9
+        MOVL      XAR0,#10              ; |991| 
+        MOVL      XAR6,*+FP[AR0]        ; |991| 
+        MOVB      ACC,#36
+        ADDL      ACC,XAR6
+        MOVZ      AR6,SP                ; |991| 
+        ADD       AR6,#-1288            ; |991| 
+        MOVL      XAR1,ACC              ; |991| 
+        MOV       ACC,*XAR3++ << #8     ; |991| 
+        LCR       #I$$TOFD              ; |991| 
+        ; call occurs [#I$$TOFD] ; |991| 
+        MOVZ      AR4,SP                ; |991| 
+        MOVZ      AR6,SP                ; |991| 
+        ADD       AR4,#-1288            ; |991| 
+        ADD       AR6,#-1284            ; |991| 
+        MOVL      XAR5,#FL1             ; |991| 
+        LCR       #FD$$MPY              ; |991| 
+        ; call occurs [#FD$$MPY] ; |991| 
+        MOVZ      AR4,SP                ; |991| 
+        ADD       AR4,#-1284            ; |991| 
+        LCR       #FD$$TOL              ; |991| 
+        ; call occurs [#FD$$TOL] ; |991| 
+        OR        *+XAR1[0],AL          ; |991| 
+        OR        *+XAR1[1],AH          ; |991| 
+	.dwpsn	"Rom.c",976,23
+        MOVL      XAR0,#10              ; |976| 
+        MOVL      ACC,*+FP[AR0]         ; |976| 
+        MOVL      XAR0,#10              ; |976| 
+        MOVB      XAR4,#42              ; |976| 
+        ADDU      ACC,AR4               ; |976| 
+        MOVL      *+FP[AR0],ACC         ; |976| 
+	.dwpsn	"Rom.c",976,14
+        MOVL      XAR0,#19
         MOVZ      AR4,*+FP[AR0]
-        MOVL      XAR0,#21              ; |1134| 
-        SUBB      XAR4,#1               ; |1134| 
-        CMP       AR4,#-1               ; |1134| 
-        MOV       *+FP[AR0],AR4         ; |1134| 
-        BF        L4,NEQ                ; |1134| 
-        ; branchcc occurs ; |1134| 
+        MOVL      XAR0,#19              ; |976| 
+        SUBB      XAR4,#1               ; |976| 
+        CMP       AR4,#-1               ; |976| 
+        MOV       *+FP[AR0],AR4         ; |976| 
+        BF        L4,NEQ                ; |976| 
+        ; branchcc occurs ; |976| 
 DW$L$_fast_infor_read_rom$3$E:
-;** 1154	-----------------------    SpiReadRom(21u, 0u, 256u, &dist_larr);
-;** 1155	-----------------------    SpiReadRom(23u, 0u, 256u, &turn_larr);
-;** 1156	-----------------------    SpiReadRom(25u, 0u, 256u, &ldist_larr);
-;** 1157	-----------------------    SpiReadRom(27u, 0u, 256u, &rdist_larr);
-;** 1158	-----------------------    SpiReadRom(37u, 0u, 256u, &posint_larr);
+;** 1000	-----------------------    SpiReadRom(21u, 0u, 256u, &dist_larr);
+;** 1001	-----------------------    SpiReadRom(23u, 0u, 256u, &turn_larr);
+;** 1002	-----------------------    SpiReadRom(25u, 0u, 256u, &ldist_larr);
+;** 1003	-----------------------    SpiReadRom(27u, 0u, 256u, &rdist_larr);
+;** 1004	-----------------------    SpiReadRom(37u, 0u, 256u, &angle_sarr);
 ;***  	-----------------------    #pragma MUST_ITERATE(128, 128, 128)
 ;***  	-----------------------    #pragma LOOP_FLAGS(4096u)
 ;***  	-----------------------    U$36 = &g_fast_info[128];
-;***  	-----------------------    U$68 = &posint_larr[0];
+;***  	-----------------------    U$68 = &angle_sarr[0];
 ;***  	-----------------------    U$57 = &rdist_larr[0];
 ;***  	-----------------------    U$45 = &ldist_larr[0];
 ;***  	-----------------------    U$40 = &turn_larr[0];
 ;***  	-----------------------    U$28 = &dist_larr[0];
 ;***  	-----------------------    L$2 = 127;
-	.dwpsn	"Rom.c",1154,2
-        MOVZ      AR4,SP                ; |1154| 
-        MOVL      XAR5,#256             ; |1154| 
+	.dwpsn	"Rom.c",1000,2
+        MOVZ      AR4,SP                ; |1000| 
+        MOVL      XAR5,#256             ; |1000| 
         MOVB      ACC,#21
-        ADD       AR4,#-256             ; |1154| 
-        LCR       #_SpiReadRom          ; |1154| 
-        ; call occurs [#_SpiReadRom] ; |1154| 
-	.dwpsn	"Rom.c",1155,2
-        MOVZ      AR4,SP                ; |1155| 
-        MOVL      XAR5,#256             ; |1155| 
+        ADD       AR4,#-256             ; |1000| 
+        LCR       #_SpiReadRom          ; |1000| 
+        ; call occurs [#_SpiReadRom] ; |1000| 
+	.dwpsn	"Rom.c",1001,2
+        MOVZ      AR4,SP                ; |1001| 
+        MOVL      XAR5,#256             ; |1001| 
         MOVB      ACC,#23
-        ADD       AR4,#-512             ; |1155| 
-        LCR       #_SpiReadRom          ; |1155| 
-        ; call occurs [#_SpiReadRom] ; |1155| 
-	.dwpsn	"Rom.c",1156,2
-        MOVZ      AR4,SP                ; |1156| 
-        MOVL      XAR5,#256             ; |1156| 
+        ADD       AR4,#-512             ; |1001| 
+        LCR       #_SpiReadRom          ; |1001| 
+        ; call occurs [#_SpiReadRom] ; |1001| 
+	.dwpsn	"Rom.c",1002,2
+        MOVZ      AR4,SP                ; |1002| 
+        MOVL      XAR5,#256             ; |1002| 
         MOVB      ACC,#25
-        ADD       AR4,#-768             ; |1156| 
-        LCR       #_SpiReadRom          ; |1156| 
-        ; call occurs [#_SpiReadRom] ; |1156| 
-	.dwpsn	"Rom.c",1157,2
-        MOVZ      AR4,SP                ; |1157| 
-        MOVL      XAR5,#256             ; |1157| 
+        ADD       AR4,#-768             ; |1002| 
+        LCR       #_SpiReadRom          ; |1002| 
+        ; call occurs [#_SpiReadRom] ; |1002| 
+	.dwpsn	"Rom.c",1003,2
+        MOVZ      AR4,SP                ; |1003| 
+        MOVL      XAR5,#256             ; |1003| 
         MOVB      ACC,#27
-        ADD       AR4,#-1024            ; |1157| 
-        LCR       #_SpiReadRom          ; |1157| 
-        ; call occurs [#_SpiReadRom] ; |1157| 
-	.dwpsn	"Rom.c",1158,5
-        MOVZ      AR4,SP                ; |1158| 
-        MOVL      XAR5,#256             ; |1158| 
+        ADD       AR4,#-1024            ; |1003| 
+        LCR       #_SpiReadRom          ; |1003| 
+        ; call occurs [#_SpiReadRom] ; |1003| 
+	.dwpsn	"Rom.c",1004,5
+        MOVZ      AR4,SP                ; |1004| 
+        MOVL      XAR5,#256             ; |1004| 
         MOVB      ACC,#37
-        ADD       AR4,#-1280            ; |1158| 
-        LCR       #_SpiReadRom          ; |1158| 
-        ; call occurs [#_SpiReadRom] ; |1158| 
-        MOVL      XAR0,#14
+        ADD       AR4,#-1280            ; |1004| 
+        LCR       #_SpiReadRom          ; |1004| 
+        ; call occurs [#_SpiReadRom] ; |1004| 
+        MOVL      XAR0,#10
         MOVL      XAR4,#_g_fast_info+5376
         MOVL      *+FP[AR0],XAR4
         MOVZ      AR4,SP
-        MOVL      XAR0,#8
+        MOVL      XAR0,#16
         ADD       AR4,#-1024
         MOVL      *+FP[AR0],XAR4
         MOVZ      AR4,SP
-        MOVL      XAR0,#18
+        MOVL      XAR0,#14
         ADD       AR4,#-768
         MOVL      *+FP[AR0],XAR4
         MOVZ      AR4,SP
-        MOVL      XAR0,#16
+        MOVL      XAR0,#12
         ADD       AR4,#-512
         MOVL      *+FP[AR0],XAR4
         MOVZ      AR4,SP
-        MOVL      XAR0,#12
+        MOVL      XAR0,#8
         ADD       AR4,#-256
         MOVZ      AR3,SP
         MOVL      *+FP[AR0],XAR4
-        MOVL      XAR0,#21
+        MOVL      XAR0,#19
         ADD       AR3,#-1280
         MOV       *+FP[AR0],#127
 L5:    
 DW$L$_fast_infor_read_rom$5$B:
 ;***	-----------------------g4:
-;** 1162	-----------------------    (*U$36).u16dist = *U$28++&0xffu;
-;** 1163	-----------------------    (*U$36).u16dist |= *U$28++<<8;
-;** 1165	-----------------------    (*U$36).u16turn_way = *U$40++&0xffu;
-;** 1166	-----------------------    (*U$36).u16turn_way |= *U$40++<<8;
-;** 1168	-----------------------    (*U$36).q17l_dist = (long)((long double)(*U$45++&0xffu)*1.31072e5L);
-;** 1169	-----------------------    (*U$36).q17l_dist |= (long)((long double)(*U$45++<<8)*1.31072e5L);
-;** 1171	-----------------------    (*U$36).q17r_dist = (long)((long double)(*U$57++&0xffu)*1.31072e5L);
-;** 1172	-----------------------    (*U$36).q17r_dist |= (long)((long double)(*U$57++<<8)*1.31072e5L);
-	.dwpsn	"Rom.c",1162,3
-        MOVL      XAR0,#12              ; |1162| 
-        MOVL      XAR4,*+FP[AR0]        ; |1162| 
-        MOVL      XAR0,#12              ; |1162| 
-        MOVB      AL.LSB,*XAR4++        ; |1162| 
-        MOVL      *+FP[AR0],XAR4        ; |1162| 
-        MOVL      XAR0,#14              ; |1162| 
-        MOVL      XAR4,*+FP[AR0]        ; |1162| 
-        MOVB      XAR1,#41              ; |1162| 
-        MOV       *+XAR4[AR1],AL        ; |1162| 
-	.dwpsn	"Rom.c",1163,3
-        MOVL      XAR0,#14              ; |1163| 
-        MOVL      XAR6,*+FP[AR0]        ; |1163| 
-        MOVL      XAR0,#12              ; |1163| 
-        MOVL      XAR5,*+FP[AR0]        ; |1163| 
+;** 1010	-----------------------    (*U$36).u16dist = *U$28++&0xffu;
+;** 1011	-----------------------    (*U$36).u16dist |= *U$28++<<8;
+;** 1013	-----------------------    (*U$36).u16turn_way = *U$40++&0xffu;
+;** 1014	-----------------------    (*U$36).u16turn_way |= *U$40++<<8;
+;** 1016	-----------------------    (*U$36).q17l_dist = (long)((long double)(*U$45++&0xffu)*1.31072e5L);
+;** 1017	-----------------------    (*U$36).q17l_dist |= (long)((long double)(*U$45++<<8)*1.31072e5L);
+;** 1019	-----------------------    (*U$36).q17r_dist = (long)((long double)(*U$57++&0xffu)*1.31072e5L);
+;** 1020	-----------------------    (*U$36).q17r_dist |= (long)((long double)(*U$57++<<8)*1.31072e5L);
+	.dwpsn	"Rom.c",1010,3
+        MOVL      XAR0,#8               ; |1010| 
+        MOVL      XAR4,*+FP[AR0]        ; |1010| 
+        MOVL      XAR0,#8               ; |1010| 
+        MOVB      AL.LSB,*XAR4++        ; |1010| 
+        MOVL      *+FP[AR0],XAR4        ; |1010| 
+        MOVL      XAR0,#10              ; |1010| 
+        MOVL      XAR4,*+FP[AR0]        ; |1010| 
+        MOVB      XAR1,#41              ; |1010| 
+        MOV       *+XAR4[AR1],AL        ; |1010| 
+	.dwpsn	"Rom.c",1011,3
+        MOVL      XAR0,#10              ; |1011| 
+        MOVL      XAR6,*+FP[AR0]        ; |1011| 
+        MOVL      XAR0,#8               ; |1011| 
+        MOVL      XAR5,*+FP[AR0]        ; |1011| 
         MOVB      ACC,#41
-        MOVL      XAR0,#12              ; |1163| 
+        MOVL      XAR0,#8               ; |1011| 
         ADDL      ACC,XAR6
-        MOVL      XAR4,ACC              ; |1163| 
-        MOV       ACC,*XAR5++ << #8     ; |1163| 
-        MOVL      *+FP[AR0],XAR5        ; |1163| 
-        OR        *+XAR4[0],AL          ; |1163| 
-	.dwpsn	"Rom.c",1165,3
-        MOVL      XAR0,#16              ; |1165| 
-        MOVL      XAR4,*+FP[AR0]        ; |1165| 
-        MOVL      XAR0,#16              ; |1165| 
-        MOVB      AL.LSB,*XAR4++        ; |1165| 
-        MOVL      *+FP[AR0],XAR4        ; |1165| 
-        MOVL      XAR0,#14              ; |1165| 
-        MOVL      XAR4,*+FP[AR0]        ; |1165| 
-        MOVB      XAR1,#38              ; |1165| 
-        MOV       *+XAR4[AR1],AL        ; |1165| 
-	.dwpsn	"Rom.c",1166,3
-        MOVL      XAR0,#14              ; |1166| 
-        MOVL      XAR6,*+FP[AR0]        ; |1166| 
-        MOVL      XAR0,#16              ; |1166| 
-        MOVL      XAR5,*+FP[AR0]        ; |1166| 
+        MOVL      XAR4,ACC              ; |1011| 
+        MOV       ACC,*XAR5++ << #8     ; |1011| 
+        MOVL      *+FP[AR0],XAR5        ; |1011| 
+        OR        *+XAR4[0],AL          ; |1011| 
+	.dwpsn	"Rom.c",1013,3
+        MOVL      XAR0,#12              ; |1013| 
+        MOVL      XAR4,*+FP[AR0]        ; |1013| 
+        MOVL      XAR0,#12              ; |1013| 
+        MOVB      AL.LSB,*XAR4++        ; |1013| 
+        MOVL      *+FP[AR0],XAR4        ; |1013| 
+        MOVL      XAR0,#10              ; |1013| 
+        MOVL      XAR4,*+FP[AR0]        ; |1013| 
+        MOVB      XAR1,#38              ; |1013| 
+        MOV       *+XAR4[AR1],AL        ; |1013| 
+	.dwpsn	"Rom.c",1014,3
+        MOVL      XAR0,#10              ; |1014| 
+        MOVL      XAR6,*+FP[AR0]        ; |1014| 
+        MOVL      XAR0,#12              ; |1014| 
+        MOVL      XAR5,*+FP[AR0]        ; |1014| 
         MOVB      ACC,#38
-        MOVL      XAR0,#16              ; |1166| 
+        MOVL      XAR0,#12              ; |1014| 
         ADDL      ACC,XAR6
-        MOVL      XAR4,ACC              ; |1166| 
-        MOV       ACC,*XAR5++ << #8     ; |1166| 
-        MOVL      *+FP[AR0],XAR5        ; |1166| 
-        OR        *+XAR4[0],AL          ; |1166| 
-	.dwpsn	"Rom.c",1168,3
-        MOVL      XAR0,#18
+        MOVL      XAR4,ACC              ; |1014| 
+        MOV       ACC,*XAR5++ << #8     ; |1014| 
+        MOVL      *+FP[AR0],XAR5        ; |1014| 
+        OR        *+XAR4[0],AL          ; |1014| 
+	.dwpsn	"Rom.c",1016,3
+        MOVL      XAR0,#14
         MOVL      XAR4,*+FP[AR0]
-        MOVZ      AR6,SP                ; |1168| 
-        MOVL      XAR0,#18              ; |1168| 
-        AND       AL,*XAR4++,#0x00ff    ; |1168| 
-        ADD       AR6,#-1288            ; |1168| 
-        MOVL      *+FP[AR0],XAR4        ; |1168| 
-        LCR       #U$$TOFD              ; |1168| 
-        ; call occurs [#U$$TOFD] ; |1168| 
-        MOVZ      AR4,SP                ; |1168| 
-        MOVZ      AR6,SP                ; |1168| 
-        ADD       AR4,#-1288            ; |1168| 
-        ADD       AR6,#-1284            ; |1168| 
-        MOVL      XAR5,#FL1             ; |1168| 
-        LCR       #FD$$MPY              ; |1168| 
-        ; call occurs [#FD$$MPY] ; |1168| 
-        MOVZ      AR4,SP                ; |1168| 
-        ADD       AR4,#-1284            ; |1168| 
-        LCR       #FD$$TOL              ; |1168| 
-        ; call occurs [#FD$$TOL] ; |1168| 
-        MOVL      XAR0,#14              ; |1168| 
-        MOVL      XAR4,*+FP[AR0]        ; |1168| 
-        MOVB      XAR1,#18              ; |1168| 
-        MOVL      *+XAR4[AR1],ACC       ; |1168| 
-	.dwpsn	"Rom.c",1169,3
-        MOVL      XAR0,#14              ; |1169| 
-        MOVL      XAR6,*+FP[AR0]        ; |1169| 
-        MOVL      XAR0,#10              ; |1169| 
+        MOVZ      AR6,SP                ; |1016| 
+        MOVL      XAR0,#14              ; |1016| 
+        AND       AL,*XAR4++,#0x00ff    ; |1016| 
+        ADD       AR6,#-1288            ; |1016| 
+        MOVL      *+FP[AR0],XAR4        ; |1016| 
+        LCR       #U$$TOFD              ; |1016| 
+        ; call occurs [#U$$TOFD] ; |1016| 
+        MOVZ      AR4,SP                ; |1016| 
+        MOVZ      AR6,SP                ; |1016| 
+        ADD       AR4,#-1288            ; |1016| 
+        ADD       AR6,#-1284            ; |1016| 
+        MOVL      XAR5,#FL1             ; |1016| 
+        LCR       #FD$$MPY              ; |1016| 
+        ; call occurs [#FD$$MPY] ; |1016| 
+        MOVZ      AR4,SP                ; |1016| 
+        ADD       AR4,#-1284            ; |1016| 
+        LCR       #FD$$TOL              ; |1016| 
+        ; call occurs [#FD$$TOL] ; |1016| 
+        MOVL      XAR0,#10              ; |1016| 
+        MOVL      XAR4,*+FP[AR0]        ; |1016| 
+        MOVB      XAR1,#18              ; |1016| 
+        MOVL      *+XAR4[AR1],ACC       ; |1016| 
+	.dwpsn	"Rom.c",1017,3
+        MOVL      XAR0,#10              ; |1017| 
+        MOVL      XAR6,*+FP[AR0]        ; |1017| 
+        MOVL      XAR0,#14              ; |1017| 
         MOVB      ACC,#18
         ADDL      ACC,XAR6
-        MOVL      *+FP[AR0],ACC         ; |1169| 
-        MOVL      XAR0,#18              ; |1169| 
-        MOVZ      AR6,SP                ; |1169| 
-        MOVL      XAR4,*+FP[AR0]        ; |1169| 
-        MOVL      XAR0,#18              ; |1169| 
-        ADD       AR6,#-1288            ; |1169| 
-        MOV       ACC,*XAR4++ << #8     ; |1169| 
-        MOVL      *+FP[AR0],XAR4        ; |1169| 
-        LCR       #U$$TOFD              ; |1169| 
-        ; call occurs [#U$$TOFD] ; |1169| 
-        MOVZ      AR4,SP                ; |1169| 
-        MOVZ      AR6,SP                ; |1169| 
-        ADD       AR4,#-1288            ; |1169| 
-        ADD       AR6,#-1284            ; |1169| 
-        MOVL      XAR5,#FL1             ; |1169| 
-        LCR       #FD$$MPY              ; |1169| 
-        ; call occurs [#FD$$MPY] ; |1169| 
-        MOVZ      AR4,SP                ; |1169| 
-        ADD       AR4,#-1284            ; |1169| 
-        LCR       #FD$$TOL              ; |1169| 
-        ; call occurs [#FD$$TOL] ; |1169| 
-        MOVL      XAR0,#10              ; |1169| 
-        MOVL      XAR4,*+FP[AR0]        ; |1169| 
-        MOVL      XAR0,#10              ; |1169| 
-        OR        *+XAR4[0],AL          ; |1169| 
-        MOVL      XAR4,*+FP[AR0]        ; |1169| 
-        OR        *+XAR4[1],AH          ; |1169| 
-	.dwpsn	"Rom.c",1171,3
-        MOVL      XAR0,#8
+        MOVZ      AR6,SP                ; |1017| 
+        MOVL      XAR4,*+FP[AR0]        ; |1017| 
+        MOVL      XAR0,#14              ; |1017| 
+        MOVL      XAR1,ACC              ; |1017| 
+        ADD       AR6,#-1288            ; |1017| 
+        MOV       ACC,*XAR4++ << #8     ; |1017| 
+        MOVL      *+FP[AR0],XAR4        ; |1017| 
+        LCR       #U$$TOFD              ; |1017| 
+        ; call occurs [#U$$TOFD] ; |1017| 
+        MOVZ      AR4,SP                ; |1017| 
+        MOVZ      AR6,SP                ; |1017| 
+        ADD       AR4,#-1288            ; |1017| 
+        ADD       AR6,#-1284            ; |1017| 
+        MOVL      XAR5,#FL1             ; |1017| 
+        LCR       #FD$$MPY              ; |1017| 
+        ; call occurs [#FD$$MPY] ; |1017| 
+        MOVZ      AR4,SP                ; |1017| 
+        ADD       AR4,#-1284            ; |1017| 
+        LCR       #FD$$TOL              ; |1017| 
+        ; call occurs [#FD$$TOL] ; |1017| 
+        OR        *+XAR1[0],AL          ; |1017| 
+        OR        *+XAR1[1],AH          ; |1017| 
+	.dwpsn	"Rom.c",1019,3
+        MOVL      XAR0,#16
         MOVL      XAR4,*+FP[AR0]
-        MOVZ      AR6,SP                ; |1171| 
-        MOVL      XAR0,#8               ; |1171| 
-        AND       AL,*XAR4++,#0x00ff    ; |1171| 
-        ADD       AR6,#-1288            ; |1171| 
-        MOVL      *+FP[AR0],XAR4        ; |1171| 
-        LCR       #U$$TOFD              ; |1171| 
-        ; call occurs [#U$$TOFD] ; |1171| 
-        MOVZ      AR4,SP                ; |1171| 
-        MOVZ      AR6,SP                ; |1171| 
-        ADD       AR4,#-1288            ; |1171| 
-        ADD       AR6,#-1284            ; |1171| 
-        MOVL      XAR5,#FL1             ; |1171| 
-        LCR       #FD$$MPY              ; |1171| 
-        ; call occurs [#FD$$MPY] ; |1171| 
-        MOVZ      AR4,SP                ; |1171| 
-        ADD       AR4,#-1284            ; |1171| 
-        LCR       #FD$$TOL              ; |1171| 
-        ; call occurs [#FD$$TOL] ; |1171| 
-        MOVL      XAR0,#14              ; |1171| 
-        MOVL      XAR4,*+FP[AR0]        ; |1171| 
-        MOVB      XAR1,#16              ; |1171| 
-        MOVL      *+XAR4[AR1],ACC       ; |1171| 
-	.dwpsn	"Rom.c",1172,3
-        MOVL      XAR0,#14              ; |1172| 
-        MOVL      XAR6,*+FP[AR0]        ; |1172| 
-        MOVL      XAR0,#10              ; |1172| 
+        MOVZ      AR6,SP                ; |1019| 
+        MOVL      XAR0,#16              ; |1019| 
+        AND       AL,*XAR4++,#0x00ff    ; |1019| 
+        ADD       AR6,#-1288            ; |1019| 
+        MOVL      *+FP[AR0],XAR4        ; |1019| 
+        LCR       #U$$TOFD              ; |1019| 
+        ; call occurs [#U$$TOFD] ; |1019| 
+        MOVZ      AR4,SP                ; |1019| 
+        MOVZ      AR6,SP                ; |1019| 
+        ADD       AR4,#-1288            ; |1019| 
+        ADD       AR6,#-1284            ; |1019| 
+        MOVL      XAR5,#FL1             ; |1019| 
+        LCR       #FD$$MPY              ; |1019| 
+        ; call occurs [#FD$$MPY] ; |1019| 
+        MOVZ      AR4,SP                ; |1019| 
+        ADD       AR4,#-1284            ; |1019| 
+        LCR       #FD$$TOL              ; |1019| 
+        ; call occurs [#FD$$TOL] ; |1019| 
+        MOVL      XAR0,#10              ; |1019| 
+        MOVL      XAR4,*+FP[AR0]        ; |1019| 
+        MOVB      XAR1,#16              ; |1019| 
+        MOVL      *+XAR4[AR1],ACC       ; |1019| 
+	.dwpsn	"Rom.c",1020,3
+        MOVL      XAR0,#10              ; |1020| 
+        MOVL      XAR6,*+FP[AR0]        ; |1020| 
+        MOVL      XAR0,#16              ; |1020| 
         MOVB      ACC,#16
         ADDL      ACC,XAR6
-        MOVL      *+FP[AR0],ACC         ; |1172| 
-        MOVL      XAR0,#8               ; |1172| 
-        MOVZ      AR6,SP                ; |1172| 
-        MOVL      XAR4,*+FP[AR0]        ; |1172| 
-        MOVL      XAR0,#8               ; |1172| 
-        ADD       AR6,#-1288            ; |1172| 
-        MOV       ACC,*XAR4++ << #8     ; |1172| 
-        MOVL      *+FP[AR0],XAR4        ; |1172| 
-        LCR       #U$$TOFD              ; |1172| 
-        ; call occurs [#U$$TOFD] ; |1172| 
-        MOVZ      AR4,SP                ; |1172| 
-        MOVZ      AR6,SP                ; |1172| 
-        ADD       AR4,#-1288            ; |1172| 
-        ADD       AR6,#-1284            ; |1172| 
-        MOVL      XAR5,#FL1             ; |1172| 
-        LCR       #FD$$MPY              ; |1172| 
-        ; call occurs [#FD$$MPY] ; |1172| 
+        MOVZ      AR6,SP                ; |1020| 
+        MOVL      XAR4,*+FP[AR0]        ; |1020| 
+        MOVL      XAR0,#16              ; |1020| 
+        MOVL      XAR1,ACC              ; |1020| 
+        ADD       AR6,#-1288            ; |1020| 
+        MOV       ACC,*XAR4++ << #8     ; |1020| 
+        MOVL      *+FP[AR0],XAR4        ; |1020| 
+        LCR       #U$$TOFD              ; |1020| 
+        ; call occurs [#U$$TOFD] ; |1020| 
+        MOVZ      AR4,SP                ; |1020| 
+        MOVZ      AR6,SP                ; |1020| 
+        ADD       AR4,#-1288            ; |1020| 
+        ADD       AR6,#-1284            ; |1020| 
+        MOVL      XAR5,#FL1             ; |1020| 
+        LCR       #FD$$MPY              ; |1020| 
+        ; call occurs [#FD$$MPY] ; |1020| 
 DW$L$_fast_infor_read_rom$5$E:
 DW$L$_fast_infor_read_rom$6$B:
-;** 1174	-----------------------    (*U$36).iq7pos_integral_val = (long)((long double)(*U$68++&0xffu)*128.0L);
-;** 1175	-----------------------    (*U$36).iq7pos_integral_val |= (long)((long double)(*U$68++<<8)*128.0L);
-;** 1160	-----------------------    U$36 += 42;
-;** 1160	-----------------------    if ( (--L$2) != (-1) ) goto g4;
+;** 1022	-----------------------    (*U$36).q17angle = (long)((long double)(*U$68++&0xffu)*1.31072e5L);
+;** 1023	-----------------------    (*U$36).q17angle |= (long)((long double)(int)(*U$68++<<8)*1.31072e5L);
+;** 1008	-----------------------    U$36 += 42;
+;** 1008	-----------------------    if ( (--L$2) != (-1) ) goto g4;
 ;***  	-----------------------    return;
-        MOVZ      AR4,SP                ; |1172| 
-        ADD       AR4,#-1284            ; |1172| 
-        LCR       #FD$$TOL              ; |1172| 
-        ; call occurs [#FD$$TOL] ; |1172| 
-        MOVL      XAR0,#10              ; |1172| 
-        MOVL      XAR4,*+FP[AR0]        ; |1172| 
-        MOVL      XAR0,#10              ; |1172| 
-        OR        *+XAR4[0],AL          ; |1172| 
-        MOVL      XAR4,*+FP[AR0]        ; |1172| 
-        OR        *+XAR4[1],AH          ; |1172| 
-	.dwpsn	"Rom.c",1174,9
-        MOVZ      AR6,SP                ; |1174| 
-        AND       AL,*XAR3++,#0x00ff    ; |1174| 
-        ADD       AR6,#-1288            ; |1174| 
-        LCR       #U$$TOFD              ; |1174| 
-        ; call occurs [#U$$TOFD] ; |1174| 
-        MOVZ      AR4,SP                ; |1174| 
-        MOVZ      AR6,SP                ; |1174| 
-        ADD       AR4,#-1288            ; |1174| 
-        ADD       AR6,#-1284            ; |1174| 
-        MOVL      XAR5,#FL3             ; |1174| 
-        LCR       #FD$$MPY              ; |1174| 
-        ; call occurs [#FD$$MPY] ; |1174| 
-        MOVZ      AR4,SP                ; |1174| 
-        ADD       AR4,#-1284            ; |1174| 
-        LCR       #FD$$TOL              ; |1174| 
-        ; call occurs [#FD$$TOL] ; |1174| 
-        MOVL      XAR0,#14              ; |1174| 
-        MOVL      XAR4,*+FP[AR0]        ; |1174| 
-        MOVL      *+XAR4[6],ACC         ; |1174| 
-	.dwpsn	"Rom.c",1175,9
-        MOVZ      AR6,SP                ; |1175| 
-        ADD       AR6,#-1288            ; |1175| 
-        MOV       ACC,*XAR3++ << #8     ; |1175| 
-        LCR       #U$$TOFD              ; |1175| 
-        ; call occurs [#U$$TOFD] ; |1175| 
-        MOVZ      AR4,SP                ; |1175| 
-        MOVZ      AR6,SP                ; |1175| 
-        ADD       AR4,#-1288            ; |1175| 
-        ADD       AR6,#-1284            ; |1175| 
-        MOVL      XAR5,#FL3             ; |1175| 
-        LCR       #FD$$MPY              ; |1175| 
-        ; call occurs [#FD$$MPY] ; |1175| 
-        MOVZ      AR4,SP                ; |1175| 
-        ADD       AR4,#-1284            ; |1175| 
-        LCR       #FD$$TOL              ; |1175| 
-        ; call occurs [#FD$$TOL] ; |1175| 
-        MOVL      XAR0,#14              ; |1175| 
-        MOVL      XAR4,*+FP[AR0]        ; |1175| 
-        MOVL      XAR0,#14              ; |1175| 
-        OR        *+XAR4[6],AL          ; |1175| 
-        MOVL      XAR4,*+FP[AR0]        ; |1175| 
-        OR        *+XAR4[7],AH          ; |1175| 
-	.dwpsn	"Rom.c",1160,25
-        MOVL      XAR0,#14              ; |1160| 
-        MOVL      ACC,*+FP[AR0]         ; |1160| 
-        MOVL      XAR0,#14              ; |1160| 
-        MOVB      XAR4,#42              ; |1160| 
-        ADDU      ACC,AR4               ; |1160| 
-        MOVL      *+FP[AR0],ACC         ; |1160| 
-	.dwpsn	"Rom.c",1160,16
-        MOVL      XAR0,#21
+        MOVZ      AR4,SP                ; |1020| 
+        ADD       AR4,#-1284            ; |1020| 
+        LCR       #FD$$TOL              ; |1020| 
+        ; call occurs [#FD$$TOL] ; |1020| 
+        OR        *+XAR1[0],AL          ; |1020| 
+        OR        *+XAR1[1],AH          ; |1020| 
+	.dwpsn	"Rom.c",1022,9
+        MOVZ      AR6,SP                ; |1022| 
+        AND       AL,*XAR3++,#0x00ff    ; |1022| 
+        ADD       AR6,#-1288            ; |1022| 
+        LCR       #I$$TOFD              ; |1022| 
+        ; call occurs [#I$$TOFD] ; |1022| 
+        MOVZ      AR4,SP                ; |1022| 
+        MOVZ      AR6,SP                ; |1022| 
+        ADD       AR4,#-1288            ; |1022| 
+        ADD       AR6,#-1284            ; |1022| 
+        MOVL      XAR5,#FL1             ; |1022| 
+        LCR       #FD$$MPY              ; |1022| 
+        ; call occurs [#FD$$MPY] ; |1022| 
+        MOVZ      AR4,SP                ; |1022| 
+        ADD       AR4,#-1284            ; |1022| 
+        LCR       #FD$$TOL              ; |1022| 
+        ; call occurs [#FD$$TOL] ; |1022| 
+        MOVL      XAR0,#10              ; |1022| 
+        MOVL      XAR4,*+FP[AR0]        ; |1022| 
+        MOVB      XAR1,#36              ; |1022| 
+        MOVL      *+XAR4[AR1],ACC       ; |1022| 
+	.dwpsn	"Rom.c",1023,9
+        MOVL      XAR0,#10              ; |1023| 
+        MOVL      XAR6,*+FP[AR0]        ; |1023| 
+        MOVB      ACC,#36
+        ADDL      ACC,XAR6
+        MOVZ      AR6,SP                ; |1023| 
+        ADD       AR6,#-1288            ; |1023| 
+        MOVL      XAR1,ACC              ; |1023| 
+        MOV       ACC,*XAR3++ << #8     ; |1023| 
+        LCR       #I$$TOFD              ; |1023| 
+        ; call occurs [#I$$TOFD] ; |1023| 
+        MOVZ      AR4,SP                ; |1023| 
+        MOVZ      AR6,SP                ; |1023| 
+        ADD       AR4,#-1288            ; |1023| 
+        ADD       AR6,#-1284            ; |1023| 
+        MOVL      XAR5,#FL1             ; |1023| 
+        LCR       #FD$$MPY              ; |1023| 
+        ; call occurs [#FD$$MPY] ; |1023| 
+        MOVZ      AR4,SP                ; |1023| 
+        ADD       AR4,#-1284            ; |1023| 
+        LCR       #FD$$TOL              ; |1023| 
+        ; call occurs [#FD$$TOL] ; |1023| 
+        OR        *+XAR1[0],AL          ; |1023| 
+        OR        *+XAR1[1],AH          ; |1023| 
+	.dwpsn	"Rom.c",1008,25
+        MOVL      XAR0,#10              ; |1008| 
+        MOVL      ACC,*+FP[AR0]         ; |1008| 
+        MOVL      XAR0,#10              ; |1008| 
+        MOVB      XAR4,#42              ; |1008| 
+        ADDU      ACC,AR4               ; |1008| 
+        MOVL      *+FP[AR0],ACC         ; |1008| 
+	.dwpsn	"Rom.c",1008,16
+        MOVL      XAR0,#19
         MOVZ      AR4,*+FP[AR0]
-        MOVL      XAR0,#21              ; |1160| 
-        SUBB      XAR4,#1               ; |1160| 
-        CMP       AR4,#-1               ; |1160| 
-        MOV       *+FP[AR0],AR4         ; |1160| 
-        BF        L5,NEQ                ; |1160| 
-        ; branchcc occurs ; |1160| 
+        MOVL      XAR0,#19              ; |1008| 
+        SUBB      XAR4,#1               ; |1008| 
+        CMP       AR4,#-1               ; |1008| 
+        MOV       *+FP[AR0],AR4         ; |1008| 
+        BF        L5,NEQ                ; |1008| 
+        ; branchcc occurs ; |1008| 
 DW$L$_fast_infor_read_rom$6$E:
-	.dwpsn	"Rom.c",1179,1
-        ADD       SP,#-1302
+	.dwpsn	"Rom.c",1030,1
+        ADD       SP,#-1300
 	.dwcfa	0x1d, -8
         MOVL      XAR3,*--SP
 	.dwcfa	0x1d, -6
@@ -4881,49 +4624,49 @@ DW$L$_fast_infor_read_rom$6$E:
         LRETR
         ; return occurs
 
-DW$213	.dwtag  DW_TAG_loop
-	.dwattr DW$213, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L5:1:1768050237")
-	.dwattr DW$213, DW_AT_begin_file("Rom.c")
-	.dwattr DW$213, DW_AT_begin_line(0x488)
-	.dwattr DW$213, DW_AT_end_line(0x499)
-DW$214	.dwtag  DW_TAG_loop_range
-	.dwattr DW$214, DW_AT_low_pc(DW$L$_fast_infor_read_rom$5$B)
-	.dwattr DW$214, DW_AT_high_pc(DW$L$_fast_infor_read_rom$5$E)
-DW$215	.dwtag  DW_TAG_loop_range
-	.dwattr DW$215, DW_AT_low_pc(DW$L$_fast_infor_read_rom$6$B)
-	.dwattr DW$215, DW_AT_high_pc(DW$L$_fast_infor_read_rom$6$E)
-	.dwendtag DW$213
+DW$195	.dwtag  DW_TAG_loop
+	.dwattr DW$195, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L5:1:1768460752")
+	.dwattr DW$195, DW_AT_begin_file("Rom.c")
+	.dwattr DW$195, DW_AT_begin_line(0x3f0)
+	.dwattr DW$195, DW_AT_end_line(0x404)
+DW$196	.dwtag  DW_TAG_loop_range
+	.dwattr DW$196, DW_AT_low_pc(DW$L$_fast_infor_read_rom$5$B)
+	.dwattr DW$196, DW_AT_high_pc(DW$L$_fast_infor_read_rom$5$E)
+DW$197	.dwtag  DW_TAG_loop_range
+	.dwattr DW$197, DW_AT_low_pc(DW$L$_fast_infor_read_rom$6$B)
+	.dwattr DW$197, DW_AT_high_pc(DW$L$_fast_infor_read_rom$6$E)
+	.dwendtag DW$195
 
 
-DW$216	.dwtag  DW_TAG_loop
-	.dwattr DW$216, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L4:1:1768050237")
-	.dwattr DW$216, DW_AT_begin_file("Rom.c")
-	.dwattr DW$216, DW_AT_begin_line(0x46e)
-	.dwattr DW$216, DW_AT_end_line(0x47f)
-DW$217	.dwtag  DW_TAG_loop_range
-	.dwattr DW$217, DW_AT_low_pc(DW$L$_fast_infor_read_rom$2$B)
-	.dwattr DW$217, DW_AT_high_pc(DW$L$_fast_infor_read_rom$2$E)
-DW$218	.dwtag  DW_TAG_loop_range
-	.dwattr DW$218, DW_AT_low_pc(DW$L$_fast_infor_read_rom$3$B)
-	.dwattr DW$218, DW_AT_high_pc(DW$L$_fast_infor_read_rom$3$E)
-	.dwendtag DW$216
+DW$198	.dwtag  DW_TAG_loop
+	.dwattr DW$198, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L4:1:1768460752")
+	.dwattr DW$198, DW_AT_begin_file("Rom.c")
+	.dwattr DW$198, DW_AT_begin_line(0x3d0)
+	.dwattr DW$198, DW_AT_end_line(0x3e5)
+DW$199	.dwtag  DW_TAG_loop_range
+	.dwattr DW$199, DW_AT_low_pc(DW$L$_fast_infor_read_rom$2$B)
+	.dwattr DW$199, DW_AT_high_pc(DW$L$_fast_infor_read_rom$2$E)
+DW$200	.dwtag  DW_TAG_loop_range
+	.dwattr DW$200, DW_AT_low_pc(DW$L$_fast_infor_read_rom$3$B)
+	.dwattr DW$200, DW_AT_high_pc(DW$L$_fast_infor_read_rom$3$E)
+	.dwendtag DW$198
 
-	.dwattr DW$193, DW_AT_end_file("Rom.c")
-	.dwattr DW$193, DW_AT_end_line(0x49b)
-	.dwattr DW$193, DW_AT_end_column(0x01)
+	.dwattr DW$175, DW_AT_end_file("Rom.c")
+	.dwattr DW$175, DW_AT_end_line(0x406)
+	.dwattr DW$175, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$193
+	.dwendtag DW$175
 
 	.sect	".text"
 	.global	_extvel_write_rom
 
-DW$219	.dwtag  DW_TAG_subprogram, DW_AT_name("extvel_write_rom"), DW_AT_symbol_name("_extvel_write_rom")
-	.dwattr DW$219, DW_AT_low_pc(_extvel_write_rom)
-	.dwattr DW$219, DW_AT_high_pc(0x00)
-	.dwattr DW$219, DW_AT_begin_file("Rom.c")
-	.dwattr DW$219, DW_AT_begin_line(0x168)
-	.dwattr DW$219, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",361,1
+DW$201	.dwtag  DW_TAG_subprogram, DW_AT_name("extvel_write_rom"), DW_AT_symbol_name("_extvel_write_rom")
+	.dwattr DW$201, DW_AT_low_pc(_extvel_write_rom)
+	.dwattr DW$201, DW_AT_high_pc(0x00)
+	.dwattr DW$201, DW_AT_begin_file("Rom.c")
+	.dwattr DW$201, DW_AT_begin_line(0x16a)
+	.dwattr DW$201, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",363,1
 
 	.dwfde DW$CIE
 
@@ -4943,17 +4686,17 @@ DW$219	.dwtag  DW_TAG_subprogram, DW_AT_name("extvel_write_rom"), DW_AT_symbol_n
 ;*                                                             *
 ;***************************************************************
 _extvel_write_rom:
-;*** 363	-----------------------    write_buf1[] = {...};
-;*** 364	-----------------------    write_buf2[] = {...};
-;*** 365	-----------------------    write_buf3[] = {...};
-;*** 366	-----------------------    write_buf4[] = {...};
-;*** 367	-----------------------    write_buf5[] = {...};
-;*** 368	-----------------------    write_buf6[] = {...};
-;*** 369	-----------------------    write_buf7[] = {...};
-;*** 370	-----------------------    write_buf8[] = {...};
-;*** 371	-----------------------    write_buf9[] = {...};
-;*** 375	-----------------------    memset(&write_buf1, 0, 64uL);
-;*** 376	-----------------------    memset(&write_buf2, 0, 64uL);
+;*** 365	-----------------------    write_buf1[] = {...};
+;*** 366	-----------------------    write_buf2[] = {...};
+;*** 367	-----------------------    write_buf3[] = {...};
+;*** 368	-----------------------    write_buf4[] = {...};
+;*** 369	-----------------------    write_buf5[] = {...};
+;*** 370	-----------------------    write_buf6[] = {...};
+;*** 371	-----------------------    write_buf7[] = {...};
+;*** 372	-----------------------    write_buf8[] = {...};
+;*** 373	-----------------------    write_buf9[] = {...};
+;*** 377	-----------------------    memset(&write_buf1, 0, 64uL);
+;*** 378	-----------------------    memset(&write_buf2, 0, 64uL);
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -4965,204 +4708,190 @@ _extvel_write_rom:
         ADD       SP,#576
 	.dwcfa	0x1d, -580
 ;* AL    assigned to C$1
-DW$220	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
-	.dwattr DW$220, DW_AT_type(*DW$T$11)
-	.dwattr DW$220, DW_AT_location[DW_OP_reg0]
+DW$202	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
+	.dwattr DW$202, DW_AT_type(*DW$T$11)
+	.dwattr DW$202, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$2
-DW$221	.dwtag  DW_TAG_variable, DW_AT_name("C$2"), DW_AT_symbol_name("C$2")
-	.dwattr DW$221, DW_AT_type(*DW$T$11)
-	.dwattr DW$221, DW_AT_location[DW_OP_reg0]
+DW$203	.dwtag  DW_TAG_variable, DW_AT_name("C$2"), DW_AT_symbol_name("C$2")
+	.dwattr DW$203, DW_AT_type(*DW$T$11)
+	.dwattr DW$203, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$3
-DW$222	.dwtag  DW_TAG_variable, DW_AT_name("C$3"), DW_AT_symbol_name("C$3")
-	.dwattr DW$222, DW_AT_type(*DW$T$11)
-	.dwattr DW$222, DW_AT_location[DW_OP_reg0]
+DW$204	.dwtag  DW_TAG_variable, DW_AT_name("C$3"), DW_AT_symbol_name("C$3")
+	.dwattr DW$204, DW_AT_type(*DW$T$11)
+	.dwattr DW$204, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$4
-DW$223	.dwtag  DW_TAG_variable, DW_AT_name("C$4"), DW_AT_symbol_name("C$4")
-	.dwattr DW$223, DW_AT_type(*DW$T$11)
-	.dwattr DW$223, DW_AT_location[DW_OP_reg0]
+DW$205	.dwtag  DW_TAG_variable, DW_AT_name("C$4"), DW_AT_symbol_name("C$4")
+	.dwattr DW$205, DW_AT_type(*DW$T$11)
+	.dwattr DW$205, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$5
-DW$224	.dwtag  DW_TAG_variable, DW_AT_name("C$5"), DW_AT_symbol_name("C$5")
-	.dwattr DW$224, DW_AT_type(*DW$T$11)
-	.dwattr DW$224, DW_AT_location[DW_OP_reg0]
+DW$206	.dwtag  DW_TAG_variable, DW_AT_name("C$5"), DW_AT_symbol_name("C$5")
+	.dwattr DW$206, DW_AT_type(*DW$T$11)
+	.dwattr DW$206, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$6
-DW$225	.dwtag  DW_TAG_variable, DW_AT_name("C$6"), DW_AT_symbol_name("C$6")
-	.dwattr DW$225, DW_AT_type(*DW$T$11)
-	.dwattr DW$225, DW_AT_location[DW_OP_reg0]
+DW$207	.dwtag  DW_TAG_variable, DW_AT_name("C$6"), DW_AT_symbol_name("C$6")
+	.dwattr DW$207, DW_AT_type(*DW$T$11)
+	.dwattr DW$207, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$7
-DW$226	.dwtag  DW_TAG_variable, DW_AT_name("C$7"), DW_AT_symbol_name("C$7")
-	.dwattr DW$226, DW_AT_type(*DW$T$11)
-	.dwattr DW$226, DW_AT_location[DW_OP_reg0]
+DW$208	.dwtag  DW_TAG_variable, DW_AT_name("C$7"), DW_AT_symbol_name("C$7")
+	.dwattr DW$208, DW_AT_type(*DW$T$11)
+	.dwattr DW$208, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$8
-DW$227	.dwtag  DW_TAG_variable, DW_AT_name("C$8"), DW_AT_symbol_name("C$8")
-	.dwattr DW$227, DW_AT_type(*DW$T$11)
-	.dwattr DW$227, DW_AT_location[DW_OP_reg0]
+DW$209	.dwtag  DW_TAG_variable, DW_AT_name("C$8"), DW_AT_symbol_name("C$8")
+	.dwattr DW$209, DW_AT_type(*DW$T$11)
+	.dwattr DW$209, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to _Rom_Data_Buffer
-DW$228	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$228, DW_AT_type(*DW$T$21)
-	.dwattr DW$228, DW_AT_location[DW_OP_reg0]
-DW$229	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
-	.dwattr DW$229, DW_AT_type(*DW$T$44)
-	.dwattr DW$229, DW_AT_location[DW_OP_breg20 -64]
-DW$230	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
-	.dwattr DW$230, DW_AT_type(*DW$T$44)
-	.dwattr DW$230, DW_AT_location[DW_OP_breg20 -128]
-DW$231	.dwtag  DW_TAG_variable, DW_AT_name("write_buf3"), DW_AT_symbol_name("_write_buf3")
-	.dwattr DW$231, DW_AT_type(*DW$T$44)
-	.dwattr DW$231, DW_AT_location[DW_OP_breg20 -192]
-DW$232	.dwtag  DW_TAG_variable, DW_AT_name("write_buf4"), DW_AT_symbol_name("_write_buf4")
-	.dwattr DW$232, DW_AT_type(*DW$T$44)
-	.dwattr DW$232, DW_AT_location[DW_OP_breg20 -256]
-DW$233	.dwtag  DW_TAG_variable, DW_AT_name("write_buf5"), DW_AT_symbol_name("_write_buf5")
-	.dwattr DW$233, DW_AT_type(*DW$T$44)
-	.dwattr DW$233, DW_AT_location[DW_OP_breg20 -320]
-DW$234	.dwtag  DW_TAG_variable, DW_AT_name("write_buf6"), DW_AT_symbol_name("_write_buf6")
-	.dwattr DW$234, DW_AT_type(*DW$T$44)
-	.dwattr DW$234, DW_AT_location[DW_OP_breg20 -384]
-DW$235	.dwtag  DW_TAG_variable, DW_AT_name("write_buf7"), DW_AT_symbol_name("_write_buf7")
-	.dwattr DW$235, DW_AT_type(*DW$T$44)
-	.dwattr DW$235, DW_AT_location[DW_OP_breg20 -448]
-DW$236	.dwtag  DW_TAG_variable, DW_AT_name("write_buf8"), DW_AT_symbol_name("_write_buf8")
-	.dwattr DW$236, DW_AT_type(*DW$T$44)
-	.dwattr DW$236, DW_AT_location[DW_OP_breg20 -512]
-DW$237	.dwtag  DW_TAG_variable, DW_AT_name("write_buf9"), DW_AT_symbol_name("_write_buf9")
-	.dwattr DW$237, DW_AT_type(*DW$T$44)
-	.dwattr DW$237, DW_AT_location[DW_OP_breg20 -576]
-	.dwpsn	"Rom.c",363,9
-        MOVZ      AR4,SP                ; |363| 
-        MOVL      XAR5,#_$T4$5$0        ; |363| 
-        MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |363| 
-        LCR       #___memcpy_ff         ; |363| 
-        ; call occurs [#___memcpy_ff] ; |363| 
-	.dwpsn	"Rom.c",364,12
-        MOVZ      AR4,SP                ; |364| 
-        ADD       AR4,#-128             ; |364| 
-        MOVL      XAR5,#_$T5$6$0        ; |364| 
-        MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |364| 
-        ; call occurs [#___memcpy_ff] ; |364| 
-	.dwpsn	"Rom.c",365,12
+DW$210	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
+	.dwattr DW$210, DW_AT_type(*DW$T$21)
+	.dwattr DW$210, DW_AT_location[DW_OP_reg0]
+DW$211	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
+	.dwattr DW$211, DW_AT_type(*DW$T$37)
+	.dwattr DW$211, DW_AT_location[DW_OP_breg20 -64]
+DW$212	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
+	.dwattr DW$212, DW_AT_type(*DW$T$37)
+	.dwattr DW$212, DW_AT_location[DW_OP_breg20 -128]
+DW$213	.dwtag  DW_TAG_variable, DW_AT_name("write_buf3"), DW_AT_symbol_name("_write_buf3")
+	.dwattr DW$213, DW_AT_type(*DW$T$37)
+	.dwattr DW$213, DW_AT_location[DW_OP_breg20 -192]
+DW$214	.dwtag  DW_TAG_variable, DW_AT_name("write_buf4"), DW_AT_symbol_name("_write_buf4")
+	.dwattr DW$214, DW_AT_type(*DW$T$37)
+	.dwattr DW$214, DW_AT_location[DW_OP_breg20 -256]
+DW$215	.dwtag  DW_TAG_variable, DW_AT_name("write_buf5"), DW_AT_symbol_name("_write_buf5")
+	.dwattr DW$215, DW_AT_type(*DW$T$37)
+	.dwattr DW$215, DW_AT_location[DW_OP_breg20 -320]
+DW$216	.dwtag  DW_TAG_variable, DW_AT_name("write_buf6"), DW_AT_symbol_name("_write_buf6")
+	.dwattr DW$216, DW_AT_type(*DW$T$37)
+	.dwattr DW$216, DW_AT_location[DW_OP_breg20 -384]
+DW$217	.dwtag  DW_TAG_variable, DW_AT_name("write_buf7"), DW_AT_symbol_name("_write_buf7")
+	.dwattr DW$217, DW_AT_type(*DW$T$37)
+	.dwattr DW$217, DW_AT_location[DW_OP_breg20 -448]
+DW$218	.dwtag  DW_TAG_variable, DW_AT_name("write_buf8"), DW_AT_symbol_name("_write_buf8")
+	.dwattr DW$218, DW_AT_type(*DW$T$37)
+	.dwattr DW$218, DW_AT_location[DW_OP_breg20 -512]
+DW$219	.dwtag  DW_TAG_variable, DW_AT_name("write_buf9"), DW_AT_symbol_name("_write_buf9")
+	.dwattr DW$219, DW_AT_type(*DW$T$37)
+	.dwattr DW$219, DW_AT_location[DW_OP_breg20 -576]
+	.dwpsn	"Rom.c",365,9
         MOVZ      AR4,SP                ; |365| 
-        ADD       AR4,#-192             ; |365| 
-        MOVL      XAR5,#_$T6$7$0        ; |365| 
+        MOVL      XAR5,#_$T4$5$0        ; |365| 
         MOVB      ACC,#64
+        SUBB      XAR4,#64              ; |365| 
         LCR       #___memcpy_ff         ; |365| 
         ; call occurs [#___memcpy_ff] ; |365| 
 	.dwpsn	"Rom.c",366,12
         MOVZ      AR4,SP                ; |366| 
-        ADD       AR4,#-256             ; |366| 
-        MOVL      XAR5,#_$T7$8$0        ; |366| 
+        ADD       AR4,#-128             ; |366| 
+        MOVL      XAR5,#_$T5$6$0        ; |366| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |366| 
         ; call occurs [#___memcpy_ff] ; |366| 
 	.dwpsn	"Rom.c",367,12
         MOVZ      AR4,SP                ; |367| 
-        ADD       AR4,#-320             ; |367| 
-        MOVL      XAR5,#_$T8$9$0        ; |367| 
+        ADD       AR4,#-192             ; |367| 
+        MOVL      XAR5,#_$T6$7$0        ; |367| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |367| 
         ; call occurs [#___memcpy_ff] ; |367| 
 	.dwpsn	"Rom.c",368,12
         MOVZ      AR4,SP                ; |368| 
-        ADD       AR4,#-384             ; |368| 
-        MOVL      XAR5,#_$T9$10$0       ; |368| 
+        ADD       AR4,#-256             ; |368| 
+        MOVL      XAR5,#_$T7$8$0        ; |368| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |368| 
         ; call occurs [#___memcpy_ff] ; |368| 
 	.dwpsn	"Rom.c",369,12
         MOVZ      AR4,SP                ; |369| 
-        ADD       AR4,#-448             ; |369| 
-        MOVL      XAR5,#_$T10$11$0      ; |369| 
+        ADD       AR4,#-320             ; |369| 
+        MOVL      XAR5,#_$T8$9$0        ; |369| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |369| 
         ; call occurs [#___memcpy_ff] ; |369| 
 	.dwpsn	"Rom.c",370,12
         MOVZ      AR4,SP                ; |370| 
-        ADD       AR4,#-512             ; |370| 
-        MOVL      XAR5,#_$T11$12$0      ; |370| 
+        ADD       AR4,#-384             ; |370| 
+        MOVL      XAR5,#_$T9$10$0       ; |370| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |370| 
         ; call occurs [#___memcpy_ff] ; |370| 
 	.dwpsn	"Rom.c",371,12
         MOVZ      AR4,SP                ; |371| 
-        ADD       AR4,#-576             ; |371| 
-        MOVL      XAR5,#_$T12$13$0      ; |371| 
+        ADD       AR4,#-448             ; |371| 
+        MOVL      XAR5,#_$T10$11$0      ; |371| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |371| 
         ; call occurs [#___memcpy_ff] ; |371| 
-	.dwpsn	"Rom.c",375,2
-        MOVZ      AR4,SP                ; |375| 
-        MOVB      XAR5,#0
+	.dwpsn	"Rom.c",372,12
+        MOVZ      AR4,SP                ; |372| 
+        ADD       AR4,#-512             ; |372| 
+        MOVL      XAR5,#_$T11$12$0      ; |372| 
         MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |375| 
-        LCR       #_memset              ; |375| 
-        ; call occurs [#_memset] ; |375| 
-	.dwpsn	"Rom.c",376,2
-        MOVZ      AR4,SP                ; |376| 
-        ADD       AR4,#-128             ; |376| 
-        MOVB      XAR5,#0
+        LCR       #___memcpy_ff         ; |372| 
+        ; call occurs [#___memcpy_ff] ; |372| 
+	.dwpsn	"Rom.c",373,12
+        MOVZ      AR4,SP                ; |373| 
+        ADD       AR4,#-576             ; |373| 
+        MOVL      XAR5,#_$T12$13$0      ; |373| 
         MOVB      ACC,#64
-        LCR       #_memset              ; |376| 
-        ; call occurs [#_memset] ; |376| 
-;*** 377	-----------------------    memset(&write_buf3, 0, 64uL);
-;*** 378	-----------------------    memset(&write_buf4, 0, 64uL);
-;*** 379	-----------------------    memset(&write_buf5, 0, 64uL);
-;*** 380	-----------------------    memset(&write_buf6, 0, 64uL);
-;*** 381	-----------------------    memset(&write_buf6, 0, 64uL);
-;*** 382	-----------------------    memset(&write_buf6, 0, 64uL);
-;*** 383	-----------------------    memset(&write_buf6, 0, 64uL);
-;*** 389	-----------------------    C$8 = (unsigned)(g_q17s44s_vel>>17);
-;*** 389	-----------------------    write_buf1[0] = C$8&0xffu;
-;*** 390	-----------------------    write_buf1[1] = C$8>>8;
-;*** 392	-----------------------    SpiWriteRom(3u, 0u, 64u, &write_buf1);
-;*** 398	-----------------------    C$7 = (unsigned)(g_q17s4s_vel>>17);
-;*** 398	-----------------------    write_buf2[0] = C$7&0xffu;
-;*** 399	-----------------------    write_buf2[1] = C$7>>8;
-;*** 401	-----------------------    SpiWriteRom(4u, 0u, 64u, &write_buf2);
-;*** 407	-----------------------    C$6 = (unsigned)(g_q1745user_vel>>17);
-;*** 407	-----------------------    write_buf3[0] = C$6&0xffu;
-;*** 408	-----------------------    write_buf3[1] = C$6>>8;
-;*** 410	-----------------------    SpiWriteRom(6u, 0u, 64u, &write_buf3);
-;*** 416	-----------------------    C$5 = (unsigned)(g_q17escape45_vel>>17);
-;*** 416	-----------------------    write_buf4[0] = C$5&0xffu;
-;*** 417	-----------------------    write_buf4[1] = C$5>>8;
-;*** 419	-----------------------    SpiWriteRom(5u, 0u, 64u, &write_buf4);
+        LCR       #___memcpy_ff         ; |373| 
+        ; call occurs [#___memcpy_ff] ; |373| 
 	.dwpsn	"Rom.c",377,2
         MOVZ      AR4,SP                ; |377| 
-        ADD       AR4,#-192             ; |377| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
+        SUBB      XAR4,#64              ; |377| 
         LCR       #_memset              ; |377| 
         ; call occurs [#_memset] ; |377| 
 	.dwpsn	"Rom.c",378,2
         MOVZ      AR4,SP                ; |378| 
-        ADD       AR4,#-256             ; |378| 
+        ADD       AR4,#-128             ; |378| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
         LCR       #_memset              ; |378| 
         ; call occurs [#_memset] ; |378| 
+;*** 379	-----------------------    memset(&write_buf3, 0, 64uL);
+;*** 380	-----------------------    memset(&write_buf4, 0, 64uL);
+;*** 381	-----------------------    memset(&write_buf5, 0, 64uL);
+;*** 382	-----------------------    memset(&write_buf6, 0, 64uL);
+;*** 383	-----------------------    memset(&write_buf6, 0, 64uL);
+;*** 384	-----------------------    memset(&write_buf6, 0, 64uL);
+;*** 385	-----------------------    memset(&write_buf6, 0, 64uL);
+;*** 391	-----------------------    C$8 = (unsigned)(g_q17s44s_vel>>17);
+;*** 391	-----------------------    write_buf1[0] = C$8&0xffu;
+;*** 392	-----------------------    write_buf1[1] = C$8>>8;
+;*** 394	-----------------------    SpiWriteRom(3u, 0u, 64u, &write_buf1);
+;*** 400	-----------------------    C$7 = (unsigned)(g_q17s4s_vel>>17);
+;*** 400	-----------------------    write_buf2[0] = C$7&0xffu;
+;*** 401	-----------------------    write_buf2[1] = C$7>>8;
+;*** 403	-----------------------    SpiWriteRom(4u, 0u, 64u, &write_buf2);
+;*** 409	-----------------------    C$6 = (unsigned)(g_q1745user_vel>>17);
+;*** 409	-----------------------    write_buf3[0] = C$6&0xffu;
+;*** 410	-----------------------    write_buf3[1] = C$6>>8;
+;*** 412	-----------------------    SpiWriteRom(6u, 0u, 64u, &write_buf3);
+;*** 418	-----------------------    C$5 = (unsigned)(g_q17escape45_vel>>17);
+;*** 418	-----------------------    write_buf4[0] = C$5&0xffu;
+;*** 419	-----------------------    write_buf4[1] = C$5>>8;
+;*** 421	-----------------------    SpiWriteRom(5u, 0u, 64u, &write_buf4);
 	.dwpsn	"Rom.c",379,2
         MOVZ      AR4,SP                ; |379| 
-        ADD       AR4,#-320             ; |379| 
+        ADD       AR4,#-192             ; |379| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
         LCR       #_memset              ; |379| 
         ; call occurs [#_memset] ; |379| 
 	.dwpsn	"Rom.c",380,2
         MOVZ      AR4,SP                ; |380| 
-        ADD       AR4,#-384             ; |380| 
+        ADD       AR4,#-256             ; |380| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
         LCR       #_memset              ; |380| 
         ; call occurs [#_memset] ; |380| 
-	.dwpsn	"Rom.c",381,5
+	.dwpsn	"Rom.c",381,2
         MOVZ      AR4,SP                ; |381| 
-        ADD       AR4,#-384             ; |381| 
+        ADD       AR4,#-320             ; |381| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
         LCR       #_memset              ; |381| 
         ; call occurs [#_memset] ; |381| 
-	.dwpsn	"Rom.c",382,5
+	.dwpsn	"Rom.c",382,2
         MOVZ      AR4,SP                ; |382| 
         ADD       AR4,#-384             ; |382| 
         MOVB      XAR5,#0
@@ -5176,195 +4905,209 @@ DW$237	.dwtag  DW_TAG_variable, DW_AT_name("write_buf9"), DW_AT_symbol_name("_wr
         MOVB      ACC,#64
         LCR       #_memset              ; |383| 
         ; call occurs [#_memset] ; |383| 
-	.dwpsn	"Rom.c",389,2
+	.dwpsn	"Rom.c",384,5
+        MOVZ      AR4,SP                ; |384| 
+        ADD       AR4,#-384             ; |384| 
+        MOVB      XAR5,#0
+        MOVB      ACC,#64
+        LCR       #_memset              ; |384| 
+        ; call occurs [#_memset] ; |384| 
+	.dwpsn	"Rom.c",385,5
+        MOVZ      AR4,SP                ; |385| 
+        ADD       AR4,#-384             ; |385| 
+        MOVB      XAR5,#0
+        MOVB      ACC,#64
+        LCR       #_memset              ; |385| 
+        ; call occurs [#_memset] ; |385| 
+	.dwpsn	"Rom.c",391,2
         MOVW      DP,#_g_q17s44s_vel
-        MOV       T,#17                 ; |389| 
-        MOVL      XAR0,#516             ; |389| 
-        MOVL      ACC,@_g_q17s44s_vel   ; |389| 
-        ASRL      ACC,T                 ; |389| 
-        AND       AH,AL,#0x00ff         ; |389| 
-        MOV       *+FP[AR0],AH          ; |389| 
-	.dwpsn	"Rom.c",390,2
-        LSR       AL,8                  ; |390| 
-        MOV       *-SP[63],AL           ; |390| 
+        MOV       T,#17                 ; |391| 
+        MOVL      XAR0,#516             ; |391| 
+        MOVL      ACC,@_g_q17s44s_vel   ; |391| 
+        ASRL      ACC,T                 ; |391| 
+        AND       AH,AL,#0x00ff         ; |391| 
+        MOV       *+FP[AR0],AH          ; |391| 
 	.dwpsn	"Rom.c",392,2
-        MOVZ      AR4,SP                ; |392| 
-        MOVB      XAR5,#64              ; |392| 
+        LSR       AL,8                  ; |392| 
+        MOV       *-SP[63],AL           ; |392| 
+	.dwpsn	"Rom.c",394,2
+        MOVZ      AR4,SP                ; |394| 
+        MOVB      XAR5,#64              ; |394| 
         MOVB      ACC,#3
-        SUBB      XAR4,#64              ; |392| 
-        LCR       #_SpiWriteRom         ; |392| 
-        ; call occurs [#_SpiWriteRom] ; |392| 
-	.dwpsn	"Rom.c",398,2
+        SUBB      XAR4,#64              ; |394| 
+        LCR       #_SpiWriteRom         ; |394| 
+        ; call occurs [#_SpiWriteRom] ; |394| 
+	.dwpsn	"Rom.c",400,2
         MOVW      DP,#_g_q17s4s_vel
-        MOV       T,#17                 ; |398| 
-        MOVL      XAR0,#452             ; |398| 
-        MOVL      ACC,@_g_q17s4s_vel    ; |398| 
-        ASRL      ACC,T                 ; |398| 
-        AND       AH,AL,#0x00ff         ; |398| 
-        MOV       *+FP[AR0],AH          ; |398| 
-	.dwpsn	"Rom.c",399,2
-        MOVL      XAR0,#453             ; |399| 
-        LSR       AL,8                  ; |399| 
-        MOV       *+FP[AR0],AL          ; |399| 
+        MOV       T,#17                 ; |400| 
+        MOVL      XAR0,#452             ; |400| 
+        MOVL      ACC,@_g_q17s4s_vel    ; |400| 
+        ASRL      ACC,T                 ; |400| 
+        AND       AH,AL,#0x00ff         ; |400| 
+        MOV       *+FP[AR0],AH          ; |400| 
 	.dwpsn	"Rom.c",401,2
-        MOVZ      AR4,SP                ; |401| 
+        MOVL      XAR0,#453             ; |401| 
+        LSR       AL,8                  ; |401| 
+        MOV       *+FP[AR0],AL          ; |401| 
+	.dwpsn	"Rom.c",403,2
+        MOVZ      AR4,SP                ; |403| 
         MOVB      ACC,#4
-        ADD       AR4,#-128             ; |401| 
-        MOVB      XAR5,#64              ; |401| 
-        LCR       #_SpiWriteRom         ; |401| 
-        ; call occurs [#_SpiWriteRom] ; |401| 
-	.dwpsn	"Rom.c",407,2
+        ADD       AR4,#-128             ; |403| 
+        MOVB      XAR5,#64              ; |403| 
+        LCR       #_SpiWriteRom         ; |403| 
+        ; call occurs [#_SpiWriteRom] ; |403| 
+	.dwpsn	"Rom.c",409,2
         MOVW      DP,#_g_q1745user_vel
-        MOV       T,#17                 ; |407| 
-        MOVL      XAR0,#388             ; |407| 
-        MOVL      ACC,@_g_q1745user_vel ; |407| 
-        ASRL      ACC,T                 ; |407| 
-        AND       AH,AL,#0x00ff         ; |407| 
-        MOV       *+FP[AR0],AH          ; |407| 
-	.dwpsn	"Rom.c",408,2
-        MOVL      XAR0,#389             ; |408| 
-        LSR       AL,8                  ; |408| 
-        MOV       *+FP[AR0],AL          ; |408| 
+        MOV       T,#17                 ; |409| 
+        MOVL      XAR0,#388             ; |409| 
+        MOVL      ACC,@_g_q1745user_vel ; |409| 
+        ASRL      ACC,T                 ; |409| 
+        AND       AH,AL,#0x00ff         ; |409| 
+        MOV       *+FP[AR0],AH          ; |409| 
 	.dwpsn	"Rom.c",410,2
-        MOVZ      AR4,SP                ; |410| 
+        MOVL      XAR0,#389             ; |410| 
+        LSR       AL,8                  ; |410| 
+        MOV       *+FP[AR0],AL          ; |410| 
+	.dwpsn	"Rom.c",412,2
+        MOVZ      AR4,SP                ; |412| 
         MOVB      ACC,#6
-        ADD       AR4,#-192             ; |410| 
-        MOVB      XAR5,#64              ; |410| 
-        LCR       #_SpiWriteRom         ; |410| 
-        ; call occurs [#_SpiWriteRom] ; |410| 
-	.dwpsn	"Rom.c",416,2
+        ADD       AR4,#-192             ; |412| 
+        MOVB      XAR5,#64              ; |412| 
+        LCR       #_SpiWriteRom         ; |412| 
+        ; call occurs [#_SpiWriteRom] ; |412| 
+	.dwpsn	"Rom.c",418,2
         MOVW      DP,#_g_q17escape45_vel
-        MOV       T,#17                 ; |416| 
-        MOVL      XAR0,#324             ; |416| 
-        MOVL      ACC,@_g_q17escape45_vel ; |416| 
-        ASRL      ACC,T                 ; |416| 
-        AND       AH,AL,#0x00ff         ; |416| 
-        MOV       *+FP[AR0],AH          ; |416| 
-	.dwpsn	"Rom.c",417,2
-        MOVL      XAR0,#325             ; |417| 
-        LSR       AL,8                  ; |417| 
-        MOV       *+FP[AR0],AL          ; |417| 
+        MOV       T,#17                 ; |418| 
+        MOVL      XAR0,#324             ; |418| 
+        MOVL      ACC,@_g_q17escape45_vel ; |418| 
+        ASRL      ACC,T                 ; |418| 
+        AND       AH,AL,#0x00ff         ; |418| 
+        MOV       *+FP[AR0],AH          ; |418| 
 	.dwpsn	"Rom.c",419,2
-        MOVZ      AR4,SP                ; |419| 
+        MOVL      XAR0,#325             ; |419| 
+        LSR       AL,8                  ; |419| 
+        MOV       *+FP[AR0],AL          ; |419| 
+	.dwpsn	"Rom.c",421,2
+        MOVZ      AR4,SP                ; |421| 
         MOVB      ACC,#5
-        ADD       AR4,#-256             ; |419| 
-        MOVB      XAR5,#64              ; |419| 
-        LCR       #_SpiWriteRom         ; |419| 
-        ; call occurs [#_SpiWriteRom] ; |419| 
-;*** 424	-----------------------    C$4 = (unsigned)(g_q17_45acc>>17);
-;*** 424	-----------------------    write_buf5[0] = C$4&0xffu;
-;*** 425	-----------------------    write_buf5[1] = C$4>>8;
-;*** 427	-----------------------    SpiWriteRom(7u, 0u, 64u, &write_buf5);
-;*** 432	-----------------------    Rom_Data_Buffer = g_int32shift_level;
-;*** 433	-----------------------    write_buf6[0] = Rom_Data_Buffer&0xffu;
-;*** 434	-----------------------    write_buf6[1] = Rom_Data_Buffer>>8;
-;*** 436	-----------------------    SpiWriteRom(8u, 0u, 64u, &write_buf6);
-;*** 441	-----------------------    C$3 = (unsigned)(g_q17st_ret_ratio>>17);
-;*** 441	-----------------------    write_buf7[0] = C$3&0xffu;
-;*** 442	-----------------------    write_buf7[1] = C$3>>8;
-;*** 444	-----------------------    SpiWriteRom(40u, 0u, 64u, &write_buf7);
-;*** 450	-----------------------    C$2 = (unsigned)(g_q17shift_ratio>>17);
-;*** 450	-----------------------    write_buf8[0] = C$2&0xffu;
-;*** 451	-----------------------    write_buf8[1] = C$2>>8;
-;*** 453	-----------------------    SpiWriteRom(38u, 0u, 64u, &write_buf8);
-;*** 459	-----------------------    C$1 = (unsigned)(g_q17return_ratio>>17);
-;*** 459	-----------------------    write_buf9[0] = C$1&0xffu;
-;*** 460	-----------------------    write_buf9[1] = C$1>>8;
-;*** 462	-----------------------    SpiWriteRom(39u, 0u, 64u, &write_buf9);
-;*** 462	-----------------------    return;
-	.dwpsn	"Rom.c",424,2
+        ADD       AR4,#-256             ; |421| 
+        MOVB      XAR5,#64              ; |421| 
+        LCR       #_SpiWriteRom         ; |421| 
+        ; call occurs [#_SpiWriteRom] ; |421| 
+;*** 426	-----------------------    C$4 = (unsigned)(g_q17_45acc>>17);
+;*** 426	-----------------------    write_buf5[0] = C$4&0xffu;
+;*** 427	-----------------------    write_buf5[1] = C$4>>8;
+;*** 429	-----------------------    SpiWriteRom(7u, 0u, 64u, &write_buf5);
+;*** 434	-----------------------    Rom_Data_Buffer = g_int32shift_level;
+;*** 435	-----------------------    write_buf6[0] = Rom_Data_Buffer&0xffu;
+;*** 436	-----------------------    write_buf6[1] = Rom_Data_Buffer>>8;
+;*** 438	-----------------------    SpiWriteRom(8u, 0u, 64u, &write_buf6);
+;*** 443	-----------------------    C$3 = (unsigned)(g_q17st_ret_ratio>>17);
+;*** 443	-----------------------    write_buf7[0] = C$3&0xffu;
+;*** 444	-----------------------    write_buf7[1] = C$3>>8;
+;*** 446	-----------------------    SpiWriteRom(40u, 0u, 64u, &write_buf7);
+;*** 452	-----------------------    C$2 = (unsigned)(g_q17shift_ratio>>17);
+;*** 452	-----------------------    write_buf8[0] = C$2&0xffu;
+;*** 453	-----------------------    write_buf8[1] = C$2>>8;
+;*** 455	-----------------------    SpiWriteRom(38u, 0u, 64u, &write_buf8);
+;*** 461	-----------------------    C$1 = (unsigned)(g_q17return_ratio>>17);
+;*** 461	-----------------------    write_buf9[0] = C$1&0xffu;
+;*** 462	-----------------------    write_buf9[1] = C$1>>8;
+;*** 464	-----------------------    SpiWriteRom(39u, 0u, 64u, &write_buf9);
+;*** 464	-----------------------    return;
+	.dwpsn	"Rom.c",426,2
         MOVW      DP,#_g_q17_45acc
-        MOV       T,#17                 ; |424| 
-        MOVL      XAR0,#260             ; |424| 
-        MOVL      ACC,@_g_q17_45acc     ; |424| 
-        ASRL      ACC,T                 ; |424| 
-        AND       AH,AL,#0x00ff         ; |424| 
-        MOV       *+FP[AR0],AH          ; |424| 
-	.dwpsn	"Rom.c",425,2
-        MOVL      XAR0,#261             ; |425| 
-        LSR       AL,8                  ; |425| 
-        MOV       *+FP[AR0],AL          ; |425| 
+        MOV       T,#17                 ; |426| 
+        MOVL      XAR0,#260             ; |426| 
+        MOVL      ACC,@_g_q17_45acc     ; |426| 
+        ASRL      ACC,T                 ; |426| 
+        AND       AH,AL,#0x00ff         ; |426| 
+        MOV       *+FP[AR0],AH          ; |426| 
 	.dwpsn	"Rom.c",427,2
-        MOVZ      AR4,SP                ; |427| 
+        MOVL      XAR0,#261             ; |427| 
+        LSR       AL,8                  ; |427| 
+        MOV       *+FP[AR0],AL          ; |427| 
+	.dwpsn	"Rom.c",429,2
+        MOVZ      AR4,SP                ; |429| 
         MOVB      ACC,#7
-        ADD       AR4,#-320             ; |427| 
-        MOVB      XAR5,#64              ; |427| 
-        LCR       #_SpiWriteRom         ; |427| 
-        ; call occurs [#_SpiWriteRom] ; |427| 
-	.dwpsn	"Rom.c",432,2
-        MOVW      DP,#_g_int32shift_level
-        MOVL      ACC,@_g_int32shift_level ; |432| 
-	.dwpsn	"Rom.c",433,2
-        MOVL      XAR0,#196             ; |433| 
-        AND       AH,AL,#0x00ff         ; |433| 
-        MOV       *+FP[AR0],AH          ; |433| 
+        ADD       AR4,#-320             ; |429| 
+        MOVB      XAR5,#64              ; |429| 
+        LCR       #_SpiWriteRom         ; |429| 
+        ; call occurs [#_SpiWriteRom] ; |429| 
 	.dwpsn	"Rom.c",434,2
-        MOVL      XAR0,#197             ; |434| 
-        LSR       AL,8                  ; |434| 
-        MOV       *+FP[AR0],AL          ; |434| 
+        MOVW      DP,#_g_int32shift_level
+        MOVL      ACC,@_g_int32shift_level ; |434| 
+	.dwpsn	"Rom.c",435,2
+        MOVL      XAR0,#196             ; |435| 
+        AND       AH,AL,#0x00ff         ; |435| 
+        MOV       *+FP[AR0],AH          ; |435| 
 	.dwpsn	"Rom.c",436,2
-        MOVZ      AR4,SP                ; |436| 
+        MOVL      XAR0,#197             ; |436| 
+        LSR       AL,8                  ; |436| 
+        MOV       *+FP[AR0],AL          ; |436| 
+	.dwpsn	"Rom.c",438,2
+        MOVZ      AR4,SP                ; |438| 
         MOVB      ACC,#8
-        ADD       AR4,#-384             ; |436| 
-        MOVB      XAR5,#64              ; |436| 
-        LCR       #_SpiWriteRom         ; |436| 
-        ; call occurs [#_SpiWriteRom] ; |436| 
-	.dwpsn	"Rom.c",441,2
+        ADD       AR4,#-384             ; |438| 
+        MOVB      XAR5,#64              ; |438| 
+        LCR       #_SpiWriteRom         ; |438| 
+        ; call occurs [#_SpiWriteRom] ; |438| 
+	.dwpsn	"Rom.c",443,2
         MOVW      DP,#_g_q17st_ret_ratio
-        MOV       T,#17                 ; |441| 
-        MOVL      XAR0,#132             ; |441| 
-        MOVL      ACC,@_g_q17st_ret_ratio ; |441| 
-        ASRL      ACC,T                 ; |441| 
-        AND       AH,AL,#0x00ff         ; |441| 
-        MOV       *+FP[AR0],AH          ; |441| 
-	.dwpsn	"Rom.c",442,2
-        MOVL      XAR0,#133             ; |442| 
-        LSR       AL,8                  ; |442| 
-        MOV       *+FP[AR0],AL          ; |442| 
+        MOV       T,#17                 ; |443| 
+        MOVL      XAR0,#132             ; |443| 
+        MOVL      ACC,@_g_q17st_ret_ratio ; |443| 
+        ASRL      ACC,T                 ; |443| 
+        AND       AH,AL,#0x00ff         ; |443| 
+        MOV       *+FP[AR0],AH          ; |443| 
 	.dwpsn	"Rom.c",444,2
-        MOVZ      AR4,SP                ; |444| 
+        MOVL      XAR0,#133             ; |444| 
+        LSR       AL,8                  ; |444| 
+        MOV       *+FP[AR0],AL          ; |444| 
+	.dwpsn	"Rom.c",446,2
+        MOVZ      AR4,SP                ; |446| 
         MOVB      ACC,#40
-        ADD       AR4,#-448             ; |444| 
-        MOVB      XAR5,#64              ; |444| 
-        LCR       #_SpiWriteRom         ; |444| 
-        ; call occurs [#_SpiWriteRom] ; |444| 
-	.dwpsn	"Rom.c",450,2
+        ADD       AR4,#-448             ; |446| 
+        MOVB      XAR5,#64              ; |446| 
+        LCR       #_SpiWriteRom         ; |446| 
+        ; call occurs [#_SpiWriteRom] ; |446| 
+	.dwpsn	"Rom.c",452,2
         MOVW      DP,#_g_q17shift_ratio
-        MOV       T,#17                 ; |450| 
-        MOVL      XAR0,#68              ; |450| 
-        MOVL      ACC,@_g_q17shift_ratio ; |450| 
-        ASRL      ACC,T                 ; |450| 
-        AND       AH,AL,#0x00ff         ; |450| 
-        MOV       *+FP[AR0],AH          ; |450| 
-	.dwpsn	"Rom.c",451,2
-        MOVL      XAR0,#69              ; |451| 
-        LSR       AL,8                  ; |451| 
-        MOV       *+FP[AR0],AL          ; |451| 
+        MOV       T,#17                 ; |452| 
+        MOVL      XAR0,#68              ; |452| 
+        MOVL      ACC,@_g_q17shift_ratio ; |452| 
+        ASRL      ACC,T                 ; |452| 
+        AND       AH,AL,#0x00ff         ; |452| 
+        MOV       *+FP[AR0],AH          ; |452| 
 	.dwpsn	"Rom.c",453,2
-        MOVZ      AR4,SP                ; |453| 
+        MOVL      XAR0,#69              ; |453| 
+        LSR       AL,8                  ; |453| 
+        MOV       *+FP[AR0],AL          ; |453| 
+	.dwpsn	"Rom.c",455,2
+        MOVZ      AR4,SP                ; |455| 
         MOVB      ACC,#38
-        ADD       AR4,#-512             ; |453| 
-        MOVB      XAR5,#64              ; |453| 
-        LCR       #_SpiWriteRom         ; |453| 
-        ; call occurs [#_SpiWriteRom] ; |453| 
-	.dwpsn	"Rom.c",459,2
+        ADD       AR4,#-512             ; |455| 
+        MOVB      XAR5,#64              ; |455| 
+        LCR       #_SpiWriteRom         ; |455| 
+        ; call occurs [#_SpiWriteRom] ; |455| 
+	.dwpsn	"Rom.c",461,2
         MOVW      DP,#_g_q17return_ratio
-        MOV       T,#17                 ; |459| 
-        MOVL      ACC,@_g_q17return_ratio ; |459| 
-        ASRL      ACC,T                 ; |459| 
-        AND       AH,AL,#0x00ff         ; |459| 
-        MOV       *+FP[4],AH            ; |459| 
-	.dwpsn	"Rom.c",460,2
-        LSR       AL,8                  ; |460| 
-        MOV       *+FP[5],AL            ; |460| 
+        MOV       T,#17                 ; |461| 
+        MOVL      ACC,@_g_q17return_ratio ; |461| 
+        ASRL      ACC,T                 ; |461| 
+        AND       AH,AL,#0x00ff         ; |461| 
+        MOV       *+FP[4],AH            ; |461| 
 	.dwpsn	"Rom.c",462,2
-        MOVZ      AR4,SP                ; |462| 
+        LSR       AL,8                  ; |462| 
+        MOV       *+FP[5],AL            ; |462| 
+	.dwpsn	"Rom.c",464,2
+        MOVZ      AR4,SP                ; |464| 
         MOVB      ACC,#39
-        ADD       AR4,#-576             ; |462| 
-        MOVB      XAR5,#64              ; |462| 
-        LCR       #_SpiWriteRom         ; |462| 
-        ; call occurs [#_SpiWriteRom] ; |462| 
-	.dwpsn	"Rom.c",464,1
+        ADD       AR4,#-576             ; |464| 
+        MOVB      XAR5,#64              ; |464| 
+        LCR       #_SpiWriteRom         ; |464| 
+        ; call occurs [#_SpiWriteRom] ; |464| 
+	.dwpsn	"Rom.c",466,1
         ADD       SP,#-576
 	.dwcfa	0x1d, -4
         MOVL      XAR2,*--SP
@@ -5372,22 +5115,22 @@ DW$237	.dwtag  DW_TAG_variable, DW_AT_name("write_buf9"), DW_AT_symbol_name("_wr
 	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$219, DW_AT_end_file("Rom.c")
-	.dwattr DW$219, DW_AT_end_line(0x1d0)
-	.dwattr DW$219, DW_AT_end_column(0x01)
+	.dwattr DW$201, DW_AT_end_file("Rom.c")
+	.dwattr DW$201, DW_AT_end_line(0x1d2)
+	.dwattr DW$201, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$219
+	.dwendtag DW$201
 
 	.sect	".text"
 	.global	_extvel_read_rom
 
-DW$238	.dwtag  DW_TAG_subprogram, DW_AT_name("extvel_read_rom"), DW_AT_symbol_name("_extvel_read_rom")
-	.dwattr DW$238, DW_AT_low_pc(_extvel_read_rom)
-	.dwattr DW$238, DW_AT_high_pc(0x00)
-	.dwattr DW$238, DW_AT_begin_file("Rom.c")
-	.dwattr DW$238, DW_AT_begin_line(0x1d4)
-	.dwattr DW$238, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",469,1
+DW$220	.dwtag  DW_TAG_subprogram, DW_AT_name("extvel_read_rom"), DW_AT_symbol_name("_extvel_read_rom")
+	.dwattr DW$220, DW_AT_low_pc(_extvel_read_rom)
+	.dwattr DW$220, DW_AT_high_pc(0x00)
+	.dwattr DW$220, DW_AT_begin_file("Rom.c")
+	.dwattr DW$220, DW_AT_begin_line(0x1d6)
+	.dwattr DW$220, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",471,1
 
 	.dwfde DW$CIE
 
@@ -5407,19 +5150,19 @@ DW$238	.dwtag  DW_TAG_subprogram, DW_AT_name("extvel_read_rom"), DW_AT_symbol_na
 ;*                                                             *
 ;***************************************************************
 _extvel_read_rom:
-;*** 471	-----------------------    read_buf1[] = {...};
-;*** 472	-----------------------    read_buf2[] = {...};
-;*** 473	-----------------------    read_buf3[] = {...};
-;*** 474	-----------------------    read_buf4[] = {...};
-;*** 475	-----------------------    read_buf5[] = {...};
-;*** 476	-----------------------    read_buf6[] = {...};
-;*** 477	-----------------------    read_buf7[] = {...};
-;*** 478	-----------------------    read_buf8[] = {...};
-;*** 479	-----------------------    read_buf9[] = {...};
-;*** 488	-----------------------    SpiReadRom(3u, 0u, 64u, &read_buf1);
-;*** 490	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
-;*** 491	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
-;*** 492	-----------------------    g_q17s44s_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 473	-----------------------    read_buf1[] = {...};
+;*** 474	-----------------------    read_buf2[] = {...};
+;*** 475	-----------------------    read_buf3[] = {...};
+;*** 476	-----------------------    read_buf4[] = {...};
+;*** 477	-----------------------    read_buf5[] = {...};
+;*** 478	-----------------------    read_buf6[] = {...};
+;*** 479	-----------------------    read_buf7[] = {...};
+;*** 480	-----------------------    read_buf8[] = {...};
+;*** 481	-----------------------    read_buf9[] = {...};
+;*** 490	-----------------------    SpiReadRom(3u, 0u, 64u, &read_buf1);
+;*** 492	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
+;*** 493	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
+;*** 494	-----------------------    g_q17s44s_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -5431,423 +5174,423 @@ _extvel_read_rom:
         ADD       SP,#584
 	.dwcfa	0x1d, -588
 ;* AR7   assigned to _Rom_Data_Buffer
-DW$239	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$239, DW_AT_type(*DW$T$21)
-	.dwattr DW$239, DW_AT_location[DW_OP_reg18]
-DW$240	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
-	.dwattr DW$240, DW_AT_type(*DW$T$44)
-	.dwattr DW$240, DW_AT_location[DW_OP_breg20 -64]
-DW$241	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
-	.dwattr DW$241, DW_AT_type(*DW$T$44)
-	.dwattr DW$241, DW_AT_location[DW_OP_breg20 -128]
-DW$242	.dwtag  DW_TAG_variable, DW_AT_name("read_buf3"), DW_AT_symbol_name("_read_buf3")
-	.dwattr DW$242, DW_AT_type(*DW$T$44)
-	.dwattr DW$242, DW_AT_location[DW_OP_breg20 -192]
-DW$243	.dwtag  DW_TAG_variable, DW_AT_name("read_buf4"), DW_AT_symbol_name("_read_buf4")
-	.dwattr DW$243, DW_AT_type(*DW$T$44)
-	.dwattr DW$243, DW_AT_location[DW_OP_breg20 -256]
-DW$244	.dwtag  DW_TAG_variable, DW_AT_name("read_buf5"), DW_AT_symbol_name("_read_buf5")
-	.dwattr DW$244, DW_AT_type(*DW$T$44)
-	.dwattr DW$244, DW_AT_location[DW_OP_breg20 -320]
-DW$245	.dwtag  DW_TAG_variable, DW_AT_name("read_buf6"), DW_AT_symbol_name("_read_buf6")
-	.dwattr DW$245, DW_AT_type(*DW$T$44)
-	.dwattr DW$245, DW_AT_location[DW_OP_breg20 -384]
-DW$246	.dwtag  DW_TAG_variable, DW_AT_name("read_buf7"), DW_AT_symbol_name("_read_buf7")
-	.dwattr DW$246, DW_AT_type(*DW$T$44)
-	.dwattr DW$246, DW_AT_location[DW_OP_breg20 -448]
-DW$247	.dwtag  DW_TAG_variable, DW_AT_name("read_buf8"), DW_AT_symbol_name("_read_buf8")
-	.dwattr DW$247, DW_AT_type(*DW$T$44)
-	.dwattr DW$247, DW_AT_location[DW_OP_breg20 -512]
-DW$248	.dwtag  DW_TAG_variable, DW_AT_name("read_buf9"), DW_AT_symbol_name("_read_buf9")
-	.dwattr DW$248, DW_AT_type(*DW$T$44)
-	.dwattr DW$248, DW_AT_location[DW_OP_breg20 -576]
-	.dwpsn	"Rom.c",471,9
-        MOVZ      AR4,SP                ; |471| 
-        MOVL      XAR5,#_$T13$14$0      ; |471| 
-        MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |471| 
-        LCR       #___memcpy_ff         ; |471| 
-        ; call occurs [#___memcpy_ff] ; |471| 
-	.dwpsn	"Rom.c",472,12
-        MOVZ      AR4,SP                ; |472| 
-        ADD       AR4,#-128             ; |472| 
-        MOVL      XAR5,#_$T14$15$0      ; |472| 
-        MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |472| 
-        ; call occurs [#___memcpy_ff] ; |472| 
-	.dwpsn	"Rom.c",473,12
+DW$221	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
+	.dwattr DW$221, DW_AT_type(*DW$T$21)
+	.dwattr DW$221, DW_AT_location[DW_OP_reg18]
+DW$222	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
+	.dwattr DW$222, DW_AT_type(*DW$T$37)
+	.dwattr DW$222, DW_AT_location[DW_OP_breg20 -64]
+DW$223	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
+	.dwattr DW$223, DW_AT_type(*DW$T$37)
+	.dwattr DW$223, DW_AT_location[DW_OP_breg20 -128]
+DW$224	.dwtag  DW_TAG_variable, DW_AT_name("read_buf3"), DW_AT_symbol_name("_read_buf3")
+	.dwattr DW$224, DW_AT_type(*DW$T$37)
+	.dwattr DW$224, DW_AT_location[DW_OP_breg20 -192]
+DW$225	.dwtag  DW_TAG_variable, DW_AT_name("read_buf4"), DW_AT_symbol_name("_read_buf4")
+	.dwattr DW$225, DW_AT_type(*DW$T$37)
+	.dwattr DW$225, DW_AT_location[DW_OP_breg20 -256]
+DW$226	.dwtag  DW_TAG_variable, DW_AT_name("read_buf5"), DW_AT_symbol_name("_read_buf5")
+	.dwattr DW$226, DW_AT_type(*DW$T$37)
+	.dwattr DW$226, DW_AT_location[DW_OP_breg20 -320]
+DW$227	.dwtag  DW_TAG_variable, DW_AT_name("read_buf6"), DW_AT_symbol_name("_read_buf6")
+	.dwattr DW$227, DW_AT_type(*DW$T$37)
+	.dwattr DW$227, DW_AT_location[DW_OP_breg20 -384]
+DW$228	.dwtag  DW_TAG_variable, DW_AT_name("read_buf7"), DW_AT_symbol_name("_read_buf7")
+	.dwattr DW$228, DW_AT_type(*DW$T$37)
+	.dwattr DW$228, DW_AT_location[DW_OP_breg20 -448]
+DW$229	.dwtag  DW_TAG_variable, DW_AT_name("read_buf8"), DW_AT_symbol_name("_read_buf8")
+	.dwattr DW$229, DW_AT_type(*DW$T$37)
+	.dwattr DW$229, DW_AT_location[DW_OP_breg20 -512]
+DW$230	.dwtag  DW_TAG_variable, DW_AT_name("read_buf9"), DW_AT_symbol_name("_read_buf9")
+	.dwattr DW$230, DW_AT_type(*DW$T$37)
+	.dwattr DW$230, DW_AT_location[DW_OP_breg20 -576]
+	.dwpsn	"Rom.c",473,9
         MOVZ      AR4,SP                ; |473| 
-        ADD       AR4,#-192             ; |473| 
-        MOVL      XAR5,#_$T15$16$0      ; |473| 
+        MOVL      XAR5,#_$T13$14$0      ; |473| 
         MOVB      ACC,#64
+        SUBB      XAR4,#64              ; |473| 
         LCR       #___memcpy_ff         ; |473| 
         ; call occurs [#___memcpy_ff] ; |473| 
 	.dwpsn	"Rom.c",474,12
         MOVZ      AR4,SP                ; |474| 
-        ADD       AR4,#-256             ; |474| 
-        MOVL      XAR5,#_$T16$17$0      ; |474| 
+        ADD       AR4,#-128             ; |474| 
+        MOVL      XAR5,#_$T14$15$0      ; |474| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |474| 
         ; call occurs [#___memcpy_ff] ; |474| 
 	.dwpsn	"Rom.c",475,12
         MOVZ      AR4,SP                ; |475| 
-        ADD       AR4,#-320             ; |475| 
-        MOVL      XAR5,#_$T17$18$0      ; |475| 
+        ADD       AR4,#-192             ; |475| 
+        MOVL      XAR5,#_$T15$16$0      ; |475| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |475| 
         ; call occurs [#___memcpy_ff] ; |475| 
 	.dwpsn	"Rom.c",476,12
         MOVZ      AR4,SP                ; |476| 
-        ADD       AR4,#-384             ; |476| 
-        MOVL      XAR5,#_$T18$19$0      ; |476| 
+        ADD       AR4,#-256             ; |476| 
+        MOVL      XAR5,#_$T16$17$0      ; |476| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |476| 
         ; call occurs [#___memcpy_ff] ; |476| 
 	.dwpsn	"Rom.c",477,12
         MOVZ      AR4,SP                ; |477| 
-        ADD       AR4,#-448             ; |477| 
-        MOVL      XAR5,#_$T19$20$0      ; |477| 
+        ADD       AR4,#-320             ; |477| 
+        MOVL      XAR5,#_$T17$18$0      ; |477| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |477| 
         ; call occurs [#___memcpy_ff] ; |477| 
 	.dwpsn	"Rom.c",478,12
         MOVZ      AR4,SP                ; |478| 
-        ADD       AR4,#-512             ; |478| 
-        MOVL      XAR5,#_$T20$21$0      ; |478| 
+        ADD       AR4,#-384             ; |478| 
+        MOVL      XAR5,#_$T18$19$0      ; |478| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |478| 
         ; call occurs [#___memcpy_ff] ; |478| 
 	.dwpsn	"Rom.c",479,12
         MOVZ      AR4,SP                ; |479| 
-        ADD       AR4,#-576             ; |479| 
-        MOVL      XAR5,#_$T21$22$0      ; |479| 
+        ADD       AR4,#-448             ; |479| 
+        MOVL      XAR5,#_$T19$20$0      ; |479| 
         MOVB      ACC,#64
         LCR       #___memcpy_ff         ; |479| 
         ; call occurs [#___memcpy_ff] ; |479| 
-	.dwpsn	"Rom.c",488,2
-        MOVZ      AR4,SP                ; |488| 
-        MOVB      XAR5,#64              ; |488| 
-        MOVB      ACC,#3
-        SUBB      XAR4,#64              ; |488| 
-        LCR       #_SpiReadRom          ; |488| 
-        ; call occurs [#_SpiReadRom] ; |488| 
+	.dwpsn	"Rom.c",480,12
+        MOVZ      AR4,SP                ; |480| 
+        ADD       AR4,#-512             ; |480| 
+        MOVL      XAR5,#_$T20$21$0      ; |480| 
+        MOVB      ACC,#64
+        LCR       #___memcpy_ff         ; |480| 
+        ; call occurs [#___memcpy_ff] ; |480| 
+	.dwpsn	"Rom.c",481,12
+        MOVZ      AR4,SP                ; |481| 
+        ADD       AR4,#-576             ; |481| 
+        MOVL      XAR5,#_$T21$22$0      ; |481| 
+        MOVB      ACC,#64
+        LCR       #___memcpy_ff         ; |481| 
+        ; call occurs [#___memcpy_ff] ; |481| 
 	.dwpsn	"Rom.c",490,2
-        MOVL      XAR0,#524             ; |490| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |490| 
-        MOVZ      AR7,AL                ; |490| 
-	.dwpsn	"Rom.c",491,2
-        MOV       ACC,*-SP[63] << #8    ; |491| 
-        OR        AR7,AL                ; |491| 
-	.dwpsn	"Rom.c",492,5
-        MOVZ      AR6,SP                ; |492| 
-        ADD       AR6,#-584             ; |492| 
-        MOV       AL,AR7                ; |492| 
-        LCR       #U$$TOFD              ; |492| 
-        ; call occurs [#U$$TOFD] ; |492| 
-;*** 498	-----------------------    SpiReadRom(4u, 0u, 64u, &read_buf2);
-;*** 500	-----------------------    Rom_Data_Buffer = read_buf2[0]&0xffu;
-;*** 501	-----------------------    Rom_Data_Buffer |= read_buf2[1]<<8;
-;*** 502	-----------------------    g_q17s4s_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;*** 508	-----------------------    SpiReadRom(6u, 0u, 64u, &read_buf3);
-;*** 510	-----------------------    Rom_Data_Buffer = read_buf3[0]&0xffu;
-;*** 511	-----------------------    Rom_Data_Buffer |= read_buf3[1]<<8;
-;*** 512	-----------------------    g_q1745user_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;*** 519	-----------------------    SpiReadRom(5u, 0u, 64u, &read_buf4);
-        MOVZ      AR4,SP                ; |492| 
-        MOVZ      AR6,SP                ; |492| 
-        ADD       AR4,#-584             ; |492| 
-        ADD       AR6,#-580             ; |492| 
-        MOVL      XAR5,#FL1             ; |492| 
-        LCR       #FD$$MPY              ; |492| 
-        ; call occurs [#FD$$MPY] ; |492| 
-        MOVZ      AR4,SP                ; |492| 
-        ADD       AR4,#-580             ; |492| 
-        LCR       #FD$$TOL              ; |492| 
-        ; call occurs [#FD$$TOL] ; |492| 
+        MOVZ      AR4,SP                ; |490| 
+        MOVB      XAR5,#64              ; |490| 
+        MOVB      ACC,#3
+        SUBB      XAR4,#64              ; |490| 
+        LCR       #_SpiReadRom          ; |490| 
+        ; call occurs [#_SpiReadRom] ; |490| 
+	.dwpsn	"Rom.c",492,2
+        MOVL      XAR0,#524             ; |492| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |492| 
+        MOVZ      AR7,AL                ; |492| 
+	.dwpsn	"Rom.c",493,2
+        MOV       ACC,*-SP[63] << #8    ; |493| 
+        OR        AR7,AL                ; |493| 
+	.dwpsn	"Rom.c",494,5
+        MOVZ      AR6,SP                ; |494| 
+        ADD       AR6,#-584             ; |494| 
+        MOV       AL,AR7                ; |494| 
+        LCR       #U$$TOFD              ; |494| 
+        ; call occurs [#U$$TOFD] ; |494| 
+;*** 500	-----------------------    SpiReadRom(4u, 0u, 64u, &read_buf2);
+;*** 502	-----------------------    Rom_Data_Buffer = read_buf2[0]&0xffu;
+;*** 503	-----------------------    Rom_Data_Buffer |= read_buf2[1]<<8;
+;*** 504	-----------------------    g_q17s4s_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 510	-----------------------    SpiReadRom(6u, 0u, 64u, &read_buf3);
+;*** 512	-----------------------    Rom_Data_Buffer = read_buf3[0]&0xffu;
+;*** 513	-----------------------    Rom_Data_Buffer |= read_buf3[1]<<8;
+;*** 514	-----------------------    g_q1745user_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 521	-----------------------    SpiReadRom(5u, 0u, 64u, &read_buf4);
+        MOVZ      AR4,SP                ; |494| 
+        MOVZ      AR6,SP                ; |494| 
+        ADD       AR4,#-584             ; |494| 
+        ADD       AR6,#-580             ; |494| 
+        MOVL      XAR5,#FL1             ; |494| 
+        LCR       #FD$$MPY              ; |494| 
+        ; call occurs [#FD$$MPY] ; |494| 
+        MOVZ      AR4,SP                ; |494| 
+        ADD       AR4,#-580             ; |494| 
+        LCR       #FD$$TOL              ; |494| 
+        ; call occurs [#FD$$TOL] ; |494| 
         MOVW      DP,#_g_q17s44s_vel
-        MOVL      @_g_q17s44s_vel,ACC   ; |492| 
-	.dwpsn	"Rom.c",498,5
-        MOVZ      AR4,SP                ; |498| 
+        MOVL      @_g_q17s44s_vel,ACC   ; |494| 
+	.dwpsn	"Rom.c",500,5
+        MOVZ      AR4,SP                ; |500| 
         MOVB      ACC,#4
-        ADD       AR4,#-128             ; |498| 
-        MOVB      XAR5,#64              ; |498| 
-        LCR       #_SpiReadRom          ; |498| 
-        ; call occurs [#_SpiReadRom] ; |498| 
-	.dwpsn	"Rom.c",500,2
-        MOVL      XAR0,#460             ; |500| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |500| 
-        MOVZ      AR7,AL                ; |500| 
-	.dwpsn	"Rom.c",501,2
-        MOVL      XAR0,#461             ; |501| 
-        MOV       ACC,*+FP[AR0] << #8   ; |501| 
-        OR        AR7,AL                ; |501| 
-	.dwpsn	"Rom.c",502,5
-        MOVZ      AR6,SP                ; |502| 
-        ADD       AR6,#-584             ; |502| 
-        MOV       AL,AR7                ; |502| 
-        LCR       #U$$TOFD              ; |502| 
-        ; call occurs [#U$$TOFD] ; |502| 
-        MOVZ      AR4,SP                ; |502| 
-        MOVZ      AR6,SP                ; |502| 
-        ADD       AR4,#-584             ; |502| 
-        ADD       AR6,#-580             ; |502| 
-        MOVL      XAR5,#FL1             ; |502| 
-        LCR       #FD$$MPY              ; |502| 
-        ; call occurs [#FD$$MPY] ; |502| 
-        MOVZ      AR4,SP                ; |502| 
-        ADD       AR4,#-580             ; |502| 
-        LCR       #FD$$TOL              ; |502| 
-        ; call occurs [#FD$$TOL] ; |502| 
+        ADD       AR4,#-128             ; |500| 
+        MOVB      XAR5,#64              ; |500| 
+        LCR       #_SpiReadRom          ; |500| 
+        ; call occurs [#_SpiReadRom] ; |500| 
+	.dwpsn	"Rom.c",502,2
+        MOVL      XAR0,#460             ; |502| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |502| 
+        MOVZ      AR7,AL                ; |502| 
+	.dwpsn	"Rom.c",503,2
+        MOVL      XAR0,#461             ; |503| 
+        MOV       ACC,*+FP[AR0] << #8   ; |503| 
+        OR        AR7,AL                ; |503| 
+	.dwpsn	"Rom.c",504,5
+        MOVZ      AR6,SP                ; |504| 
+        ADD       AR6,#-584             ; |504| 
+        MOV       AL,AR7                ; |504| 
+        LCR       #U$$TOFD              ; |504| 
+        ; call occurs [#U$$TOFD] ; |504| 
+        MOVZ      AR4,SP                ; |504| 
+        MOVZ      AR6,SP                ; |504| 
+        ADD       AR4,#-584             ; |504| 
+        ADD       AR6,#-580             ; |504| 
+        MOVL      XAR5,#FL1             ; |504| 
+        LCR       #FD$$MPY              ; |504| 
+        ; call occurs [#FD$$MPY] ; |504| 
+        MOVZ      AR4,SP                ; |504| 
+        ADD       AR4,#-580             ; |504| 
+        LCR       #FD$$TOL              ; |504| 
+        ; call occurs [#FD$$TOL] ; |504| 
         MOVW      DP,#_g_q17s4s_vel
-        MOVL      @_g_q17s4s_vel,ACC    ; |502| 
-	.dwpsn	"Rom.c",508,5
-        MOVZ      AR4,SP                ; |508| 
+        MOVL      @_g_q17s4s_vel,ACC    ; |504| 
+	.dwpsn	"Rom.c",510,5
+        MOVZ      AR4,SP                ; |510| 
         MOVB      ACC,#6
-        ADD       AR4,#-192             ; |508| 
-        MOVB      XAR5,#64              ; |508| 
-        LCR       #_SpiReadRom          ; |508| 
-        ; call occurs [#_SpiReadRom] ; |508| 
-	.dwpsn	"Rom.c",510,2
-        MOVL      XAR0,#396             ; |510| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |510| 
-        MOVZ      AR7,AL                ; |510| 
-	.dwpsn	"Rom.c",511,2
-        MOVL      XAR0,#397             ; |511| 
-        MOV       ACC,*+FP[AR0] << #8   ; |511| 
-        OR        AR7,AL                ; |511| 
-	.dwpsn	"Rom.c",512,5
-        MOVZ      AR6,SP                ; |512| 
-        ADD       AR6,#-584             ; |512| 
-        MOV       AL,AR7                ; |512| 
-        LCR       #U$$TOFD              ; |512| 
-        ; call occurs [#U$$TOFD] ; |512| 
-        MOVZ      AR4,SP                ; |512| 
-        MOVZ      AR6,SP                ; |512| 
-        ADD       AR4,#-584             ; |512| 
-        ADD       AR6,#-580             ; |512| 
-        MOVL      XAR5,#FL1             ; |512| 
-        LCR       #FD$$MPY              ; |512| 
-        ; call occurs [#FD$$MPY] ; |512| 
-        MOVZ      AR4,SP                ; |512| 
-        ADD       AR4,#-580             ; |512| 
-        LCR       #FD$$TOL              ; |512| 
-        ; call occurs [#FD$$TOL] ; |512| 
+        ADD       AR4,#-192             ; |510| 
+        MOVB      XAR5,#64              ; |510| 
+        LCR       #_SpiReadRom          ; |510| 
+        ; call occurs [#_SpiReadRom] ; |510| 
+	.dwpsn	"Rom.c",512,2
+        MOVL      XAR0,#396             ; |512| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |512| 
+        MOVZ      AR7,AL                ; |512| 
+	.dwpsn	"Rom.c",513,2
+        MOVL      XAR0,#397             ; |513| 
+        MOV       ACC,*+FP[AR0] << #8   ; |513| 
+        OR        AR7,AL                ; |513| 
+	.dwpsn	"Rom.c",514,5
+        MOVZ      AR6,SP                ; |514| 
+        ADD       AR6,#-584             ; |514| 
+        MOV       AL,AR7                ; |514| 
+        LCR       #U$$TOFD              ; |514| 
+        ; call occurs [#U$$TOFD] ; |514| 
+        MOVZ      AR4,SP                ; |514| 
+        MOVZ      AR6,SP                ; |514| 
+        ADD       AR4,#-584             ; |514| 
+        ADD       AR6,#-580             ; |514| 
+        MOVL      XAR5,#FL1             ; |514| 
+        LCR       #FD$$MPY              ; |514| 
+        ; call occurs [#FD$$MPY] ; |514| 
+        MOVZ      AR4,SP                ; |514| 
+        ADD       AR4,#-580             ; |514| 
+        LCR       #FD$$TOL              ; |514| 
+        ; call occurs [#FD$$TOL] ; |514| 
         MOVW      DP,#_g_q1745user_vel
-        MOVL      @_g_q1745user_vel,ACC ; |512| 
-	.dwpsn	"Rom.c",519,5
-        MOVZ      AR4,SP                ; |519| 
+        MOVL      @_g_q1745user_vel,ACC ; |514| 
+	.dwpsn	"Rom.c",521,5
+        MOVZ      AR4,SP                ; |521| 
         MOVB      ACC,#5
-        ADD       AR4,#-256             ; |519| 
-        MOVB      XAR5,#64              ; |519| 
-        LCR       #_SpiReadRom          ; |519| 
-        ; call occurs [#_SpiReadRom] ; |519| 
-;*** 521	-----------------------    Rom_Data_Buffer = read_buf4[0]&0xffu;
-;*** 522	-----------------------    Rom_Data_Buffer |= read_buf4[1]<<8;
-;*** 523	-----------------------    g_q17escape45_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;*** 530	-----------------------    SpiReadRom(7u, 0u, 64u, &read_buf5);
-;*** 532	-----------------------    Rom_Data_Buffer = read_buf5[0]&0xffu;
-;*** 533	-----------------------    Rom_Data_Buffer |= read_buf5[1]<<8;
-;*** 534	-----------------------    g_q17_45acc = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;*** 541	-----------------------    SpiReadRom(8u, 0u, 64u, &read_buf6);
-;*** 543	-----------------------    Rom_Data_Buffer = read_buf6[0]&0xffu;
-;*** 544	-----------------------    Rom_Data_Buffer |= read_buf6[1]<<8;
-;*** 545	-----------------------    g_int32shift_level = Rom_Data_Buffer;
-;*** 550	-----------------------    SpiReadRom(40u, 0u, 64u, &read_buf7);
-;*** 552	-----------------------    Rom_Data_Buffer = read_buf7[0]&0xffu;
-;*** 553	-----------------------    Rom_Data_Buffer |= read_buf7[1]<<8;
-;*** 554	-----------------------    g_q17st_ret_ratio = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-	.dwpsn	"Rom.c",521,2
-        MOVL      XAR0,#332             ; |521| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |521| 
-        MOVZ      AR7,AL                ; |521| 
-	.dwpsn	"Rom.c",522,2
-        MOVL      XAR0,#333             ; |522| 
-        MOV       ACC,*+FP[AR0] << #8   ; |522| 
-        OR        AR7,AL                ; |522| 
-	.dwpsn	"Rom.c",523,5
-        MOVZ      AR6,SP                ; |523| 
-        ADD       AR6,#-584             ; |523| 
-        MOV       AL,AR7                ; |523| 
-        LCR       #U$$TOFD              ; |523| 
-        ; call occurs [#U$$TOFD] ; |523| 
-        MOVZ      AR4,SP                ; |523| 
-        MOVZ      AR6,SP                ; |523| 
-        ADD       AR4,#-584             ; |523| 
-        ADD       AR6,#-580             ; |523| 
-        MOVL      XAR5,#FL1             ; |523| 
-        LCR       #FD$$MPY              ; |523| 
-        ; call occurs [#FD$$MPY] ; |523| 
-        MOVZ      AR4,SP                ; |523| 
-        ADD       AR4,#-580             ; |523| 
-        LCR       #FD$$TOL              ; |523| 
-        ; call occurs [#FD$$TOL] ; |523| 
+        ADD       AR4,#-256             ; |521| 
+        MOVB      XAR5,#64              ; |521| 
+        LCR       #_SpiReadRom          ; |521| 
+        ; call occurs [#_SpiReadRom] ; |521| 
+;*** 523	-----------------------    Rom_Data_Buffer = read_buf4[0]&0xffu;
+;*** 524	-----------------------    Rom_Data_Buffer |= read_buf4[1]<<8;
+;*** 525	-----------------------    g_q17escape45_vel = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 532	-----------------------    SpiReadRom(7u, 0u, 64u, &read_buf5);
+;*** 534	-----------------------    Rom_Data_Buffer = read_buf5[0]&0xffu;
+;*** 535	-----------------------    Rom_Data_Buffer |= read_buf5[1]<<8;
+;*** 536	-----------------------    g_q17_45acc = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 543	-----------------------    SpiReadRom(8u, 0u, 64u, &read_buf6);
+;*** 545	-----------------------    Rom_Data_Buffer = read_buf6[0]&0xffu;
+;*** 546	-----------------------    Rom_Data_Buffer |= read_buf6[1]<<8;
+;*** 547	-----------------------    g_int32shift_level = Rom_Data_Buffer;
+;*** 552	-----------------------    SpiReadRom(40u, 0u, 64u, &read_buf7);
+;*** 554	-----------------------    Rom_Data_Buffer = read_buf7[0]&0xffu;
+;*** 555	-----------------------    Rom_Data_Buffer |= read_buf7[1]<<8;
+;*** 556	-----------------------    g_q17st_ret_ratio = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+	.dwpsn	"Rom.c",523,2
+        MOVL      XAR0,#332             ; |523| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |523| 
+        MOVZ      AR7,AL                ; |523| 
+	.dwpsn	"Rom.c",524,2
+        MOVL      XAR0,#333             ; |524| 
+        MOV       ACC,*+FP[AR0] << #8   ; |524| 
+        OR        AR7,AL                ; |524| 
+	.dwpsn	"Rom.c",525,5
+        MOVZ      AR6,SP                ; |525| 
+        ADD       AR6,#-584             ; |525| 
+        MOV       AL,AR7                ; |525| 
+        LCR       #U$$TOFD              ; |525| 
+        ; call occurs [#U$$TOFD] ; |525| 
+        MOVZ      AR4,SP                ; |525| 
+        MOVZ      AR6,SP                ; |525| 
+        ADD       AR4,#-584             ; |525| 
+        ADD       AR6,#-580             ; |525| 
+        MOVL      XAR5,#FL1             ; |525| 
+        LCR       #FD$$MPY              ; |525| 
+        ; call occurs [#FD$$MPY] ; |525| 
+        MOVZ      AR4,SP                ; |525| 
+        ADD       AR4,#-580             ; |525| 
+        LCR       #FD$$TOL              ; |525| 
+        ; call occurs [#FD$$TOL] ; |525| 
         MOVW      DP,#_g_q17escape45_vel
-        MOVL      @_g_q17escape45_vel,ACC ; |523| 
-	.dwpsn	"Rom.c",530,5
-        MOVZ      AR4,SP                ; |530| 
+        MOVL      @_g_q17escape45_vel,ACC ; |525| 
+	.dwpsn	"Rom.c",532,5
+        MOVZ      AR4,SP                ; |532| 
         MOVB      ACC,#7
-        ADD       AR4,#-320             ; |530| 
-        MOVB      XAR5,#64              ; |530| 
-        LCR       #_SpiReadRom          ; |530| 
-        ; call occurs [#_SpiReadRom] ; |530| 
-	.dwpsn	"Rom.c",532,2
-        MOVL      XAR0,#268             ; |532| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |532| 
-        MOVZ      AR7,AL                ; |532| 
-	.dwpsn	"Rom.c",533,2
-        MOVL      XAR0,#269             ; |533| 
-        MOV       ACC,*+FP[AR0] << #8   ; |533| 
-        OR        AR7,AL                ; |533| 
-	.dwpsn	"Rom.c",534,5
-        MOVZ      AR6,SP                ; |534| 
-        ADD       AR6,#-584             ; |534| 
-        MOV       AL,AR7                ; |534| 
-        LCR       #U$$TOFD              ; |534| 
-        ; call occurs [#U$$TOFD] ; |534| 
-        MOVZ      AR4,SP                ; |534| 
-        MOVZ      AR6,SP                ; |534| 
-        ADD       AR4,#-584             ; |534| 
-        ADD       AR6,#-580             ; |534| 
-        MOVL      XAR5,#FL1             ; |534| 
-        LCR       #FD$$MPY              ; |534| 
-        ; call occurs [#FD$$MPY] ; |534| 
-        MOVZ      AR4,SP                ; |534| 
-        ADD       AR4,#-580             ; |534| 
-        LCR       #FD$$TOL              ; |534| 
-        ; call occurs [#FD$$TOL] ; |534| 
+        ADD       AR4,#-320             ; |532| 
+        MOVB      XAR5,#64              ; |532| 
+        LCR       #_SpiReadRom          ; |532| 
+        ; call occurs [#_SpiReadRom] ; |532| 
+	.dwpsn	"Rom.c",534,2
+        MOVL      XAR0,#268             ; |534| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |534| 
+        MOVZ      AR7,AL                ; |534| 
+	.dwpsn	"Rom.c",535,2
+        MOVL      XAR0,#269             ; |535| 
+        MOV       ACC,*+FP[AR0] << #8   ; |535| 
+        OR        AR7,AL                ; |535| 
+	.dwpsn	"Rom.c",536,5
+        MOVZ      AR6,SP                ; |536| 
+        ADD       AR6,#-584             ; |536| 
+        MOV       AL,AR7                ; |536| 
+        LCR       #U$$TOFD              ; |536| 
+        ; call occurs [#U$$TOFD] ; |536| 
+        MOVZ      AR4,SP                ; |536| 
+        MOVZ      AR6,SP                ; |536| 
+        ADD       AR4,#-584             ; |536| 
+        ADD       AR6,#-580             ; |536| 
+        MOVL      XAR5,#FL1             ; |536| 
+        LCR       #FD$$MPY              ; |536| 
+        ; call occurs [#FD$$MPY] ; |536| 
+        MOVZ      AR4,SP                ; |536| 
+        ADD       AR4,#-580             ; |536| 
+        LCR       #FD$$TOL              ; |536| 
+        ; call occurs [#FD$$TOL] ; |536| 
         MOVW      DP,#_g_q17_45acc
-        MOVL      @_g_q17_45acc,ACC     ; |534| 
-	.dwpsn	"Rom.c",541,5
-        MOVZ      AR4,SP                ; |541| 
+        MOVL      @_g_q17_45acc,ACC     ; |536| 
+	.dwpsn	"Rom.c",543,5
+        MOVZ      AR4,SP                ; |543| 
         MOVB      ACC,#8
-        ADD       AR4,#-384             ; |541| 
-        MOVB      XAR5,#64              ; |541| 
-        LCR       #_SpiReadRom          ; |541| 
-        ; call occurs [#_SpiReadRom] ; |541| 
-	.dwpsn	"Rom.c",543,2
-        MOVL      XAR0,#204             ; |543| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |543| 
-        MOVZ      AR7,AL                ; |543| 
-	.dwpsn	"Rom.c",544,2
-        MOVL      XAR0,#205             ; |544| 
-        MOV       ACC,*+FP[AR0] << #8   ; |544| 
-        OR        AR7,AL                ; |544| 
-	.dwpsn	"Rom.c",545,5
+        ADD       AR4,#-384             ; |543| 
+        MOVB      XAR5,#64              ; |543| 
+        LCR       #_SpiReadRom          ; |543| 
+        ; call occurs [#_SpiReadRom] ; |543| 
+	.dwpsn	"Rom.c",545,2
+        MOVL      XAR0,#204             ; |545| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |545| 
+        MOVZ      AR7,AL                ; |545| 
+	.dwpsn	"Rom.c",546,2
+        MOVL      XAR0,#205             ; |546| 
+        MOV       ACC,*+FP[AR0] << #8   ; |546| 
+        OR        AR7,AL                ; |546| 
+	.dwpsn	"Rom.c",547,5
         MOVW      DP,#_g_int32shift_level
         MOVU      ACC,AR7
-        MOVL      @_g_int32shift_level,ACC ; |545| 
-	.dwpsn	"Rom.c",550,5
-        MOVZ      AR4,SP                ; |550| 
+        MOVL      @_g_int32shift_level,ACC ; |547| 
+	.dwpsn	"Rom.c",552,5
+        MOVZ      AR4,SP                ; |552| 
         MOVB      ACC,#40
-        ADD       AR4,#-448             ; |550| 
-        MOVB      XAR5,#64              ; |550| 
-        LCR       #_SpiReadRom          ; |550| 
-        ; call occurs [#_SpiReadRom] ; |550| 
-	.dwpsn	"Rom.c",552,2
-        MOVL      XAR0,#140             ; |552| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |552| 
-        MOVZ      AR7,AL                ; |552| 
-	.dwpsn	"Rom.c",553,2
-        MOVL      XAR0,#141             ; |553| 
-        MOV       ACC,*+FP[AR0] << #8   ; |553| 
-        OR        AR7,AL                ; |553| 
-	.dwpsn	"Rom.c",554,5
-        MOVZ      AR6,SP                ; |554| 
-        ADD       AR6,#-584             ; |554| 
-        MOV       AL,AR7                ; |554| 
-        LCR       #U$$TOFD              ; |554| 
-        ; call occurs [#U$$TOFD] ; |554| 
-        MOVZ      AR4,SP                ; |554| 
-        MOVZ      AR6,SP                ; |554| 
-        ADD       AR4,#-584             ; |554| 
-        ADD       AR6,#-580             ; |554| 
-        MOVL      XAR5,#FL1             ; |554| 
-        LCR       #FD$$MPY              ; |554| 
-        ; call occurs [#FD$$MPY] ; |554| 
-;*** 559	-----------------------    SpiReadRom(38u, 0u, 64u, &read_buf8);
-;*** 561	-----------------------    Rom_Data_Buffer = read_buf8[0]&0xffu;
-;*** 562	-----------------------    Rom_Data_Buffer |= read_buf8[1]<<8;
-;*** 563	-----------------------    g_q17shift_ratio = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;*** 568	-----------------------    SpiReadRom(39u, 0u, 64u, &read_buf9);
-;*** 570	-----------------------    Rom_Data_Buffer = read_buf9[0]&0xffu;
-;*** 571	-----------------------    Rom_Data_Buffer |= read_buf9[1]<<8;
-;*** 572	-----------------------    g_q17return_ratio = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;*** 572	-----------------------    return;
-        MOVZ      AR4,SP                ; |554| 
-        ADD       AR4,#-580             ; |554| 
-        LCR       #FD$$TOL              ; |554| 
-        ; call occurs [#FD$$TOL] ; |554| 
+        ADD       AR4,#-448             ; |552| 
+        MOVB      XAR5,#64              ; |552| 
+        LCR       #_SpiReadRom          ; |552| 
+        ; call occurs [#_SpiReadRom] ; |552| 
+	.dwpsn	"Rom.c",554,2
+        MOVL      XAR0,#140             ; |554| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |554| 
+        MOVZ      AR7,AL                ; |554| 
+	.dwpsn	"Rom.c",555,2
+        MOVL      XAR0,#141             ; |555| 
+        MOV       ACC,*+FP[AR0] << #8   ; |555| 
+        OR        AR7,AL                ; |555| 
+	.dwpsn	"Rom.c",556,5
+        MOVZ      AR6,SP                ; |556| 
+        ADD       AR6,#-584             ; |556| 
+        MOV       AL,AR7                ; |556| 
+        LCR       #U$$TOFD              ; |556| 
+        ; call occurs [#U$$TOFD] ; |556| 
+        MOVZ      AR4,SP                ; |556| 
+        MOVZ      AR6,SP                ; |556| 
+        ADD       AR4,#-584             ; |556| 
+        ADD       AR6,#-580             ; |556| 
+        MOVL      XAR5,#FL1             ; |556| 
+        LCR       #FD$$MPY              ; |556| 
+        ; call occurs [#FD$$MPY] ; |556| 
+;*** 561	-----------------------    SpiReadRom(38u, 0u, 64u, &read_buf8);
+;*** 563	-----------------------    Rom_Data_Buffer = read_buf8[0]&0xffu;
+;*** 564	-----------------------    Rom_Data_Buffer |= read_buf8[1]<<8;
+;*** 565	-----------------------    g_q17shift_ratio = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 570	-----------------------    SpiReadRom(39u, 0u, 64u, &read_buf9);
+;*** 572	-----------------------    Rom_Data_Buffer = read_buf9[0]&0xffu;
+;*** 573	-----------------------    Rom_Data_Buffer |= read_buf9[1]<<8;
+;*** 574	-----------------------    g_q17return_ratio = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 574	-----------------------    return;
+        MOVZ      AR4,SP                ; |556| 
+        ADD       AR4,#-580             ; |556| 
+        LCR       #FD$$TOL              ; |556| 
+        ; call occurs [#FD$$TOL] ; |556| 
         MOVW      DP,#_g_q17st_ret_ratio
-        MOVL      @_g_q17st_ret_ratio,ACC ; |554| 
-	.dwpsn	"Rom.c",559,5
-        MOVZ      AR4,SP                ; |559| 
+        MOVL      @_g_q17st_ret_ratio,ACC ; |556| 
+	.dwpsn	"Rom.c",561,5
+        MOVZ      AR4,SP                ; |561| 
         MOVB      ACC,#38
-        ADD       AR4,#-512             ; |559| 
-        MOVB      XAR5,#64              ; |559| 
-        LCR       #_SpiReadRom          ; |559| 
-        ; call occurs [#_SpiReadRom] ; |559| 
-	.dwpsn	"Rom.c",561,2
-        MOVL      XAR0,#76              ; |561| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |561| 
-        MOVZ      AR7,AL                ; |561| 
-	.dwpsn	"Rom.c",562,2
-        MOVL      XAR0,#77              ; |562| 
-        MOV       ACC,*+FP[AR0] << #8   ; |562| 
-        OR        AR7,AL                ; |562| 
-	.dwpsn	"Rom.c",563,5
-        MOVZ      AR6,SP                ; |563| 
-        ADD       AR6,#-584             ; |563| 
-        MOV       AL,AR7                ; |563| 
-        LCR       #U$$TOFD              ; |563| 
-        ; call occurs [#U$$TOFD] ; |563| 
-        MOVZ      AR4,SP                ; |563| 
-        MOVZ      AR6,SP                ; |563| 
-        ADD       AR4,#-584             ; |563| 
-        ADD       AR6,#-580             ; |563| 
-        MOVL      XAR5,#FL1             ; |563| 
-        LCR       #FD$$MPY              ; |563| 
-        ; call occurs [#FD$$MPY] ; |563| 
-        MOVZ      AR4,SP                ; |563| 
-        ADD       AR4,#-580             ; |563| 
-        LCR       #FD$$TOL              ; |563| 
-        ; call occurs [#FD$$TOL] ; |563| 
+        ADD       AR4,#-512             ; |561| 
+        MOVB      XAR5,#64              ; |561| 
+        LCR       #_SpiReadRom          ; |561| 
+        ; call occurs [#_SpiReadRom] ; |561| 
+	.dwpsn	"Rom.c",563,2
+        MOVL      XAR0,#76              ; |563| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |563| 
+        MOVZ      AR7,AL                ; |563| 
+	.dwpsn	"Rom.c",564,2
+        MOVL      XAR0,#77              ; |564| 
+        MOV       ACC,*+FP[AR0] << #8   ; |564| 
+        OR        AR7,AL                ; |564| 
+	.dwpsn	"Rom.c",565,5
+        MOVZ      AR6,SP                ; |565| 
+        ADD       AR6,#-584             ; |565| 
+        MOV       AL,AR7                ; |565| 
+        LCR       #U$$TOFD              ; |565| 
+        ; call occurs [#U$$TOFD] ; |565| 
+        MOVZ      AR4,SP                ; |565| 
+        MOVZ      AR6,SP                ; |565| 
+        ADD       AR4,#-584             ; |565| 
+        ADD       AR6,#-580             ; |565| 
+        MOVL      XAR5,#FL1             ; |565| 
+        LCR       #FD$$MPY              ; |565| 
+        ; call occurs [#FD$$MPY] ; |565| 
+        MOVZ      AR4,SP                ; |565| 
+        ADD       AR4,#-580             ; |565| 
+        LCR       #FD$$TOL              ; |565| 
+        ; call occurs [#FD$$TOL] ; |565| 
         MOVW      DP,#_g_q17shift_ratio
-        MOVL      @_g_q17shift_ratio,ACC ; |563| 
-	.dwpsn	"Rom.c",568,5
-        MOVZ      AR4,SP                ; |568| 
+        MOVL      @_g_q17shift_ratio,ACC ; |565| 
+	.dwpsn	"Rom.c",570,5
+        MOVZ      AR4,SP                ; |570| 
         MOVB      ACC,#39
-        ADD       AR4,#-576             ; |568| 
-        MOVB      XAR5,#64              ; |568| 
-        LCR       #_SpiReadRom          ; |568| 
-        ; call occurs [#_SpiReadRom] ; |568| 
-	.dwpsn	"Rom.c",570,2
-        MOVL      XAR0,#12              ; |570| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |570| 
-        MOVZ      AR7,AL                ; |570| 
-	.dwpsn	"Rom.c",571,2
-        MOVL      XAR0,#13              ; |571| 
-        MOV       ACC,*+FP[AR0] << #8   ; |571| 
-        OR        AR7,AL                ; |571| 
-	.dwpsn	"Rom.c",572,5
-        MOVZ      AR6,SP                ; |572| 
-        ADD       AR6,#-584             ; |572| 
-        MOV       AL,AR7                ; |572| 
-        LCR       #U$$TOFD              ; |572| 
-        ; call occurs [#U$$TOFD] ; |572| 
-        MOVZ      AR4,SP                ; |572| 
-        MOVZ      AR6,SP                ; |572| 
-        ADD       AR4,#-584             ; |572| 
-        ADD       AR6,#-580             ; |572| 
-        MOVL      XAR5,#FL1             ; |572| 
-        LCR       #FD$$MPY              ; |572| 
-        ; call occurs [#FD$$MPY] ; |572| 
-        MOVZ      AR4,SP                ; |572| 
-        ADD       AR4,#-580             ; |572| 
-        LCR       #FD$$TOL              ; |572| 
-        ; call occurs [#FD$$TOL] ; |572| 
+        ADD       AR4,#-576             ; |570| 
+        MOVB      XAR5,#64              ; |570| 
+        LCR       #_SpiReadRom          ; |570| 
+        ; call occurs [#_SpiReadRom] ; |570| 
+	.dwpsn	"Rom.c",572,2
+        MOVL      XAR0,#12              ; |572| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |572| 
+        MOVZ      AR7,AL                ; |572| 
+	.dwpsn	"Rom.c",573,2
+        MOVL      XAR0,#13              ; |573| 
+        MOV       ACC,*+FP[AR0] << #8   ; |573| 
+        OR        AR7,AL                ; |573| 
+	.dwpsn	"Rom.c",574,5
+        MOVZ      AR6,SP                ; |574| 
+        ADD       AR6,#-584             ; |574| 
+        MOV       AL,AR7                ; |574| 
+        LCR       #U$$TOFD              ; |574| 
+        ; call occurs [#U$$TOFD] ; |574| 
+        MOVZ      AR4,SP                ; |574| 
+        MOVZ      AR6,SP                ; |574| 
+        ADD       AR4,#-584             ; |574| 
+        ADD       AR6,#-580             ; |574| 
+        MOVL      XAR5,#FL1             ; |574| 
+        LCR       #FD$$MPY              ; |574| 
+        ; call occurs [#FD$$MPY] ; |574| 
+        MOVZ      AR4,SP                ; |574| 
+        ADD       AR4,#-580             ; |574| 
+        LCR       #FD$$TOL              ; |574| 
+        ; call occurs [#FD$$TOL] ; |574| 
         MOVW      DP,#_g_q17return_ratio
-        MOVL      @_g_q17return_ratio,ACC ; |572| 
-	.dwpsn	"Rom.c",574,1
+        MOVL      @_g_q17return_ratio,ACC ; |574| 
+	.dwpsn	"Rom.c",576,1
         ADD       SP,#-584
 	.dwcfa	0x1d, -4
         MOVL      XAR2,*--SP
@@ -5855,415 +5598,22 @@ DW$248	.dwtag  DW_TAG_variable, DW_AT_name("read_buf9"), DW_AT_symbol_name("_rea
 	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$238, DW_AT_end_file("Rom.c")
-	.dwattr DW$238, DW_AT_end_line(0x23e)
-	.dwattr DW$238, DW_AT_end_column(0x01)
+	.dwattr DW$220, DW_AT_end_file("Rom.c")
+	.dwattr DW$220, DW_AT_end_line(0x240)
+	.dwattr DW$220, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$238
-
-	.sect	".text"
-	.global	_cross_info_write_rom
-
-DW$249	.dwtag  DW_TAG_subprogram, DW_AT_name("cross_info_write_rom"), DW_AT_symbol_name("_cross_info_write_rom")
-	.dwattr DW$249, DW_AT_low_pc(_cross_info_write_rom)
-	.dwattr DW$249, DW_AT_high_pc(0x00)
-	.dwattr DW$249, DW_AT_begin_file("Rom.c")
-	.dwattr DW$249, DW_AT_begin_line(0x2b8)
-	.dwattr DW$249, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",697,1
-
-	.dwfde DW$CIE
-
-;***************************************************************
-;* FNAME: _cross_info_write_rom         FR SIZE: 514           *
-;*                                                             *
-;* FUNCTION ENVIRONMENT                                        *
-;*                                                             *
-;* FUNCTION PROPERTIES                                         *
-;*                            0 Parameter, 512 Auto,  2 SOE     *
-;***************************************************************
-
-
-;***************************************************************
-;*                                                             *
-;* Using -g (debug) with optimization (-o3) may disable key op *
-;*                                                             *
-;***************************************************************
-_cross_info_write_rom:
-;*** 699	-----------------------    write_buf1[] = {...};
-;*** 700	-----------------------    write_buf2[] = {...};
-;*** 704	-----------------------    memset(&write_buf1, 0, 256uL);
-;*** 705	-----------------------    memset(&write_buf2, 0, 256uL);
-;*** 709	-----------------------    Rom_Data_Buffer = g_line_info.u16cross_final_cnt;
-;*** 710	-----------------------    write_buf1[0] = Rom_Data_Buffer&0xffu;
-;*** 711	-----------------------    write_buf1[1] = Rom_Data_Buffer>>8;
-;*** 713	-----------------------    SpiWriteRom(15u, 0u, 256u, &write_buf1);
-;*** 717	-----------------------    if ( !g_line_info.u16cross_final_cnt ) goto g4;
-	.dwcfa	0x1d, -2
-	.dwcfa	0x1c, 26, 0
-	.dwcfa	0x09, 40, 26
-        MOVL      *SP++,XAR2
-	.dwcfa	0x80, 9, 2
-	.dwcfa	0x1d, -4
-        MOVZ      AR2,SP
-        SUBB      FP,#4
-        ADD       SP,#512
-	.dwcfa	0x1d, -516
-;* AR4   assigned to W$1
-DW$250	.dwtag  DW_TAG_variable, DW_AT_name("W$1"), DW_AT_symbol_name("W$1")
-	.dwattr DW$250, DW_AT_type(*DW$T$39)
-	.dwattr DW$250, DW_AT_location[DW_OP_reg12]
-;* AR5   assigned to K$22
-DW$251	.dwtag  DW_TAG_variable, DW_AT_name("K$22"), DW_AT_symbol_name("K$22")
-	.dwattr DW$251, DW_AT_type(*DW$T$77)
-	.dwattr DW$251, DW_AT_location[DW_OP_reg14]
-;* AR7   assigned to _i
-DW$252	.dwtag  DW_TAG_variable, DW_AT_name("i"), DW_AT_symbol_name("_i")
-	.dwattr DW$252, DW_AT_type(*DW$T$58)
-	.dwattr DW$252, DW_AT_location[DW_OP_reg18]
-;* AL    assigned to _Rom_Data_Buffer
-DW$253	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$253, DW_AT_type(*DW$T$21)
-	.dwattr DW$253, DW_AT_location[DW_OP_reg0]
-;* AR6   assigned to _Rom_Data_Buffer
-DW$254	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$254, DW_AT_type(*DW$T$21)
-	.dwattr DW$254, DW_AT_location[DW_OP_reg16]
-DW$255	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
-	.dwattr DW$255, DW_AT_type(*DW$T$23)
-	.dwattr DW$255, DW_AT_location[DW_OP_breg20 -256]
-DW$256	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
-	.dwattr DW$256, DW_AT_type(*DW$T$23)
-	.dwattr DW$256, DW_AT_location[DW_OP_breg20 -512]
-	.dwpsn	"Rom.c",699,9
-        MOVZ      AR4,SP                ; |699| 
-        ADD       AR4,#-256             ; |699| 
-        MOVL      XAR5,#_$T22$23$0      ; |699| 
-        MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |699| 
-        ; call occurs [#___memcpy_ff] ; |699| 
-	.dwpsn	"Rom.c",700,9
-        MOVZ      AR4,SP                ; |700| 
-        ADD       AR4,#-512             ; |700| 
-        MOVL      XAR5,#_$T23$24$0      ; |700| 
-        MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |700| 
-        ; call occurs [#___memcpy_ff] ; |700| 
-	.dwpsn	"Rom.c",704,2
-        MOVZ      AR4,SP                ; |704| 
-        ADD       AR4,#-256             ; |704| 
-        MOVB      XAR5,#0
-        MOV       ACC,#1 << 8
-        LCR       #_memset              ; |704| 
-        ; call occurs [#_memset] ; |704| 
-	.dwpsn	"Rom.c",705,2
-        MOVZ      AR4,SP                ; |705| 
-        ADD       AR4,#-512             ; |705| 
-        MOVB      XAR5,#0
-        MOV       ACC,#1 << 8
-        LCR       #_memset              ; |705| 
-        ; call occurs [#_memset] ; |705| 
-	.dwpsn	"Rom.c",709,2
-        MOVW      DP,#_g_line_info+1
-        MOV       AL,@_g_line_info+1    ; |709| 
-	.dwpsn	"Rom.c",710,2
-        MOVL      XAR0,#260             ; |710| 
-        AND       AH,AL,#0x00ff         ; |710| 
-        MOV       *+FP[AR0],AH          ; |710| 
-	.dwpsn	"Rom.c",711,2
-        MOVL      XAR0,#261             ; |711| 
-        LSR       AL,8                  ; |711| 
-        MOV       *+FP[AR0],AL          ; |711| 
-	.dwpsn	"Rom.c",713,2
-        MOVZ      AR4,SP                ; |713| 
-        MOVL      XAR5,#256             ; |713| 
-        MOVB      ACC,#15
-        ADD       AR4,#-256             ; |713| 
-        LCR       #_SpiWriteRom         ; |713| 
-        ; call occurs [#_SpiWriteRom] ; |713| 
-	.dwpsn	"Rom.c",717,6
-        MOVW      DP,#_g_line_info+1
-        MOV       AL,@_g_line_info+1    ; |717| 
-        BF        L7,EQ                 ; |717| 
-        ; branchcc occurs ; |717| 
-;***  	-----------------------    #pragma LOOP_FLAGS(4096u)
-;***  	-----------------------    K$22 = &g_run_info[0];
-;*** 715	-----------------------    W$1 = &write_buf2[0];
-;*** 717	-----------------------    i = 0L;
-        MOVL      XAR5,#_g_run_info
-	.dwpsn	"Rom.c",715,2
-        MOVZ      AR4,SP                ; |715| 
-        ADD       AR4,#-512             ; |715| 
-	.dwpsn	"Rom.c",717,6
-        MOVB      XAR7,#0
-L6:    
-DW$L$_cross_info_write_rom$3$B:
-;***	-----------------------g3:
-;*** 719	-----------------------    Rom_Data_Buffer = (K$22[i]).u16cross_debug_arr;
-;*** 720	-----------------------    *W$1++ = Rom_Data_Buffer&0xffu;
-;*** 721	-----------------------    *W$1++ = Rom_Data_Buffer>>8;
-;*** 717	-----------------------    if ( (++i) < (long)g_line_info.u16cross_final_cnt ) goto g3;
-	.dwpsn	"Rom.c",719,3
-        MOVL      XAR6,XAR5             ; |719| 
-        MOVL      ACC,XAR7              ; |719| 
-        ADDL      XAR6,ACC
-        MOVZ      AR6,*+XAR6[0]         ; |719| 
-	.dwpsn	"Rom.c",720,3
-        AND       AL,AR6,#0x00ff        ; |720| 
-        MOV       *XAR4++,AL            ; |720| 
-	.dwpsn	"Rom.c",721,3
-        MOV       AL,AR6                ; |721| 
-        LSR       AL,8                  ; |721| 
-        MOV       *XAR4++,AL            ; |721| 
-	.dwpsn	"Rom.c",717,50
-        MOVL      ACC,XAR7
-        ADDB      ACC,#1                ; |717| 
-        MOVL      XAR7,ACC              ; |717| 
-        MOVU      ACC,@_g_line_info+1
-        CMPL      ACC,XAR7              ; |717| 
-        BF        L6,GT                 ; |717| 
-        ; branchcc occurs ; |717| 
-DW$L$_cross_info_write_rom$3$E:
-L7:    
-;***	-----------------------g4:
-;*** 724	-----------------------    SpiWriteRom(16u, 0u, 256u, &write_buf2);
-;*** 724	-----------------------    return;
-	.dwpsn	"Rom.c",724,2
-        MOVZ      AR4,SP                ; |724| 
-        MOVL      XAR5,#256             ; |724| 
-        MOVB      ACC,#16
-        ADD       AR4,#-512             ; |724| 
-        LCR       #_SpiWriteRom         ; |724| 
-        ; call occurs [#_SpiWriteRom] ; |724| 
-	.dwpsn	"Rom.c",726,1
-        ADD       SP,#-512
-	.dwcfa	0x1d, -4
-        MOVL      XAR2,*--SP
-	.dwcfa	0x1d, -2
-	.dwcfa	0xc0, 9
-        LRETR
-        ; return occurs
-
-DW$257	.dwtag  DW_TAG_loop
-	.dwattr DW$257, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L6:1:1768050237")
-	.dwattr DW$257, DW_AT_begin_file("Rom.c")
-	.dwattr DW$257, DW_AT_begin_line(0x2cd)
-	.dwattr DW$257, DW_AT_end_line(0x2d2)
-DW$258	.dwtag  DW_TAG_loop_range
-	.dwattr DW$258, DW_AT_low_pc(DW$L$_cross_info_write_rom$3$B)
-	.dwattr DW$258, DW_AT_high_pc(DW$L$_cross_info_write_rom$3$E)
-	.dwendtag DW$257
-
-	.dwattr DW$249, DW_AT_end_file("Rom.c")
-	.dwattr DW$249, DW_AT_end_line(0x2d6)
-	.dwattr DW$249, DW_AT_end_column(0x01)
-	.dwendentry
-	.dwendtag DW$249
-
-	.sect	".text"
-	.global	_cross_info_read_rom
-
-DW$259	.dwtag  DW_TAG_subprogram, DW_AT_name("cross_info_read_rom"), DW_AT_symbol_name("_cross_info_read_rom")
-	.dwattr DW$259, DW_AT_low_pc(_cross_info_read_rom)
-	.dwattr DW$259, DW_AT_high_pc(0x00)
-	.dwattr DW$259, DW_AT_begin_file("Rom.c")
-	.dwattr DW$259, DW_AT_begin_line(0x2d9)
-	.dwattr DW$259, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",730,1
-
-	.dwfde DW$CIE
-
-;***************************************************************
-;* FNAME: _cross_info_read_rom          FR SIZE: 514           *
-;*                                                             *
-;* FUNCTION ENVIRONMENT                                        *
-;*                                                             *
-;* FUNCTION PROPERTIES                                         *
-;*                            0 Parameter, 512 Auto,  2 SOE     *
-;***************************************************************
-
-
-;***************************************************************
-;*                                                             *
-;* Using -g (debug) with optimization (-o3) may disable key op *
-;*                                                             *
-;***************************************************************
-_cross_info_read_rom:
-;*** 732	-----------------------    read_buf1[] = {...};
-;*** 733	-----------------------    read_buf2[] = {...};
-;*** 737	-----------------------    g_line_info.u16cross_final_cnt = 0u;
-;*** 740	-----------------------    SpiReadRom(15u, 0u, 256u, &read_buf1);
-;*** 742	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
-;*** 743	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
-;*** 744	-----------------------    g_line_info.u16cross_final_cnt = Rom_Data_Buffer;
-;*** 747	-----------------------    SpiReadRom(16u, 0u, 256u, &read_buf2);
-;*** 749	-----------------------    if ( !g_line_info.u16cross_final_cnt ) goto g4;
-	.dwcfa	0x1d, -2
-	.dwcfa	0x1c, 26, 0
-	.dwcfa	0x09, 40, 26
-        MOVL      *SP++,XAR2
-	.dwcfa	0x80, 9, 2
-	.dwcfa	0x1d, -4
-        MOVZ      AR2,SP
-        SUBB      FP,#4
-        ADD       SP,#512
-	.dwcfa	0x1d, -516
-;* AR6   assigned to C$1
-DW$260	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
-	.dwattr DW$260, DW_AT_type(*DW$T$77)
-	.dwattr DW$260, DW_AT_location[DW_OP_reg16]
-;* AR4   assigned to W$1
-DW$261	.dwtag  DW_TAG_variable, DW_AT_name("W$1"), DW_AT_symbol_name("W$1")
-	.dwattr DW$261, DW_AT_type(*DW$T$39)
-	.dwattr DW$261, DW_AT_location[DW_OP_reg12]
-;* AR5   assigned to K$21
-DW$262	.dwtag  DW_TAG_variable, DW_AT_name("K$21"), DW_AT_symbol_name("K$21")
-	.dwattr DW$262, DW_AT_type(*DW$T$77)
-	.dwattr DW$262, DW_AT_location[DW_OP_reg14]
-;* PL    assigned to _i
-DW$263	.dwtag  DW_TAG_variable, DW_AT_name("i"), DW_AT_symbol_name("_i")
-	.dwattr DW$263, DW_AT_type(*DW$T$58)
-	.dwattr DW$263, DW_AT_location[DW_OP_reg2]
-;* AR6   assigned to _Rom_Data_Buffer
-DW$264	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$264, DW_AT_type(*DW$T$21)
-	.dwattr DW$264, DW_AT_location[DW_OP_reg16]
-;* AR7   assigned to _Rom_Data_Buffer
-DW$265	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$265, DW_AT_type(*DW$T$21)
-	.dwattr DW$265, DW_AT_location[DW_OP_reg18]
-DW$266	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
-	.dwattr DW$266, DW_AT_type(*DW$T$23)
-	.dwattr DW$266, DW_AT_location[DW_OP_breg20 -256]
-DW$267	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
-	.dwattr DW$267, DW_AT_type(*DW$T$23)
-	.dwattr DW$267, DW_AT_location[DW_OP_breg20 -512]
-	.dwpsn	"Rom.c",732,9
-        MOVZ      AR4,SP                ; |732| 
-        ADD       AR4,#-256             ; |732| 
-        MOVL      XAR5,#_$T24$25$0      ; |732| 
-        MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |732| 
-        ; call occurs [#___memcpy_ff] ; |732| 
-	.dwpsn	"Rom.c",733,9
-        MOVZ      AR4,SP                ; |733| 
-        ADD       AR4,#-512             ; |733| 
-        MOVL      XAR5,#_$T25$26$0      ; |733| 
-        MOV       ACC,#1 << 8
-        LCR       #___memcpy_ff         ; |733| 
-        ; call occurs [#___memcpy_ff] ; |733| 
-	.dwpsn	"Rom.c",737,2
-        MOVW      DP,#_g_line_info+1
-        MOV       @_g_line_info+1,#0    ; |737| 
-	.dwpsn	"Rom.c",740,2
-        MOVZ      AR4,SP                ; |740| 
-        MOVL      XAR5,#256             ; |740| 
-        MOVB      ACC,#15
-        ADD       AR4,#-256             ; |740| 
-        LCR       #_SpiReadRom          ; |740| 
-        ; call occurs [#_SpiReadRom] ; |740| 
-	.dwpsn	"Rom.c",742,2
-        MOVL      XAR0,#260             ; |742| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |742| 
-        MOVZ      AR6,AL                ; |742| 
-	.dwpsn	"Rom.c",743,2
-        MOVL      XAR0,#261             ; |743| 
-        MOV       ACC,*+FP[AR0] << #8   ; |743| 
-        OR        AR6,AL                ; |743| 
-	.dwpsn	"Rom.c",744,2
-        MOVW      DP,#_g_line_info+1
-        MOV       @_g_line_info+1,AR6   ; |744| 
-	.dwpsn	"Rom.c",747,2
-        MOVZ      AR4,SP                ; |747| 
-        MOVL      XAR5,#256             ; |747| 
-        MOVB      ACC,#16
-        ADD       AR4,#-512             ; |747| 
-        LCR       #_SpiReadRom          ; |747| 
-        ; call occurs [#_SpiReadRom] ; |747| 
-	.dwpsn	"Rom.c",749,6
-        MOVW      DP,#_g_line_info+1
-        MOV       AL,@_g_line_info+1    ; |749| 
-        BF        L9,EQ                 ; |749| 
-        ; branchcc occurs ; |749| 
-;***  	-----------------------    #pragma LOOP_FLAGS(4096u)
-;***  	-----------------------    K$21 = &g_run_info[0];
-;*** 746	-----------------------    W$1 = &read_buf2[0];
-;*** 749	-----------------------    i = 0L;
-        MOVL      XAR5,#_g_run_info
-	.dwpsn	"Rom.c",746,2
-        MOVZ      AR4,SP                ; |746| 
-        ADD       AR4,#-512             ; |746| 
-	.dwpsn	"Rom.c",749,6
-        MOV       P,#0
-L8:    
-DW$L$_cross_info_read_rom$3$B:
-;***	-----------------------g3:
-;*** 751	-----------------------    C$1 = &K$21[i];
-;*** 751	-----------------------    (*C$1).u16cross_debug_arr = 0u;
-;*** 752	-----------------------    Rom_Data_Buffer = *W$1++&0xffu;
-;*** 753	-----------------------    Rom_Data_Buffer |= *W$1++<<8;
-;*** 754	-----------------------    (*C$1).u16cross_debug_arr = Rom_Data_Buffer;
-;*** 749	-----------------------    if ( (++i) < (long)g_line_info.u16cross_final_cnt ) goto g3;
-;***	-----------------------g4:
-;***  	-----------------------    return;
-	.dwpsn	"Rom.c",751,3
-        MOVL      ACC,XAR5              ; |751| 
-        ADDL      ACC,P
-        MOVL      XAR6,ACC              ; |751| 
-        MOV       *+XAR6[0],#0          ; |751| 
-	.dwpsn	"Rom.c",752,3
-        AND       AL,*XAR4++,#0x00ff    ; |752| 
-        MOVZ      AR7,AL                ; |752| 
-	.dwpsn	"Rom.c",753,3
-        MOV       ACC,*XAR4++ << #8     ; |753| 
-        OR        AR7,AL                ; |753| 
-	.dwpsn	"Rom.c",754,3
-        MOV       *+XAR6[0],AR7         ; |754| 
-	.dwpsn	"Rom.c",749,50
-        MOVL      ACC,P
-        ADDB      ACC,#1                ; |749| 
-        MOVL      P,ACC                 ; |749| 
-        MOVU      ACC,@_g_line_info+1
-        CMPL      ACC,P                 ; |749| 
-        BF        L8,GT                 ; |749| 
-        ; branchcc occurs ; |749| 
-DW$L$_cross_info_read_rom$3$E:
-L9:    
-	.dwpsn	"Rom.c",759,1
-        ADD       SP,#-512
-	.dwcfa	0x1d, -4
-        MOVL      XAR2,*--SP
-	.dwcfa	0x1d, -2
-	.dwcfa	0xc0, 9
-        LRETR
-        ; return occurs
-
-DW$268	.dwtag  DW_TAG_loop
-	.dwattr DW$268, DW_AT_name("C:\project\JP_Robotrace\main\Rom.asm:L8:1:1768050237")
-	.dwattr DW$268, DW_AT_begin_file("Rom.c")
-	.dwattr DW$268, DW_AT_begin_line(0x2ed)
-	.dwattr DW$268, DW_AT_end_line(0x2f5)
-DW$269	.dwtag  DW_TAG_loop_range
-	.dwattr DW$269, DW_AT_low_pc(DW$L$_cross_info_read_rom$3$B)
-	.dwattr DW$269, DW_AT_high_pc(DW$L$_cross_info_read_rom$3$E)
-	.dwendtag DW$268
-
-	.dwattr DW$259, DW_AT_end_file("Rom.c")
-	.dwattr DW$259, DW_AT_end_line(0x2f7)
-	.dwattr DW$259, DW_AT_end_column(0x01)
-	.dwendentry
-	.dwendtag DW$259
+	.dwendtag DW$220
 
 	.sect	".text"
 	.global	_acc_info_write_rom
 
-DW$270	.dwtag  DW_TAG_subprogram, DW_AT_name("acc_info_write_rom"), DW_AT_symbol_name("_acc_info_write_rom")
-	.dwattr DW$270, DW_AT_low_pc(_acc_info_write_rom)
-	.dwattr DW$270, DW_AT_high_pc(0x00)
-	.dwattr DW$270, DW_AT_begin_file("Rom.c")
-	.dwattr DW$270, DW_AT_begin_line(0x3c0)
-	.dwattr DW$270, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",961,1
+DW$231	.dwtag  DW_TAG_subprogram, DW_AT_name("acc_info_write_rom"), DW_AT_symbol_name("_acc_info_write_rom")
+	.dwattr DW$231, DW_AT_low_pc(_acc_info_write_rom)
+	.dwattr DW$231, DW_AT_high_pc(0x00)
+	.dwattr DW$231, DW_AT_begin_file("Rom.c")
+	.dwattr DW$231, DW_AT_begin_line(0x311)
+	.dwattr DW$231, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",786,1
 
 	.dwfde DW$CIE
 
@@ -6283,19 +5633,19 @@ DW$270	.dwtag  DW_TAG_subprogram, DW_AT_name("acc_info_write_rom"), DW_AT_symbol
 ;*                                                             *
 ;***************************************************************
 _acc_info_write_rom:
-;*** 963	-----------------------    write_buf1[] = {...};
-;*** 964	-----------------------    write_buf2[] = {...};
-;*** 968	-----------------------    memset(&write_buf1, 0, 64uL);
-;*** 971	-----------------------    memset(&write_buf2, 0, 64uL);
-;*** 976	-----------------------    C$2 = (unsigned)(g_q17user_acc>>17);
-;*** 976	-----------------------    write_buf1[0] = C$2&0xffu;
-;*** 977	-----------------------    write_buf1[1] = C$2>>8;
-;*** 979	-----------------------    SpiWriteRom(35u, 0u, 64u, &write_buf1);
-;*** 984	-----------------------    C$1 = (unsigned)(g_q17end_acc>>17);
-;*** 984	-----------------------    write_buf2[0] = C$1&0xffu;
-;*** 985	-----------------------    write_buf2[1] = C$1>>8;
-;*** 987	-----------------------    SpiWriteRom(33u, 0u, 64u, &write_buf2);
-;*** 987	-----------------------    return;
+;*** 788	-----------------------    write_buf1[] = {...};
+;*** 789	-----------------------    write_buf2[] = {...};
+;*** 793	-----------------------    memset(&write_buf1, 0, 64uL);
+;*** 796	-----------------------    memset(&write_buf2, 0, 64uL);
+;*** 801	-----------------------    C$2 = (unsigned)(g_q17user_acc>>17);
+;*** 801	-----------------------    write_buf1[0] = C$2&0xffu;
+;*** 802	-----------------------    write_buf1[1] = C$2>>8;
+;*** 804	-----------------------    SpiWriteRom(35u, 0u, 64u, &write_buf1);
+;*** 809	-----------------------    C$1 = (unsigned)(g_q17end_acc>>17);
+;*** 809	-----------------------    write_buf2[0] = C$1&0xffu;
+;*** 810	-----------------------    write_buf2[1] = C$1>>8;
+;*** 812	-----------------------    SpiWriteRom(33u, 0u, 64u, &write_buf2);
+;*** 812	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -6307,83 +5657,83 @@ _acc_info_write_rom:
         ADD       SP,#128
 	.dwcfa	0x1d, -132
 ;* AL    assigned to C$1
-DW$271	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
-	.dwattr DW$271, DW_AT_type(*DW$T$11)
-	.dwattr DW$271, DW_AT_location[DW_OP_reg0]
+DW$232	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
+	.dwattr DW$232, DW_AT_type(*DW$T$11)
+	.dwattr DW$232, DW_AT_location[DW_OP_reg0]
 ;* AL    assigned to C$2
-DW$272	.dwtag  DW_TAG_variable, DW_AT_name("C$2"), DW_AT_symbol_name("C$2")
-	.dwattr DW$272, DW_AT_type(*DW$T$11)
-	.dwattr DW$272, DW_AT_location[DW_OP_reg0]
-DW$273	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
-	.dwattr DW$273, DW_AT_type(*DW$T$44)
-	.dwattr DW$273, DW_AT_location[DW_OP_breg20 -64]
-DW$274	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
-	.dwattr DW$274, DW_AT_type(*DW$T$44)
-	.dwattr DW$274, DW_AT_location[DW_OP_breg20 -128]
-	.dwpsn	"Rom.c",963,9
-        MOVZ      AR4,SP                ; |963| 
-        MOVL      XAR5,#_$T40$41$0      ; |963| 
+DW$233	.dwtag  DW_TAG_variable, DW_AT_name("C$2"), DW_AT_symbol_name("C$2")
+	.dwattr DW$233, DW_AT_type(*DW$T$11)
+	.dwattr DW$233, DW_AT_location[DW_OP_reg0]
+DW$234	.dwtag  DW_TAG_variable, DW_AT_name("write_buf1"), DW_AT_symbol_name("_write_buf1")
+	.dwattr DW$234, DW_AT_type(*DW$T$37)
+	.dwattr DW$234, DW_AT_location[DW_OP_breg20 -64]
+DW$235	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_write_buf2")
+	.dwattr DW$235, DW_AT_type(*DW$T$37)
+	.dwattr DW$235, DW_AT_location[DW_OP_breg20 -128]
+	.dwpsn	"Rom.c",788,9
+        MOVZ      AR4,SP                ; |788| 
+        MOVL      XAR5,#_$T36$37$0      ; |788| 
         MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |963| 
-        LCR       #___memcpy_ff         ; |963| 
-        ; call occurs [#___memcpy_ff] ; |963| 
-	.dwpsn	"Rom.c",964,9
-        MOVZ      AR4,SP                ; |964| 
-        ADD       AR4,#-128             ; |964| 
-        MOVL      XAR5,#_$T41$42$0      ; |964| 
+        SUBB      XAR4,#64              ; |788| 
+        LCR       #___memcpy_ff         ; |788| 
+        ; call occurs [#___memcpy_ff] ; |788| 
+	.dwpsn	"Rom.c",789,9
+        MOVZ      AR4,SP                ; |789| 
+        ADD       AR4,#-128             ; |789| 
+        MOVL      XAR5,#_$T37$38$0      ; |789| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |964| 
-        ; call occurs [#___memcpy_ff] ; |964| 
-	.dwpsn	"Rom.c",968,2
-        MOVZ      AR4,SP                ; |968| 
+        LCR       #___memcpy_ff         ; |789| 
+        ; call occurs [#___memcpy_ff] ; |789| 
+	.dwpsn	"Rom.c",793,2
+        MOVZ      AR4,SP                ; |793| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |968| 
-        LCR       #_memset              ; |968| 
-        ; call occurs [#_memset] ; |968| 
-	.dwpsn	"Rom.c",971,2
-        MOVZ      AR4,SP                ; |971| 
-        ADD       AR4,#-128             ; |971| 
+        SUBB      XAR4,#64              ; |793| 
+        LCR       #_memset              ; |793| 
+        ; call occurs [#_memset] ; |793| 
+	.dwpsn	"Rom.c",796,2
+        MOVZ      AR4,SP                ; |796| 
+        ADD       AR4,#-128             ; |796| 
         MOVB      XAR5,#0
         MOVB      ACC,#64
-        LCR       #_memset              ; |971| 
-        ; call occurs [#_memset] ; |971| 
-	.dwpsn	"Rom.c",976,2
+        LCR       #_memset              ; |796| 
+        ; call occurs [#_memset] ; |796| 
+	.dwpsn	"Rom.c",801,2
         MOVW      DP,#_g_q17user_acc
-        MOV       T,#17                 ; |976| 
-        MOVL      XAR0,#68              ; |976| 
-        MOVL      ACC,@_g_q17user_acc   ; |976| 
-        ASRL      ACC,T                 ; |976| 
-        AND       AH,AL,#0x00ff         ; |976| 
-        MOV       *+FP[AR0],AH          ; |976| 
-	.dwpsn	"Rom.c",977,2
-        LSR       AL,8                  ; |977| 
-        MOV       *-SP[63],AL           ; |977| 
-	.dwpsn	"Rom.c",979,2
-        MOVZ      AR4,SP                ; |979| 
-        MOVB      XAR5,#64              ; |979| 
+        MOV       T,#17                 ; |801| 
+        MOVL      XAR0,#68              ; |801| 
+        MOVL      ACC,@_g_q17user_acc   ; |801| 
+        ASRL      ACC,T                 ; |801| 
+        AND       AH,AL,#0x00ff         ; |801| 
+        MOV       *+FP[AR0],AH          ; |801| 
+	.dwpsn	"Rom.c",802,2
+        LSR       AL,8                  ; |802| 
+        MOV       *-SP[63],AL           ; |802| 
+	.dwpsn	"Rom.c",804,2
+        MOVZ      AR4,SP                ; |804| 
+        MOVB      XAR5,#64              ; |804| 
         MOVB      ACC,#35
-        SUBB      XAR4,#64              ; |979| 
-        LCR       #_SpiWriteRom         ; |979| 
-        ; call occurs [#_SpiWriteRom] ; |979| 
-	.dwpsn	"Rom.c",984,2
+        SUBB      XAR4,#64              ; |804| 
+        LCR       #_SpiWriteRom         ; |804| 
+        ; call occurs [#_SpiWriteRom] ; |804| 
+	.dwpsn	"Rom.c",809,2
         MOVW      DP,#_g_q17end_acc
-        MOV       T,#17                 ; |984| 
-        MOVL      ACC,@_g_q17end_acc    ; |984| 
-        ASRL      ACC,T                 ; |984| 
-        AND       AH,AL,#0x00ff         ; |984| 
-        MOV       *+FP[4],AH            ; |984| 
-	.dwpsn	"Rom.c",985,2
-        LSR       AL,8                  ; |985| 
-        MOV       *+FP[5],AL            ; |985| 
-	.dwpsn	"Rom.c",987,2
-        MOVZ      AR4,SP                ; |987| 
+        MOV       T,#17                 ; |809| 
+        MOVL      ACC,@_g_q17end_acc    ; |809| 
+        ASRL      ACC,T                 ; |809| 
+        AND       AH,AL,#0x00ff         ; |809| 
+        MOV       *+FP[4],AH            ; |809| 
+	.dwpsn	"Rom.c",810,2
+        LSR       AL,8                  ; |810| 
+        MOV       *+FP[5],AL            ; |810| 
+	.dwpsn	"Rom.c",812,2
+        MOVZ      AR4,SP                ; |812| 
         MOVB      ACC,#33
-        ADD       AR4,#-128             ; |987| 
-        MOVB      XAR5,#64              ; |987| 
-        LCR       #_SpiWriteRom         ; |987| 
-        ; call occurs [#_SpiWriteRom] ; |987| 
-	.dwpsn	"Rom.c",989,1
+        ADD       AR4,#-128             ; |812| 
+        MOVB      XAR5,#64              ; |812| 
+        LCR       #_SpiWriteRom         ; |812| 
+        ; call occurs [#_SpiWriteRom] ; |812| 
+	.dwpsn	"Rom.c",814,1
         ADD       SP,#-128
 	.dwcfa	0x1d, -4
         MOVL      XAR2,*--SP
@@ -6391,22 +5741,22 @@ DW$274	.dwtag  DW_TAG_variable, DW_AT_name("write_buf2"), DW_AT_symbol_name("_wr
 	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$270, DW_AT_end_file("Rom.c")
-	.dwattr DW$270, DW_AT_end_line(0x3dd)
-	.dwattr DW$270, DW_AT_end_column(0x01)
+	.dwattr DW$231, DW_AT_end_file("Rom.c")
+	.dwattr DW$231, DW_AT_end_line(0x32e)
+	.dwattr DW$231, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$270
+	.dwendtag DW$231
 
 	.sect	".text"
 	.global	_acc_info_read_rom
 
-DW$275	.dwtag  DW_TAG_subprogram, DW_AT_name("acc_info_read_rom"), DW_AT_symbol_name("_acc_info_read_rom")
-	.dwattr DW$275, DW_AT_low_pc(_acc_info_read_rom)
-	.dwattr DW$275, DW_AT_high_pc(0x00)
-	.dwattr DW$275, DW_AT_begin_file("Rom.c")
-	.dwattr DW$275, DW_AT_begin_line(0x3e0)
-	.dwattr DW$275, DW_AT_begin_column(0x06)
-	.dwpsn	"Rom.c",993,1
+DW$236	.dwtag  DW_TAG_subprogram, DW_AT_name("acc_info_read_rom"), DW_AT_symbol_name("_acc_info_read_rom")
+	.dwattr DW$236, DW_AT_low_pc(_acc_info_read_rom)
+	.dwattr DW$236, DW_AT_high_pc(0x00)
+	.dwattr DW$236, DW_AT_begin_file("Rom.c")
+	.dwattr DW$236, DW_AT_begin_line(0x331)
+	.dwattr DW$236, DW_AT_begin_column(0x06)
+	.dwpsn	"Rom.c",818,1
 
 	.dwfde DW$CIE
 
@@ -6426,20 +5776,20 @@ DW$275	.dwtag  DW_TAG_subprogram, DW_AT_name("acc_info_read_rom"), DW_AT_symbol_
 ;*                                                             *
 ;***************************************************************
 _acc_info_read_rom:
-;*** 995	-----------------------    read_buf1[] = {...};
-;*** 996	-----------------------    read_buf2[] = {...};
-;** 1002	-----------------------    SpiReadRom(35u, 0u, 64u, &read_buf1);
-;** 1004	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
-;** 1005	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
-;** 1006	-----------------------    g_q17user_acc = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;** 1010	-----------------------    SpiReadRom(33u, 0u, 64u, &read_buf2);
-;** 1012	-----------------------    Rom_Data_Buffer = read_buf2[0]&0xffu;
-;** 1013	-----------------------    Rom_Data_Buffer |= read_buf2[1]<<8;
-;** 1014	-----------------------    g_q17end_acc = (long)((long double)Rom_Data_Buffer*1.31072e5L);
-;** 1016	-----------------------    g_q17max_acc = g_q17user_acc;
-;** 1017	-----------------------    g_q17mid_acc = g_q17user_acc;
-;** 1018	-----------------------    g_q17short_acc = g_q17user_acc;
-;** 1018	-----------------------    return;
+;*** 820	-----------------------    read_buf1[] = {...};
+;*** 821	-----------------------    read_buf2[] = {...};
+;*** 827	-----------------------    SpiReadRom(35u, 0u, 64u, &read_buf1);
+;*** 829	-----------------------    Rom_Data_Buffer = read_buf1[0]&0xffu;
+;*** 830	-----------------------    Rom_Data_Buffer |= read_buf1[1]<<8;
+;*** 831	-----------------------    g_q17user_acc = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 835	-----------------------    SpiReadRom(33u, 0u, 64u, &read_buf2);
+;*** 837	-----------------------    Rom_Data_Buffer = read_buf2[0]&0xffu;
+;*** 838	-----------------------    Rom_Data_Buffer |= read_buf2[1]<<8;
+;*** 839	-----------------------    g_q17end_acc = (long)((long double)Rom_Data_Buffer*1.31072e5L);
+;*** 841	-----------------------    g_q17max_acc = g_q17user_acc;
+;*** 842	-----------------------    g_q17mid_acc = g_q17user_acc;
+;*** 843	-----------------------    g_q17short_acc = g_q17user_acc;
+;*** 843	-----------------------    return;
 	.dwcfa	0x1d, -2
 	.dwcfa	0x1c, 26, 0
 	.dwcfa	0x09, 40, 26
@@ -6451,112 +5801,112 @@ _acc_info_read_rom:
         ADD       SP,#136
 	.dwcfa	0x1d, -140
 ;* AR7   assigned to _Rom_Data_Buffer
-DW$276	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
-	.dwattr DW$276, DW_AT_type(*DW$T$21)
-	.dwattr DW$276, DW_AT_location[DW_OP_reg18]
-DW$277	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
-	.dwattr DW$277, DW_AT_type(*DW$T$44)
-	.dwattr DW$277, DW_AT_location[DW_OP_breg20 -64]
-DW$278	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
-	.dwattr DW$278, DW_AT_type(*DW$T$44)
-	.dwattr DW$278, DW_AT_location[DW_OP_breg20 -128]
-	.dwpsn	"Rom.c",995,9
-        MOVZ      AR4,SP                ; |995| 
-        MOVL      XAR5,#_$T42$43$0      ; |995| 
+DW$237	.dwtag  DW_TAG_variable, DW_AT_name("Rom_Data_Buffer"), DW_AT_symbol_name("_Rom_Data_Buffer")
+	.dwattr DW$237, DW_AT_type(*DW$T$21)
+	.dwattr DW$237, DW_AT_location[DW_OP_reg18]
+DW$238	.dwtag  DW_TAG_variable, DW_AT_name("read_buf1"), DW_AT_symbol_name("_read_buf1")
+	.dwattr DW$238, DW_AT_type(*DW$T$37)
+	.dwattr DW$238, DW_AT_location[DW_OP_breg20 -64]
+DW$239	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_read_buf2")
+	.dwattr DW$239, DW_AT_type(*DW$T$37)
+	.dwattr DW$239, DW_AT_location[DW_OP_breg20 -128]
+	.dwpsn	"Rom.c",820,9
+        MOVZ      AR4,SP                ; |820| 
+        MOVL      XAR5,#_$T38$39$0      ; |820| 
         MOVB      ACC,#64
-        SUBB      XAR4,#64              ; |995| 
-        LCR       #___memcpy_ff         ; |995| 
-        ; call occurs [#___memcpy_ff] ; |995| 
-	.dwpsn	"Rom.c",996,9
-        MOVZ      AR4,SP                ; |996| 
-        ADD       AR4,#-128             ; |996| 
-        MOVL      XAR5,#_$T43$44$0      ; |996| 
+        SUBB      XAR4,#64              ; |820| 
+        LCR       #___memcpy_ff         ; |820| 
+        ; call occurs [#___memcpy_ff] ; |820| 
+	.dwpsn	"Rom.c",821,9
+        MOVZ      AR4,SP                ; |821| 
+        ADD       AR4,#-128             ; |821| 
+        MOVL      XAR5,#_$T39$40$0      ; |821| 
         MOVB      ACC,#64
-        LCR       #___memcpy_ff         ; |996| 
-        ; call occurs [#___memcpy_ff] ; |996| 
-	.dwpsn	"Rom.c",1002,2
-        MOVZ      AR4,SP                ; |1002| 
-        MOVB      XAR5,#64              ; |1002| 
+        LCR       #___memcpy_ff         ; |821| 
+        ; call occurs [#___memcpy_ff] ; |821| 
+	.dwpsn	"Rom.c",827,2
+        MOVZ      AR4,SP                ; |827| 
+        MOVB      XAR5,#64              ; |827| 
         MOVB      ACC,#35
-        SUBB      XAR4,#64              ; |1002| 
-        LCR       #_SpiReadRom          ; |1002| 
-        ; call occurs [#_SpiReadRom] ; |1002| 
-	.dwpsn	"Rom.c",1004,2
-        MOVL      XAR0,#76              ; |1004| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |1004| 
-        MOVZ      AR7,AL                ; |1004| 
-	.dwpsn	"Rom.c",1005,2
-        MOV       ACC,*-SP[63] << #8    ; |1005| 
-        OR        AR7,AL                ; |1005| 
-	.dwpsn	"Rom.c",1006,2
-        MOVZ      AR6,SP                ; |1006| 
-        ADD       AR6,#-136             ; |1006| 
-        MOV       AL,AR7                ; |1006| 
-        LCR       #U$$TOFD              ; |1006| 
-        ; call occurs [#U$$TOFD] ; |1006| 
-        MOVZ      AR4,SP                ; |1006| 
-        MOVZ      AR6,SP                ; |1006| 
-        ADD       AR4,#-136             ; |1006| 
-        ADD       AR6,#-132             ; |1006| 
-        MOVL      XAR5,#FL1             ; |1006| 
-        LCR       #FD$$MPY              ; |1006| 
-        ; call occurs [#FD$$MPY] ; |1006| 
-        MOVZ      AR4,SP                ; |1006| 
-        ADD       AR4,#-132             ; |1006| 
-        LCR       #FD$$TOL              ; |1006| 
-        ; call occurs [#FD$$TOL] ; |1006| 
+        SUBB      XAR4,#64              ; |827| 
+        LCR       #_SpiReadRom          ; |827| 
+        ; call occurs [#_SpiReadRom] ; |827| 
+	.dwpsn	"Rom.c",829,2
+        MOVL      XAR0,#76              ; |829| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |829| 
+        MOVZ      AR7,AL                ; |829| 
+	.dwpsn	"Rom.c",830,2
+        MOV       ACC,*-SP[63] << #8    ; |830| 
+        OR        AR7,AL                ; |830| 
+	.dwpsn	"Rom.c",831,2
+        MOVZ      AR6,SP                ; |831| 
+        ADD       AR6,#-136             ; |831| 
+        MOV       AL,AR7                ; |831| 
+        LCR       #U$$TOFD              ; |831| 
+        ; call occurs [#U$$TOFD] ; |831| 
+        MOVZ      AR4,SP                ; |831| 
+        MOVZ      AR6,SP                ; |831| 
+        ADD       AR4,#-136             ; |831| 
+        ADD       AR6,#-132             ; |831| 
+        MOVL      XAR5,#FL1             ; |831| 
+        LCR       #FD$$MPY              ; |831| 
+        ; call occurs [#FD$$MPY] ; |831| 
+        MOVZ      AR4,SP                ; |831| 
+        ADD       AR4,#-132             ; |831| 
+        LCR       #FD$$TOL              ; |831| 
+        ; call occurs [#FD$$TOL] ; |831| 
         MOVW      DP,#_g_q17user_acc
-        MOVL      @_g_q17user_acc,ACC   ; |1006| 
-	.dwpsn	"Rom.c",1010,2
-        MOVZ      AR4,SP                ; |1010| 
+        MOVL      @_g_q17user_acc,ACC   ; |831| 
+	.dwpsn	"Rom.c",835,2
+        MOVZ      AR4,SP                ; |835| 
         MOVB      ACC,#33
-        ADD       AR4,#-128             ; |1010| 
-        MOVB      XAR5,#64              ; |1010| 
-        LCR       #_SpiReadRom          ; |1010| 
-        ; call occurs [#_SpiReadRom] ; |1010| 
-	.dwpsn	"Rom.c",1012,2
-        MOVL      XAR0,#12              ; |1012| 
-        AND       AL,*+FP[AR0],#0x00ff  ; |1012| 
-        MOVZ      AR7,AL                ; |1012| 
-	.dwpsn	"Rom.c",1013,2
-        MOVL      XAR0,#13              ; |1013| 
-        MOV       ACC,*+FP[AR0] << #8   ; |1013| 
-        OR        AR7,AL                ; |1013| 
-	.dwpsn	"Rom.c",1014,2
-        MOVZ      AR6,SP                ; |1014| 
-        ADD       AR6,#-136             ; |1014| 
-        MOV       AL,AR7                ; |1014| 
-        LCR       #U$$TOFD              ; |1014| 
-        ; call occurs [#U$$TOFD] ; |1014| 
-        MOVZ      AR4,SP                ; |1014| 
-        MOVZ      AR6,SP                ; |1014| 
-        ADD       AR4,#-136             ; |1014| 
-        ADD       AR6,#-132             ; |1014| 
-        MOVL      XAR5,#FL1             ; |1014| 
-        LCR       #FD$$MPY              ; |1014| 
-        ; call occurs [#FD$$MPY] ; |1014| 
-        MOVZ      AR4,SP                ; |1014| 
-        ADD       AR4,#-132             ; |1014| 
-        LCR       #FD$$TOL              ; |1014| 
-        ; call occurs [#FD$$TOL] ; |1014| 
+        ADD       AR4,#-128             ; |835| 
+        MOVB      XAR5,#64              ; |835| 
+        LCR       #_SpiReadRom          ; |835| 
+        ; call occurs [#_SpiReadRom] ; |835| 
+	.dwpsn	"Rom.c",837,2
+        MOVL      XAR0,#12              ; |837| 
+        AND       AL,*+FP[AR0],#0x00ff  ; |837| 
+        MOVZ      AR7,AL                ; |837| 
+	.dwpsn	"Rom.c",838,2
+        MOVL      XAR0,#13              ; |838| 
+        MOV       ACC,*+FP[AR0] << #8   ; |838| 
+        OR        AR7,AL                ; |838| 
+	.dwpsn	"Rom.c",839,2
+        MOVZ      AR6,SP                ; |839| 
+        ADD       AR6,#-136             ; |839| 
+        MOV       AL,AR7                ; |839| 
+        LCR       #U$$TOFD              ; |839| 
+        ; call occurs [#U$$TOFD] ; |839| 
+        MOVZ      AR4,SP                ; |839| 
+        MOVZ      AR6,SP                ; |839| 
+        ADD       AR4,#-136             ; |839| 
+        ADD       AR6,#-132             ; |839| 
+        MOVL      XAR5,#FL1             ; |839| 
+        LCR       #FD$$MPY              ; |839| 
+        ; call occurs [#FD$$MPY] ; |839| 
+        MOVZ      AR4,SP                ; |839| 
+        ADD       AR4,#-132             ; |839| 
+        LCR       #FD$$TOL              ; |839| 
+        ; call occurs [#FD$$TOL] ; |839| 
         MOVW      DP,#_g_q17end_acc
-        MOVL      @_g_q17end_acc,ACC    ; |1014| 
-	.dwpsn	"Rom.c",1016,2
+        MOVL      @_g_q17end_acc,ACC    ; |839| 
+	.dwpsn	"Rom.c",841,2
         MOVW      DP,#_g_q17user_acc
-        MOVL      ACC,@_g_q17user_acc   ; |1016| 
+        MOVL      ACC,@_g_q17user_acc   ; |841| 
         MOVW      DP,#_g_q17max_acc
-        MOVL      @_g_q17max_acc,ACC    ; |1016| 
-	.dwpsn	"Rom.c",1017,2
+        MOVL      @_g_q17max_acc,ACC    ; |841| 
+	.dwpsn	"Rom.c",842,2
         MOVW      DP,#_g_q17user_acc
-        MOVL      ACC,@_g_q17user_acc   ; |1017| 
+        MOVL      ACC,@_g_q17user_acc   ; |842| 
         MOVW      DP,#_g_q17mid_acc
-        MOVL      @_g_q17mid_acc,ACC    ; |1017| 
-	.dwpsn	"Rom.c",1018,2
+        MOVL      @_g_q17mid_acc,ACC    ; |842| 
+	.dwpsn	"Rom.c",843,2
         MOVW      DP,#_g_q17user_acc
-        MOVL      ACC,@_g_q17user_acc   ; |1018| 
+        MOVL      ACC,@_g_q17user_acc   ; |843| 
         MOVW      DP,#_g_q17short_acc
-        MOVL      @_g_q17short_acc,ACC  ; |1018| 
-	.dwpsn	"Rom.c",1021,1
+        MOVL      @_g_q17short_acc,ACC  ; |843| 
+	.dwpsn	"Rom.c",846,1
         ADD       SP,#-136
 	.dwcfa	0x1d, -4
         MOVL      XAR2,*--SP
@@ -6564,11 +5914,11 @@ DW$278	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_rea
 	.dwcfa	0xc0, 9
         LRETR
         ; return occurs
-	.dwattr DW$275, DW_AT_end_file("Rom.c")
-	.dwattr DW$275, DW_AT_end_line(0x3fd)
-	.dwattr DW$275, DW_AT_end_column(0x01)
+	.dwattr DW$236, DW_AT_end_file("Rom.c")
+	.dwattr DW$236, DW_AT_end_line(0x34e)
+	.dwattr DW$236, DW_AT_end_column(0x01)
 	.dwendentry
-	.dwendtag DW$275
+	.dwendtag DW$236
 
 ;***************************************************************
 ;* FLOATING-POINT CONSTANTS                                    *
@@ -6578,68 +5928,45 @@ DW$278	.dwtag  DW_TAG_variable, DW_AT_name("read_buf2"), DW_AT_symbol_name("_rea
 FL1:	.xldouble	1.31072000000000000000e+05
 	.align	2
 FL2:	.xldouble	6.55360000000000000000e+04
-	.align	2
-FL3:	.xldouble	1.28000000000000000000e+02
-;***************************************************************
-;* FAR STRINGS                                                 *
-;***************************************************************
-	.sect	".econst"
-	.align	2
-FSL1:	.string	"Write vel: %d",13,10,0
-	.align	2
-FSL2:	.string	"Read vel: %d",13,10,0
-	.align	2
-FSL3:	.string	"[%ld] : %5ld | %5ld | %5ld |",10,0
-	.align	2
-FSL4:	.string	"OS:%f",10,0
-	.align	2
-FSL5:	.string	"OF:%f",10,0
-	.align	2
-FSL6:	.string	"IS:%f",10,0
-	.align	2
-FSL7:	.string	"IF:%f",10,0
 ;***************************************************************
 ;* UNDEFINED EXTERNAL REFERENCES                               *
 ;***************************************************************
-	.global	_SpiWriteRom
-	.global	_TxPrintf
 	.global	_SpiReadRom
+	.global	_SpiWriteRom
 	.global	_g_u16turnmark_limit
-	.global	_g_q17s44s_vel
 	.global	_g_q17shift_ratio
 	.global	_g_q17escape45_vel
-	.global	_g_q17return_ratio
-	.global	_g_q17max_acc
-	.global	_g_q17_45acc
+	.global	_g_q17st_ret_ratio
 	.global	_g_q17short_acc
 	.global	_g_q17mid_acc
-	.global	_g_q1745user_vel
-	.global	_g_q16in_corner_fast_limit
-	.global	_g_int32shift_level
-	.global	_g_q16in_corner_limit
-	.global	_g_q17st_ret_ratio
+	.global	_g_q17s44s_vel
 	.global	_g_q17s4s_vel
-	.global	_g_q16out_corner_fast_limit
+	.global	_g_q16in_corner_fast_limit
+	.global	_g_q1745user_vel
 	.global	_g_q16out_corner_limit
-	.global	_memset
+	.global	_g_q17return_ratio
+	.global	_g_q16in_corner_limit
+	.global	_g_q16out_corner_fast_limit
 	.global	_g_int32mark_cnt
-	.global	__IQ17div
-	.global	__IQ16toF
-	.global	__IQ16div
-	.global	_g_q17user_vel
-	.global	_g_q17user_acc
-	.global	_g_q17turnmark_dist
 	.global	_g_q17sen_valmax
+	.global	_memset
+	.global	__IQ16div
 	.global	_g_int32total_cnt
+	.global	__IQ17div
+	.global	_g_q17_45acc
+	.global	_g_q17turnmark_dist
+	.global	_g_int32shift_level
+	.global	_g_q17user_acc
 	.global	_g_q17end_acc
-	.global	_g_run_info
-	.global	_g_line_info
+	.global	_g_q17max_acc
+	.global	_g_q17user_vel
 	.global	_g_sen
 	.global	_g_fast_info
 	.global	___memcpy_ff
 	.global	FD$$MPY
 	.global	U$$TOFD
 	.global	FD$$TOL
+	.global	I$$TOFD
 
 ;***************************************************************
 ;* TYPE INFORMATION                                            *
@@ -6647,32 +5974,25 @@ FSL7:	.string	"IF:%f",10,0
 DW$T$3	.dwtag  DW_TAG_pointer_type
 	.dwattr DW$T$3, DW_AT_address_class(0x16)
 
-DW$T$28	.dwtag  DW_TAG_subroutine_type, DW_AT_type(*DW$T$3)
+DW$T$25	.dwtag  DW_TAG_subroutine_type, DW_AT_type(*DW$T$3)
+	.dwattr DW$T$25, DW_AT_language(DW_LANG_C)
+DW$240	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$3)
+DW$241	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$10)
+DW$242	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$24)
+	.dwendtag DW$T$25
+
+
+DW$T$28	.dwtag  DW_TAG_subroutine_type
 	.dwattr DW$T$28, DW_AT_language(DW_LANG_C)
-DW$279	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$3)
-DW$280	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$10)
-DW$281	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$27)
+DW$243	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
+DW$244	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
+DW$245	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
+DW$246	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$27)
 	.dwendtag DW$T$28
 
 
-DW$T$32	.dwtag  DW_TAG_subroutine_type
-	.dwattr DW$T$32, DW_AT_language(DW_LANG_C)
-DW$282	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$31)
-DW$283	.dwtag  DW_TAG_unspecified_parameters
-	.dwendtag DW$T$32
-
-
-DW$T$35	.dwtag  DW_TAG_subroutine_type
-	.dwattr DW$T$35, DW_AT_language(DW_LANG_C)
-DW$284	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
-DW$285	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
-DW$286	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$21)
-DW$287	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$34)
-	.dwendtag DW$T$35
-
-
-DW$T$37	.dwtag  DW_TAG_subroutine_type
-	.dwattr DW$T$37, DW_AT_language(DW_LANG_C)
+DW$T$30	.dwtag  DW_TAG_subroutine_type
+	.dwattr DW$T$30, DW_AT_language(DW_LANG_C)
 DW$T$10	.dwtag  DW_TAG_base_type, DW_AT_name("int")
 	.dwattr DW$T$10, DW_AT_encoding(DW_ATE_signed)
 	.dwattr DW$T$10, DW_AT_byte_size(0x01)
@@ -6681,389 +6001,319 @@ DW$T$11	.dwtag  DW_TAG_base_type, DW_AT_name("unsigned int")
 	.dwattr DW$T$11, DW_AT_byte_size(0x01)
 DW$T$21	.dwtag  DW_TAG_typedef, DW_AT_name("Uint16"), DW_AT_type(*DW$T$11)
 	.dwattr DW$T$21, DW_AT_language(DW_LANG_C)
+DW$T$27	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$21)
+	.dwattr DW$T$27, DW_AT_address_class(0x16)
 
-DW$T$23	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$21)
-	.dwattr DW$T$23, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$23, DW_AT_byte_size(0x100)
-DW$288	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$288, DW_AT_upper_bound(0xff)
-	.dwendtag DW$T$23
-
-DW$T$34	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$21)
-	.dwattr DW$T$34, DW_AT_address_class(0x16)
-
-DW$T$41	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$40)
-	.dwattr DW$T$41, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$41, DW_AT_byte_size(0x100)
-DW$289	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$289, DW_AT_upper_bound(0xff)
-	.dwendtag DW$T$41
+DW$T$32	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$21)
+	.dwattr DW$T$32, DW_AT_language(DW_LANG_C)
+	.dwattr DW$T$32, DW_AT_byte_size(0x100)
+DW$247	.dwtag  DW_TAG_subrange_type
+	.dwattr DW$247, DW_AT_upper_bound(0xff)
+	.dwendtag DW$T$32
 
 
-DW$T$42	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$40)
-	.dwattr DW$T$42, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$42, DW_AT_byte_size(0x40)
-DW$290	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$290, DW_AT_upper_bound(0x3f)
-	.dwendtag DW$T$42
+DW$T$34	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$33)
+	.dwattr DW$T$34, DW_AT_language(DW_LANG_C)
+	.dwattr DW$T$34, DW_AT_byte_size(0x100)
+DW$248	.dwtag  DW_TAG_subrange_type
+	.dwattr DW$248, DW_AT_upper_bound(0xff)
+	.dwendtag DW$T$34
 
 
-DW$T$43	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$40)
-	.dwattr DW$T$43, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$43, DW_AT_byte_size(0x02)
-DW$291	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$291, DW_AT_upper_bound(0x01)
-	.dwendtag DW$T$43
+DW$T$35	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$33)
+	.dwattr DW$T$35, DW_AT_language(DW_LANG_C)
+	.dwattr DW$T$35, DW_AT_byte_size(0x40)
+DW$249	.dwtag  DW_TAG_subrange_type
+	.dwattr DW$249, DW_AT_upper_bound(0x3f)
+	.dwendtag DW$T$35
 
 
-DW$T$44	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$21)
-	.dwattr DW$T$44, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$44, DW_AT_byte_size(0x40)
-DW$292	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$292, DW_AT_upper_bound(0x3f)
-	.dwendtag DW$T$44
+DW$T$36	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$33)
+	.dwattr DW$T$36, DW_AT_language(DW_LANG_C)
+	.dwattr DW$T$36, DW_AT_byte_size(0x02)
+DW$250	.dwtag  DW_TAG_subrange_type
+	.dwattr DW$250, DW_AT_upper_bound(0x01)
+	.dwendtag DW$T$36
 
 
-DW$T$45	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$21)
-	.dwattr DW$T$45, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$45, DW_AT_byte_size(0x02)
-DW$293	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$293, DW_AT_upper_bound(0x01)
-	.dwendtag DW$T$45
+DW$T$37	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$21)
+	.dwattr DW$T$37, DW_AT_language(DW_LANG_C)
+	.dwattr DW$T$37, DW_AT_byte_size(0x40)
+DW$251	.dwtag  DW_TAG_subrange_type
+	.dwattr DW$251, DW_AT_upper_bound(0x3f)
+	.dwendtag DW$T$37
 
-DW$T$39	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$11)
-	.dwattr DW$T$39, DW_AT_address_class(0x16)
+
+DW$T$38	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$21)
+	.dwattr DW$T$38, DW_AT_language(DW_LANG_C)
+	.dwattr DW$T$38, DW_AT_byte_size(0x02)
+DW$252	.dwtag  DW_TAG_subrange_type
+	.dwattr DW$252, DW_AT_upper_bound(0x01)
+	.dwendtag DW$T$38
+
+DW$T$31	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$11)
+	.dwattr DW$T$31, DW_AT_address_class(0x16)
 DW$T$12	.dwtag  DW_TAG_base_type, DW_AT_name("long")
 	.dwattr DW$T$12, DW_AT_encoding(DW_ATE_signed)
 	.dwattr DW$T$12, DW_AT_byte_size(0x02)
 
-DW$T$54	.dwtag  DW_TAG_subroutine_type, DW_AT_type(*DW$T$12)
-	.dwattr DW$T$54, DW_AT_language(DW_LANG_C)
-DW$294	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-	.dwendtag DW$T$54
+DW$T$47	.dwtag  DW_TAG_subroutine_type, DW_AT_type(*DW$T$12)
+	.dwattr DW$T$47, DW_AT_language(DW_LANG_C)
+DW$253	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+DW$254	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+DW$255	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$10)
+	.dwendtag DW$T$47
 
 
-DW$T$55	.dwtag  DW_TAG_subroutine_type, DW_AT_type(*DW$T$12)
-	.dwattr DW$T$55, DW_AT_language(DW_LANG_C)
-DW$295	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-DW$296	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-DW$297	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$10)
-	.dwendtag DW$T$55
+DW$T$48	.dwtag  DW_TAG_subroutine_type, DW_AT_type(*DW$T$12)
+	.dwattr DW$T$48, DW_AT_language(DW_LANG_C)
+DW$256	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+DW$257	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
+	.dwendtag DW$T$48
 
+DW$T$50	.dwtag  DW_TAG_typedef, DW_AT_name("int32"), DW_AT_type(*DW$T$12)
+	.dwattr DW$T$50, DW_AT_language(DW_LANG_C)
+DW$258	.dwtag  DW_TAG_far_type
+	.dwattr DW$258, DW_AT_type(*DW$T$50)
+DW$T$51	.dwtag  DW_TAG_volatile_type
+	.dwattr DW$T$51, DW_AT_type(*DW$258)
+DW$T$52	.dwtag  DW_TAG_typedef, DW_AT_name("_iq"), DW_AT_type(*DW$T$12)
+	.dwattr DW$T$52, DW_AT_language(DW_LANG_C)
+DW$T$53	.dwtag  DW_TAG_typedef, DW_AT_name("_iq16"), DW_AT_type(*DW$T$12)
+	.dwattr DW$T$53, DW_AT_language(DW_LANG_C)
+DW$T$24	.dwtag  DW_TAG_typedef, DW_AT_name("size_t"), DW_AT_type(*DW$T$13)
+	.dwattr DW$T$24, DW_AT_language(DW_LANG_C)
 
-DW$T$56	.dwtag  DW_TAG_subroutine_type, DW_AT_type(*DW$T$12)
-	.dwattr DW$T$56, DW_AT_language(DW_LANG_C)
-DW$298	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-DW$299	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-	.dwendtag DW$T$56
-
-DW$T$58	.dwtag  DW_TAG_typedef, DW_AT_name("int32"), DW_AT_type(*DW$T$12)
+DW$T$58	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$57)
 	.dwattr DW$T$58, DW_AT_language(DW_LANG_C)
-DW$300	.dwtag  DW_TAG_far_type
-	.dwattr DW$300, DW_AT_type(*DW$T$58)
-DW$T$59	.dwtag  DW_TAG_volatile_type
-	.dwattr DW$T$59, DW_AT_type(*DW$300)
-DW$T$60	.dwtag  DW_TAG_typedef, DW_AT_name("_iq"), DW_AT_type(*DW$T$12)
-	.dwattr DW$T$60, DW_AT_language(DW_LANG_C)
-DW$T$61	.dwtag  DW_TAG_typedef, DW_AT_name("_iq16"), DW_AT_type(*DW$T$12)
-	.dwattr DW$T$61, DW_AT_language(DW_LANG_C)
-DW$T$27	.dwtag  DW_TAG_typedef, DW_AT_name("size_t"), DW_AT_type(*DW$T$13)
-	.dwattr DW$T$27, DW_AT_language(DW_LANG_C)
-DW$T$16	.dwtag  DW_TAG_base_type, DW_AT_name("float")
-	.dwattr DW$T$16, DW_AT_encoding(DW_ATE_float)
-	.dwattr DW$T$16, DW_AT_byte_size(0x02)
+	.dwattr DW$T$58, DW_AT_byte_size(0x120)
+DW$259	.dwtag  DW_TAG_subrange_type
+	.dwattr DW$259, DW_AT_upper_bound(0x0f)
+	.dwendtag DW$T$58
 
-DW$T$64	.dwtag  DW_TAG_subroutine_type, DW_AT_type(*DW$T$16)
-	.dwattr DW$T$64, DW_AT_language(DW_LANG_C)
-DW$301	.dwtag  DW_TAG_formal_parameter, DW_AT_type(*DW$T$12)
-	.dwendtag DW$T$64
+DW$T$60	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$56)
+	.dwattr DW$T$60, DW_AT_address_class(0x16)
 
+DW$T$63	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$62)
+	.dwattr DW$T$63, DW_AT_language(DW_LANG_C)
+	.dwattr DW$T$63, DW_AT_byte_size(0x2a00)
+DW$260	.dwtag  DW_TAG_subrange_type
+	.dwattr DW$260, DW_AT_upper_bound(0xff)
+	.dwendtag DW$T$63
 
-DW$T$68	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$67)
-	.dwattr DW$T$68, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$68, DW_AT_byte_size(0x120)
-DW$302	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$302, DW_AT_upper_bound(0x0f)
-	.dwendtag DW$T$68
-
-DW$T$70	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$66)
-	.dwattr DW$T$70, DW_AT_address_class(0x16)
-DW$T$72	.dwtag  DW_TAG_typedef, DW_AT_name("lineinfo_t"), DW_AT_type(*DW$T$71)
-	.dwattr DW$T$72, DW_AT_language(DW_LANG_C)
-
-DW$T$75	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$74)
-	.dwattr DW$T$75, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$75, DW_AT_byte_size(0x100)
-DW$303	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$303, DW_AT_upper_bound(0xff)
-	.dwendtag DW$T$75
-
-DW$T$77	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$73)
-	.dwattr DW$T$77, DW_AT_address_class(0x16)
-
-DW$T$80	.dwtag  DW_TAG_array_type, DW_AT_type(*DW$T$79)
-	.dwattr DW$T$80, DW_AT_language(DW_LANG_C)
-	.dwattr DW$T$80, DW_AT_byte_size(0x2a00)
-DW$304	.dwtag  DW_TAG_subrange_type
-	.dwattr DW$304, DW_AT_upper_bound(0xff)
-	.dwendtag DW$T$80
-
-DW$T$82	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$78)
-	.dwattr DW$T$82, DW_AT_address_class(0x16)
-DW$T$31	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$30)
-	.dwattr DW$T$31, DW_AT_address_class(0x16)
-DW$305	.dwtag  DW_TAG_far_type
-	.dwattr DW$305, DW_AT_type(*DW$T$21)
-DW$T$40	.dwtag  DW_TAG_const_type
-	.dwattr DW$T$40, DW_AT_type(*DW$305)
+DW$T$65	.dwtag  DW_TAG_pointer_type, DW_AT_type(*DW$T$61)
+	.dwattr DW$T$65, DW_AT_address_class(0x16)
+DW$261	.dwtag  DW_TAG_far_type
+	.dwattr DW$261, DW_AT_type(*DW$T$21)
+DW$T$33	.dwtag  DW_TAG_const_type
+	.dwattr DW$T$33, DW_AT_type(*DW$261)
 DW$T$13	.dwtag  DW_TAG_base_type, DW_AT_name("unsigned long")
 	.dwattr DW$T$13, DW_AT_encoding(DW_ATE_unsigned)
 	.dwattr DW$T$13, DW_AT_byte_size(0x02)
-DW$306	.dwtag  DW_TAG_far_type
-	.dwattr DW$306, DW_AT_type(*DW$T$22)
-DW$T$66	.dwtag  DW_TAG_volatile_type
-	.dwattr DW$T$66, DW_AT_type(*DW$306)
-DW$T$67	.dwtag  DW_TAG_typedef, DW_AT_name("sen_t"), DW_AT_type(*DW$T$66)
-	.dwattr DW$T$67, DW_AT_language(DW_LANG_C)
-DW$307	.dwtag  DW_TAG_far_type
-	.dwattr DW$307, DW_AT_type(*DW$T$24)
-DW$T$71	.dwtag  DW_TAG_volatile_type
-	.dwattr DW$T$71, DW_AT_type(*DW$307)
-DW$308	.dwtag  DW_TAG_far_type
-	.dwattr DW$308, DW_AT_type(*DW$T$25)
-DW$T$73	.dwtag  DW_TAG_volatile_type
-	.dwattr DW$T$73, DW_AT_type(*DW$308)
-DW$T$74	.dwtag  DW_TAG_typedef, DW_AT_name("runinfo_t"), DW_AT_type(*DW$T$73)
-	.dwattr DW$T$74, DW_AT_language(DW_LANG_C)
-DW$309	.dwtag  DW_TAG_far_type
-	.dwattr DW$309, DW_AT_type(*DW$T$26)
-DW$T$78	.dwtag  DW_TAG_volatile_type
-	.dwattr DW$T$78, DW_AT_type(*DW$309)
-DW$T$79	.dwtag  DW_TAG_typedef, DW_AT_name("fast_run_str"), DW_AT_type(*DW$T$78)
-	.dwattr DW$T$79, DW_AT_language(DW_LANG_C)
-DW$T$30	.dwtag  DW_TAG_base_type, DW_AT_name("signed char")
-	.dwattr DW$T$30, DW_AT_encoding(DW_ATE_signed_char)
-	.dwattr DW$T$30, DW_AT_byte_size(0x01)
+DW$262	.dwtag  DW_TAG_far_type
+	.dwattr DW$262, DW_AT_type(*DW$T$22)
+DW$T$56	.dwtag  DW_TAG_volatile_type
+	.dwattr DW$T$56, DW_AT_type(*DW$262)
+DW$T$57	.dwtag  DW_TAG_typedef, DW_AT_name("sen_t"), DW_AT_type(*DW$T$56)
+	.dwattr DW$T$57, DW_AT_language(DW_LANG_C)
+DW$263	.dwtag  DW_TAG_far_type
+	.dwattr DW$263, DW_AT_type(*DW$T$23)
+DW$T$61	.dwtag  DW_TAG_volatile_type
+	.dwattr DW$T$61, DW_AT_type(*DW$263)
+DW$T$62	.dwtag  DW_TAG_typedef, DW_AT_name("fast_run_str"), DW_AT_type(*DW$T$61)
+	.dwattr DW$T$62, DW_AT_language(DW_LANG_C)
 
 DW$T$22	.dwtag  DW_TAG_structure_type
 	.dwattr DW$T$22, DW_AT_name("sensor_variable")
 	.dwattr DW$T$22, DW_AT_byte_size(0x12)
-DW$310	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$310, DW_AT_name("iq17result"), DW_AT_symbol_name("_iq17result")
-	.dwattr DW$310, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-	.dwattr DW$310, DW_AT_accessibility(DW_ACCESS_public)
-DW$311	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$311, DW_AT_name("iq17min_value"), DW_AT_symbol_name("_iq17min_value")
-	.dwattr DW$311, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
-	.dwattr DW$311, DW_AT_accessibility(DW_ACCESS_public)
-DW$312	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$312, DW_AT_name("iq17max_value"), DW_AT_symbol_name("_iq17max_value")
-	.dwattr DW$312, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
-	.dwattr DW$312, DW_AT_accessibility(DW_ACCESS_public)
-DW$313	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$313, DW_AT_name("iq17data"), DW_AT_symbol_name("_iq17data")
-	.dwattr DW$313, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
-	.dwattr DW$313, DW_AT_accessibility(DW_ACCESS_public)
-DW$314	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$314, DW_AT_name("iq17sub_value_inverse"), DW_AT_symbol_name("_iq17sub_value_inverse")
-	.dwattr DW$314, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
-	.dwattr DW$314, DW_AT_accessibility(DW_ACCESS_public)
-DW$315	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$315, DW_AT_name("iq17sub_value_inverse_127mpy"), DW_AT_symbol_name("_iq17sub_value_inverse_127mpy")
-	.dwattr DW$315, DW_AT_data_member_location[DW_OP_plus_uconst 0xa]
-	.dwattr DW$315, DW_AT_accessibility(DW_ACCESS_public)
-DW$316	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
-	.dwattr DW$316, DW_AT_name("iq7weight"), DW_AT_symbol_name("_iq7weight")
-	.dwattr DW$316, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
-	.dwattr DW$316, DW_AT_accessibility(DW_ACCESS_public)
-DW$317	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$317, DW_AT_name("u16active_arr"), DW_AT_symbol_name("_u16active_arr")
-	.dwattr DW$317, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
-	.dwattr DW$317, DW_AT_accessibility(DW_ACCESS_public)
-DW$318	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$318, DW_AT_name("u16passive_arr"), DW_AT_symbol_name("_u16passive_arr")
-	.dwattr DW$318, DW_AT_data_member_location[DW_OP_plus_uconst 0xf]
-	.dwattr DW$318, DW_AT_accessibility(DW_ACCESS_public)
-DW$319	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$319, DW_AT_name("u16sensor"), DW_AT_symbol_name("_u16sensor")
-	.dwattr DW$319, DW_AT_data_member_location[DW_OP_plus_uconst 0x10]
-	.dwattr DW$319, DW_AT_accessibility(DW_ACCESS_public)
+DW$264	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$264, DW_AT_name("iq17result"), DW_AT_symbol_name("_iq17result")
+	.dwattr DW$264, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+	.dwattr DW$264, DW_AT_accessibility(DW_ACCESS_public)
+DW$265	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$265, DW_AT_name("iq17min_value"), DW_AT_symbol_name("_iq17min_value")
+	.dwattr DW$265, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+	.dwattr DW$265, DW_AT_accessibility(DW_ACCESS_public)
+DW$266	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$266, DW_AT_name("iq17max_value"), DW_AT_symbol_name("_iq17max_value")
+	.dwattr DW$266, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+	.dwattr DW$266, DW_AT_accessibility(DW_ACCESS_public)
+DW$267	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$267, DW_AT_name("iq17data"), DW_AT_symbol_name("_iq17data")
+	.dwattr DW$267, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
+	.dwattr DW$267, DW_AT_accessibility(DW_ACCESS_public)
+DW$268	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$268, DW_AT_name("iq17sub_value_inverse"), DW_AT_symbol_name("_iq17sub_value_inverse")
+	.dwattr DW$268, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+	.dwattr DW$268, DW_AT_accessibility(DW_ACCESS_public)
+DW$269	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$269, DW_AT_name("iq17sub_value_inverse_127mpy"), DW_AT_symbol_name("_iq17sub_value_inverse_127mpy")
+	.dwattr DW$269, DW_AT_data_member_location[DW_OP_plus_uconst 0xa]
+	.dwattr DW$269, DW_AT_accessibility(DW_ACCESS_public)
+DW$270	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
+	.dwattr DW$270, DW_AT_name("iq7weight"), DW_AT_symbol_name("_iq7weight")
+	.dwattr DW$270, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
+	.dwattr DW$270, DW_AT_accessibility(DW_ACCESS_public)
+DW$271	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$271, DW_AT_name("u16active_arr"), DW_AT_symbol_name("_u16active_arr")
+	.dwattr DW$271, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
+	.dwattr DW$271, DW_AT_accessibility(DW_ACCESS_public)
+DW$272	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$272, DW_AT_name("u16passive_arr"), DW_AT_symbol_name("_u16passive_arr")
+	.dwattr DW$272, DW_AT_data_member_location[DW_OP_plus_uconst 0xf]
+	.dwattr DW$272, DW_AT_accessibility(DW_ACCESS_public)
+DW$273	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$273, DW_AT_name("u16sensor"), DW_AT_symbol_name("_u16sensor")
+	.dwattr DW$273, DW_AT_data_member_location[DW_OP_plus_uconst 0x10]
+	.dwattr DW$273, DW_AT_accessibility(DW_ACCESS_public)
 	.dwendtag DW$T$22
 
 
-DW$T$24	.dwtag  DW_TAG_structure_type
-	.dwattr DW$T$24, DW_AT_byte_size(0x102)
-DW$320	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$320, DW_AT_name("u16cross_total_cnt"), DW_AT_symbol_name("_u16cross_total_cnt")
-	.dwattr DW$320, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-	.dwattr DW$320, DW_AT_accessibility(DW_ACCESS_public)
-DW$321	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$321, DW_AT_name("u16cross_final_cnt"), DW_AT_symbol_name("_u16cross_final_cnt")
-	.dwattr DW$321, DW_AT_data_member_location[DW_OP_plus_uconst 0x1]
-	.dwattr DW$321, DW_AT_accessibility(DW_ACCESS_public)
-DW$322	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$23)
-	.dwattr DW$322, DW_AT_name("u16err_dist"), DW_AT_symbol_name("_u16err_dist")
-	.dwattr DW$322, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
-	.dwattr DW$322, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag DW$T$24
-
-
-DW$T$25	.dwtag  DW_TAG_structure_type
-	.dwattr DW$T$25, DW_AT_byte_size(0x01)
-DW$323	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$323, DW_AT_name("u16cross_debug_arr"), DW_AT_symbol_name("_u16cross_debug_arr")
-	.dwattr DW$323, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-	.dwattr DW$323, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag DW$T$25
-
-
-DW$T$26	.dwtag  DW_TAG_structure_type
-	.dwattr DW$T$26, DW_AT_name("fast_run_struct")
-	.dwattr DW$T$26, DW_AT_byte_size(0x2a)
-DW$324	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
-	.dwattr DW$324, DW_AT_name("q7kp_val"), DW_AT_symbol_name("_q7kp_val")
-	.dwattr DW$324, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
-	.dwattr DW$324, DW_AT_accessibility(DW_ACCESS_public)
-DW$325	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
-	.dwattr DW$325, DW_AT_name("iq7mark_dist"), DW_AT_symbol_name("_iq7mark_dist")
-	.dwattr DW$325, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
-	.dwattr DW$325, DW_AT_accessibility(DW_ACCESS_public)
-DW$326	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
-	.dwattr DW$326, DW_AT_name("iq7mark_start_dist"), DW_AT_symbol_name("_iq7mark_start_dist")
-	.dwattr DW$326, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
-	.dwattr DW$326, DW_AT_accessibility(DW_ACCESS_public)
-DW$327	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
-	.dwattr DW$327, DW_AT_name("iq7pos_integral_val"), DW_AT_symbol_name("_iq7pos_integral_val")
-	.dwattr DW$327, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
-	.dwattr DW$327, DW_AT_accessibility(DW_ACCESS_public)
-DW$328	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$328, DW_AT_name("q17dist_limit"), DW_AT_symbol_name("_q17dist_limit")
-	.dwattr DW$328, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
-	.dwattr DW$328, DW_AT_accessibility(DW_ACCESS_public)
-DW$329	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$329, DW_AT_name("q17shift_before"), DW_AT_symbol_name("_q17shift_before")
-	.dwattr DW$329, DW_AT_data_member_location[DW_OP_plus_uconst 0xa]
-	.dwattr DW$329, DW_AT_accessibility(DW_ACCESS_public)
-DW$330	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$330, DW_AT_name("q17shift_after"), DW_AT_symbol_name("_q17shift_after")
-	.dwattr DW$330, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
-	.dwattr DW$330, DW_AT_accessibility(DW_ACCESS_public)
-DW$331	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$331, DW_AT_name("speed_up_45"), DW_AT_symbol_name("_speed_up_45")
-	.dwattr DW$331, DW_AT_bit_offset(0x0f), DW_AT_bit_size(0x01)
-	.dwattr DW$331, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
-	.dwattr DW$331, DW_AT_accessibility(DW_ACCESS_public)
-DW$332	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$332, DW_AT_name("s44s_flag"), DW_AT_symbol_name("_s44s_flag")
-	.dwattr DW$332, DW_AT_bit_offset(0x0e), DW_AT_bit_size(0x01)
-	.dwattr DW$332, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
-	.dwattr DW$332, DW_AT_accessibility(DW_ACCESS_public)
-DW$333	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$333, DW_AT_name("down_flag"), DW_AT_symbol_name("_down_flag")
-	.dwattr DW$333, DW_AT_bit_offset(0x0d), DW_AT_bit_size(0x01)
-	.dwattr DW$333, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
-	.dwattr DW$333, DW_AT_accessibility(DW_ACCESS_public)
-DW$334	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$334, DW_AT_name("escape_flag"), DW_AT_symbol_name("_escape_flag")
-	.dwattr DW$334, DW_AT_bit_offset(0x0c), DW_AT_bit_size(0x01)
-	.dwattr DW$334, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
-	.dwattr DW$334, DW_AT_accessibility(DW_ACCESS_public)
-DW$335	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$335, DW_AT_name("same_dir"), DW_AT_symbol_name("_same_dir")
-	.dwattr DW$335, DW_AT_bit_offset(0x0b), DW_AT_bit_size(0x01)
-	.dwattr DW$335, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
-	.dwattr DW$335, DW_AT_accessibility(DW_ACCESS_public)
-DW$336	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$336, DW_AT_name("cross_out"), DW_AT_symbol_name("_cross_out")
-	.dwattr DW$336, DW_AT_bit_offset(0x0a), DW_AT_bit_size(0x01)
-	.dwattr DW$336, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
-	.dwattr DW$336, DW_AT_accessibility(DW_ACCESS_public)
-DW$337	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$337, DW_AT_name("q17r_dist"), DW_AT_symbol_name("_q17r_dist")
-	.dwattr DW$337, DW_AT_data_member_location[DW_OP_plus_uconst 0x10]
-	.dwattr DW$337, DW_AT_accessibility(DW_ACCESS_public)
-DW$338	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$338, DW_AT_name("q17l_dist"), DW_AT_symbol_name("_q17l_dist")
-	.dwattr DW$338, DW_AT_data_member_location[DW_OP_plus_uconst 0x12]
-	.dwattr DW$338, DW_AT_accessibility(DW_ACCESS_public)
-DW$339	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$339, DW_AT_name("q17acc"), DW_AT_symbol_name("_q17acc")
-	.dwattr DW$339, DW_AT_data_member_location[DW_OP_plus_uconst 0x14]
-	.dwattr DW$339, DW_AT_accessibility(DW_ACCESS_public)
-DW$340	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$340, DW_AT_name("q17in_vel"), DW_AT_symbol_name("_q17in_vel")
-	.dwattr DW$340, DW_AT_data_member_location[DW_OP_plus_uconst 0x16]
-	.dwattr DW$340, DW_AT_accessibility(DW_ACCESS_public)
-DW$341	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$341, DW_AT_name("q17vel"), DW_AT_symbol_name("_q17vel")
-	.dwattr DW$341, DW_AT_data_member_location[DW_OP_plus_uconst 0x18]
-	.dwattr DW$341, DW_AT_accessibility(DW_ACCESS_public)
-DW$342	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$342, DW_AT_name("q17out_vel"), DW_AT_symbol_name("_q17out_vel")
-	.dwattr DW$342, DW_AT_data_member_location[DW_OP_plus_uconst 0x1a]
-	.dwattr DW$342, DW_AT_accessibility(DW_ACCESS_public)
-DW$343	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$343, DW_AT_name("q17dec_dist"), DW_AT_symbol_name("_q17dec_dist")
-	.dwattr DW$343, DW_AT_data_member_location[DW_OP_plus_uconst 0x1c]
-	.dwattr DW$343, DW_AT_accessibility(DW_ACCESS_public)
-DW$344	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$344, DW_AT_name("q17m_dist"), DW_AT_symbol_name("_q17m_dist")
-	.dwattr DW$344, DW_AT_data_member_location[DW_OP_plus_uconst 0x1e]
-	.dwattr DW$344, DW_AT_accessibility(DW_ACCESS_public)
-DW$345	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$345, DW_AT_name("q17str_cross"), DW_AT_symbol_name("_q17str_cross")
-	.dwattr DW$345, DW_AT_data_member_location[DW_OP_plus_uconst 0x20]
-	.dwattr DW$345, DW_AT_accessibility(DW_ACCESS_public)
-DW$346	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$346, DW_AT_name("q17end_cross"), DW_AT_symbol_name("_q17end_cross")
-	.dwattr DW$346, DW_AT_data_member_location[DW_OP_plus_uconst 0x22]
-	.dwattr DW$346, DW_AT_accessibility(DW_ACCESS_public)
-DW$347	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
-	.dwattr DW$347, DW_AT_name("q17angle"), DW_AT_symbol_name("_q17angle")
-	.dwattr DW$347, DW_AT_data_member_location[DW_OP_plus_uconst 0x24]
-	.dwattr DW$347, DW_AT_accessibility(DW_ACCESS_public)
-DW$348	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$348, DW_AT_name("u16turn_way"), DW_AT_symbol_name("_u16turn_way")
-	.dwattr DW$348, DW_AT_data_member_location[DW_OP_plus_uconst 0x26]
-	.dwattr DW$348, DW_AT_accessibility(DW_ACCESS_public)
-DW$349	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$349, DW_AT_name("u16turn_cnt"), DW_AT_symbol_name("_u16turn_cnt")
-	.dwattr DW$349, DW_AT_data_member_location[DW_OP_plus_uconst 0x27]
-	.dwattr DW$349, DW_AT_accessibility(DW_ACCESS_public)
-DW$350	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$350, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
-	.dwattr DW$350, DW_AT_data_member_location[DW_OP_plus_uconst 0x28]
-	.dwattr DW$350, DW_AT_accessibility(DW_ACCESS_public)
-DW$351	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
-	.dwattr DW$351, DW_AT_name("u16dist"), DW_AT_symbol_name("_u16dist")
-	.dwattr DW$351, DW_AT_data_member_location[DW_OP_plus_uconst 0x29]
-	.dwattr DW$351, DW_AT_accessibility(DW_ACCESS_public)
-	.dwendtag DW$T$26
+DW$T$23	.dwtag  DW_TAG_structure_type
+	.dwattr DW$T$23, DW_AT_name("fast_run_struct")
+	.dwattr DW$T$23, DW_AT_byte_size(0x2a)
+DW$274	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
+	.dwattr DW$274, DW_AT_name("q7kp_val"), DW_AT_symbol_name("_q7kp_val")
+	.dwattr DW$274, DW_AT_data_member_location[DW_OP_plus_uconst 0x0]
+	.dwattr DW$274, DW_AT_accessibility(DW_ACCESS_public)
+DW$275	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
+	.dwattr DW$275, DW_AT_name("iq7mark_dist"), DW_AT_symbol_name("_iq7mark_dist")
+	.dwattr DW$275, DW_AT_data_member_location[DW_OP_plus_uconst 0x2]
+	.dwattr DW$275, DW_AT_accessibility(DW_ACCESS_public)
+DW$276	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
+	.dwattr DW$276, DW_AT_name("iq7mark_start_dist"), DW_AT_symbol_name("_iq7mark_start_dist")
+	.dwattr DW$276, DW_AT_data_member_location[DW_OP_plus_uconst 0x4]
+	.dwattr DW$276, DW_AT_accessibility(DW_ACCESS_public)
+DW$277	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$20)
+	.dwattr DW$277, DW_AT_name("iq7pos_integral_val"), DW_AT_symbol_name("_iq7pos_integral_val")
+	.dwattr DW$277, DW_AT_data_member_location[DW_OP_plus_uconst 0x6]
+	.dwattr DW$277, DW_AT_accessibility(DW_ACCESS_public)
+DW$278	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$278, DW_AT_name("q17dist_limit"), DW_AT_symbol_name("_q17dist_limit")
+	.dwattr DW$278, DW_AT_data_member_location[DW_OP_plus_uconst 0x8]
+	.dwattr DW$278, DW_AT_accessibility(DW_ACCESS_public)
+DW$279	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$279, DW_AT_name("q17shift_before"), DW_AT_symbol_name("_q17shift_before")
+	.dwattr DW$279, DW_AT_data_member_location[DW_OP_plus_uconst 0xa]
+	.dwattr DW$279, DW_AT_accessibility(DW_ACCESS_public)
+DW$280	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$280, DW_AT_name("q17shift_after"), DW_AT_symbol_name("_q17shift_after")
+	.dwattr DW$280, DW_AT_data_member_location[DW_OP_plus_uconst 0xc]
+	.dwattr DW$280, DW_AT_accessibility(DW_ACCESS_public)
+DW$281	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$281, DW_AT_name("speed_up_45"), DW_AT_symbol_name("_speed_up_45")
+	.dwattr DW$281, DW_AT_bit_offset(0x0f), DW_AT_bit_size(0x01)
+	.dwattr DW$281, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
+	.dwattr DW$281, DW_AT_accessibility(DW_ACCESS_public)
+DW$282	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$282, DW_AT_name("s44s_flag"), DW_AT_symbol_name("_s44s_flag")
+	.dwattr DW$282, DW_AT_bit_offset(0x0e), DW_AT_bit_size(0x01)
+	.dwattr DW$282, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
+	.dwattr DW$282, DW_AT_accessibility(DW_ACCESS_public)
+DW$283	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$283, DW_AT_name("down_flag"), DW_AT_symbol_name("_down_flag")
+	.dwattr DW$283, DW_AT_bit_offset(0x0d), DW_AT_bit_size(0x01)
+	.dwattr DW$283, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
+	.dwattr DW$283, DW_AT_accessibility(DW_ACCESS_public)
+DW$284	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$284, DW_AT_name("escape_flag"), DW_AT_symbol_name("_escape_flag")
+	.dwattr DW$284, DW_AT_bit_offset(0x0c), DW_AT_bit_size(0x01)
+	.dwattr DW$284, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
+	.dwattr DW$284, DW_AT_accessibility(DW_ACCESS_public)
+DW$285	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$285, DW_AT_name("same_dir"), DW_AT_symbol_name("_same_dir")
+	.dwattr DW$285, DW_AT_bit_offset(0x0b), DW_AT_bit_size(0x01)
+	.dwattr DW$285, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
+	.dwattr DW$285, DW_AT_accessibility(DW_ACCESS_public)
+DW$286	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$286, DW_AT_name("cross_out"), DW_AT_symbol_name("_cross_out")
+	.dwattr DW$286, DW_AT_bit_offset(0x0a), DW_AT_bit_size(0x01)
+	.dwattr DW$286, DW_AT_data_member_location[DW_OP_plus_uconst 0xe]
+	.dwattr DW$286, DW_AT_accessibility(DW_ACCESS_public)
+DW$287	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$287, DW_AT_name("q17r_dist"), DW_AT_symbol_name("_q17r_dist")
+	.dwattr DW$287, DW_AT_data_member_location[DW_OP_plus_uconst 0x10]
+	.dwattr DW$287, DW_AT_accessibility(DW_ACCESS_public)
+DW$288	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$288, DW_AT_name("q17l_dist"), DW_AT_symbol_name("_q17l_dist")
+	.dwattr DW$288, DW_AT_data_member_location[DW_OP_plus_uconst 0x12]
+	.dwattr DW$288, DW_AT_accessibility(DW_ACCESS_public)
+DW$289	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$289, DW_AT_name("q17acc"), DW_AT_symbol_name("_q17acc")
+	.dwattr DW$289, DW_AT_data_member_location[DW_OP_plus_uconst 0x14]
+	.dwattr DW$289, DW_AT_accessibility(DW_ACCESS_public)
+DW$290	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$290, DW_AT_name("q17in_vel"), DW_AT_symbol_name("_q17in_vel")
+	.dwattr DW$290, DW_AT_data_member_location[DW_OP_plus_uconst 0x16]
+	.dwattr DW$290, DW_AT_accessibility(DW_ACCESS_public)
+DW$291	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$291, DW_AT_name("q17vel"), DW_AT_symbol_name("_q17vel")
+	.dwattr DW$291, DW_AT_data_member_location[DW_OP_plus_uconst 0x18]
+	.dwattr DW$291, DW_AT_accessibility(DW_ACCESS_public)
+DW$292	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$292, DW_AT_name("q17out_vel"), DW_AT_symbol_name("_q17out_vel")
+	.dwattr DW$292, DW_AT_data_member_location[DW_OP_plus_uconst 0x1a]
+	.dwattr DW$292, DW_AT_accessibility(DW_ACCESS_public)
+DW$293	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$293, DW_AT_name("q17dec_dist"), DW_AT_symbol_name("_q17dec_dist")
+	.dwattr DW$293, DW_AT_data_member_location[DW_OP_plus_uconst 0x1c]
+	.dwattr DW$293, DW_AT_accessibility(DW_ACCESS_public)
+DW$294	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$294, DW_AT_name("q17m_dist"), DW_AT_symbol_name("_q17m_dist")
+	.dwattr DW$294, DW_AT_data_member_location[DW_OP_plus_uconst 0x1e]
+	.dwattr DW$294, DW_AT_accessibility(DW_ACCESS_public)
+DW$295	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$295, DW_AT_name("q17str_cross"), DW_AT_symbol_name("_q17str_cross")
+	.dwattr DW$295, DW_AT_data_member_location[DW_OP_plus_uconst 0x20]
+	.dwattr DW$295, DW_AT_accessibility(DW_ACCESS_public)
+DW$296	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$296, DW_AT_name("q17end_cross"), DW_AT_symbol_name("_q17end_cross")
+	.dwattr DW$296, DW_AT_data_member_location[DW_OP_plus_uconst 0x22]
+	.dwattr DW$296, DW_AT_accessibility(DW_ACCESS_public)
+DW$297	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$19)
+	.dwattr DW$297, DW_AT_name("q17angle"), DW_AT_symbol_name("_q17angle")
+	.dwattr DW$297, DW_AT_data_member_location[DW_OP_plus_uconst 0x24]
+	.dwattr DW$297, DW_AT_accessibility(DW_ACCESS_public)
+DW$298	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$298, DW_AT_name("u16turn_way"), DW_AT_symbol_name("_u16turn_way")
+	.dwattr DW$298, DW_AT_data_member_location[DW_OP_plus_uconst 0x26]
+	.dwattr DW$298, DW_AT_accessibility(DW_ACCESS_public)
+DW$299	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$299, DW_AT_name("u16turn_cnt"), DW_AT_symbol_name("_u16turn_cnt")
+	.dwattr DW$299, DW_AT_data_member_location[DW_OP_plus_uconst 0x27]
+	.dwattr DW$299, DW_AT_accessibility(DW_ACCESS_public)
+DW$300	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$300, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+	.dwattr DW$300, DW_AT_data_member_location[DW_OP_plus_uconst 0x28]
+	.dwattr DW$300, DW_AT_accessibility(DW_ACCESS_public)
+DW$301	.dwtag  DW_TAG_member, DW_AT_type(*DW$T$21)
+	.dwattr DW$301, DW_AT_name("u16dist"), DW_AT_symbol_name("_u16dist")
+	.dwattr DW$301, DW_AT_data_member_location[DW_OP_plus_uconst 0x29]
+	.dwattr DW$301, DW_AT_accessibility(DW_ACCESS_public)
+	.dwendtag DW$T$23
 
 DW$T$19	.dwtag  DW_TAG_typedef, DW_AT_name("_iq17"), DW_AT_type(*DW$T$12)
 	.dwattr DW$T$19, DW_AT_language(DW_LANG_C)
 DW$T$20	.dwtag  DW_TAG_typedef, DW_AT_name("_iq7"), DW_AT_type(*DW$T$12)
 	.dwattr DW$T$20, DW_AT_language(DW_LANG_C)
 
-	.dwattr DW$275, DW_AT_external(0x01)
-	.dwattr DW$270, DW_AT_external(0x01)
-	.dwattr DW$259, DW_AT_external(0x01)
-	.dwattr DW$249, DW_AT_external(0x01)
-	.dwattr DW$238, DW_AT_external(0x01)
-	.dwattr DW$219, DW_AT_external(0x01)
-	.dwattr DW$193, DW_AT_external(0x01)
-	.dwattr DW$169, DW_AT_external(0x01)
-	.dwattr DW$159, DW_AT_external(0x01)
-	.dwattr DW$150, DW_AT_external(0x01)
-	.dwattr DW$148, DW_AT_external(0x01)
-	.dwattr DW$146, DW_AT_external(0x01)
-	.dwattr DW$138, DW_AT_external(0x01)
-	.dwattr DW$135, DW_AT_external(0x01)
+	.dwattr DW$236, DW_AT_external(0x01)
+	.dwattr DW$231, DW_AT_external(0x01)
+	.dwattr DW$220, DW_AT_external(0x01)
+	.dwattr DW$201, DW_AT_external(0x01)
+	.dwattr DW$175, DW_AT_external(0x01)
+	.dwattr DW$151, DW_AT_external(0x01)
+	.dwattr DW$145, DW_AT_external(0x01)
+	.dwattr DW$136, DW_AT_external(0x01)
 	.dwattr DW$134, DW_AT_external(0x01)
-	.dwattr DW$129, DW_AT_external(0x01)
+	.dwattr DW$132, DW_AT_external(0x01)
+	.dwattr DW$125, DW_AT_external(0x01)
 	.dwattr DW$122, DW_AT_external(0x01)
-	.dwattr DW$119, DW_AT_external(0x01)
+	.dwattr DW$121, DW_AT_external(0x01)
 	.dwattr DW$116, DW_AT_external(0x01)
+	.dwattr DW$109, DW_AT_external(0x01)
+	.dwattr DW$106, DW_AT_external(0x01)
+	.dwattr DW$103, DW_AT_external(0x01)
 	.dwattr DW$CU, DW_AT_language(DW_LANG_C)
 
 ;***************************************************************
@@ -7118,87 +6368,87 @@ DW$CIE	.dwcie 1, 40
 ;* DWARF REGISTER MAP                                          *
 ;***************************************************************
 
-DW$352	.dwtag  DW_TAG_assign_register, DW_AT_name("AL")
-	.dwattr DW$352, DW_AT_location[DW_OP_reg0]
-DW$353	.dwtag  DW_TAG_assign_register, DW_AT_name("AH")
-	.dwattr DW$353, DW_AT_location[DW_OP_reg1]
-DW$354	.dwtag  DW_TAG_assign_register, DW_AT_name("PL")
-	.dwattr DW$354, DW_AT_location[DW_OP_reg2]
-DW$355	.dwtag  DW_TAG_assign_register, DW_AT_name("PH")
-	.dwattr DW$355, DW_AT_location[DW_OP_reg3]
-DW$356	.dwtag  DW_TAG_assign_register, DW_AT_name("AR0")
-	.dwattr DW$356, DW_AT_location[DW_OP_reg4]
-DW$357	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR0")
-	.dwattr DW$357, DW_AT_location[DW_OP_reg5]
-DW$358	.dwtag  DW_TAG_assign_register, DW_AT_name("AR1")
-	.dwattr DW$358, DW_AT_location[DW_OP_reg6]
-DW$359	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR1")
-	.dwattr DW$359, DW_AT_location[DW_OP_reg7]
-DW$360	.dwtag  DW_TAG_assign_register, DW_AT_name("AR2")
-	.dwattr DW$360, DW_AT_location[DW_OP_reg8]
-DW$361	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR2")
-	.dwattr DW$361, DW_AT_location[DW_OP_reg9]
-DW$362	.dwtag  DW_TAG_assign_register, DW_AT_name("AR3")
-	.dwattr DW$362, DW_AT_location[DW_OP_reg10]
-DW$363	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR3")
-	.dwattr DW$363, DW_AT_location[DW_OP_reg11]
-DW$364	.dwtag  DW_TAG_assign_register, DW_AT_name("AR4")
-	.dwattr DW$364, DW_AT_location[DW_OP_reg12]
-DW$365	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR4")
-	.dwattr DW$365, DW_AT_location[DW_OP_reg13]
-DW$366	.dwtag  DW_TAG_assign_register, DW_AT_name("AR5")
-	.dwattr DW$366, DW_AT_location[DW_OP_reg14]
-DW$367	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR5")
-	.dwattr DW$367, DW_AT_location[DW_OP_reg15]
-DW$368	.dwtag  DW_TAG_assign_register, DW_AT_name("AR6")
-	.dwattr DW$368, DW_AT_location[DW_OP_reg16]
-DW$369	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR6")
-	.dwattr DW$369, DW_AT_location[DW_OP_reg17]
-DW$370	.dwtag  DW_TAG_assign_register, DW_AT_name("AR7")
-	.dwattr DW$370, DW_AT_location[DW_OP_reg18]
-DW$371	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR7")
-	.dwattr DW$371, DW_AT_location[DW_OP_reg19]
-DW$372	.dwtag  DW_TAG_assign_register, DW_AT_name("SP")
-	.dwattr DW$372, DW_AT_location[DW_OP_reg20]
-DW$373	.dwtag  DW_TAG_assign_register, DW_AT_name("XT")
-	.dwattr DW$373, DW_AT_location[DW_OP_reg21]
-DW$374	.dwtag  DW_TAG_assign_register, DW_AT_name("T")
-	.dwattr DW$374, DW_AT_location[DW_OP_reg22]
-DW$375	.dwtag  DW_TAG_assign_register, DW_AT_name("ST0")
-	.dwattr DW$375, DW_AT_location[DW_OP_reg23]
-DW$376	.dwtag  DW_TAG_assign_register, DW_AT_name("ST1")
-	.dwattr DW$376, DW_AT_location[DW_OP_reg24]
-DW$377	.dwtag  DW_TAG_assign_register, DW_AT_name("PC")
-	.dwattr DW$377, DW_AT_location[DW_OP_reg25]
-DW$378	.dwtag  DW_TAG_assign_register, DW_AT_name("RPC")
-	.dwattr DW$378, DW_AT_location[DW_OP_reg26]
-DW$379	.dwtag  DW_TAG_assign_register, DW_AT_name("FP")
-	.dwattr DW$379, DW_AT_location[DW_OP_reg27]
-DW$380	.dwtag  DW_TAG_assign_register, DW_AT_name("DP")
-	.dwattr DW$380, DW_AT_location[DW_OP_reg28]
-DW$381	.dwtag  DW_TAG_assign_register, DW_AT_name("SXM")
-	.dwattr DW$381, DW_AT_location[DW_OP_reg29]
-DW$382	.dwtag  DW_TAG_assign_register, DW_AT_name("PM")
-	.dwattr DW$382, DW_AT_location[DW_OP_reg30]
-DW$383	.dwtag  DW_TAG_assign_register, DW_AT_name("OVM")
-	.dwattr DW$383, DW_AT_location[DW_OP_reg31]
-DW$384	.dwtag  DW_TAG_assign_register, DW_AT_name("PAGE0")
-	.dwattr DW$384, DW_AT_location[DW_OP_regx 0x20]
-DW$385	.dwtag  DW_TAG_assign_register, DW_AT_name("AMODE")
-	.dwattr DW$385, DW_AT_location[DW_OP_regx 0x21]
-DW$386	.dwtag  DW_TAG_assign_register, DW_AT_name("IFR")
-	.dwattr DW$386, DW_AT_location[DW_OP_regx 0x22]
-DW$387	.dwtag  DW_TAG_assign_register, DW_AT_name("IER")
-	.dwattr DW$387, DW_AT_location[DW_OP_regx 0x23]
-DW$388	.dwtag  DW_TAG_assign_register, DW_AT_name("IER")
-	.dwattr DW$388, DW_AT_location[DW_OP_regx 0x24]
-DW$389	.dwtag  DW_TAG_assign_register, DW_AT_name("PSEUDO")
-	.dwattr DW$389, DW_AT_location[DW_OP_regx 0x25]
-DW$390	.dwtag  DW_TAG_assign_register, DW_AT_name("PSEUDOH")
-	.dwattr DW$390, DW_AT_location[DW_OP_regx 0x26]
-DW$391	.dwtag  DW_TAG_assign_register, DW_AT_name("VOL")
-	.dwattr DW$391, DW_AT_location[DW_OP_regx 0x27]
-DW$392	.dwtag  DW_TAG_assign_register, DW_AT_name("CIE_RETA")
-	.dwattr DW$392, DW_AT_location[DW_OP_regx 0x28]
+DW$302	.dwtag  DW_TAG_assign_register, DW_AT_name("AL")
+	.dwattr DW$302, DW_AT_location[DW_OP_reg0]
+DW$303	.dwtag  DW_TAG_assign_register, DW_AT_name("AH")
+	.dwattr DW$303, DW_AT_location[DW_OP_reg1]
+DW$304	.dwtag  DW_TAG_assign_register, DW_AT_name("PL")
+	.dwattr DW$304, DW_AT_location[DW_OP_reg2]
+DW$305	.dwtag  DW_TAG_assign_register, DW_AT_name("PH")
+	.dwattr DW$305, DW_AT_location[DW_OP_reg3]
+DW$306	.dwtag  DW_TAG_assign_register, DW_AT_name("AR0")
+	.dwattr DW$306, DW_AT_location[DW_OP_reg4]
+DW$307	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR0")
+	.dwattr DW$307, DW_AT_location[DW_OP_reg5]
+DW$308	.dwtag  DW_TAG_assign_register, DW_AT_name("AR1")
+	.dwattr DW$308, DW_AT_location[DW_OP_reg6]
+DW$309	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR1")
+	.dwattr DW$309, DW_AT_location[DW_OP_reg7]
+DW$310	.dwtag  DW_TAG_assign_register, DW_AT_name("AR2")
+	.dwattr DW$310, DW_AT_location[DW_OP_reg8]
+DW$311	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR2")
+	.dwattr DW$311, DW_AT_location[DW_OP_reg9]
+DW$312	.dwtag  DW_TAG_assign_register, DW_AT_name("AR3")
+	.dwattr DW$312, DW_AT_location[DW_OP_reg10]
+DW$313	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR3")
+	.dwattr DW$313, DW_AT_location[DW_OP_reg11]
+DW$314	.dwtag  DW_TAG_assign_register, DW_AT_name("AR4")
+	.dwattr DW$314, DW_AT_location[DW_OP_reg12]
+DW$315	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR4")
+	.dwattr DW$315, DW_AT_location[DW_OP_reg13]
+DW$316	.dwtag  DW_TAG_assign_register, DW_AT_name("AR5")
+	.dwattr DW$316, DW_AT_location[DW_OP_reg14]
+DW$317	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR5")
+	.dwattr DW$317, DW_AT_location[DW_OP_reg15]
+DW$318	.dwtag  DW_TAG_assign_register, DW_AT_name("AR6")
+	.dwattr DW$318, DW_AT_location[DW_OP_reg16]
+DW$319	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR6")
+	.dwattr DW$319, DW_AT_location[DW_OP_reg17]
+DW$320	.dwtag  DW_TAG_assign_register, DW_AT_name("AR7")
+	.dwattr DW$320, DW_AT_location[DW_OP_reg18]
+DW$321	.dwtag  DW_TAG_assign_register, DW_AT_name("XAR7")
+	.dwattr DW$321, DW_AT_location[DW_OP_reg19]
+DW$322	.dwtag  DW_TAG_assign_register, DW_AT_name("SP")
+	.dwattr DW$322, DW_AT_location[DW_OP_reg20]
+DW$323	.dwtag  DW_TAG_assign_register, DW_AT_name("XT")
+	.dwattr DW$323, DW_AT_location[DW_OP_reg21]
+DW$324	.dwtag  DW_TAG_assign_register, DW_AT_name("T")
+	.dwattr DW$324, DW_AT_location[DW_OP_reg22]
+DW$325	.dwtag  DW_TAG_assign_register, DW_AT_name("ST0")
+	.dwattr DW$325, DW_AT_location[DW_OP_reg23]
+DW$326	.dwtag  DW_TAG_assign_register, DW_AT_name("ST1")
+	.dwattr DW$326, DW_AT_location[DW_OP_reg24]
+DW$327	.dwtag  DW_TAG_assign_register, DW_AT_name("PC")
+	.dwattr DW$327, DW_AT_location[DW_OP_reg25]
+DW$328	.dwtag  DW_TAG_assign_register, DW_AT_name("RPC")
+	.dwattr DW$328, DW_AT_location[DW_OP_reg26]
+DW$329	.dwtag  DW_TAG_assign_register, DW_AT_name("FP")
+	.dwattr DW$329, DW_AT_location[DW_OP_reg27]
+DW$330	.dwtag  DW_TAG_assign_register, DW_AT_name("DP")
+	.dwattr DW$330, DW_AT_location[DW_OP_reg28]
+DW$331	.dwtag  DW_TAG_assign_register, DW_AT_name("SXM")
+	.dwattr DW$331, DW_AT_location[DW_OP_reg29]
+DW$332	.dwtag  DW_TAG_assign_register, DW_AT_name("PM")
+	.dwattr DW$332, DW_AT_location[DW_OP_reg30]
+DW$333	.dwtag  DW_TAG_assign_register, DW_AT_name("OVM")
+	.dwattr DW$333, DW_AT_location[DW_OP_reg31]
+DW$334	.dwtag  DW_TAG_assign_register, DW_AT_name("PAGE0")
+	.dwattr DW$334, DW_AT_location[DW_OP_regx 0x20]
+DW$335	.dwtag  DW_TAG_assign_register, DW_AT_name("AMODE")
+	.dwattr DW$335, DW_AT_location[DW_OP_regx 0x21]
+DW$336	.dwtag  DW_TAG_assign_register, DW_AT_name("IFR")
+	.dwattr DW$336, DW_AT_location[DW_OP_regx 0x22]
+DW$337	.dwtag  DW_TAG_assign_register, DW_AT_name("IER")
+	.dwattr DW$337, DW_AT_location[DW_OP_regx 0x23]
+DW$338	.dwtag  DW_TAG_assign_register, DW_AT_name("IER")
+	.dwattr DW$338, DW_AT_location[DW_OP_regx 0x24]
+DW$339	.dwtag  DW_TAG_assign_register, DW_AT_name("PSEUDO")
+	.dwattr DW$339, DW_AT_location[DW_OP_regx 0x25]
+DW$340	.dwtag  DW_TAG_assign_register, DW_AT_name("PSEUDOH")
+	.dwattr DW$340, DW_AT_location[DW_OP_regx 0x26]
+DW$341	.dwtag  DW_TAG_assign_register, DW_AT_name("VOL")
+	.dwattr DW$341, DW_AT_location[DW_OP_regx 0x27]
+DW$342	.dwtag  DW_TAG_assign_register, DW_AT_name("CIE_RETA")
+	.dwattr DW$342, DW_AT_location[DW_OP_regx 0x28]
 	.dwendtag DW$CU
 

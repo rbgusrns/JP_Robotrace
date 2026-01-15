@@ -68,7 +68,9 @@ typedef enum
 	_POSINT_2,
 	_SHIFT_RATIO_CTRL,
 	_SHIFT_RETURN_CTRL,
-	_SHIFT_STR_CTRL
+	_SHIFT_STR_CTRL,
+	_ANGLE_1,
+	_ANGLE_2
 	
 
 }rom_e;
@@ -308,7 +310,7 @@ for( Num = 0; Num < 16; Num++)
     //max-min의 차의 역수
 
     g_sen[ Num ].iq17sub_value_inverse_127mpy = _IQ17mpy( g_sen[ Num ].iq17sub_value_inverse, _IQ(127) );
-    TxPrintf("[%ld] : %5ld | %5ld | %5ld |\n",Num,g_sen[ Num ].iq17min_value>>17,g_sen[ Num ].iq17max_value>>17, g_sen[ Num ].iq17sub_value_inverse>>17);
+    //TxPrintf("[%ld] : %5ld | %5ld | %5ld |\n",Num,g_sen[ Num ].iq17min_value>>17,g_sen[ Num ].iq17max_value>>17, g_sen[ Num ].iq17sub_value_inverse>>17);
     
 }
 
@@ -333,7 +335,7 @@ void turnvel_write_rom(void)
 	write_buf1[ j++ ] = (Uint16)(( Rom_Data_Buffer >> 8 ) & 0xff);
 
 	SpiWriteRom((Uint16)(_TURNVEL_CTRL) , 0 , (Uint16)(_TURNVEL_BLOCK), write_buf1 );
-    TxPrintf("Write vel: %d\r\n",Rom_Data_Buffer);
+    //TxPrintf("Write vel: %d\r\n",Rom_Data_Buffer);
 }
 
 
@@ -351,7 +353,7 @@ void turnvel_read_rom(void)
 	Rom_Data_Buffer |= ((read_buf1[j++] & 0xff) << 8);
 
 	g_q17user_vel = _IQ(Rom_Data_Buffer);
-    TxPrintf("Read vel: %d\r\n",Rom_Data_Buffer);
+    //TxPrintf("Read vel: %d\r\n",Rom_Data_Buffer);
 	//g_rm.q17user_vel = g_lm.q17user_vel = g_q17user_vel;
 
 }
@@ -581,183 +583,6 @@ void pid_write_rom(void)
 }
 
 
-/*
-void line_info_write_rom(void)
-{
-	int32 y, i, j, k;
-	Uint16 write_buf1[_LINE_BLOCK]= {0,};
-	Uint16 write_buf2[_LINE_BLOCK]= {0,};
-	Uint16 write_buf3[_LINE_BLOCK]= {0,};
-	Uint16 write_buf4[_LINE_BLOCK]= {0,};
-	Uint16 write_buf5[_LINE_BLOCK]= {0,};	
-
-	Uint16 Rom_Data_Buffer;
-
-
-	memset( (void * )write_buf1 , 0x00 , sizeof( write_buf1 ) );
-	memset( (void * )write_buf2 , 0x00 , sizeof( write_buf2 ) );
-	memset( (void * )write_buf3 , 0x00 , sizeof( write_buf3 ) );
-	memset( (void * )write_buf4 , 0x00 , sizeof( write_buf4 ) );
-	memset( (void * )write_buf5 , 0x00 , sizeof( write_buf5 ) );
-
-	j = 0;
-
-	Rom_Data_Buffer = g_line_info.u16turnmark_final_cnt;
-	write_buf1[ j++ ] = (Uint16)(( Rom_Data_Buffer >> 0 ) & 0xff);
-	write_buf1[ j++ ] = (Uint16)(( Rom_Data_Buffer >> 8 ) & 0xff);
-
-	SpiWriteRom((Uint16)(_LINE_MARKCNT) , 0 , (Uint16)(_LINE_BLOCK), write_buf1 );
-
-	y = 0;
-	k = 0;
-
-	for(i = 0 ; i <= g_line_info.u16turnmark_final_cnt; i++)
-	{
-		Rom_Data_Buffer = g_line_info.u16RL_Info[i];
-		write_buf2[y++] = ((Rom_Data_Buffer >> 0)  & 0xff);
-		Rom_Data_Buffer = g_line_info.u16line_dist[i];
-		write_buf4[k++] = ((Rom_Data_Buffer >> 0)  & 0xff);
-	}
-
-
-	SpiWriteRom((Uint16)(_LINE_RL_INFO) , 0 , (Uint16)(_LINE_BLOCK), write_buf2 );
-	SpiWriteRom((Uint16)(_LINE_DIST) , 0 , (Uint16)(_LINE_BLOCK), write_buf4 );
-
- 	y = 0;
-	k = 0;
-	
-	for(i = 0 ; i <= g_line_info.u16turnmark_final_cnt; i++)
-	{
-		Rom_Data_Buffer = g_line_info.u16RL_Info[i];
-		write_buf3[y++] = ((Rom_Data_Buffer >> 8)  & 0xff);
-		Rom_Data_Buffer = g_line_info.u16line_dist[i];
-		write_buf5[k++] = ((Rom_Data_Buffer >> 8)  & 0xff);
-	}
-
-	SpiWriteRom((Uint16)(_LINE_RL_INFO2) , 0 , (Uint16)(_LINE_BLOCK), write_buf3 );
-	SpiWriteRom((Uint16)(_LINE_DIST2) , 0 , (Uint16)(_LINE_BLOCK), write_buf5 );
-
-
-
-}
-
-void line_info_read_rom(void)
-{
-	int32 y, i, j, k;
-	Uint16 read_buf1[_LINE_BLOCK]= {0,};
-	Uint16 read_buf2[_LINE_BLOCK]= {0,};
-	Uint16 read_buf3[_LINE_BLOCK]= {0,};
-	Uint16 read_buf4[_LINE_BLOCK]= {0,};
-	Uint16 read_buf5[_LINE_BLOCK]= {0,};
-	Uint16 Rom_Data_Buffer;
-		
-	j = 0;
-	SpiReadRom((Uint16)(_LINE_MARKCNT) , 0 , (Uint16)(_LINE_BLOCK), read_buf1 );
-
-	Rom_Data_Buffer = ((read_buf1[j++] & 0xff) << 0);
-	Rom_Data_Buffer |= ((read_buf1[j++] & 0xff) << 8);
-	g_line_info.u16turnmark_final_cnt= Rom_Data_Buffer;
-	
-	y = 0;
-	k = 0;
-
-	SpiReadRom((Uint16)(_LINE_RL_INFO) , 0 , (Uint16)(_LINE_BLOCK), read_buf2 );
-	SpiReadRom((Uint16)(_LINE_DIST) , 0 , (Uint16)(_LINE_BLOCK), read_buf4 );
-	
-	for(i = 0 ; i <= g_line_info.u16turnmark_final_cnt; i++)
-	{
-		Rom_Data_Buffer = ((read_buf2[y++] & 0xff) << 0);
-		g_line_info.u16RL_Info[i] = Rom_Data_Buffer;
-		Rom_Data_Buffer = ((read_buf4[k++] & 0xff) << 0);
-		g_line_info.u16line_dist[i] = Rom_Data_Buffer;
-
-	}
-
-	y = 0;
-	k = 0;
-
-	SpiReadRom((Uint16)(_LINE_RL_INFO2) , 0 , (Uint16)(_LINE_BLOCK), read_buf3 );
-	SpiReadRom((Uint16)(_LINE_DIST2) , 0 , (Uint16)(_LINE_BLOCK), read_buf5 );
-	
-	for(i = 0 ; i <= g_line_info.u16turnmark_final_cnt; i++)
-	{
-		Rom_Data_Buffer = ((read_buf3[y++] & 0xff) << 8);
-		g_line_info.u16RL_Info[i] |= Rom_Data_Buffer;		
-		Rom_Data_Buffer = ((read_buf5[k++] & 0xff) << 8);
-		g_line_info.u16line_dist[i] |= Rom_Data_Buffer;
-
-	}
-	
-}
-
-*/
-
-
-void cross_info_write_rom(void)
-{
-	int32 y, j, i ;
-	Uint16 write_buf1[_CROSS_BLOCK]= {0,};
-	Uint16 write_buf2[_CROSS_BLOCK]= {0,};
-
-	Uint16 Rom_Data_Buffer;
-	
-	memset( (void * )write_buf1 , 0x00 , sizeof( write_buf1 ) );
-	memset( (void * )write_buf2 , 0x00 , sizeof( write_buf2 ) );
-
-	j = 0;
-
-	Rom_Data_Buffer = g_line_info.u16cross_final_cnt;
-	write_buf1[ j++ ] = (Uint16)(( Rom_Data_Buffer >> 0 ) & 0xff);
-	write_buf1[ j++ ] = (Uint16)(( Rom_Data_Buffer >> 8 ) & 0xff);
-
-	SpiWriteRom((Uint16)(_CROSS_CNT) , 0 , (Uint16)(_CROSS_BLOCK), write_buf1 );
-	
-	y = 0;
-	
-	for(i = 0 ; i < g_line_info.u16cross_final_cnt; i++)
-	{
-		Rom_Data_Buffer = g_run_info[i].u16cross_debug_arr;
-		write_buf2[y++] = ((Rom_Data_Buffer >> 0)  & 0xff);
-		write_buf2[y++] = ((Rom_Data_Buffer >> 8)  & 0xff);
-	}
-
-	SpiWriteRom((Uint16)(_CROSS_ARR) , 0 , (Uint16)(_CROSS_BLOCK), write_buf2 );
-
-}
-
-
-void cross_info_read_rom(void)
-{
-	int32 y, i, j;
-	Uint16 read_buf1[_CROSS_BLOCK]= {0,};
-	Uint16 read_buf2[_CROSS_BLOCK]= {0,};
-
-	Uint16 Rom_Data_Buffer;
-	
-	g_line_info.u16cross_final_cnt= 0;
-
-	j = 0;
-	SpiReadRom((Uint16)(_CROSS_CNT) , 0 , (Uint16)(_CROSS_BLOCK), read_buf1 );
-
-	Rom_Data_Buffer = ((read_buf1[j++] & 0xff) << 0);
-	Rom_Data_Buffer |= ((read_buf1[j++] & 0xff) << 8);
-	g_line_info.u16cross_final_cnt= Rom_Data_Buffer;
-	
-	y = 0;
-	SpiReadRom((Uint16)(_CROSS_ARR) , 0 , (Uint16)(_CROSS_BLOCK), read_buf2 );
-	
-	for(i = 0 ; i < g_line_info.u16cross_final_cnt; i++)
-	{
-		g_run_info[i].u16cross_debug_arr = 0;
-		Rom_Data_Buffer = ((read_buf2[y++] & 0xff) << 0);
-		Rom_Data_Buffer |= ((read_buf2[y++] & 0xff) << 8);
-		g_run_info[i].u16cross_debug_arr= Rom_Data_Buffer;
-
-
-	}
-
-}
-
 
 void handle_write_rom(void)
 {
@@ -784,7 +609,7 @@ void handle_write_rom(void)
 	write_buf1[ y++ ] = (Uint16)(( Rom_Data_Buffer >> 0 ) & 0xff);
 	write_buf1[ y++ ] = (Uint16)(( Rom_Data_Buffer >> 8 ) & 0xff);
 
-    TxPrintf("OS:%f\n",_IQ16toF(q16out_corner_limit));
+    //TxPrintf("OS:%f\n",_IQ16toF(q16out_corner_limit));
 	SpiWriteRom((Uint16)(OUT_CONER_LIMIT) , 0 , (Uint16)(_HANDLE_BLOCK), write_buf1 );
 	
 	i = 0;
@@ -793,7 +618,7 @@ void handle_write_rom(void)
 	write_buf2[ i++ ] = (Uint16)(( Rom_Data_Buffer >> 0 ) & 0xff);
 	write_buf2[ i++ ] = (Uint16)(( Rom_Data_Buffer >> 8 ) & 0xff);
 
-    TxPrintf("OF:%f\n",_IQ16toF(q16out_corner_fast_limit));
+    //TxPrintf("OF:%f\n",_IQ16toF(q16out_corner_fast_limit));
 	SpiWriteRom((Uint16)(OUT_CONER_FAST_LIMIT) , 0 , (Uint16)(_HANDLE_BLOCK), write_buf2 );
 	
 	j = 0;
@@ -802,7 +627,7 @@ void handle_write_rom(void)
 	write_buf3[ j++ ] = (Uint16)(( Rom_Data_Buffer >> 0 ) & 0xff);
 	write_buf3[ j++ ] = (Uint16)(( Rom_Data_Buffer >> 8 ) & 0xff);
 
-    TxPrintf("IS:%f\n",_IQ16toF(q16in_corner_limit));
+    //TxPrintf("IS:%f\n",_IQ16toF(q16in_corner_limit));
 	SpiWriteRom((Uint16)(IN_CONER_LIMIT) , 0 , (Uint16)(_HANDLE_BLOCK), write_buf3 );
 	
 	k = 0;
@@ -811,7 +636,7 @@ void handle_write_rom(void)
 	write_buf4[ k++ ] = (Uint16)(( Rom_Data_Buffer >> 0 ) & 0xff);
 	write_buf4[ k++ ] = (Uint16)(( Rom_Data_Buffer >> 8 ) & 0xff);
     
-    TxPrintf("IF:%f\n",_IQ16toF(q16in_corner_fast_limit));
+    //TxPrintf("IF:%f\n",_IQ16toF(q16in_corner_fast_limit));
 	SpiWriteRom((Uint16)(IN_CONER_FAST_LIMIT) , 0 , (Uint16)(_HANDLE_BLOCK), write_buf4 );
 
 }
@@ -835,7 +660,7 @@ void handle_read_rom(void)
 	Rom_Data_Buffer = ((read_buf1[y++] & 0xff) << 0);
 	Rom_Data_Buffer |= ((read_buf1[y++] & 0xff) << 8);
     
-	TxPrintf("OS:%f\n",_IQ16toF(_IQ16(Rom_Data_Buffer)));
+	//TxPrintf("OS:%f\n",_IQ16toF(_IQ16(Rom_Data_Buffer)));
 	g_q16out_corner_limit  = _IQ16div(_IQ16(Rom_Data_Buffer),_IQ16(1000.0));
 	
 	i = 0;
@@ -844,7 +669,7 @@ void handle_read_rom(void)
 	Rom_Data_Buffer = ((read_buf2[i++] & 0xff) << 0);
 	Rom_Data_Buffer |= ((read_buf2[i++] & 0xff) << 8);
 
-    TxPrintf("OF:%f\n",_IQ16toF(_IQ16(Rom_Data_Buffer)));
+    //TxPrintf("OF:%f\n",_IQ16toF(_IQ16(Rom_Data_Buffer)));
 	g_q16out_corner_fast_limit  = _IQ16div(_IQ16(Rom_Data_Buffer),_IQ16(1000.0));
 
 	
@@ -854,7 +679,7 @@ void handle_read_rom(void)
 	Rom_Data_Buffer = ((read_buf3[j++] & 0xff) << 0);
 	Rom_Data_Buffer |= ((read_buf3[j++] & 0xff) << 8);
 
-    TxPrintf("IS:%f\n",_IQ16toF(_IQ16(Rom_Data_Buffer)));
+    //TxPrintf("IS:%f\n",_IQ16toF(_IQ16(Rom_Data_Buffer)));
 	g_q16in_corner_limit  = _IQ16div(_IQ16(Rom_Data_Buffer),_IQ16(1000.0));
 		
 		
@@ -864,7 +689,7 @@ void handle_read_rom(void)
 	Rom_Data_Buffer = ((read_buf4[k++] & 0xff) << 0);
 	Rom_Data_Buffer |= ((read_buf4[k++] & 0xff) << 8);
 
-    TxPrintf("IF:%f\n",_IQ16toF(_IQ16(Rom_Data_Buffer)));
+    //TxPrintf("IF:%f\n",_IQ16toF(_IQ16(Rom_Data_Buffer)));
 	g_q16in_corner_fast_limit  = _IQ16div(_IQ16(Rom_Data_Buffer),_IQ16(1000.0));
 
     
@@ -1049,20 +874,23 @@ void mark_read_rom( void )
 void fast_infor_write_rom( void )
 {
 
-	int16 i = 0, j = 0, k = 0, l = 0, m = 0, n = 0;
+	int16 i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0;
 
 	Uint16 dist_sarr[ MAX_PAGE ] = { 0, };
 	Uint16 turn_sarr[ MAX_PAGE ] = { 0, };
 	Uint16 ldist_sarr[ MAX_PAGE ] = { 0, };
 	Uint16 rdist_sarr[ MAX_PAGE ] = { 0, };
-    Uint16 posint_sarr[ MAX_PAGE ] = { 0, };
+    Uint16 angle_sarr[ MAX_PAGE ] = { 0, };
+    //Uint16 angle_sarr[ MAX_PAGE ] = { 0, };
+    
 	memset( (void * )dist_sarr , 0x00 , sizeof( dist_sarr ) );
 	memset( (void * )turn_sarr , 0x00 , sizeof( turn_sarr ) );
 	memset( (void * )ldist_sarr , 0x00 , sizeof( ldist_sarr ) );
 	memset( (void * )rdist_sarr , 0x00 , sizeof( rdist_sarr ) );
-    memset( (void * )posint_sarr , 0x00 , sizeof( posint_sarr ) );
-
-	j = k = l = m = n = 0;
+    memset( (void * )angle_sarr , 0x00 , sizeof( angle_sarr ) );
+    //memset( (void * )angle_sarr , 0x00 , sizeof( angle_sarr ) );
+    
+	j = k = l = m = n = o = 0;
 	for( i = 0; i < 128; i++ )
 	{
 		dist_sarr[ j++ ] = ( ( ( Uint16 )( g_fast_info[ i ].u16dist ) ) >> 0  ) & 0xff;
@@ -1077,17 +905,23 @@ void fast_infor_write_rom( void )
 		rdist_sarr[ m++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17r_dist ) >> 17 )) >> 0  ) & 0xff;
 		rdist_sarr[ m++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17r_dist ) >> 17 )) >> 8  ) & 0xff;
 
-        posint_sarr[ n++ ] = ( ( ( Uint16 )(( _IQ7abs( g_fast_info[ i ].iq7pos_integral_val ) ) >> 7 )) >> 0  ) & 0xff;
-		posint_sarr[ n++ ] = ( ( ( Uint16 )(( _IQ7abs( g_fast_info[ i ].iq7pos_integral_val ) ) >> 7 )) >> 8  ) & 0xff;
+		angle_sarr[ n++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17angle ) >> 17 )) >> 0  ) & 0xff;
+		angle_sarr[ n++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17angle ) >> 17 )) >> 8  ) & 0xff;
+
+		//angle_sarr[ o++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17angle ) >> 17 )) >> 0  ) & 0xff;
+		//angle_sarr[ o++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17angle ) >> 17 )) >> 8  ) & 0xff;
+        
 	}
 
 	SpiWriteRom( ( Uint16 )LINE_DIST_PAFE_1, 0x00, ( Uint16 )MAX_PAGE, dist_sarr );
 	SpiWriteRom( ( Uint16 )LINE_TURN_PAGE_1, 0x00, ( Uint16 )MAX_PAGE, turn_sarr );
 	SpiWriteRom( ( Uint16 )LINE_LDIST_PAGE_1, 0x00, ( Uint16 )MAX_PAGE, ldist_sarr );
 	SpiWriteRom( ( Uint16 )LINE_RDIST_PAGE_1, 0x00, ( Uint16 )MAX_PAGE, rdist_sarr );
-    SpiWriteRom( ( Uint16 )_POSINT_1, 0x00, ( Uint16 )MAX_PAGE, posint_sarr );
-
-	j = k = l = m = n = 0;
+    SpiWriteRom( ( Uint16 )_POSINT_1, 0x00, ( Uint16 )MAX_PAGE, angle_sarr );
+    //SpiWriteRom( ( Uint16 )_ANGLE_1, 0x00, ( Uint16 )MAX_PAGE, angle_sarr );
+    
+	j = k = l = m = n = o = 0;
+    
 	for( i = 128; i < 256; i++ )
 	{
 		dist_sarr[ j++ ] = ( ( ( Uint16 )( g_fast_info[ i ].u16dist ) ) >> 0  ) & 0xff;
@@ -1102,8 +936,12 @@ void fast_infor_write_rom( void )
 		rdist_sarr[ m++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17r_dist ) >> 17 )) >> 0  ) & 0xff;
 		rdist_sarr[ m++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17r_dist ) >> 17 )) >> 8  ) & 0xff;
 
-        posint_sarr[ n++ ] = ( ( ( Uint16 )(( _IQ7abs( g_fast_info[ i ].iq7pos_integral_val ) ) >> 7 )) >> 0  ) & 0xff;
-		posint_sarr[ n++ ] = ( ( ( Uint16 )(( _IQ7abs( g_fast_info[ i ].iq7pos_integral_val ) ) >> 7 )) >> 8  ) & 0xff;
+        angle_sarr[ n++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17angle ) >> 17 )) >> 8  ) & 0xff;
+		angle_sarr[ n++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17angle ) >> 17 )) >> 8  ) & 0xff;
+
+        //angle_sarr[ o++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17angle ) >> 17 )) >> 0  ) & 0xff;
+        //angle_sarr[ o++ ] = ( ( ( Uint16 )(( g_fast_info[ i ].q17angle ) >> 17 )) >> 8  ) & 0xff;
+
 	}
 
 
@@ -1111,25 +949,29 @@ void fast_infor_write_rom( void )
 	SpiWriteRom( ( Uint16 )LINE_TURN_PAGE_2, 0x00, ( Uint16 )MAX_PAGE, turn_sarr );
 	SpiWriteRom( ( Uint16 )LINE_LDIST_PAGE_2, 0x00, ( Uint16 )MAX_PAGE, ldist_sarr );
 	SpiWriteRom( ( Uint16 )LINE_RDIST_PAGE_2, 0x00, ( Uint16 )MAX_PAGE, rdist_sarr );
-    SpiWriteRom( ( Uint16 )_POSINT_2, 0x00, ( Uint16 )MAX_PAGE, posint_sarr );
+    SpiWriteRom( ( Uint16 )_POSINT_2, 0x00, ( Uint16 )MAX_PAGE, angle_sarr );
+    //SpiWriteRom( ( Uint16 )_ANGLE_2, 0x00, ( Uint16 )MAX_PAGE, angle_sarr );
 
 }
 
 void fast_infor_read_rom( void )
 {
-	int16 i = 0, j = 0, k = 0, l = 0, m = 0, n = 0;
+	int16 i = 0, j = 0, k = 0, l = 0, m = 0, n = 0, o = 0;
 	Uint16 dist_larr[ MAX_PAGE ] = { 0, };
 	Uint16 turn_larr[ MAX_PAGE ] = { 0, };
 	Uint16 ldist_larr[ MAX_PAGE ] = { 0, };
 	Uint16 rdist_larr[ MAX_PAGE ] = { 0, };
-    Uint16 posint_larr[ MAX_PAGE ] = { 0, };
-
-	j = k = l = m = n = 0;
+    Uint16 angle_sarr[ MAX_PAGE ] = { 0, };
+    //Uint16 angle_sarr[ MAX_PAGE ] = { 0, };
+    
+	j = k = l = m = n = o = 0;
+    
 	SpiReadRom( ( Uint16 )LINE_DIST_PAFE_1, 0x00, ( Uint16 )MAX_PAGE, dist_larr );
 	SpiReadRom( ( Uint16 )LINE_TURN_PAGE_1, 0x00, ( Uint16 )MAX_PAGE, turn_larr );
 	SpiReadRom( ( Uint16 )LINE_LDIST_PAGE_1, 0x00, ( Uint16 )MAX_PAGE, ldist_larr );
 	SpiReadRom( ( Uint16 )LINE_RDIST_PAGE_1, 0x00, ( Uint16 )MAX_PAGE, rdist_larr );
-    SpiReadRom( ( Uint16 )_POSINT_1, 0x00, ( Uint16 )MAX_PAGE, posint_larr );
+    SpiReadRom( ( Uint16 )_POSINT_1, 0x00, ( Uint16 )MAX_PAGE, angle_sarr );
+    //SpiReadRom( ( Uint16 )_ANGLE_1, 0x00, ( Uint16 )MAX_PAGE, angle_sarr );
 
 	for( i = 0; i < 128; i++ )
 	{
@@ -1145,17 +987,23 @@ void fast_infor_read_rom( void )
 		g_fast_info[ i ].q17r_dist = _IQ17( ( rdist_larr[ m++ ] & 0xff ) << 0 );
 		g_fast_info[ i ].q17r_dist |= _IQ17( ( rdist_larr[ m++ ] & 0xff ) << 8 );	
         
-		g_fast_info[ i ].iq7pos_integral_val = _IQ7( ( posint_larr[ n++ ] & 0xff ) << 0 );
-		g_fast_info[ i ].iq7pos_integral_val |= _IQ7( ( posint_larr[ n++ ] & 0xff ) << 8 );	
+        g_fast_info[ i ].q17angle = _IQ17( (int)( ( angle_sarr[ n++ ] & 0xff ) << 0 ) );
+        g_fast_info[ i ].q17angle |= _IQ17( (int)( ( angle_sarr[ n++ ] & 0xff ) << 8 ) ); 
+
+        //g_fast_info[ i ].q17angle = _IQ17( ( angle_sarr[ o++ ] & 0xff ) << 0 );
+        //g_fast_info[ i ].q17angle |= _IQ17( ( angle_sarr[ o++ ] & 0xff ) << 8 );   
+
 
 	}
 
-	j = k = l = m = n = 0;
+	j = k = l = m = n = o = 0;
 	SpiReadRom( ( Uint16 )LINE_DIST_PAFE_2, 0x00, ( Uint16 )MAX_PAGE, dist_larr );
 	SpiReadRom( ( Uint16 )LINE_TURN_PAGE_2, 0x00, ( Uint16 )MAX_PAGE, turn_larr );
 	SpiReadRom( ( Uint16 )LINE_LDIST_PAGE_2, 0x00, ( Uint16 )MAX_PAGE, ldist_larr );
 	SpiReadRom( ( Uint16 )LINE_RDIST_PAGE_2, 0x00, ( Uint16 )MAX_PAGE, rdist_larr );	
-    SpiReadRom( ( Uint16 )_POSINT_2, 0x00, ( Uint16 )MAX_PAGE, posint_larr );
+    SpiReadRom( ( Uint16 )_POSINT_2, 0x00, ( Uint16 )MAX_PAGE, angle_sarr );
+    //SpiReadRom( ( Uint16 )_ANGLE_2, 0x00, ( Uint16 )MAX_PAGE, angle_sarr );
+    
 
 	for( i = 128; i < 256; i++ )
 	{
@@ -1171,8 +1019,11 @@ void fast_infor_read_rom( void )
 		g_fast_info[ i ].q17r_dist = _IQ17( ( rdist_larr[ m++ ] & 0xff ) << 0 );
 		g_fast_info[ i ].q17r_dist |= _IQ17( ( rdist_larr[ m++ ] & 0xff ) << 8 );	
 
-        g_fast_info[ i ].iq7pos_integral_val = _IQ7( ( posint_larr[ n++ ] & 0xff ) << 0 );
-        g_fast_info[ i ].iq7pos_integral_val |= _IQ7( ( posint_larr[ n++ ] & 0xff ) << 8 );    
+        g_fast_info[ i ].q17angle = _IQ17( (int)( ( angle_sarr[ n++ ] & 0xff ) << 0 ) );
+        g_fast_info[ i ].q17angle |= _IQ17( (int)( ( angle_sarr[ n++ ] & 0xff ) << 8 ) ); 
+
+        //g_fast_info[ i ].q17angle = _IQ17( ( angle_sarr[ o++ ] & 0xff ) << 0 );
+        //g_fast_info[ i ].q17angle |= _IQ17( ( angle_sarr[ o++ ] & 0xff ) << 8 );   
 
 	}
 	

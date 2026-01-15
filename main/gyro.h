@@ -21,7 +21,9 @@ extern void LSM6DSR_ReadMulti(Uint16 reg, Uint16 *pBuf, Uint16 len);
 extern Uint16 LSM6DSR_Init(void);
 extern void Gyro_test(void);
 extern void LSM6DSR_GetGyroDataDPS(void);
-
+extern void gyro_IIR(void);
 extern void calculate_average_offset(void);
+extern void turn_decide(turnmark_t* p_mark);
+
 
 #endif

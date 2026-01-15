@@ -55,17 +55,17 @@ void menu_start(void)
 void menu()
 {
 	
-	if(Down_SW){DELAY_US(DELAY);	row++;  column = 0; }
+	if(Down_SW || Down_W){DELAY_US(DELAY);	row++;  column = 0; }
 	if(row> ROW-1) row=0;
 
-	if(Right_SW){DELAY_US(DELAY);	column++; }
+	if(Right_SW || Right_W){DELAY_US(DELAY);	column++; }
 	if(column> COLUMN-1) column=0;
 
 	if(Up_SW){DELAY_US(DELAY);		menu_functions[row][column](); }
 	
 	VFDPrintf(menu_sel[row][column]);
 
-	if(Left_SW){DELAY_US(DELAY);	 column--; }
+	if(Left_SW || Left_W){DELAY_US(DELAY);	 column--; }
     if(column < 0 ) column = 0;
 }
 

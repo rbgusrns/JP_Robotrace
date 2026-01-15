@@ -17,6 +17,30 @@
 #include "DSP280x_Examples.h"   // DSP280x Examples Include File
 #include "gyro.h"
 
+#define WINDOW_SIZE 100
+
+
+#define IIR_Kb   _IQ17(0.0015683302102)   // fc=1Hz, dt=0.0005s
+#define IIR_Ka   _IQ17(-0.9968633395796)
+
+#if 0
+
+#define IIR_Kb   _IQ17(0.0031317633020)   // fc=2Hz, dt=0.0005s
+#define IIR_Ka   _IQ17(-0.9937364733961)
+
+#endif
+
+#if 0
+#define IIR_Kb   _IQ17(0.04500316559)     // fc = 30Hz, dt = 0.0005s
+#define IIR_Ka   _IQ17(-0.9099936688)
+#endif
+
+#if 0
+
+fc = 80Hz
+#define	IIR_Kb							_IQ17(0.1116352117046)		//(W_cut *  F_dt) / (2.0 + W_cut * F_dt)	_IQ7(0.20076726342710997442455242966752)
+#define	IIR_Ka							_IQ17(-0.776729576590)		//(W_cut *  F_dt - 2.0) / (2.0 + W_cut * F_dt	_IQ7(-0.59846547314578005115089514066496)
+#endif
 
 #define LSM6DSR_WHO_AM_I      0x0F
 
@@ -27,8 +51,9 @@
 #define LSM6DSR_CTRL2_G       0x11 // 0001 0001 || ODR_G3~0 : 4bit -> Gyro Hz(ODR) select
 
 #define LSM6DSR_CTRL3_C       0x12 // 0001 0010
-#define LSM6DSR_CTRL4_C       0x13 // 0001 0010
-#define LSM6DSR_CTRL6_C       0x15 // 0001 0010
+#define LSM6DSR_CTRL4_C       0x13 // 0001 0011
+#define LSM6DSR_CTRL6_C       0x15 // 0001 0101
+#define LSM6DSR_CTRL7_G       0x16 // 0001 0110
 
 
 #define LSM6DSR_OUTZ_L_G      0x26  // Yaw_L
@@ -38,7 +63,7 @@
 
 
 // LSM6DSR의 고유 ID 값 WHO_AM_I의 response.
-#define LSM6DSR_DEVICE_ID     0x6B
+#define LSM6DSR_DEVICE_ID     0x6B // 0110 1011
 
 #define SPIGYRO_CS_H	{GpioDataRegs.GPASET.bit.GPIO15 = 1;}
 #define SPIGYRO_CS_L	{GpioDataRegs.GPACLEAR.bit.GPIO15 = 1;}
@@ -142,15 +167,15 @@ Uint16 LSM6DSR_Init(void)
     Uint16 device_id;
 
     // 1. 통신 확인 (WHO_AM_I 레지스터 읽기)
-    TxPrintf("Ready\n");
+    //TxPrintf("Ready\n");
     device_id = LSM6DSR_ReadByte(LSM6DSR_WHO_AM_I);
     if(device_id != LSM6DSR_DEVICE_ID)
     {
-        TxPrintf("ID: %d\n",device_id);
-        TxPrintf("Fail Signal\n");
+        //TxPrintf("ID: %d\n",device_id);
+        //TxPrintf("Fail Signal\n");
         return 1; // ID 불일치, 통신 실패
     }
-    TxPrintf("OK!\n");
+    //TxPrintf("OK!\n");
     // 2. 공통 설정 (CTRL3_C 레지스터)
     // - BDU (Block Data Update) 활성화: 데이터 읽기 중 값 변경 방지
     // - IF_INC (Address Auto-Increment) 활성화: 멀티바이트 읽기 시 주소 자동 증가
@@ -158,8 +183,8 @@ Uint16 LSM6DSR_Init(void)
     LSM6DSR_WriteByte(LSM6DSR_CTRL3_C, 0x44);
 
     // 3. 자이로스코프 설정 (CTRL2_G 레지스터)
-    // - ODR (Output Data Rate): 104 Hz (1010)
-    // - FS (Full Scale): ±2000 dps (0)
+    // - ODR (Output Data Rate): 6.66 kHz 
+    // - FS (Full Scale): ±4000 dps (0)
     // - FS_125=0, FS_4000=1
     // => 10100001
     LSM6DSR_WriteByte(LSM6DSR_CTRL2_G, 0xA1);
@@ -167,13 +192,18 @@ Uint16 LSM6DSR_Init(void)
 
    
     // CTRL4_C (0x13) 레지스터의 1번 비트(LPF1_SEL_G)를 1로 설정
+    // -> LPF1 활성화 
     LSM6DSR_WriteByte(LSM6DSR_CTRL4_C, 0x02);
     
    
     // CTRL6_C (0x15) 레지스터의 하위 3비트(FTYPE)를 011(0x03)로 설정
     // (ODR 6.66kHz일 때 FTYPE 011은 470Hz 대역폭을 의미함)
-    LSM6DSR_WriteByte(LSM6DSR_CTRL6_C, 0x03);
+    LSM6DSR_WriteByte(LSM6DSR_CTRL6_C, 0x02);
 
+    // 4. 고성능 모드 설정 (CTRL7_G 레지스터, 0x16)
+    // - G_HM_MODE (7번 비트): 0 = High-Performance, 1 = Normal/Low-Power
+    // - 나머지 비트는 필요에 따라 설정 (기본값 0x00 권장)
+    LSM6DSR_WriteByte(LSM6DSR_CTRL7_G, 0x00);
 
     
     // 설정 적용을 위한 짧은 지연
@@ -230,9 +260,10 @@ extern void Gyro_test(void)
     g_q17turn_angle = _IQ(0);
   	while(1)
 	{
-
+        gyro_IIR();
         VFDPrintf("ANG:%4f\n",_IQtoF(g_q17turn_angle));
-
+        //TxPrintf("%4f\r\n",_IQtoF(g_q17_dps_z));
+        
         if(Right_SW)
         {
             g_q17turn_angle = _IQ(0);
@@ -253,7 +284,7 @@ extern void Gyro_test(void)
 
 extern void LSM6DSR_GetGyroDataDPS(void)
 {
-
+    
     // 자이로 데이터 레지스터(0x22 ~ 0x27) 6바이트를 한 번에 읽음
     LSM6DSR_ReadMulti(LSM6DSR_OUTZ_L_G, g_u16gyro_raw_data, 2);
     
@@ -261,9 +292,72 @@ extern void LSM6DSR_GetGyroDataDPS(void)
     
     g_q17_dps_z = _IQmpy(_IQ(g_int16_gyro_raw), _IQ(-0.140)) - g_q17_gyro_offset;
 
+    g_q17turn_angle += _IQ17mpyIQX( g_q17_dps_z , 17 , _IQ30( 0.0005 ), 30 );
+    
+
+/************************************ 각도 평균 구하기 ****************************************/
+
+    
+    g_q17old_angle = g_q17angle_buffer[g_int16_buf_idx];
+    
+    g_q17angle_buffer[g_int16_buf_idx] = g_q17turn_angle;
+    
+    g_int16_buf_idx++;
+    
+    if (g_int16_buf_idx >= WINDOW_SIZE) g_int16_buf_idx = 0;
+    
+    g_q17current_omega = _IQ17mpy((g_q17turn_angle - g_q17old_angle),_IQ(20));
+    
+/************************************ 각속도 평균 구하기 ****************************************/
+#if 0
+    g_q17omega_sum -= g_q17omega_buf[g_int16_omega_idx];
+    
+    g_q17omega_buf[g_int16_omega_idx] = g_q17current_omega;
+    
+    g_q17omega_sum += g_q17current_omega;
+
+    g_int16_omega_idx++;
+    
+    if (g_int16_omega_idx >= OMEGA_WIN) g_int16_omega_idx = 0;
+
+    g_q17omega_avg = _IQ17mpy(g_q17omega_sum, _IQ17(0.05));
+
+#endif
+    
+/************************************ 현재 상태 판단 ****************************************/
+
+    if ( g_q17current_omega > _IQ(30) ) g_pos.u16current_state = RTURN;
+    else if ( g_q17current_omega < _IQ(-30) ) g_pos.u16current_state = LTURN;
+    else g_pos.u16current_state = STRAIGHT;
+
+#if 0    
+    if ( _IQ17abs( g_q17omega_avg ) > _IQ(30) ) 
+    {
+        g_q17test_omega = g_q17current_omega; // 현재 각속도 저장해둠. 
+        g_pos.u16current_state = CTURN; // 각속도 변화량이 심하다면 현재 턴 변화중인 것. 
+    }
+#endif
+
+    if ( g_pos.u16current_state != g_pos.u16past_state ) g_pos.u16state |= 0x8000; //  0000 0000 0000 0000 센서가 활성화 된 것 처럼. 
+    else g_pos.u16state &= 0x7fff;
+
+    // 각속도 평균이 일정 이상이라면 곡률 변화 가능성 판단. 
 
     //VFDPrintf("DP:%5ld\n", g_q17_dps_z >> 17);
 
+}
+
+extern void gyro_IIR(void)
+{
+    g_q17gyro_IIR_puted = g_q17gyro_IIR_puting;
+    
+    g_q17gyro_IIR_puting = g_q17_dps_z;
+
+    g_q17gyro_IIR_output = _IQ17mpy( IIR_Kb , (g_q17gyro_IIR_puted + g_q17gyro_IIR_puting )) - _IQ17mpy(IIR_Ka , g_q17past_gyro );
+
+    g_q17past_gyro = g_q17gyro_IIR_output;
+
+    TxPrintf("%f,%f\r\n",_IQtoF(g_q17_dps_z),_IQtoF(g_q17gyro_IIR_output));
 }
 
 
@@ -284,9 +378,99 @@ extern void calculate_average_offset(void)
 
     g_q17_gyro_offset = _IQdiv(dps_sum,_IQ(cnt));
 
-    TxPrintf("offset = %f\r\n", _IQtoF(g_q17_gyro_offset));
+    //TxPrintf("offset = %f\r\n", _IQtoF(g_q17_gyro_offset));
 
     
+}
+
+
+extern void turn_decide(turnmark_t* p_mark)
+{
+    turnmark_t *pmark = p_mark;
+
+    if( pmark->u16single_flag ) // 곡률 변화로 인정된 상태라면.
+    {
+        if( pmark->q7turn_dis > pmark->q7dist_limit )
+        {
+
+            pmark->u16turn_flag = OFF;
+            pmark->u16single_flag = OFF;
+            pmark->q7turn_dis = _IQ7(0);
+            // 턴 체크 변수 초기화 
+            // 이후 중복 방지 거리동안 진행한 뒤 턴 인정 로직 수행하기.
+
+            if(!g_Flag.move_state )	return;
+            
+			if( pmark == g_ptr->g_lmark ) // 곡률 변화 상태
+			{			
+				LED_OFF;
+
+	            init_line_info(pmark);
+					                
+			}
+            
+			else if( pmark == g_ptr->g_rmark ) //  start or end
+            {
+                LED_OFF;
+                
+                if( !g_Flag.cross_flag ) start_end_check(); // 크로스를 건너는 중이라면 크로스를 턴마크로 착각한 것임. 
+			} 
+
+            return;
+
+        }
+        
+    }
+    
+    if( pmark->u16mark_enable & g_pos.u16state ) // 우측 센서에 불이 들어오거나 각속도 특이점 도달 시 .
+    {
+
+        if( !pmark->u16turn_flag ) // 막 들어온 참이라면 노이즈인지 검사 해야 함. u16turn_flag = 턴 진입 플래그. 
+        {   
+            pmark->u16turn_flag = ON; // 한번만 검사해주자. 
+                            
+			if( pmark == g_ptr->g_lmark ) // 곡률 변화 라면 길게 거리 잡고
+			{			
+                pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist); // 일정 거리 가는 동안 각속도가 유지되는지 검사
+				if(!g_Flag.fast_flag)	 line_info(pmark); //1차                
+				 
+			}
+            
+			else if( pmark == g_ptr->g_rmark ) //  start or end 라면 마크 인식할 정도로만 거리 잡기.
+            {
+                pmark->q7dist_limit = pmark->q7turn_dis + turn_step;
+			} 
+
+            
+        }
+		else if( pmark->q7turn_dis >= pmark->q7dist_limit ) // 일정 거리 가도 각속도가 유지될 경우. -> 곡률 변화 인정.
+		{ 
+            
+			pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);	//이 거리동안은 다시 들어와도 인정 X
+			pmark->u16single_flag = ON;
+
+			if( pmark == g_ptr -> g_lmark ) // 곡률 변화라면 
+            {
+                
+                LED_ON;
+                g_Flag.lmark_flag = ON;
+                if(g_Flag.fast_flag) second_infor( g_ptr->pfastinfo,g_ptr->perr);
+			}
+			else if ( pmark == g_ptr -> g_rmark ) // start or end 마크라면
+			{
+                LED_ON;
+                g_Flag.rmark_flag = ON;
+			}
+			
+		}  
+    }
+
+    else    // 마크에 센서값이 들어오지 않을 경우. 만약 노이즈라면 이곳에서 turn flag가 꺼져 턴으로 인정되지 않음. 
+    {
+        pmark->u16turn_flag = OFF;
+        pmark->q7turn_dis = _IQ7( 0 );
+    }
+
 }
 
 

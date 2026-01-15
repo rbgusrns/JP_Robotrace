@@ -21,11 +21,17 @@
 #define	Up_SW			(!(GpioDataRegs.GPADAT.bit.GPIO30))
 #define	Down_SW			(!(GpioDataRegs.GPADAT.bit.GPIO31))
 
+#define	Left_W			(g_lm.q17cur_vel_avr > _IQ(100))
+#define	Right_W		    (g_lm.q17cur_vel_avr < _IQ(-100))
+#define	Down_W			( (g_rm.q17cur_vel_avr < _IQ(-100)) || (g_rm.q17cur_vel_avr > _IQ(100)) )
+
+
+
 #define ROW			4
 #define	COLUMN		6
 #define VFD_LIST	9
 
-#define DELAY	125000 // 0.125sec
+#define DELAY	135000 // 0.125sec
 
 extern	void menu_start(void);
 extern	void menu(void);

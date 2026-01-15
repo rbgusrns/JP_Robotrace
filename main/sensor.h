@@ -55,7 +55,6 @@ extern void make_position(void);
 extern void position_PID(void);
 
 extern void Set_Max_Min(void);
-extern void turnmark_check(turnmark_t* p_mark,turnmark_t* p_remark);
 
 
 /*interrupt func*/
