@@ -122,6 +122,31 @@ void sen_vari_init(void)
 #if 1
 	g_sen[ L7 ].iq7weight = _IQ7(14500);		g_sen[ L7 ].u16active_arr = 0x8000; 	g_sen[ 15 ].u16passive_arr = 0xffff;
  	g_sen[ L6 ].iq7weight = _IQ7(12500);		g_sen[ L6 ].u16active_arr = 0x4000; 	g_sen[ 14 ].u16passive_arr = 0xbfff;
+    
+	g_sen[ L5 ].iq7weight = _IQ7(10500);		g_sen[ L5 ].u16active_arr = 0x2000; 	g_sen[ 13 ].u16passive_arr = 0xdfff;
+	g_sen[ L4 ].iq7weight = _IQ7(4500);			g_sen[ L4 ].u16active_arr = 0x1000; 	g_sen[ 12 ].u16passive_arr = 0xefff;	// 8900
+
+	g_sen[ L3 ].iq7weight = _IQ7(3200); 		g_sen[ L3 ].u16active_arr = 0x0800; 	g_sen[ 11 ].u16passive_arr = 0xf7ff;	//7000
+	g_sen[ L2 ].iq7weight = _IQ7(2100); 		g_sen[ L2 ].u16active_arr = 0x0400; 	g_sen[ 10 ].u16passive_arr = 0xfbff;	// 4000
+	g_sen[ L1 ].iq7weight = _IQ7(1100);			g_sen[ L1 ].u16active_arr = 0x0200;		g_sen[ 9 ].u16passive_arr = 0xfdff; 	// 1000
+	g_sen[ L0 ].iq7weight = _IQ7(250);			g_sen[ L0 ].u16active_arr = 0x0100;		g_sen[ 8 ].u16passive_arr = 0xfeff; 	// 500
+
+	g_sen[ R7 ].iq7weight = _IQ7(-250); 		g_sen[ R7 ].u16active_arr = 0x0080;		g_sen[ 7 ].u16passive_arr = 0xff7f;
+	g_sen[ R6 ].iq7weight = _IQ7(-1100); 		g_sen[ R6 ].u16active_arr = 0x0040;		g_sen[ 6 ].u16passive_arr = 0xffbf;
+	g_sen[ R5 ].iq7weight = _IQ7(-2100); 		g_sen[ R5 ].u16active_arr = 0x0020;		g_sen[ 5 ].u16passive_arr = 0xffdf;
+	g_sen[ R4 ].iq7weight = _IQ7(-3200); 		g_sen[ R4 ].u16active_arr = 0x0010;		g_sen[ 4 ].u16passive_arr = 0xffef;
+
+	g_sen[ R3 ].iq7weight = _IQ7(-4500);		g_sen[ R3 ].u16active_arr = 0x0008;		g_sen[ 3 ].u16passive_arr = 0xfff7;
+	g_sen[ R2 ].iq7weight = _IQ7(-10500);		g_sen[ R2 ].u16active_arr = 0x0004;		g_sen[ 2 ].u16passive_arr = 0xfffb;
+	g_sen[ R1 ].iq7weight = _IQ7(-12500);		g_sen[ R1 ].u16active_arr = 0x0002;		g_sen[ 1 ].u16passive_arr = 0xfffd;
+	g_sen[ R0 ].iq7weight = _IQ7(-14500);		g_sen[ R0 ].u16active_arr = 0x0001;		g_sen[ 0 ].u16passive_arr = 0xfffe;    
+
+#endif
+
+
+#if 0
+	g_sen[ L7 ].iq7weight = _IQ7(14500);		g_sen[ L7 ].u16active_arr = 0x8000; 	g_sen[ 15 ].u16passive_arr = 0xffff;
+ 	g_sen[ L6 ].iq7weight = _IQ7(12500);		g_sen[ L6 ].u16active_arr = 0x4000; 	g_sen[ 14 ].u16passive_arr = 0xbfff;
 	g_sen[ L5 ].iq7weight = _IQ7(10500);		g_sen[ L5 ].u16active_arr = 0x2000; 	g_sen[ 13 ].u16passive_arr = 0xdfff;
 	g_sen[ L4 ].iq7weight = _IQ7(8500);			g_sen[ L4 ].u16active_arr = 0x1000; 	g_sen[ 12 ].u16passive_arr = 0xefff;	// 8900
 
@@ -267,7 +292,7 @@ interrupt void adc_timer_ISR(void)
 	g_int32_sen_cnt++;
 	if(g_int32_sen_cnt >= SEN_END)
 	{		
-		g_int32_sen_cnt = 3;
+		 g_int32_sen_cnt = 3;
 		StopCpuTimer0(); // sensor interrupt stop 
 	}
     
@@ -558,7 +583,8 @@ void start_end_check(void)				// start와 end를  체크한다
 	
 		//if((g_u16turnmark_limit < (Uint16)(g_int32mark_cnt + 2))) return;\
 		if( (Uint16)g_int32mark_cnt < g_u16turnmark_limit ) 	return;
-				
+		if( g_Flag.cross_flag ) return;	
+        if( !( g_pos.u16current_state & STRAIGHT ) ) return;
 		g_Flag.start_flag = OFF;
 
 		LED_OFF;

@@ -101,7 +101,7 @@
      Uint16 Add3 = 0;
      Uint16 i = 0;
  
- 
+     g_Flag.SPI_Rom_flag = ON;
      SpiBusyOK();
  
  
@@ -141,7 +141,7 @@
  
      SPIA_CS_H;
      SPI_CS_DELAY;
-     
+     g_Flag.SPI_Rom_flag = OFF;
      
  }
  
@@ -155,7 +155,7 @@
      Uint16 Add3 = 0;
      Uint16 i = 0;
      
- 
+     g_Flag.SPI_Rom_flag = ON;
      SpiBusyOK();
  
  
@@ -189,7 +189,7 @@
      SPIA_CS_H;
      SPI_CS_DELAY;
  
- 
+     g_Flag.SPI_Rom_flag = OFF;
  }
  
  //현재 사용하는 롬의 경우 8bit체제이다.. 

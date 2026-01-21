@@ -284,8 +284,14 @@ extern void Gyro_test(void)
 
 extern void LSM6DSR_GetGyroDataDPS(void)
 {
-    
+    g_Flag.SPI_Gyro_flag = ON;
     // 자이로 데이터 레지스터(0x22 ~ 0x27) 6바이트를 한 번에 읽음
+
+    if( g_Flag.SPI_Rom_flag ) 
+    {
+        g_Flag.SPI_Gyro_flag = OFF;
+        return;
+    }
     LSM6DSR_ReadMulti(LSM6DSR_OUTZ_L_G, g_u16gyro_raw_data, 2);
     
     g_int16_gyro_raw = (int16)((g_u16gyro_raw_data[1] << 8) | g_u16gyro_raw_data[0]);
@@ -341,10 +347,11 @@ extern void LSM6DSR_GetGyroDataDPS(void)
     if ( g_pos.u16current_state != g_pos.u16past_state ) g_pos.u16state |= 0x8000; //  0000 0000 0000 0000 센서가 활성화 된 것 처럼. 
     else g_pos.u16state &= 0x7fff;
 
+    
     // 각속도 평균이 일정 이상이라면 곡률 변화 가능성 판단. 
 
     //VFDPrintf("DP:%5ld\n", g_q17_dps_z >> 17);
-
+    g_Flag.SPI_Gyro_flag = OFF;
 }
 
 extern void gyro_IIR(void)
@@ -413,7 +420,9 @@ extern void turn_decide(turnmark_t* p_mark)
             {
                 LED_OFF;
                 
-                if( !g_Flag.cross_flag ) start_end_check(); // 크로스를 건너는 중이라면 크로스를 턴마크로 착각한 것임. 
+                
+
+                start_end_check(); 
 			} 
 
             return;

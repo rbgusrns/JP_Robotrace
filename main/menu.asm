@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Thu Jan 15 16:05:51 2026                 *
+;* Date/Time created: Wed Jan 21 18:02:25 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -423,8 +423,8 @@ DW$38	.dwtag  DW_TAG_variable, DW_AT_name("g_fast_info"), DW_AT_symbol_name("_g_
 	.dwattr DW$38, DW_AT_type(*DW$T$64)
 	.dwattr DW$38, DW_AT_declaration(0x01)
 	.dwattr DW$38, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI29210 C:\Users\rbgus\AppData\Local\Temp\TI2924 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI2922 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI2926 --object_file menu.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI52410 C:\Users\rbgus\AppData\Local\Temp\TI5244 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI5242 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI5246 --object_file menu.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 	.sect	".text"
 	.global	_bril_run_start
 
@@ -965,7 +965,7 @@ DW$L$_menu_start$2$B:
 DW$L$_menu_start$2$E:
 
 DW$46	.dwtag  DW_TAG_loop
-	.dwattr DW$46, DW_AT_name("C:\project\JP_Robotrace\main\menu.asm:L11:1:1768460751")
+	.dwattr DW$46, DW_AT_name("C:\project\JP_Robotrace\main\menu.asm:L11:1:1768986145")
 	.dwattr DW$46, DW_AT_begin_file("menu.c")
 	.dwattr DW$46, DW_AT_begin_line(0x2f)
 	.dwattr DW$46, DW_AT_end_line(0x33)

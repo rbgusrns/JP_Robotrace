@@ -358,6 +358,7 @@ static void position_to_vel( void )
 interrupt void  motor_ISR(void)
 {	
 	g_Flag.motor_ISR_flag = ON; // 주행 플래그
+	
 	//LED_ON;
 
 	position_PID();

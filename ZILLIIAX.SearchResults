@@ -1,30 +1,25 @@
----- g_int32_sen_cnt Matches (36 in 5 files) ----
-main.asm (main):DW$114	.dwtag  DW_TAG_variable, DW_AT_name("g_int32_sen_cnt"), DW_AT_symbol_name("_g_int32_sen_cnt")
-main.asm (main):;*** 92	-----------------------    g_int32_sen_cnt = 0L;
-main.c (main):	g_int32_sen_cnt = 0;
-sensor.asm (main):DW$33	.dwtag  DW_TAG_variable, DW_AT_name("g_int32_sen_cnt"), DW_AT_symbol_name("_g_int32_sen_cnt")
-sensor.asm (main):;*** 221	-----------------------    GpioDataRegs.GPACLEAR.all = 1L<<sen_shoot_arr[g_int32_sen_cnt];
-sensor.asm (main):;*** 247	-----------------------    C$2 = g_int32_sen_cnt*18L;
-sensor.asm (main):;***  	-----------------------    U$22 = &K$21[g_int32_sen_cnt];
-sensor.asm (main):;*** 267	-----------------------    if ( (++g_int32_sen_cnt) < 15L ) goto g11;
-sensor.asm (main):;*** 270	-----------------------    g_int32_sen_cnt = 3L;
-sensor.asm (main):;*** 201	-----------------------    GpioDataRegs.GPASET.all = 1L<<sen_shoot_arr[g_int32_sen_cnt];
-sensor.asm (main):;*** 203	-----------------------    C$1 = &sen_adc_seq[g_int32_sen_cnt];
-sensor.c (main):	GpioDataRegs.GPASET.all = ( ON_L << sen_shoot_arr[ g_int32_sen_cnt ] );	 //sensor shoot code
-sensor.c (main):	AdcRegs.ADCCHSELSEQ1.all = sen_adc_seq[ g_int32_sen_cnt ];  // adcchselseq =  Channel select sequencing control
-sensor.c (main):	AdcRegs.ADCCHSELSEQ2.all = sen_adc_seq[ g_int32_sen_cnt ]; 
-sensor.c (main):	AdcRegs.ADCCHSELSEQ3.all = sen_adc_seq[ g_int32_sen_cnt ];
-sensor.c (main):	AdcRegs.ADCCHSELSEQ4.all = sen_adc_seq[ g_int32_sen_cnt ]; 
-sensor.c (main):	GpioDataRegs.GPACLEAR.all = ( ON_L << sen_shoot_arr[ g_int32_sen_cnt ] ); //sensor shoot stop
-sensor.c (main):        g_sen[g_int32_sen_cnt].iq17result = ( adc_v1 + adc_v2 ) << 13 ; 
-sensor.c (main):	if( g_sen[ g_int32_sen_cnt ].iq17result > g_sen[ g_int32_sen_cnt ].iq17max_value ) // max	
-sensor.c (main):		g_sen[ g_int32_sen_cnt ].iq17data = _IQ(127);
-sensor.c (main):	else if( g_sen[ g_int32_sen_cnt ].iq17result < g_sen[ g_int32_sen_cnt ].iq17min_value )	// min
-sensor.c (main):		g_sen[ g_int32_sen_cnt ].iq17data = _IQ(0);
-sensor.c (main):		g_sen[ g_int32_sen_cnt ].iq17data = _IQ17mpy(_IQ17div( ( g_sen[ g_int32_sen_cnt ].iq17result - g_sen[ g_int32_sen_cnt ].iq17min_value ) , ( g_sen[ g_int32_sen_cnt ].iq17max_value - g_sen[ g_int32_sen_cnt ].iq17min_value )) 
-sensor.c (main):	if(g_sen[ g_int32_sen_cnt ].iq17data > g_q17sen_valmax )	g_pos.u16state |= g_sen[ g_int32_sen_cnt ].u16active_arr; 
-sensor.c (main):	else						 /*127 값 >    흰색 인정 값*/	g_pos.u16state &= g_sen[ g_int32_sen_cnt ].u16passive_arr;
-sensor.c (main):	g_int32_sen_cnt++;
-sensor.c (main):	if(g_int32_sen_cnt >= SEN_END)
-sensor.c (main):		g_int32_sen_cnt = 3;
-Variable.h (main):__VARIABLE_EXE__  int32 g_int32_sen_cnt,
+---- g_q17shift_pos_val Matches (24 in 10 files) ----
+brilrun.asm (main):DW$53	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_pos_val"), DW_AT_symbol_name("_g_q17shift_pos_val")
+brilrun.asm (main):;*** 866	-----------------------    pos_val = g_q17shift_pos_val;
+brilrun.asm (main):;*** 875	-----------------------    g_q17shift_pos_val = pos_val;
+brilrun.c (main):		//VFDPrintf("%8f",_IQtoF(g_q17shift_pos_val));
+brilrun.c (main):	volatile _iq17 pos_val = g_q17shift_pos_val; //기본 0
+brilrun.c (main):		g_q17shift_pos_val = pos_val;
+brilrun.c (main):	g_q17shift_pos_val = pos_val;
+fastrun.c (main):    //if( ( pinfo + g_int32mark_cnt )->q7kp_val <= POS_KP_DOWN ) g_q17shift_pos_val = _IQ(0.0);
+main.asm (main):DW$62	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_pos_val"), DW_AT_symbol_name("_g_q17shift_pos_val")
+main.asm (main):;*** 166	-----------------------    g_q17shift_pos_val = 0L;
+main.c (main):	g_q17shift_pos_val = _IQ(0.0);
+search.asm (main):DW$37	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_pos_val"), DW_AT_symbol_name("_g_q17shift_pos_val")
+search.asm (main):;*** 381	-----------------------    g_q17shift_pos_val += 13107200L;
+search.asm (main):;*** 396	-----------------------    VFDPrintf("SFT:%4f", _IQ17toF(g_q17shift_pos_val));
+search.asm (main):;*** 386	-----------------------    g_q17shift_pos_val -= 13107200L;
+search.c (main):			g_q17shift_pos_val += _IQ(100);
+search.c (main):			g_q17shift_pos_val -= _IQ(100);
+search.c (main):	    VFDPrintf("SFT:%4f",_IQ17toF(g_q17shift_pos_val));
+sensor.asm (main):DW$33	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_pos_val"), DW_AT_symbol_name("_g_q17shift_pos_val")
+sensor.asm (main):;*** 447	-----------------------    (*C$1).iq7pos_IIR_puting = g_pos.iq7temp_pos+(g_q17shift_pos_val>>10);
+sensor.c (main):		//g_pos.iq7current_pos = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10) + CENTER_POSITION;	// extreme run position shift value 
+sensor.c (main):		//g_pos.iq7current_pos = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10);	// extreme run position shift value 
+sensor.c (main):	g_pos.iq7pos_IIR_puting = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10); //현재 입력값 
+Variable.h (main):					  g_q17shift_pos_val,

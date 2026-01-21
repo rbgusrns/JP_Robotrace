@@ -18,12 +18,12 @@ OUTPUT TRANSLATION MAP
    OUTPUT FILES: a_ZILLIIAX.hex [b0..b15]
 
    CONTENTS: 003e8000..003e8001   codestart Data Width=2   
-             003e8002..003edb31   .text Data Width=2   
-             003edb32..003ef836   .econst Data Width=2   
-             003ef837..003efab6   VFD_FONT Data Width=2   
-             003efab7..003efc87   .cinit Data Width=2   
-             003efc88..003efdee   IQmath Data Width=2   
-             003efdef..003efe11   ramfuncs Data Width=2   
+             003e8002..003edb68   .text Data Width=2   
+             003edb6a..003ef86e   .econst Data Width=2   
+             003ef86f..003efaee   VFD_FONT Data Width=2   
+             003efaef..003efcbf   .cinit Data Width=2   
+             003efcc0..003efe26   IQmath Data Width=2   
+             003efe27..003efe49   ramfuncs Data Width=2   
 
 --------------------------------------------------------------------------------
 00000000..003fffff  Page=1  Memory Width=16  ROM Width=16  "*DEFAULT PAGE 1*"

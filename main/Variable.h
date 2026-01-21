@@ -26,7 +26,7 @@
 #endif	
 
 
-#define WAIT do{ VFDPrintf("LOADING|"); DELAY_US(300000); VFDPrintf("LOADING/"); DELAY_US(300000); VFDPrintf("LOADING-"); DELAY_US(300000); VFDPrintf("LOADING\\"); DELAY_US(300000); }while(!GpioDataRegs.GPADAT.bit.GPIO15);
+#define WAIT do{ VFDPrintf("LOADING|"); DELAY_US(50000); VFDPrintf("LOADING/"); DELAY_US(50000); VFDPrintf("LOADING-"); DELAY_US(50000); VFDPrintf("LOADING\\"); DELAY_US(50000); }while(g_Flag.SPI_Gyro_flag);
 
 #define ON_L		1L
 //#define HANDLE_CENTER 			_IQ16( 7800 )
@@ -81,7 +81,7 @@
 #define	MAX_SPEED_HANDLE			_IQ16(1.15)
 
 
-#define POS_KP_UP		_IQ7( 0.7 )	//1.5
+#define POS_KP_UP		_IQ7( 1.5 )	//1.5
 //#define POS_KP_DOWN		_IQ7( 0.1 )	//0.1
 #define POS_KP_DOWN		_IQ7( 0.1 )	//0.1
 #define POS_KP_NONE     _IQ7( 0.1 )

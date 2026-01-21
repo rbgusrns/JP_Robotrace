@@ -62,6 +62,8 @@ typedef volatile struct bit_field_flag
     Uint16  Lturn_flag;    
     Uint16  STR_flag;
 
+    Uint16  SPI_Gyro_flag:1;
+    Uint16  SPI_Rom_flag:1;
 
 }bit_field_flag_t;
 

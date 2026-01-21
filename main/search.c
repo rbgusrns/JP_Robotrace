@@ -25,9 +25,21 @@ void init_line_info(turnmark_t *pmark)
         
         g_lm.q17gone_distance -= g_fast_info[g_int32mark_cnt].q17l_dist;
         g_rm.q17gone_distance -= g_fast_info[g_int32mark_cnt].q17r_dist;
+
+
+        // 현재 상태가 직진이면 직진을 시작하는 상태인 것.
+        // 직진이 종료될 경우 이곳에 들어와야 함. 
+        // 직진이 시작될 당시 방향을 잡아만 놓고, 다음 턴 직전에 거리 저장. 
+        // 아래의 조건은 직진에서 턴으로 넘어갈 경우 발동됨. 
+        if( ( g_fast_info[g_int32mark_cnt].u16turn_way & ( STRAIGHT | ETURN ) ) && (g_int32mark_cnt) )
+        {
+            g_fast_info[g_int32mark_cnt - 1].u16dist =  g_fast_info[g_int32mark_cnt - 1].u16dist >> 1;
+            g_fast_info[g_int32mark_cnt].u16dist += g_fast_info[g_int32mark_cnt - 1].u16dist;
+        }
         g_int32mark_cnt++;
 
         g_fast_info[g_int32mark_cnt].u16turn_way = g_pos.u16current_state;	// left or right 
+
     }
     
     
