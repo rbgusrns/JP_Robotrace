@@ -844,8 +844,11 @@ void bril_run( fast_run_str *p_info )
 			}
 			
 			speed_up_compute( pinfo );		//	가속 시작 플래그 기다리는 함수 
-			fast_error_compute( &g_err, pinfo, g_int32mark_cnt );	// 마크 에러처리  
-			
+			//fast_error_compute( &g_err, pinfo, g_int32mark_cnt );	// 마크 에러처리  
+            if( ( ( g_rm.q17gone_distance + g_lm.q17gone_distance ) >> 18 ) >= ( pinfo + g_int32mark_cnt )->u16dist ) // 마크에 주어진 에러값보다 더 간 경우 ( 마크를 놓친 경우) 
+
+		        second_infor( pinfo );	// 마크 처리 
+				
 			g_Flag.motor_ISR_flag = OFF;
 		}
 	}

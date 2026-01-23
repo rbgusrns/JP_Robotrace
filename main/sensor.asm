@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Wed Jan 21 18:02:27 2026                 *
+;* Date/Time created: Fri Jan 23 15:49:57 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -407,8 +407,8 @@ DW$93	.dwtag  DW_TAG_variable, DW_AT_name("g_fast_info"), DW_AT_symbol_name("_g_
 	.dwattr DW$93, DW_AT_type(*DW$T$178)
 	.dwattr DW$93, DW_AT_declaration(0x01)
 	.dwattr DW$93, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI72010 C:\Users\rbgus\AppData\Local\Temp\TI7204 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI7202 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI7206 --object_file sensor.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI26810 C:\Users\rbgus\AppData\Local\Temp\TI2684 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI2682 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI2686 --object_file sensor.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 	.sect	".text"
 	.global	_position_PID
 
@@ -1247,7 +1247,7 @@ L22:
         ; return occurs
 
 DW$101	.dwtag  DW_TAG_loop
-	.dwattr DW$101, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L14:1:1768986147")
+	.dwattr DW$101, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L14:1:1769150997")
 	.dwattr DW$101, DW_AT_begin_file("sensor.c")
 	.dwattr DW$101, DW_AT_begin_line(0x271)
 	.dwattr DW$101, DW_AT_end_line(0x28f)
@@ -1292,7 +1292,7 @@ DW$114	.dwtag  DW_TAG_loop_range
 	.dwattr DW$114, DW_AT_high_pc(DW$L$_start_end_check$15$E)
 
 DW$115	.dwtag  DW_TAG_loop
-	.dwattr DW$115, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L19:2:1768986147")
+	.dwattr DW$115, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L19:2:1769150997")
 	.dwattr DW$115, DW_AT_begin_file("sensor.c")
 	.dwattr DW$115, DW_AT_begin_line(0x27b)
 	.dwattr DW$115, DW_AT_end_line(0x27b)
@@ -1303,7 +1303,7 @@ DW$116	.dwtag  DW_TAG_loop_range
 
 
 DW$117	.dwtag  DW_TAG_loop
-	.dwattr DW$117, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L12:2:1768986147")
+	.dwattr DW$117, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L12:2:1769150997")
 	.dwattr DW$117, DW_AT_begin_file("sensor.c")
 	.dwattr DW$117, DW_AT_begin_line(0x283)
 	.dwattr DW$117, DW_AT_end_line(0x283)
@@ -1314,7 +1314,7 @@ DW$118	.dwtag  DW_TAG_loop_range
 
 
 DW$119	.dwtag  DW_TAG_loop
-	.dwattr DW$119, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L13:2:1768986147")
+	.dwattr DW$119, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L13:2:1769150997")
 	.dwattr DW$119, DW_AT_begin_file("sensor.c")
 	.dwattr DW$119, DW_AT_begin_line(0x28a)
 	.dwattr DW$119, DW_AT_end_line(0x28a)
@@ -1325,7 +1325,7 @@ DW$120	.dwtag  DW_TAG_loop_range
 
 
 DW$121	.dwtag  DW_TAG_loop
-	.dwattr DW$121, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L15:2:1768986147")
+	.dwattr DW$121, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L15:2:1769150997")
 	.dwattr DW$121, DW_AT_begin_file("sensor.c")
 	.dwattr DW$121, DW_AT_begin_line(0x273)
 	.dwattr DW$121, DW_AT_end_line(0x273)
@@ -1338,7 +1338,7 @@ DW$122	.dwtag  DW_TAG_loop_range
 
 
 DW$123	.dwtag  DW_TAG_loop
-	.dwattr DW$123, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L9:1:1768986147")
+	.dwattr DW$123, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L9:1:1769150997")
 	.dwattr DW$123, DW_AT_begin_file("sensor.c")
 	.dwattr DW$123, DW_AT_begin_line(0x265)
 	.dwattr DW$123, DW_AT_end_line(0x268)
@@ -1415,10 +1415,10 @@ _sen_vari_init:
 ;*** 131	-----------------------    *((volatile long *)C$1+174L) = 140800L;
 ;*** 131	-----------------------    *((volatile unsigned *)C$1+176L) = 512u;
 ;*** 131	-----------------------    *((volatile unsigned *)C$1+177L) = 0xfdffu;
-;*** 132	-----------------------    *((volatile long *)C$1+156L) = 32000L;
+;*** 132	-----------------------    *((volatile long *)C$1+156L) = 12800L;
 ;*** 132	-----------------------    *((volatile unsigned *)C$1+158L) = 256u;
 ;*** 132	-----------------------    *((volatile unsigned *)C$1+159L) = 0xfeffu;
-;*** 134	-----------------------    *((volatile long *)C$1+138L) = (-32000L);
+;*** 134	-----------------------    *((volatile long *)C$1+138L) = (-12800L);
 ;*** 134	-----------------------    *((volatile unsigned *)C$1+140L) = 128u;
 ;*** 134	-----------------------    *((volatile unsigned *)C$1+141L) = 0xff7fu;
 ;*** 135	-----------------------    *((volatile long *)C$1+120L) = (-140800L);
@@ -1563,7 +1563,7 @@ DW$127	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
         MOV       *+XAR3[AR0],#65023    ; |131| 
 	.dwpsn	"sensor.c",132,2
         MOVB      XAR0,#156             ; |132| 
-        MOVL      XAR4,#32000           ; |132| 
+        MOVL      XAR4,#12800           ; |132| 
         MOVL      *+XAR3[AR0],XAR4      ; |132| 
 	.dwpsn	"sensor.c",132,39
         MOVB      XAR0,#158             ; |132| 
@@ -1574,7 +1574,7 @@ DW$127	.dwtag  DW_TAG_variable, DW_AT_name("C$1"), DW_AT_symbol_name("C$1")
 	.dwpsn	"sensor.c",134,2
         SETC      SXM
         MOVB      XAR0,#138             ; |134| 
-        MOV       ACC,#-125 << 8
+        MOV       ACC,#-25 << 9
         MOVL      *+XAR3[AR0],ACC       ; |134| 
 	.dwpsn	"sensor.c",134,40
         MOVB      XAR0,#140             ; |134| 
@@ -2646,7 +2646,7 @@ DW$L$_print_pos$2$E:
         ; return occurs
 
 DW$141	.dwtag  DW_TAG_loop
-	.dwattr DW$141, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L46:1:1768986147")
+	.dwattr DW$141, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L46:1:1769150997")
 	.dwattr DW$141, DW_AT_begin_file("sensor.c")
 	.dwattr DW$141, DW_AT_begin_line(0x33d)
 	.dwattr DW$141, DW_AT_end_line(0x349)
@@ -2762,7 +2762,7 @@ DW$L$_print_maxmin$2$E:
         ; return occurs
 
 DW$146	.dwtag  DW_TAG_loop
-	.dwattr DW$146, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L47:1:1768986147")
+	.dwattr DW$146, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L47:1:1769150997")
 	.dwattr DW$146, DW_AT_begin_file("sensor.c")
 	.dwattr DW$146, DW_AT_begin_line(0x34f)
 	.dwattr DW$146, DW_AT_end_line(0x352)
@@ -3564,7 +3564,7 @@ DW$L$_Set_Max_Min$20$E:
         ; return occurs
 
 DW$167	.dwtag  DW_TAG_loop
-	.dwattr DW$167, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L64:1:1768986147")
+	.dwattr DW$167, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L64:1:1769150997")
 	.dwattr DW$167, DW_AT_begin_file("sensor.c")
 	.dwattr DW$167, DW_AT_begin_line(0x2e8)
 	.dwattr DW$167, DW_AT_end_line(0x2e8)
@@ -3575,7 +3575,7 @@ DW$168	.dwtag  DW_TAG_loop_range
 
 
 DW$169	.dwtag  DW_TAG_loop
-	.dwattr DW$169, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L63:1:1768986147")
+	.dwattr DW$169, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L63:1:1769150997")
 	.dwattr DW$169, DW_AT_begin_file("sensor.c")
 	.dwattr DW$169, DW_AT_begin_line(0x2e0)
 	.dwattr DW$169, DW_AT_end_line(0x2e5)
@@ -3586,7 +3586,7 @@ DW$170	.dwtag  DW_TAG_loop_range
 
 
 DW$171	.dwtag  DW_TAG_loop
-	.dwattr DW$171, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L62:1:1768986147")
+	.dwattr DW$171, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L62:1:1769150997")
 	.dwattr DW$171, DW_AT_begin_file("sensor.c")
 	.dwattr DW$171, DW_AT_begin_line(0x2d8)
 	.dwattr DW$171, DW_AT_end_line(0x2df)
@@ -3597,7 +3597,7 @@ DW$172	.dwtag  DW_TAG_loop_range
 
 
 DW$173	.dwtag  DW_TAG_loop
-	.dwattr DW$173, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L61:1:1768986147")
+	.dwattr DW$173, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L61:1:1769150997")
 	.dwattr DW$173, DW_AT_begin_file("sensor.c")
 	.dwattr DW$173, DW_AT_begin_line(0x2d2)
 	.dwattr DW$173, DW_AT_end_line(0x2d2)
@@ -3608,7 +3608,7 @@ DW$174	.dwtag  DW_TAG_loop_range
 
 
 DW$175	.dwtag  DW_TAG_loop
-	.dwattr DW$175, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L58:1:1768986147")
+	.dwattr DW$175, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L58:1:1769150997")
 	.dwattr DW$175, DW_AT_begin_file("sensor.c")
 	.dwattr DW$175, DW_AT_begin_line(0x2c7)
 	.dwattr DW$175, DW_AT_end_line(0x2d6)
@@ -3631,7 +3631,7 @@ DW$180	.dwtag  DW_TAG_loop_range
 
 
 DW$181	.dwtag  DW_TAG_loop
-	.dwattr DW$181, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L57:1:1768986147")
+	.dwattr DW$181, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L57:1:1769150997")
 	.dwattr DW$181, DW_AT_begin_file("sensor.c")
 	.dwattr DW$181, DW_AT_begin_line(0x2bd)
 	.dwattr DW$181, DW_AT_end_line(0x2bd)
@@ -3642,7 +3642,7 @@ DW$182	.dwtag  DW_TAG_loop_range
 
 
 DW$183	.dwtag  DW_TAG_loop
-	.dwattr DW$183, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L54:1:1768986147")
+	.dwattr DW$183, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L54:1:1769150997")
 	.dwattr DW$183, DW_AT_begin_file("sensor.c")
 	.dwattr DW$183, DW_AT_begin_line(0x2b2)
 	.dwattr DW$183, DW_AT_end_line(0x2c1)
@@ -3972,7 +3972,7 @@ DW$L$_F_4095$11$E:
         ; return occurs
 
 DW$194	.dwtag  DW_TAG_loop
-	.dwattr DW$194, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L65:1:1768986147")
+	.dwattr DW$194, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L65:1:1769150997")
 	.dwattr DW$194, DW_AT_begin_file("sensor.c")
 	.dwattr DW$194, DW_AT_begin_line(0x2f9)
 	.dwattr DW$194, DW_AT_end_line(0x311)
@@ -4216,7 +4216,7 @@ DW$L$_F_127$11$E:
         ; return occurs
 
 DW$208	.dwtag  DW_TAG_loop
-	.dwattr DW$208, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L71:1:1768986147")
+	.dwattr DW$208, DW_AT_name("C:\project\JP_Robotrace\main\sensor.asm:L71:1:1769150997")
 	.dwattr DW$208, DW_AT_begin_file("sensor.c")
 	.dwattr DW$208, DW_AT_begin_line(0x31b)
 	.dwattr DW$208, DW_AT_end_line(0x334)

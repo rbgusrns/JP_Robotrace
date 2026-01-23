@@ -332,8 +332,8 @@ extern void LSM6DSR_GetGyroDataDPS(void)
     
 /************************************ 현재 상태 판단 ****************************************/
 
-    if ( g_q17current_omega > _IQ(30) ) g_pos.u16current_state = RTURN;
-    else if ( g_q17current_omega < _IQ(-30) ) g_pos.u16current_state = LTURN;
+    if ( g_q17current_omega > _IQ(60) ) g_pos.u16current_state = RTURN;
+    else if ( g_q17current_omega < _IQ(-60) ) g_pos.u16current_state = LTURN;
     else g_pos.u16current_state = STRAIGHT;
 
 #if 0    
@@ -455,7 +455,7 @@ extern void turn_decide(turnmark_t* p_mark)
 		else if( pmark->q7turn_dis >= pmark->q7dist_limit ) // 일정 거리 가도 각속도가 유지될 경우. -> 곡률 변화 인정.
 		{ 
             
-			pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);	//이 거리동안은 다시 들어와도 인정 X
+			//pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);	//이 거리동안은 다시 들어와도 인정 X
 			pmark->u16single_flag = ON;
 
 			if( pmark == g_ptr -> g_lmark ) // 곡률 변화라면 
@@ -463,11 +463,12 @@ extern void turn_decide(turnmark_t* p_mark)
                 
                 LED_ON;
                 g_Flag.lmark_flag = ON;
-                if(g_Flag.fast_flag) second_infor( g_ptr->pfastinfo,g_ptr->perr);
+                //if(g_Flag.fast_flag) second_infor( g_ptr->pfastinfo);
 			}
 			else if ( pmark == g_ptr -> g_rmark ) // start or end 마크라면
 			{
                 LED_ON;
+                pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);
                 g_Flag.rmark_flag = ON;
 			}
 			
