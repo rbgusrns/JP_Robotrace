@@ -18,8 +18,8 @@
 
 extern void jerk_down( fast_run_str *pinfo, int32 mark_cnt );
 extern void second_run(fast_run_str *pinfo);
-extern void second_infor(fast_run_str * p_info );
-extern void fast_compute( fast_run_str *pinfo, int32 mark_cnt );
+extern void second_infor(fast_run_str * p_info, error_str *perr );
+extern void fast_error_compute( error_str *perr, fast_run_str *pinfo, int32 mark_cnt );
 extern void speed_up_compute( fast_run_str *p_info );
 extern void turn_division_func( void ); 
 

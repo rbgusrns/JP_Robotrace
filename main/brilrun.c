@@ -176,7 +176,7 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 	
 	perr->q17err_dist[ mark_cnt ] += _IQ17( pinfo->u16dist );  // 곡률마다 에러값 지정. 
 
-	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist ) , _IQ17(0.7)); //마크 체크 시점 거리 제한.  	 마크를 더 봤을 때 필요 
+	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist ) , _IQ17(0.9)); //마크 체크 시점 거리 제한.  	 마크를 더 봤을 때 필요 
 
 
 }
@@ -525,7 +525,7 @@ static void bril_default_turn_compute( fast_run_str *pinfo, int32 mark_cnt, erro
 	//에러처리 
 	perr->q17err_dist[ mark_cnt ] = _IQmpy( _IQ(pinfo->u16dist), _IQ(1.5));
 
-	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ( pinfo->u16dist ) , _IQ(0.65));	 //마크 체크 시점 거리 제한.
+	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ( pinfo->u16dist ) , _IQ(0.9));	 //마크 체크 시점 거리 제한.
 
 }
 
@@ -810,7 +810,7 @@ void bril_run( fast_run_str *p_info )
 	
 	while(1)
 	{
-		//VFDPrintf("%8f",_IQtoF(g_q17shift_pos_val));
+		VFDPrintf("%8f",_IQtoF(g_q17shift_pos_val));
 		//VFDPrintf("%f",_IQ7toF(g_pos.iq7pid_out));
 		g_q17straight_dist = ( (g_rm.q17gone_distance + g_lm.q17gone_distance) >> 1 );		 
 		
@@ -844,11 +844,7 @@ void bril_run( fast_run_str *p_info )
 			}
 			
 			speed_up_compute( pinfo );		//	가속 시작 플래그 기다리는 함수 
-			//fast_error_compute( &g_err, pinfo, g_int32mark_cnt );	// 마크 에러처리  
-            if( ( ( g_rm.q17gone_distance + g_lm.q17gone_distance ) >> 18 ) >= ( pinfo + g_int32mark_cnt )->u16dist ) // 마크에 주어진 에러값보다 더 간 경우 ( 마크를 놓친 경우) 
-
-		        second_infor( pinfo );	// 마크 처리 
-				
+            fast_error_compute( &g_err, pinfo, g_int32mark_cnt );				
 			g_Flag.motor_ISR_flag = OFF;
 		}
 	}

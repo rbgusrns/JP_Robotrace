@@ -1,25 +1,11 @@
----- g_q17shift_pos_val Matches (24 in 10 files) ----
-brilrun.asm (main):DW$53	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_pos_val"), DW_AT_symbol_name("_g_q17shift_pos_val")
-brilrun.asm (main):;*** 866	-----------------------    pos_val = g_q17shift_pos_val;
-brilrun.asm (main):;*** 875	-----------------------    g_q17shift_pos_val = pos_val;
-brilrun.c (main):		//VFDPrintf("%8f",_IQtoF(g_q17shift_pos_val));
-brilrun.c (main):	volatile _iq17 pos_val = g_q17shift_pos_val; //기본 0
-brilrun.c (main):		g_q17shift_pos_val = pos_val;
-brilrun.c (main):	g_q17shift_pos_val = pos_val;
-fastrun.c (main):    //if( ( pinfo + g_int32mark_cnt )->q7kp_val <= POS_KP_DOWN ) g_q17shift_pos_val = _IQ(0.0);
-main.asm (main):DW$62	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_pos_val"), DW_AT_symbol_name("_g_q17shift_pos_val")
-main.asm (main):;*** 166	-----------------------    g_q17shift_pos_val = 0L;
-main.c (main):	g_q17shift_pos_val = _IQ(0.0);
-search.asm (main):DW$37	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_pos_val"), DW_AT_symbol_name("_g_q17shift_pos_val")
-search.asm (main):;*** 381	-----------------------    g_q17shift_pos_val += 13107200L;
-search.asm (main):;*** 396	-----------------------    VFDPrintf("SFT:%4f", _IQ17toF(g_q17shift_pos_val));
-search.asm (main):;*** 386	-----------------------    g_q17shift_pos_val -= 13107200L;
-search.c (main):			g_q17shift_pos_val += _IQ(100);
-search.c (main):			g_q17shift_pos_val -= _IQ(100);
-search.c (main):	    VFDPrintf("SFT:%4f",_IQ17toF(g_q17shift_pos_val));
-sensor.asm (main):DW$33	.dwtag  DW_TAG_variable, DW_AT_name("g_q17shift_pos_val"), DW_AT_symbol_name("_g_q17shift_pos_val")
-sensor.asm (main):;*** 447	-----------------------    (*C$1).iq7pos_IIR_puting = g_pos.iq7temp_pos+(g_q17shift_pos_val>>10);
-sensor.c (main):		//g_pos.iq7current_pos = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10) + CENTER_POSITION;	// extreme run position shift value 
-sensor.c (main):		//g_pos.iq7current_pos = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10);	// extreme run position shift value 
-sensor.c (main):	g_pos.iq7pos_IIR_puting = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10); //현재 입력값 
-Variable.h (main):					  g_q17shift_pos_val,
+---- fast_infor_write_rom Matches (10 in 5 files) ----
+Rom.asm (main):DW$151	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_write_rom"), DW_AT_symbol_name("_fast_infor_write_rom")
+Rom.c (main):void fast_infor_write_rom( void )
+Rom.h (main):extern void fast_infor_write_rom(void);
+sensor.asm (main):DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_write_rom"), DW_AT_symbol_name("_fast_infor_write_rom")
+sensor.asm (main):;*** 655	-----------------------    fast_infor_write_rom();
+sensor.asm (main):;*** 656	-----------------------    fast_infor_write_rom();
+sensor.asm (main):;*** 657	-----------------------    fast_infor_write_rom();
+sensor.c (main):				fast_infor_write_rom();
+sensor.c (main):                fast_infor_write_rom();
+sensor.c (main):                fast_infor_write_rom();

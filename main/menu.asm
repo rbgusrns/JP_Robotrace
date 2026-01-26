@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Fri Jan 23 15:49:55 2026                 *
+;* Date/Time created: Mon Jan 26 15:55:40 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -423,8 +423,8 @@ DW$38	.dwtag  DW_TAG_variable, DW_AT_name("g_fast_info"), DW_AT_symbol_name("_g_
 	.dwattr DW$38, DW_AT_type(*DW$T$64)
 	.dwattr DW$38, DW_AT_declaration(0x01)
 	.dwattr DW$38, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI22810 C:\Users\rbgus\AppData\Local\Temp\TI2284 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI2282 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI2286 --object_file menu.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI10810 C:\Users\rbgus\AppData\Local\Temp\TI1084 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI1082 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI1086 --object_file menu.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 	.sect	".text"
 	.global	_bril_run_start
 
@@ -737,10 +737,10 @@ _menu:
         TBIT      @_GpioDataRegs+1,#15  ; |58| 
         BF        L1,NTC                ; |58| 
         ; branchcc occurs ; |58| 
-;*** 58	-----------------------    if ( g_rm.q17cur_vel_avr < (-13107200L) ) goto g4;
+;*** 58	-----------------------    if ( g_rm.q17cur_vel_avr < (-26214400L) ) goto g4;
         SETC      SXM
         MOVW      DP,#_g_rm+28
-        MOV       ACC,#-400 << 15
+        MOV       ACC,#-800 << 15
         CMPL      ACC,@_g_rm+28         ; |58| 
         BF        L1,GT                 ; |58| 
         ; branchcc occurs ; |58| 
@@ -785,10 +785,10 @@ L3:
         TBIT      @_GpioDataRegs+8,#2   ; |61| 
         BF        L4,NTC                ; |61| 
         ; branchcc occurs ; |61| 
-;*** 61	-----------------------    if ( g_lm.q17cur_vel_avr >= (-13107200L) ) goto g10;
+;*** 61	-----------------------    if ( g_lm.q17cur_vel_avr >= (-26214400L) ) goto g10;
         SETC      SXM
         MOVW      DP,#_g_lm+28
-        MOV       ACC,#-400 << 15
+        MOV       ACC,#-800 << 15
         CMPL      ACC,@_g_lm+28         ; |61| 
         BF        L5,LEQ                ; |61| 
         ; branchcc occurs ; |61| 
@@ -864,10 +864,9 @@ L7:
         TBIT      @_GpioDataRegs+8,#1   ; |68| 
         BF        L8,NTC                ; |68| 
         ; branchcc occurs ; |68| 
-;*** 68	-----------------------    if ( g_lm.q17cur_vel_avr <= 13107200L ) goto g17;
-        MOV       AL,#0
+;*** 68	-----------------------    if ( g_lm.q17cur_vel_avr <= 26214400L ) goto g17;
+        MOV       ACC,#800 << 15
         MOVW      DP,#_g_lm+28
-        MOV       AH,#200
         CMPL      ACC,@_g_lm+28         ; |68| 
         BF        L9,GEQ                ; |68| 
         ; branchcc occurs ; |68| 
@@ -965,7 +964,7 @@ DW$L$_menu_start$2$B:
 DW$L$_menu_start$2$E:
 
 DW$46	.dwtag  DW_TAG_loop
-	.dwattr DW$46, DW_AT_name("C:\project\JP_Robotrace\main\menu.asm:L11:1:1769150995")
+	.dwattr DW$46, DW_AT_name("C:\project\JP_Robotrace\main\menu.asm:L11:1:1769410540")
 	.dwattr DW$46, DW_AT_begin_file("menu.c")
 	.dwattr DW$46, DW_AT_begin_line(0x2f)
 	.dwattr DW$46, DW_AT_end_line(0x33)

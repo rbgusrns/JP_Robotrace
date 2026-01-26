@@ -284,22 +284,25 @@ extern void Gyro_test(void)
 
 extern void LSM6DSR_GetGyroDataDPS(void)
 {
+    
+    if(g_Flag.SPI_Rom_flag) return;
+
     g_Flag.SPI_Gyro_flag = ON;
+
     // 자이로 데이터 레지스터(0x22 ~ 0x27) 6바이트를 한 번에 읽음
 
-    if( g_Flag.SPI_Rom_flag ) 
-    {
-        g_Flag.SPI_Gyro_flag = OFF;
-        return;
-    }
     LSM6DSR_ReadMulti(LSM6DSR_OUTZ_L_G, g_u16gyro_raw_data, 2);
     
     g_int16_gyro_raw = (int16)((g_u16gyro_raw_data[1] << 8) | g_u16gyro_raw_data[0]);
     
     g_q17_dps_z = _IQmpy(_IQ(g_int16_gyro_raw), _IQ(-0.140)) - g_q17_gyro_offset;
 
-    g_q17turn_angle += _IQ17mpyIQX( g_q17_dps_z , 17 , _IQ30( 0.0005 ), 30 );
+    g_q17_tick_z = _IQ17mpyIQX( g_q17_dps_z , 17 , _IQ30( 0.0005 ), 30 );
     
+    g_q17turn_angle += g_q17_tick_z;
+
+    g_q17current_angle += g_q17_tick_z;
+
 
 /************************************ 각도 평균 구하기 ****************************************/
 
@@ -313,44 +316,21 @@ extern void LSM6DSR_GetGyroDataDPS(void)
     if (g_int16_buf_idx >= WINDOW_SIZE) g_int16_buf_idx = 0;
     
     g_q17current_omega = _IQ17mpy((g_q17turn_angle - g_q17old_angle),_IQ(20));
-    
-/************************************ 각속도 평균 구하기 ****************************************/
-#if 0
-    g_q17omega_sum -= g_q17omega_buf[g_int16_omega_idx];
-    
-    g_q17omega_buf[g_int16_omega_idx] = g_q17current_omega;
-    
-    g_q17omega_sum += g_q17current_omega;
 
-    g_int16_omega_idx++;
+    g_q17curvature = _IQ17mpy( g_q17current_omega , g_q17vel1000_i); // 각속도 -> 곡률 변환. 속도에 관계없이
     
-    if (g_int16_omega_idx >= OMEGA_WIN) g_int16_omega_idx = 0;
-
-    g_q17omega_avg = _IQ17mpy(g_q17omega_sum, _IQ17(0.05));
-
-#endif
     
 /************************************ 현재 상태 판단 ****************************************/
 
-    if ( g_q17current_omega > _IQ(60) ) g_pos.u16current_state = RTURN;
-    else if ( g_q17current_omega < _IQ(-60) ) g_pos.u16current_state = LTURN;
+    if ( g_q17curvature > g_q17turn_threshold ) g_pos.u16current_state = RTURN;
+    else if ( g_q17curvature < -g_q17turn_threshold ) g_pos.u16current_state = LTURN;
     else g_pos.u16current_state = STRAIGHT;
 
-#if 0    
-    if ( _IQ17abs( g_q17omega_avg ) > _IQ(30) ) 
-    {
-        g_q17test_omega = g_q17current_omega; // 현재 각속도 저장해둠. 
-        g_pos.u16current_state = CTURN; // 각속도 변화량이 심하다면 현재 턴 변화중인 것. 
-    }
-#endif
 
     if ( g_pos.u16current_state != g_pos.u16past_state ) g_pos.u16state |= 0x8000; //  0000 0000 0000 0000 센서가 활성화 된 것 처럼. 
     else g_pos.u16state &= 0x7fff;
 
-    
-    // 각속도 평균이 일정 이상이라면 곡률 변화 가능성 판단. 
 
-    //VFDPrintf("DP:%5ld\n", g_q17_dps_z >> 17);
     g_Flag.SPI_Gyro_flag = OFF;
 }
 
@@ -410,10 +390,16 @@ extern void turn_decide(turnmark_t* p_mark)
             
 			if( pmark == g_ptr->g_lmark ) // 곡률 변화 상태
 			{			
-				LED_OFF;
 
-	            init_line_info(pmark);
-					                
+                
+                if(!g_Flag.fast_flag) 
+                    init_line_info(pmark);
+
+             	//else		
+                //    second_infor( g_ptr->pfastinfo,g_ptr->perr);
+				
+				LED_OFF;
+	              
 			}
             
 			else if( pmark == g_ptr->g_rmark ) //  start or end
@@ -440,9 +426,9 @@ extern void turn_decide(turnmark_t* p_mark)
                             
 			if( pmark == g_ptr->g_lmark ) // 곡률 변화 라면 길게 거리 잡고
 			{			
-                pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist); // 일정 거리 가는 동안 각속도가 유지되는지 검사
-				if(!g_Flag.fast_flag)	 line_info(pmark); //1차                
-				 
+                pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist); // 일정 거리 가는 동안 각속도가 유지되는지 검사             
+                if(!g_Flag.fast_flag)	 line_info(pmark); //1차 turnmark count ( 턴마크로 간주하고 라인 정보 저장 ) 
+				else					 second_infor( g_ptr->pfastinfo,g_ptr->perr);  //2차				 
 			}
             
 			else if( pmark == g_ptr->g_rmark ) //  start or end 라면 마크 인식할 정도로만 거리 잡기.
@@ -462,8 +448,10 @@ extern void turn_decide(turnmark_t* p_mark)
             {
                 
                 LED_ON;
+
+
                 g_Flag.lmark_flag = ON;
-                //if(g_Flag.fast_flag) second_infor( g_ptr->pfastinfo);
+                
 			}
 			else if ( pmark == g_ptr -> g_rmark ) // start or end 마크라면
 			{

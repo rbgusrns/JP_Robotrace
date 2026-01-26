@@ -60,6 +60,7 @@ void Variable_Init( void )
 	g_ptr->pfastinfo = g_fast_info;
 	g_ptr->perr = &g_err;
 
+    g_int32lineout_pre_cnt = 0;
 	g_int32lineout_cnt = 0;
 	g_int32mark_cnt = 0;
 	g_int32total_cnt = 0;
@@ -107,7 +108,7 @@ void Variable_Init( void )
 	g_q17fast_vel_limit = _IQ(7700);
 	//g_q17sec_end_vel = _IQ(2300);
 
-	g_q17user_vel = _IQ(2300); // search run vel
+	g_q17user_vel = _IQ(1000); // search run vel
  	
 	//g_q17large_vel = _IQ(3200);
 	
@@ -142,7 +143,7 @@ void Variable_Init( void )
 
 	/*	extremerun variables	*/
 	g_int32shift_level=4;
-	g_q17end_vel = _IQ(2200);
+	g_q17end_vel = _IQ(1000);
 	g_q17end_dist = _IQ(100);
 	
 	g_q1745user_vel = _IQ(3500);
@@ -173,9 +174,10 @@ void Variable_Init( void )
     g_q17shift_ratio = _IQ(7);
     g_q17return_ratio = _IQ(8);
     g_q17st_ret_ratio = _IQ(4);
-
+    g_q17current_angle = _IQ(0);
     g_q17turn_angle = _IQ(0);
     g_q17_dps_z = _IQ(0);
+    g_q17_tick_z = _IQ(0);
     g_q17past_gyro = _IQ(0);
     g_q17gyro_IIR_output = _IQ(0);
     g_q17gyro_IIR_puting = _IQ(0);
@@ -184,6 +186,7 @@ void Variable_Init( void )
     g_pos.u16current_state = STRAIGHT;
     g_pos.u16past_state = STRAIGHT;
 
+    g_q17turn_threshold = _IQ(60);
     
     memset( ( void * )&g_q17omega_buf, 0x00, sizeof( g_q17omega_buf ) );
     memset( ( void * )&g_q17angle_buffer, 0x00, sizeof( g_q17angle_buffer ) );
@@ -194,7 +197,8 @@ void Variable_Init( void )
     g_q17omega_sum = _IQ(0);
     g_int16_omega_idx = _IQ(0);
 
-    
+    g_lm.q17cur_vel_avr = _IQ(0);
+    g_rm.q17cur_vel_avr = _IQ(0);
 }
 
 void main(void)
@@ -224,7 +228,7 @@ void main(void)
 #endif  
     //g_Flag.motor_start = ON;
 	//move_to_end(_IQ(100), _IQ(0), g_q17end_acc);
-
+    WAIT;
     LSM6DSR_Init();
 	calculate_average_offset();
 

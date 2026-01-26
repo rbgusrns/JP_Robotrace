@@ -180,7 +180,7 @@ void InitGpio(void)
 	GpioCtrlRegs.GPAPUD.bit.GPIO28 = 0;    // Enable pull-up for GPIO28 (SCIRXDA)
 	GpioCtrlRegs.GPAPUD.bit.GPIO29 = 0;    // Enable pull-up for GPIO29 (SCITXDA)
 	// 1100 1100 1100 1111 ---*/
-	GpioCtrlRegs.GPAPUD.all = 0xCCCFFFFF;    
+	GpioCtrlRegs.GPAPUD.all = 0xCCC77FFF; //1010 1010 1010 0111 0111 1111 1111 1111   
 	GpioCtrlRegs.GPBPUD.all = 0xFFFFFFFF;    // Pullup's disabled GPIO32-GPIO34
 
 	GpioCtrlRegs.GPAQSEL1.all = 0;	//synchronous	

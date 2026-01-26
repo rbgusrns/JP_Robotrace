@@ -17,36 +17,28 @@
 #include "DSP280x_Examples.h"   // DSP280x Examples Include File
 
 
+
+#define LARGE_CURVATURE _IQ(0.15)
+#define TURN_45_ANGLE _IQ(45)
+#define TURN_90_ANGLE _IQ(90)
+
+
 void init_line_info(turnmark_t *pmark)
 {
 
-    if(!g_Flag.fast_flag)
-    {
-        
-        g_lm.q17gone_distance -= g_fast_info[g_int32mark_cnt].q17l_dist;
-        g_rm.q17gone_distance -= g_fast_info[g_int32mark_cnt].q17r_dist;
+    g_lm.q17gone_distance -= g_fast_info[g_int32mark_cnt].q17l_dist;
+    g_rm.q17gone_distance -= g_fast_info[g_int32mark_cnt].q17r_dist;
+
+    g_q17current_angle -= g_fast_info[g_int32mark_cnt].q17angle;
 
 
-        // 현재 상태가 직진이면 직진을 시작하는 상태인 것.
-        // 직진이 종료될 경우 이곳에 들어와야 함. 
-        // 직진이 시작될 당시 방향을 잡아만 놓고, 다음 턴 직전에 거리 저장. 
-        // 아래의 조건은 직진에서 턴으로 넘어갈 경우 발동됨. 
-        #if 0
-        if( ( g_fast_info[g_int32mark_cnt].u16turn_way & ( STRAIGHT | ETURN ) ) && (g_int32mark_cnt) )
-        {
-            g_fast_info[g_int32mark_cnt - 1].u16dist =  g_fast_info[g_int32mark_cnt - 1].u16dist >> 1;
-            g_fast_info[g_int32mark_cnt].u16dist += g_fast_info[g_int32mark_cnt - 1].u16dist;
-        }
-        #endif
-        g_int32mark_cnt++;
+    g_int32mark_cnt++;
 
-        g_fast_info[g_int32mark_cnt].u16turn_way = g_pos.u16current_state;	// left or right 
+    g_fast_info[g_int32mark_cnt].u16turn_way = g_pos.u16current_state;	// left or right 
 
-    }
-    
-    
     g_pos.u16past_state = g_pos.u16current_state;
 }
+
 
 void line_info(turnmark_t *pmark)
 {
@@ -60,23 +52,20 @@ void line_info(turnmark_t *pmark)
 		g_fast_info[g_int32mark_cnt].q17l_dist = g_lm.q17gone_distance;
 		g_fast_info[g_int32mark_cnt].q17r_dist = g_rm.q17gone_distance;
 	}
-	
-	
-	if( pmark == NULL ) g_fast_info[g_int32mark_cnt].u16turn_way = ETURN; // end
-	
-	
+
 	g_fast_info[g_int32mark_cnt].u16dist = IQ_TO_UINT16( ( g_fast_info[g_int32mark_cnt].q17l_dist >> 1 ) + ( g_fast_info[g_int32mark_cnt].q17r_dist >> 1 ) ); // 마크와 마크 사이 거리 
 
-    g_fast_info[g_int32mark_cnt].q17angle = g_q17turn_angle;
-	//TxPrintf("1\n");
+    g_fast_info[g_int32mark_cnt].q17angle = g_q17current_angle;
 	
 	
+	if( pmark == NULL ) 
+    {
+        g_fast_info[g_int32mark_cnt].u16turn_way = ETURN; // end
+        g_int32mark_cnt++;
+	}	
 	
-		
 
-    //g_q17turn_angle = _IQ(0);
-//	g_lm.q17total_dist = g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0);
-    //VFDPrintf("%8d",g_fast_info[g_int32mark_cnt].u16turn_way);
+
 }
 
 
@@ -129,68 +118,45 @@ void turn_info_compute( fast_run_str *pinfo, int32 mark_cnt )
 	}
 	else if( !( pinfo->u16turn_way & STRAIGHT ) && !( pinfo->u16turn_way & ETURN ) ) 	//Default TURN
 	{
-		if( pinfo->u16dist <= TURN_45_DIST )	//45
-		{
-			pinfo->u16turn_dir = TURN_45 | pinfo->u16turn_way;
-			pinfo->u16turn_cnt = ( ( pinfo + 1 )->u16turn_way & STRAIGHT )? D_45A : D_STR; //다음 구간이 직진이면 45, 아니면 STR.
-		}
-		else if( pinfo->u16dist > TURN_45_DIST && pinfo->u16dist <= TURN_90_DIST ) //90 
-		{
-			pinfo->u16turn_dir = TURN_90 | pinfo->u16turn_way;
-			pinfo->u16turn_cnt = ( ( pinfo + 1 )->u16turn_way & STRAIGHT )? D_90A : D_STR;
-            //if( ( ( pinfo - 1 )->u16turn_way & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_way & STRAIGHT ) ) 
-            //    pinfo->u16turn_cnt = D_90A - 10;
-		}
-		else if( pinfo->u16dist > TURN_90_DIST && pinfo->u16dist <= TURN_180_DIST )	//180
-		{
-			pinfo->u16turn_dir = TURN_180 | pinfo->u16turn_way;
-			pinfo->u16turn_cnt= ( ( pinfo + 1 )->u16turn_way & STRAIGHT )? D_180A : D_STR;
+		if( ( _IQdiv( _IQabs(pinfo->q17angle) , _IQ(pinfo->u16dist)   ) < LARGE_CURVATURE ) && ( pinfo->u16dist > 600 ) )	// Large
+		{			
 
-		}
-		else if( pinfo->u16dist > TURN_180_DIST &&  pinfo->u16dist <= TURN_270_DIST )	//270 
-		{
-			pinfo->u16turn_dir = TURN_270 | pinfo->u16turn_way;
-			pinfo->u16turn_cnt = ( ( pinfo + 1 )->u16turn_way & STRAIGHT )? D_270A : D_STR;	
-		}
-		else if( pinfo->u16dist > TURN_270_DIST )		//Large
-		{				
-			max = ( pinfo->q17l_dist > pinfo->q17r_dist )? pinfo->q17l_dist : pinfo->q17r_dist;
-			min = ( pinfo->q17l_dist > pinfo->q17r_dist )? pinfo->q17r_dist : pinfo->q17l_dist;
-					
-			if( _IQdiv( max , min ) < _IQ17(3) )		//큰 턴 _IQ17(3)		// 좌우 길이의 비율이 3보다 작은 경우 큰턴 
-			//if( _IQdiv( max , min ) < _IQ17(3) )		//큰 턴 _IQ17(3)
+			
+			pinfo->u16turn_dir = LARGE_TURN | pinfo->u16turn_way;			
+			pinfo->u16turn_cnt = D_STR;
+            
+			if( mark_cnt )
 			{
-				pinfo->u16turn_dir = LARGE_TURN | pinfo->u16turn_way;			
-				pinfo->u16turn_cnt = D_STR;
-				if( mark_cnt )
+				if( pinfo->u16dist > SHORT_DIST )
 				{
-					if( pinfo->u16dist > SHORT_DIST )
-					{
-						//temp = (int32)(pinfo->u16dist) - (int32)((_IQmpy( _IQmpy(g_q17user_vel, _IQ(( pinfo - 1 )->u16turn_cnt )), _IQ17(0.0005))) >> 17);
-						temp = ((int32)(pinfo->u16dist) - (int32)((_IQmpy(g_q17user_vel_2000 ,_IQ17( ( pinfo - 1 )->u16turn_cnt )))>>17));
-						//윗줄 확인 요망
-						if( temp <= 0 )
-						{
-							temp = (int32)(pinfo->u16dist);
-							( pinfo - 1 )->u16turn_cnt = D_STR;
-						}
-					}
-					else
+					//temp = (int32)(pinfo->u16dist) - (int32)((_IQmpy( _IQmpy(g_q17user_vel, _IQ(( pinfo - 1 )->u16turn_cnt )), _IQ17(0.0005))) >> 17);
+					temp = ((int32)(pinfo->u16dist) - (int32)((_IQmpy(g_q17user_vel_2000 ,_IQ17( ( pinfo - 1 )->u16turn_cnt )))>>17));
+					//윗줄 확인 요망
+					if( temp <= 0 )
 					{
 						temp = (int32)(pinfo->u16dist);
-						( pinfo - 1 )->u16turn_cnt = D_STR;	
+						( pinfo - 1 )->u16turn_cnt = D_STR;
 					}
-				
-					pinfo->u16dist = (Uint16) temp;				
 				}
-
-				
-			}			
-			else		//아닌 경우는 270도 처리
-			{
-				pinfo->u16turn_dir = TURN_270 | pinfo->u16turn_way;
-				pinfo->u16turn_cnt = ( ( pinfo + 1 )->u16turn_way & STRAIGHT )? D_270A : D_STR;	
+				else
+				{
+					temp = (int32)(pinfo->u16dist);
+					( pinfo - 1 )->u16turn_cnt = D_STR;	
+				}
+			
+				pinfo->u16dist = (Uint16) temp;				
 			}
+            
+		}
+		else if( _IQabs(pinfo->q17angle) <= TURN_45_ANGLE ) // 45
+		{
+			pinfo->u16turn_dir = TURN_45 | pinfo->u16turn_way;
+			pinfo->u16turn_cnt = ( ( pinfo + 1 )->u16turn_way & STRAIGHT )? D_45A : D_STR;
+		}
+		else if( ( _IQabs(pinfo->q17angle) > TURN_45_ANGLE ) && ( _IQabs(pinfo->q17angle) <= TURN_90_ANGLE ) )	//270 
+		{
+			pinfo->u16turn_dir = TURN_90 | pinfo->u16turn_way;
+			pinfo->u16turn_cnt = ( ( pinfo + 1 )->u16turn_way & STRAIGHT )? D_90A : D_STR;	
 		}
 		else	//에러 처리 ( 270로 본다 )
 		{
@@ -213,13 +179,15 @@ void race_start_init(void)
 	g_lm.q17total_dist = g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0);
 	g_lm.q27tick_dist = g_rm.q27tick_dist = _IQ27(0);
     g_lm.q17gone_distance = g_rm.q17gone_distance = _IQ17(0);
-
+    g_q17turn_angle = _IQ(0);
+    g_q17current_angle = _IQ(0);
 	g_Flag.err = OFF;
 	g_Flag.lineout_flag = OFF;
-	
+	g_pos.u16current_state  = STRAIGHT;
+    g_pos.u16past_state  = STRAIGHT;
 	g_Flag.speed_up = OFF;
 	g_Flag.speed_up_start = OFF;
-
+    g_q17vel1000_i = _IQdiv(_IQ(1000),g_q17user_vel);
 	//	g_u16sen_enable = 0xffff;
 	//	g_u16pos_cnt = S_SIX;
 	//	g_u16sen_state = 0;
@@ -240,7 +208,8 @@ int lineout_func(void)		// 라인아웃 체크 함수
 	if( g_Flag.lineout_flag )	// 라인아웃( 검은판 혹은 대리석 ) 
 	{
 		g_int32lineout_cnt++;
-		if(g_int32lineout_cnt < 200 )	return 0;	//라인 아웃 딜레이 
+		if(g_int32lineout_cnt < 200 )	
+            return 0;   //라인 아웃 딜레이 
 
 		g_int32lineout_cnt = 0;
 
@@ -286,19 +255,14 @@ void  search_run(void)
 	
 	handle_ad_make(g_q16out_corner_limit, g_q16in_corner_limit);    // g_q16out_corner_limit = _IQ16(0.52)	g_q16in_corner_limit = _IQ16(1.73); 			
 	move_to_move(_IQ(1000), _IQ( 0 ), g_q17user_vel ,g_q17user_vel, _IQ(5000));
-    /*
-	if(g_q17user_vel == _IQ(2400))
-		g_q17end_acc = _IQ(15000);
-	else if(g_q17user_vel <= _IQ(2200))
-		g_q17end_acc = _IQ(12000);
-	*/
+
 	g_Flag.motor_start = ON;
 	g_Flag.fast_flag= OFF;
 	
 	while(1)
 	{
         
-        TxPrintf("%f,%f,%ld,%d,%d\n",_IQtoF(g_q17current_omega),_IQtoF((g_lm.q17gone_distance + g_rm.q17gone_distance) >> 1),g_int32mark_cnt,g_fast_info[g_int32mark_cnt].u16turn_way<<6,g_pos.u16current_state<<6 );
+        //TxPrintf("%f,%f,%ld,%d,%d\n",_IQtoF(g_q17curvature),_IQtoF((g_lm.q17gone_distance + g_rm.q17gone_distance) >> 1),g_int32mark_cnt,g_fast_info[g_int32mark_cnt].u16turn_way<<6,g_pos.u16current_state<<6 );
                 
         //TxPrintf("%f,%f,%d\n",_IQtoF(g_q17turn_angle),_IQtoF(g_q17current_omega),g_pos.u16current_state<<6 );
         //if (g_int32fasterror_flag) TxPrintf("%f,%f,%f\r\n",_IQtoF(g_q17_dps_z),_IQtoF(g_q17gyro_IIR_output),_IQtoF(g_pos.iq17D_gyro));
@@ -367,6 +331,8 @@ void Set_Velocity()
     MOTOR_TIMER_DISABLE;
     
 	turnvel_write_rom();
+    turnvel_write_rom();
+    turnvel_write_rom();
 
     MOTOR_TIMER_ENABLE;
 }
@@ -478,6 +444,30 @@ void Set_TurnMark(void)
 
 		if(Up_SW){
 			
+			g_q17turn_threshold += _IQ(1);
+			DELAY_US(125000);
+		}
+		else if(Down_SW){
+			
+			g_q17turn_threshold -= _IQ(1);
+			DELAY_US(125000);
+		}
+		else;
+		
+		if(Right_SW){
+			DELAY_US(125000);
+			break;
+		}
+		VFDPrintf("MARKT:%2u",IQ_TO_UINT16(g_q17turn_threshold));
+	}
+	DELAY_US(150000);
+    
+
+	while(1)
+	{
+
+		if(Up_SW){
+			
 			g_int32fasterror_flag = 1;
 			DELAY_US(125000);
 		}
@@ -498,6 +488,8 @@ void Set_TurnMark(void)
     MOTOR_TIMER_DISABLE;
     
 	turnmark_info_write_rom();
+    turnmark_info_write_rom();
+    turnmark_info_write_rom();
 
     MOTOR_TIMER_ENABLE;
 }
@@ -645,7 +637,9 @@ void Set_Handle(void){
             MOTOR_TIMER_DISABLE;
             
 		    handle_write_rom();
-
+            handle_write_rom();
+            handle_write_rom();
+            
             MOTOR_TIMER_ENABLE;
 }
 
@@ -716,11 +710,12 @@ void SET_END(){
 			
 			
 			if(Right_SW){
-				DELAY_US(125000);
-
+				
+                DELAY_US(125000);
                 MOTOR_TIMER_DISABLE;
-                
+                acc_info_write_rom();
 				acc_info_write_rom();
+                acc_info_write_rom();
 
                 MOTOR_TIMER_ENABLE;
                 
@@ -1128,7 +1123,9 @@ void extreme_ctl()
     MOTOR_TIMER_DISABLE;
     
     extvel_write_rom();
-
+    extvel_write_rom();
+    extvel_write_rom();
+    
     MOTOR_TIMER_ENABLE;
 }
 
@@ -1207,7 +1204,10 @@ void Set_ShiftRatio(void){
 			}
 
 			DELAY_US(150000);
+            
 			extvel_write_rom();
+            extvel_write_rom();
+            extvel_write_rom();
 }
 
 

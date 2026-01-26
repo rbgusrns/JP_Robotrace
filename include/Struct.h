@@ -239,6 +239,10 @@ typedef volatile struct error_struct
 	_iq17 q17under_dist[ 256 ];
 	_iq17 q17err_dist[ 256 ];
 
+
+	int32 int32err_cnt[ 256 ];
+	int32 int32load_err[ 256 ];
+
 	int32 in32mark_val[ 20 ];
 }error_str;
 

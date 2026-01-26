@@ -20,7 +20,8 @@
 #define SPIA_CS_L	{GpioDataRegs.GPACLEAR.bit.GPIO19 = 1;}
  
 #define SPI_CS_DELAY	Delay(0xc000)
- 
+#define SPI_WCS_DELAY	Delay(0xc000)
+
 #define PAGE_PROGRAM_DIRECT 	0x82
 #define PAGE_READ				0xd2
  
@@ -100,7 +101,13 @@
      Uint16 Add2 = 0;
      Uint16 Add3 = 0;
      Uint16 i = 0;
- 
+
+     DINT;
+
+     while(g_Flag.SPI_Gyro_flag);
+
+     while (SpiaRegs.SPISTS.bit.BUFFULL_FLAG == 1);
+
      g_Flag.SPI_Rom_flag = ON;
      SpiBusyOK();
  
@@ -114,7 +121,10 @@
      Add2 = ((PageAdd & 0x7f) << 1)  | ((BufAdd & 0x1ff) >> 8); 
      Add3 = (BufAdd & 0xff); // 하위 8비트 추출 
      SpiCMD = PAGE_READ; // 페이지 읽으라는 명령
- 
+
+
+
+     
      SPIA_CS_H;
      SPI_CS_DELAY;
      SPIA_CS_L;
@@ -141,6 +151,11 @@
  
      SPIA_CS_H;
      SPI_CS_DELAY;
+     
+     //while (SpiaRegs.SPISTS.bit.INT_FLAG == 0);
+
+     EINT;
+     
      g_Flag.SPI_Rom_flag = OFF;
      
  }
@@ -154,8 +169,19 @@
      Uint16 Add2 = 0;
      Uint16 Add3 = 0;
      Uint16 i = 0;
+
+     DINT;
      
-     g_Flag.SPI_Rom_flag = ON;
+     g_Flag.SPI_Rom_flag = ON;   // 먼저 잠금
+     
+     EINT;
+     
+     while(g_Flag.SPI_Gyro_flag); // 진행중이던 자이로 SPI 끝날때까지
+     
+     DINT;                        // ROM 트랜잭션은 인터럽트 끄고 실행
+     
+     while (SpiaRegs.SPISTS.bit.BUFFULL_FLAG == 1);
+
      SpiBusyOK();
  
  
@@ -166,11 +192,13 @@
      Add2 = ((PageAdd & 0x7f) << 1)  | ((BufAdd & 0x1ff) >> 8);  
      Add3 = (BufAdd & 0xff);
      SpiCMD = PAGE_PROGRAM_DIRECT;
+
+
      
      SPIA_CS_H;
-     SPI_CS_DELAY;
+     SPI_WCS_DELAY;
      SPIA_CS_L;
-     SPI_CS_DELAY;
+     SPI_WCS_DELAY;
  
      //send 0x82
      SpiaRegs.SPICCR.bit.SPISWRESET = 1;
@@ -187,8 +215,13 @@
      }
  
      SPIA_CS_H;
-     SPI_CS_DELAY;
- 
+     SPI_WCS_DELAY;
+
+
+     //while (SpiaRegs.SPISTS.bit.INT_FLAG == 0);
+     
+     EINT; 
+     
      g_Flag.SPI_Rom_flag = OFF;
  }
  

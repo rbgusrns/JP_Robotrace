@@ -250,26 +250,26 @@ interrupt void adc_timer_ISR(void)
 	adc_v1 += (long)AdcMirror.ADCRESULT2;
 	adc_v1 += (long)AdcMirror.ADCRESULT3;	
 	
-	adc_v2 += (long)AdcMirror.ADCRESULT4;
-	adc_v2 += (long)AdcMirror.ADCRESULT5;
-	adc_v2 += (long)AdcMirror.ADCRESULT6;
-	adc_v2 += (long)AdcMirror.ADCRESULT7;
+	adc_v1 += (long)AdcMirror.ADCRESULT4;
+	adc_v1 += (long)AdcMirror.ADCRESULT5;
+	adc_v1 += (long)AdcMirror.ADCRESULT6;
+	adc_v1 += (long)AdcMirror.ADCRESULT7;
 	
 	adc_v1 += (long)AdcMirror.ADCRESULT8;
 	adc_v1 += (long)AdcMirror.ADCRESULT9;
 	adc_v1 += (long)AdcMirror.ADCRESULT10;
 	adc_v1 += (long)AdcMirror.ADCRESULT11;
 	 
-	adc_v2 += (long)AdcMirror.ADCRESULT12;
-	adc_v2 += (long)AdcMirror.ADCRESULT13;
-	adc_v2 += (long)AdcMirror.ADCRESULT14;
-	adc_v2 += (long)AdcMirror.ADCRESULT15;
+	adc_v1 += (long)AdcMirror.ADCRESULT12;
+	adc_v1 += (long)AdcMirror.ADCRESULT13;
+	adc_v1 += (long)AdcMirror.ADCRESULT14;
+	adc_v1 += (long)AdcMirror.ADCRESULT15;
     	
 	AdcRegs.ADCTRL2.bit.RST_SEQ1 = ON; //ADC 초기화	
 	AdcRegs.ADCST.bit.INT_SEQ1_CLR = 1; /* SEQ1 interrupt clear */
 
 	// ADC_NUM = 16 , SEN_END = 16
-        g_sen[g_int32_sen_cnt].iq17result = ( adc_v1 + adc_v2 ) << 13 ; 
+        g_sen[g_int32_sen_cnt].iq17result =  adc_v1  << 13 ; 
 
 	if( g_sen[ g_int32_sen_cnt ].iq17result > g_sen[ g_int32_sen_cnt ].iq17max_value ) // max	
 		g_sen[ g_int32_sen_cnt ].iq17data = _IQ(127);
@@ -279,8 +279,7 @@ interrupt void adc_timer_ISR(void)
     
 	else //sensor data value compute
 	{
-		g_sen[ g_int32_sen_cnt ].iq17data = _IQ17mpy(_IQ17div( ( g_sen[ g_int32_sen_cnt ].iq17result - g_sen[ g_int32_sen_cnt ].iq17min_value ) , ( g_sen[ g_int32_sen_cnt ].iq17max_value - g_sen[ g_int32_sen_cnt ].iq17min_value )) 
-												, _IQ(127)); // divide 127
+		g_sen[ g_int32_sen_cnt ].iq17data = _IQ17mpy( ( g_sen[ g_int32_sen_cnt ].iq17result - g_sen[ g_int32_sen_cnt ].iq17min_value ) , g_sen[ g_int32_sen_cnt ].iq17sub_value_inverse_127mpy );
 	}
 
 	/* current sensor state compute : 흰색선 검은색 선 판별 , state 값은 cross check, turnmark check에 사용 */
@@ -336,19 +335,18 @@ void make_position(void) // temp_pos = (-14500~14500) 값으로 변경. 어느 위치에 �
 		//g_pos.iq7current_pos = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10);	// extreme run position shift value 
 
 		position_enable();
+        g_int32lineout_pre_cnt = 0;
 	}
 	else
 	{
-		g_Flag.lineout_flag = ON;
 		
-		/*
 		g_int32lineout_pre_cnt++;	
 		if( g_int32lineout_pre_cnt > 50 ) // 600
 		{
 			g_int32lineout_pre_cnt = 0;
 			g_Flag.lineout_flag = ON;
 		}
-		*/
+		
 	}
 }
 
@@ -529,8 +527,7 @@ static void cross_check(void)
 			}
 			else;
 		}
-		else if(g_q17cross_dist > _IQ(200) )
-			g_Flag.lineout_flag = ON;
+
 		else;
 	}
 	else if ( g_Flag.cross_flag )
@@ -565,7 +562,7 @@ static void cross_check(void)
 
 
 
-void start_end_check(void)				// start와 end를  체크한다
+extern void start_end_check(void)				// start와 end를  체크한다
 {
 	int16 toggle = 0;
 	if ( !g_Flag.start_flag  )			// 처음 마크가 들어온 경우 -> start 인식
@@ -580,11 +577,16 @@ void start_end_check(void)				// start와 end를  체크한다
 	}
 	else								// end 인식
 	{	
-	
-		//if((g_u16turnmark_limit < (Uint16)(g_int32mark_cnt + 2))) return;\
-		if( (Uint16)g_int32mark_cnt < g_u16turnmark_limit ) 	return;
-		if( g_Flag.cross_flag ) return;	
-        if( !( g_pos.u16current_state & STRAIGHT ) ) return;
+        
+		if( g_int32mark_cnt < ((int32)g_u16turnmark_limit) ) 
+            return;
+		
+		if( g_Flag.cross_flag ) 
+            return; 
+        
+        if( !( g_pos.u16current_state & STRAIGHT ) ) 
+            return;
+        
 		g_Flag.start_flag = OFF;
 
 		LED_OFF;
@@ -643,20 +645,25 @@ void start_end_check(void)				// start와 end를  체크한다
 				while(!SW_RIGHT);
 				DELAY_US(125000);
 				
-				g_int32total_cnt = g_int32mark_cnt;
+				
+                g_int32total_cnt = g_int32mark_cnt;
 				
 				line_info(NULL);
-                init_line_info(NULL);
+                //g_int32mark_cnt++;
                 MOTOR_TIMER_DISABLE;
-
+                //DELAY_US(500000);
 				fast_infor_write_rom();
+                fast_infor_write_rom();
+                fast_infor_write_rom();
 				mark_write_rom();
-
+                mark_write_rom();
+                mark_write_rom();
+                //DELAY_US(500000);
                 MOTOR_TIMER_ENABLE;
                 
 				VFDPrintf("-SAVED!-");	
                 DELAY_US(500000);
-                print_second_info();
+                //print_second_info();
                 //fst_info();
                 
 			}
@@ -744,6 +751,8 @@ void Set_Max_Min(void)
     MOTOR_TIMER_DISABLE;
     
 	maxmin_write_rom(); // rom에 저장 
+	maxmin_write_rom();
+    maxmin_write_rom();
 
     MOTOR_TIMER_ENABLE;
 	

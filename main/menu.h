@@ -21,9 +21,9 @@
 #define	Up_SW			(!(GpioDataRegs.GPADAT.bit.GPIO30))
 #define	Down_SW			(!(GpioDataRegs.GPADAT.bit.GPIO31))
 
-#define	Left_W			(g_lm.q17cur_vel_avr > _IQ(100))
-#define	Right_W		    (g_lm.q17cur_vel_avr < _IQ(-100))
-#define	Down_W			( (g_rm.q17cur_vel_avr < _IQ(-100)) || (g_rm.q17cur_vel_avr > _IQ(100)) )
+#define	Left_W			(g_lm.q17cur_vel_avr > _IQ(200))
+#define	Right_W		    (g_lm.q17cur_vel_avr < _IQ(-200))
+#define	Down_W			( (g_rm.q17cur_vel_avr < _IQ(-200)) || (g_rm.q17cur_vel_avr > _IQ(100)) )
 
 
 

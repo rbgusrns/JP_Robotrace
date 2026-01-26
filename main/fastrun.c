@@ -33,12 +33,79 @@ void jerk_down( fast_run_str *pinfo, int32 mark_cnt )
 
 }
 
+void fast_error_compute( error_str *perr, fast_run_str *pinfo, int32 mark_cnt )
+{
+	fast_run_str *pnow;
+	fast_run_str *pnext;
+
+	volatile int32 dist = 0;
+	volatile _iq17 big_vel = _IQ17(0.0);
+	volatile _iq17 small_vel = _IQ17(0.0);
+
+	perr->q17over_dist = ( g_rm.q17gone_distance + g_lm.q17gone_distance ) >> 1; // 현재 간 거리 계속 확인 	
+	
+	if( g_Flag.err )
+	{
+		g_Flag.fast_flag= OFF;
+		return;
+	}
+
+	if( perr->q17over_dist > perr->q17err_dist[ mark_cnt ] ) // 마크에 주어진 에러값보다 더 간 경우 ( 마크를 놓친 경우) 
+	{
+
+		g_err.int32err_cnt[ g_int32err_cnt++ ] = mark_cnt;	
+
+		
+		if(g_int32fasterror_flag)
+		{
+			if( g_int32err_cnt > 10 || mark_cnt > ( g_int32total_cnt - 1 ) ) // 1차 주행으로 전환 
+			{
+				VFDPrintf("   ERROR");
+
+				g_Flag.err = ON;
+				g_Flag.fast_flag= OFF;
+			
+				if( g_q17user_vel > _IQ17(1000) )			g_q17user_vel = _IQ17(1000);
+
+				return;
+			}
+		}
+		
+		
+		pnow = pinfo + mark_cnt;
+		pnext = ( pinfo + mark_cnt + 1 );
+
+
+		//	err_dst  - u16dist 
+		dist = ( int32 )( (Uint16)(( perr->q17err_dist[ mark_cnt ] )>>17) - pnow->u16dist );
+
+		g_int32dist -= dist;	// 실제 에러 수치를 다시 빼서 남은 거리를 구한다 . 
+		if( g_int32dist < 0 )
+			pnext->u16dist = 10;
+
+		big_vel = ( pinfo->q17in_vel> pinfo->q17out_vel)? pinfo->q17in_vel : pinfo->q17out_vel;
+		small_vel = ( pinfo->q17in_vel > pinfo->q17out_vel )? pinfo->q17out_vel : pinfo->q17in_vel;
+
+		max_vel_compute( _IQ17( pnext->u16dist ), pnext->q17m_dist, big_vel, pnext->q17acc, &(pnext->q17vel) );	// 현재 거리와 등가속도에서 최고 속도를 계산 
+		decel_dist_compute( pnext->q17vel, pnext->q17out_vel, pnext->q17acc, &(pnext->q17dec_dist) );			//  감속 거리 계산 
+
+		perr->q17under_dist[ mark_cnt + 1 ] = _IQ17(( pnext->u16dist >> 1 ));
+
+		second_infor( pinfo, perr);	// 마크를 강제로 처리한다.
+		
+	}
+
+	
+}
+
 
 static void straight_compute( fast_run_str *pinfo, int32 mark_cnt, error_str *perr )  // straight, end compute
 { 
 	volatile float32 big_vel = ( float32 )0.0;
 	volatile float32 small_vel = ( float32 )0.0;
 
+
+    
 	pinfo->q7kp_val = POS_KP_UP;
 	pinfo->s44s_flag = OFF;
 	pinfo->speed_up_45 = OFF;
@@ -99,7 +166,7 @@ static void straight_compute( fast_run_str *pinfo, int32 mark_cnt, error_str *pe
 		perr->q17err_dist[ mark_cnt ] = _IQ17( MID_DIST + SHORT_DIST );
 
 	perr->q17err_dist[ mark_cnt ] += _IQ17( pinfo->u16dist );  // 곡률마다 에러값 지정. 마크를 못봤을 떄 필요 
-	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist ) , _IQ17(0.7)); // 마크를 더 봤을 때 필요 
+	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist ) , _IQ17(0.9)); // 마크를 더 봤을 때 필요 
 
 }
 
@@ -119,7 +186,7 @@ static void default_turn_compute( fast_run_str *pinfo, int32 mark_cnt, error_str
 	perr->q17err_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist) ,_IQ17(0.5));
 	perr->q17err_dist[ mark_cnt ] += _IQ17( pinfo->u16dist );
 
-	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist) ,_IQ17(0.65));
+	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist) ,_IQ17(0.9));
 	
 	//45도 연속 
 
@@ -130,7 +197,9 @@ static void default_turn_compute( fast_run_str *pinfo, int32 mark_cnt, error_str
 		
 		//에러처리
 		perr->q17err_dist[ mark_cnt ] = _IQ17( pinfo->u16dist << 2 );
-		perr->q17under_dist[ mark_cnt ] = _IQ17( pinfo->u16dist >> 1 );	
+		perr->q17under_dist[ mark_cnt ] =_IQmpy(_IQ17( pinfo->u16dist) ,_IQ17(0.9));
+
+        
 	}
 
 
@@ -190,14 +259,15 @@ void large_turn_compute( fast_run_str *pinfo, int32 mark_cnt, error_str *perr )
 		perr->q17err_dist[ mark_cnt ] = _IQ17( MID_DIST + SHORT_DIST );
 
 	perr->q17err_dist[ mark_cnt ] += _IQ17( pinfo->u16dist );
-	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist ) , _IQ17(0.65));
+	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist ) , _IQ17(0.9));
 
 }
 
 
 static void turn_division_compute( fast_run_str *pinfo, int32 mark_cnt, error_str *perr ) // 직진, 큰턴, 턴 구분 
 {
-	if( ( pinfo->u16turn_way & STRAIGHT ) || pinfo->u16turn_dir & ETURN )				straight_compute( pinfo, mark_cnt, perr );
+    TxPrintf("way: %d\n",pinfo->u16turn_dir);
+	if( ( pinfo->u16turn_way & STRAIGHT ) || pinfo->u16turn_way & ETURN )				straight_compute( pinfo, mark_cnt, perr );
 	else if( pinfo->u16turn_dir & LARGE_TURN )											default_turn_compute( pinfo, mark_cnt, perr ); //large_turn_compute( pinfo, mark_cnt, perr );
 	else																				default_turn_compute( pinfo, mark_cnt, perr );
 }
@@ -205,7 +275,7 @@ static void turn_division_compute( fast_run_str *pinfo, int32 mark_cnt, error_st
 void turn_division_func( void )
 {
 		int32 i = 0;
-		
+		TxPrintf("cnt: %ld\n",g_int32total_cnt);
 		for( i = 0; i < g_int32total_cnt; i++ )
 		{
 			/*
@@ -257,28 +327,48 @@ void speed_up_compute( fast_run_str *p_info )
 }
 
 
-void second_infor(fast_run_str * p_info )
+void second_infor(fast_run_str * p_info, error_str *perr )
 {
 
 	fast_run_str *pinfo = p_info;
 
-
+	// 턴마크 나올 거리가 안됐을 경우(마크를 더 찍은 경우) 
+	if( g_Flag.err == OFF && perr->q17over_dist < perr->q17under_dist[ g_int32mark_cnt ] )	
+    {
+        return;
+    }
+    //if( !( ( pinfo + g_int32mark_cnt + 1 )->u16turn_way & g_pos.u16current_state ) )
+    //{
+    //    return;
+    //}
 	g_int32mark_cnt ++; // 저장된 곡률보다 한칸 뒷 정보를 불러와야 함. 
 
 
+	if( g_Flag.err == OFF )
+	{
+
+		if( g_int32total_cnt < g_int32mark_cnt )
+		{
+			g_Flag.err = ON;
+			g_lm.q17gone_distance = g_rm.q17gone_distance = _IQ17(0.0); // 검출용 변수들 다시 초기화 
+			return;
+		}
+	}
 
 	if( ( pinfo + g_int32mark_cnt )->u16turn_dir & ( STRAIGHT | LARGE_TURN | ETURN ) )		g_Flag.speed_up_start = ON;  // 가속 시작 flag on
 	else																					g_Flag.straight_run = OFF;
-    //if( ( pinfo + g_int32mark_cnt )->q7kp_val <= POS_KP_DOWN ) g_q17shift_pos_val = _IQ(0.0);
+
+
 	move_to_move( _IQ17( ( pinfo + g_int32mark_cnt )->u16dist ), ( pinfo + g_int32mark_cnt )->q17dec_dist, ( pinfo + g_int32mark_cnt )->q17vel, ( pinfo + g_int32mark_cnt )->q17out_vel, ( pinfo + g_int32mark_cnt )->q17acc );
     
+	perr->q17over_dist = _IQ17( 0.0 );
 	g_lm.q17gone_distance = g_rm.q17gone_distance = _IQ17(0.0); // 검출용 변수들 다시 초기화 
 	g_lm.q17total_dist = g_rm.q17total_dist = _IQ(0.0);
     g_rm.q17dist_sum = g_lm.q17dist_sum = _IQ(0.0);
-    g_pos.iq7integral_val = _IQ7(0.0);
-    //g_pos.u16past_state = g_pos.u16current_state;
-	
+ 
+	g_pos.u16past_state = g_pos.u16current_state;	
 }
+
    
 void print_sec_info(fast_run_str *pinfo)
 {
@@ -322,7 +412,11 @@ void second_run(fast_run_str *pinfo)
 	
 	while(1)
 	{
-		g_q17straight_dist = (g_rm.q17gone_distance + g_lm.q17gone_distance) >> 1 ;
+        //TxPrintf("%f,%f,%f,%f,%ld,%d,%d,%ld\n",_IQtoF(g_q17current_omega),_IQtoF(g_err.q17err_dist[ g_int32mark_cnt ]),_IQtoF(g_err.q17under_dist[ g_int32mark_cnt ]),_IQtoF(g_err.q17over_dist),g_int32mark_cnt,g_pos.u16past_state<<6,g_pos.u16current_state<<6,g_int32err_cnt );
+         //TxPrintf("%f,%ld\n",_IQtoF(g_q17current_omega),g_int32mark_cnt);
+        //TxPrintf("%f,%f,%ld,%u,%u\n",_IQtoF(g_q17current_omega),_IQtoF(g_err.q17over_dist),g_int32mark_cnt,g_pos.u16current_state<<6,(pinfo+g_int32mark_cnt)->u16turn_way<<6);
+
+        g_q17straight_dist = (g_rm.q17gone_distance + g_lm.q17gone_distance) >> 1 ;
 	
 		make_position();
 		
@@ -331,7 +425,7 @@ void second_run(fast_run_str *pinfo)
 			g_lmark.q7turn_dis = (g_lmark.q7check_dis + g_rmark.q7check_dis) >> 1;
 			g_rmark.q7turn_dis = g_lmark.q7turn_dis;
 	
-			//turn_decide( g_ptr->g_lmark );
+			turn_decide( g_ptr->g_lmark );
 			turn_decide( g_ptr->g_rmark );
 			
 			
@@ -347,11 +441,7 @@ void second_run(fast_run_str *pinfo)
 			}
 
 			speed_up_compute( pinfo );
-
-            if( ( ( g_rm.q17gone_distance + g_lm.q17gone_distance ) >> 18 ) >= ( pinfo + g_int32mark_cnt )->u16dist ) // 마크에 주어진 에러값보다 더 간 경우 ( 마크를 놓친 경우) 
-
-		        second_infor( pinfo );	// 마크 처리 
-		        
+            fast_error_compute( &g_err, pinfo, g_int32mark_cnt );		        
 			g_Flag.motor_ISR_flag = OFF;
 		}	
 	}

@@ -359,13 +359,11 @@ interrupt void  motor_ISR(void)
 {	
 	g_Flag.motor_ISR_flag = ON; // 주행 플래그
 	
-	//LED_ON;
+	LSM6DSR_GetGyroDataDPS(); //gyro sampling
 
 	position_PID();
 	position_to_vel();
     
-	LSM6DSR_GetGyroDataDPS(); //gyro sampling
-
     
 
     //	qep value sampling

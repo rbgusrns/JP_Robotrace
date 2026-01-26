@@ -36,8 +36,8 @@
 #define SENSOR_TIMER_ENABLE		do{ StartCpuTimer0();	}while(0);
 #define SENSOR_TIMER_DISABLE	do{	StopCpuTimer0();	}while(0);
 
-#define MOTOR_TIMER_ENABLE		do{ StartCpuTimer1();	}while(0);
-#define MOTOR_TIMER_DISABLE		do{	StopCpuTimer1(); WAIT; }while(0);
+#define MOTOR_TIMER_ENABLE		do{ WAIT; StartCpuTimer1(); }while(g_Flag.SPI_Rom_flag);
+#define MOTOR_TIMER_DISABLE		do{	StopCpuTimer1(); WAIT; }while(g_Flag.SPI_Gyro_flag);
 
 
 #define SW_RIGHT	GpioDataRegs.GPBDAT.bit.GPIO34 & 0x01
@@ -86,8 +86,8 @@
 #define POS_KP_DOWN		_IQ7( 0.1 )	//0.1
 #define POS_KP_NONE     _IQ7( 0.1 )
 
-#define POS_KD_UP		_IQ7( 4.4 )	//4.4
-#define POS_KD_DOWN		_IQ7( 3.4 )	//3.4
+#define POS_KD_UP		_IQ7( 3.0 )	//4.4
+#define POS_KD_DOWN		_IQ7( 2.4 )	//3.4
 
 #define	STRAIGHT					0x0001
 #define	LTURN						0x0002
@@ -122,11 +122,11 @@
 #endif
 #if 1
 #define D_STR 1
-#define D_45A 10 		//55 
-#define D_90A 30 		//125 
-#define D_180A 40 	//145  
-#define D_270A 50 	//170
-#define D_SAFE 300 
+#define D_45A 1 		//55 
+#define D_90A 1 		//125 
+#define D_180A 1 	//145  
+#define D_270A 1 	//170
+#define D_SAFE 1
 #endif
 
 
@@ -178,12 +178,15 @@ typedef enum
 }pos_e;
 
 
+__VARIABLE_EXE__ volatile int32 g_int32mark_cnt;
+
+__VARIABLE_EXE__ volatile Uint16 g_u16turnmark_limit;
 
 
 __VARIABLE_EXE__  int32 g_int32_sen_cnt,
 					    g_int32timer_cnt,
 					    g_int32lineout_cnt,
-					    g_int32mark_cnt,
+					    
 					    g_int32err_cnt,
 					    g_int32dist,
 					    g_int32speed_up_cnt,
@@ -200,8 +203,7 @@ __VARIABLE_EXE__  int32 g_int32_sen_cnt,
 
 __VARIABLE_EXE__  Uint16 g_u16pos_cnt,
 						 g_u16sen_state,
- 					     g_u16turnmark_limit,
- 					     i,
+						 i,
 						 g_u16sen_enable,
 						 g_u16gyro_raw_data[2];
 						 
@@ -246,6 +248,8 @@ __VARIABLE_EXE__  _iq g_q17shift_dist,
 					  g_q17shift_ratio,
 					  g_q17return_ratio,
 					  g_q17turn_angle,
+					  g_q17_tick_z,
+					  g_q17current_angle,
 					  g_q17old_angle,
 					  g_q17angle_buffer[200],
 					  g_q17omega_buf[OMEGA_WIN],
@@ -253,13 +257,16 @@ __VARIABLE_EXE__  _iq g_q17shift_dist,
 					  g_q17omega_avg,
 					  g_q17test_omega,
 					  g_q17current_omega,
+					  g_q17vel1000_i,
+					  g_q17curvature,
 					  g_q17st_ret_ratio,
 					  g_q17_dps_z,
 					  g_q17_gyro_offset,
 					  g_q17gyro_IIR_puted,
 					  g_q17gyro_IIR_puting,
 					  g_q17gyro_IIR_output,
-					  g_q17past_gyro;
+					  g_q17past_gyro,
+					  g_q17turn_threshold;
 
 
 
