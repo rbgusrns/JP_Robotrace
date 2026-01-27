@@ -264,7 +264,7 @@ void  search_run(void)
         
         //TxPrintf("%f,%f,%ld,%d,%d\n",_IQtoF(g_q17curvature),_IQtoF((g_lm.q17gone_distance + g_rm.q17gone_distance) >> 1),g_int32mark_cnt,g_fast_info[g_int32mark_cnt].u16turn_way<<6,g_pos.u16current_state<<6 );
                 
-        //TxPrintf("%f,%f,%d\n",_IQtoF(g_q17turn_angle),_IQtoF(g_q17current_omega),g_pos.u16current_state<<6 );
+        //TxPrintf("%f,%f\n",_IQtoF(g_q17turn_angle),_IQtoF(g_q17curvature));
         //if (g_int32fasterror_flag) TxPrintf("%f,%f,%f\r\n",_IQtoF(g_q17_dps_z),_IQtoF(g_q17gyro_IIR_output),_IQtoF(g_pos.iq17D_gyro));
         //VFDPrintf("%ld",g_pos.iq7integral_val >> 7 );
         //TxPrintf("%f,%f\r\n",_IQtoF(g_lm.q17cur_vel_avr),_IQtoF(g_lm.q17next_vel));

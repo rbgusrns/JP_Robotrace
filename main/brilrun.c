@@ -820,7 +820,7 @@ void bril_run( fast_run_str *p_info )
 			g_lmark.q7turn_dis = (g_lmark.q7check_dis + g_rmark.q7check_dis) >> 1;		//   턴마크 체크 거리값 갱신 
 			g_rmark.q7turn_dis = g_lmark.q7turn_dis;
 	
-			turn_decide( g_ptr->g_lmark ); 	//	왼쪽 턴마크 check
+			//turn_decide( g_ptr->g_lmark ); 	//	왼쪽 턴마크 check
 			turn_decide( g_ptr->g_rmark ); 	//	오른쪽 턴마크 check
 		}
 
@@ -844,7 +844,10 @@ void bril_run( fast_run_str *p_info )
 			}
 			
 			speed_up_compute( pinfo );		//	가속 시작 플래그 기다리는 함수 
-            fast_error_compute( &g_err, pinfo, g_int32mark_cnt );				
+
+
+
+            bril_compute( &g_err, pinfo, g_int32mark_cnt );				
 			g_Flag.motor_ISR_flag = OFF;
 		}
 	}
@@ -898,5 +901,23 @@ extern void bril_pos_shift_func( volatile _iq17 cur_dist , volatile _iq17 shift_
 	}		
 
 	g_q17shift_pos_val = pos_val;
+}
+
+void bril_compute( error_str *perr, fast_run_str *pinfo, int32 mark_cnt )
+{
+
+    perr->q17over_dist = ( g_rm.q17gone_distance + g_lm.q17gone_distance ) >> 1;
+
+    if( perr->q17over_dist >= ( ( pinfo + mark_cnt )->u16dist << 17 ) )
+    {
+        if( ( ( pinfo + mark_cnt + 1 )->u16turn_dir & ( STRAIGHT | ETURN ) ) && !( g_pos.u16current_state & STRAIGHT ) )
+        {
+            return;
+        }
+        
+        second_infor( pinfo , perr );
+    }
+
+	
 }
 

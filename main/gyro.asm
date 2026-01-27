@@ -1,6 +1,6 @@
 ;***************************************************************
 ;* TMS320C2000 C/C++ Codegen                         PC v4.1.3 *
-;* Date/Time created: Mon Jan 26 15:55:43 2026                 *
+;* Date/Time created: Mon Jan 26 22:33:03 2026                 *
 ;***************************************************************
 	.compiler_opts --mem_model:code=flat --mem_model:data=large --silicon_version=28 
 FP	.set	XAR2
@@ -218,8 +218,8 @@ DW$60	.dwtag  DW_TAG_variable, DW_AT_name("g_q17angle_buffer"), DW_AT_symbol_nam
 	.dwattr DW$60, DW_AT_type(*DW$T$117)
 	.dwattr DW$60, DW_AT_declaration(0x01)
 	.dwattr DW$60, DW_AT_external(0x01)
-;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI75210 C:\Users\rbgus\AppData\Local\Temp\TI7524 
-;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI7522 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI7526 --object_file gyro.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
+;	..\Compiler\bin\opt2000.exe C:\Users\rbgus\AppData\Local\Temp\TI48010 C:\Users\rbgus\AppData\Local\Temp\TI4804 
+;	..\Compiler\bin\ac2000.exe --keep_unneeded_types -D_INLINE -DLARGE_MODEL -I..\include --version=28 --keep_unneeded_types --mem_model:code=flat --mem_model:data=large -m --i_output_file C:\Users\rbgus\AppData\Local\Temp\TI4802 --template_info_file C:\Users\rbgus\AppData\Local\Temp\TI4806 --object_file gyro.obj --embed_opts 10 --call_assumptions=0 --mem_model:code=flat --mem_model:data=large --opt_for_speed --opt_level=3 --optimizer_comments --optimizer_interlist --program_level_compile 
 	.sect	".text"
 	.global	_turn_decide
 
@@ -769,7 +769,7 @@ L12:
         ; return occurs
 
 DW$80	.dwtag  DW_TAG_loop
-	.dwattr DW$80, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L11:1:1769410543")
+	.dwattr DW$80, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L11:1:1769434383")
 	.dwattr DW$80, DW_AT_begin_file("gyro.c")
 	.dwattr DW$80, DW_AT_begin_line(0x94)
 	.dwattr DW$80, DW_AT_end_line(0x97)
@@ -941,7 +941,7 @@ DW$L$_calculate_average_offset$2$E:
         ; return occurs
 
 DW$88	.dwtag  DW_TAG_loop
-	.dwattr DW$88, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L13:1:1769410543")
+	.dwattr DW$88, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L13:1:1769434383")
 	.dwattr DW$88, DW_AT_begin_file("gyro.c")
 	.dwattr DW$88, DW_AT_begin_line(0x163)
 	.dwattr DW$88, DW_AT_end_line(0x16c)
@@ -1029,7 +1029,7 @@ DW$L$_Spi16Tx$2$E:
         ; return occurs
 
 DW$94	.dwtag  DW_TAG_loop
-	.dwattr DW$94, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L14:1:1769410543")
+	.dwattr DW$94, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L14:1:1769434383")
 	.dwattr DW$94, DW_AT_begin_file("gyro.c")
 	.dwattr DW$94, DW_AT_begin_line(0x50)
 	.dwattr DW$94, DW_AT_end_line(0x50)
@@ -1800,7 +1800,7 @@ DW$L$_Gyro_test$8$E:
         ; return occurs
 
 DW$119	.dwtag  DW_TAG_loop
-	.dwattr DW$119, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L26:1:1769410543")
+	.dwattr DW$119, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L26:1:1769434383")
 	.dwattr DW$119, DW_AT_begin_file("gyro.c")
 	.dwattr DW$119, DW_AT_begin_line(0x118)
 	.dwattr DW$119, DW_AT_end_line(0x118)
@@ -1812,7 +1812,7 @@ DW$121	.dwtag  DW_TAG_loop_range
 	.dwattr DW$121, DW_AT_high_pc(DW$L$_Gyro_test$8$E)
 
 DW$122	.dwtag  DW_TAG_loop
-	.dwattr DW$122, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L27:2:1769410543")
+	.dwattr DW$122, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L27:2:1769434383")
 	.dwattr DW$122, DW_AT_begin_file("gyro.c")
 	.dwattr DW$122, DW_AT_begin_line(0x118)
 	.dwattr DW$122, DW_AT_end_line(0x118)
@@ -1825,7 +1825,7 @@ DW$123	.dwtag  DW_TAG_loop_range
 
 
 DW$124	.dwtag  DW_TAG_loop
-	.dwattr DW$124, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L24:1:1769410543")
+	.dwattr DW$124, DW_AT_name("C:\project\JP_Robotrace\main\gyro.asm:L24:1:1769434383")
 	.dwattr DW$124, DW_AT_begin_file("gyro.c")
 	.dwattr DW$124, DW_AT_begin_line(0x105)
 	.dwattr DW$124, DW_AT_end_line(0x116)

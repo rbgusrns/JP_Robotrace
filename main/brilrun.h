@@ -14,6 +14,8 @@
 #ifndef __BRILRUN_H__
 #define __BRILRUN_H__
 
+void bril_compute( error_str *perr, fast_run_str *pinfo, int32 mark_cnt );
+
 extern void bril_run(fast_run_str *pinfo);
 extern void bril_select(void);
 
