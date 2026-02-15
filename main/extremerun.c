@@ -18,11 +18,11 @@
 /*
 45도 연속 턴 가속 !
 */
-extern void xcontinus_angle_vel_compute_func( fast_run_str *p_info , volatile _iq17 dist , volatile _iq7 kp )	//  xcontinus_angle_vel_compute_func -> 146
+extern void xcontinus_angle_vel_compute_func( fast_run_str *p_info , volatile _iq17 dist , volatile _iq17 kp )	//  xcontinus_angle_vel_compute_func -> 146
 {
 	fast_run_str *pinfo = p_info;
 
-	pinfo->q7kp_val = kp;//보정 풀고 
+	pinfo->q17kp_val = kp;//보정 풀고 
 	pinfo->q17acc = g_q17_45acc; //45가속 
 	pinfo->down_flag = ON; //보정다운플래그 ON
 
@@ -67,46 +67,57 @@ extern void ext_memmove_sec_info_struct_func( fast_run_str *p_cur, fast_run_str 
 }
 
 
-void ext_kval_ctrl_func( Uint32 mode , position_t *p_pos , _iq7 ratio , volatile _iq7 limit )
+void ext_kval_ctrl_func( Uint32 mode , position_t *p_pos , _iq17 ratio , volatile _iq17 limit )
 {
 	position_t *ppos = p_pos;
 
-	volatile _iq7 kval = _IQ7(0.0);
-	volatile _iq7 *pval = NULL;
+	volatile _iq17 kval = _IQ17(0.0);
+	volatile _iq17 *pval = NULL;
 	
-	volatile _iq7 up_limit = _IQ7(0.0); 
+	volatile _iq17 up_limit = _IQ17(0.0); 
 	
-	if( mode & KVAL_KP )
-	{
-		kval = ppos->iq7kp;
-		pval = &ppos->iq7kp;
 
-		up_limit = POS_KP_UP;
-	}
-	else //?
-	{
-		kval = ppos->iq7kd;
-		pval = &ppos->iq7kd;
- 
-		up_limit = POS_KD_UP;
-	}
+	kval = ppos->iq17kp;
+	pval = &ppos->iq17kp;
+
+	up_limit = POS_KP_UP;
 
 	if( mode & KVAL_UP ) //복귀 
 	{                           
-		kval += _IQ7mpy( ratio, ( g_q17shift_dist >> 10 ) ); //shift_dist = 틱당 간 거리. 이 거리가 200이 될때까지 낮춰야 함 !!
+		kval += _IQ17mpy( ratio, g_q17shift_dist ); //shift_dist = 틱당 간 거리. 이 거리가 200이 될때까지 낮춰야 함 !!
 		if( kval > up_limit )
 			kval = up_limit;
+        //VFDPrintf("%8f",_IQ7toF(kval));
+        LED_OFF;
 		
 	} //쉬프팅 
 	else
 	{
-		kval -= _IQ7mpy( ratio, ( g_q17shift_dist >> 10 ) );
+		kval -= _IQ17mpy( ratio, g_q17shift_dist );
 		if( kval < limit )
 			kval = limit;
-		
+		g_Flag.lineout_flag = OFF;
+        LED_ON;
 	}
     
 	*pval = kval;
+
+}
+
+_iq17 ext_turn_vel_set( fast_run_str *pinfo )
+{
+    volatile _iq17 curvature;
+    
+    volatile _iq17 turn_vel;
+    
+    volatile Uint16 dist = ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ? pinfo->u16dist - 100 : pinfo->u16dist;
+
+
+    curvature = _IQdiv( _IQabs(pinfo->q17angle) , _IQ(dist) );
+
+    turn_vel = ( curvature >= _IQ(0.3) ) ? g_q17s4s_vel : g_q17user_vel;
+
+    return turn_vel;
 
 }
 

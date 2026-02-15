@@ -18,7 +18,7 @@
 #include "Sensor.h"
 
 
-#define POS_END _IQ7(14500) //14500
+#define POS_END _IQ7(4500) //14500
 
 
 static position_enable(void);
@@ -45,14 +45,14 @@ typedef volatile enum
 
 volatile Uint16 sen_shoot_arr[ SEN_END ] = 
 {
-	SEN0, SEN2, SEN1, SEN3, SEN4, SEN5, SEN6, SEN7, 
+	SEN2, SEN1, SEN0, SEN3, SEN4, SEN5, SEN6, SEN7, 
     SEN3, SEN4, SEN5, SEN6, SEN7, SEN1, SEN2    
 };
 
 
 volatile Uint16 sen_adc_seq[ ADC_NUM ] = 
 {
-	ADC_7,ADC_1,ADC_0,ADC_2,ADC_3,ADC_4,ADC_5,ADC_6,
+	ADC_1,ADC_0,ADC_7,ADC_2,ADC_3,ADC_4,ADC_5,ADC_6,
 	ADC_10,ADC_11,ADC_12,ADC_13,ADC_14,ADC_8,ADC_9
 
 };
@@ -91,9 +91,9 @@ void sen_vari_init(void)
 	memset( ( void * )&g_rmark, 0x00 , sizeof( turnmark_t ) );
 	memset( ( void * )&g_lmark, 0x00 , sizeof( turnmark_t ) );
 
-	g_pos.iq7kp = POS_KP_UP; 
-	g_pos.iq7ki = _IQ7(0.0); 
-	g_pos.iq7kd = POS_KD_UP;
+	g_pos.iq17kp = POS_KP_UP; 
+	g_pos.iq17ki = _IQ17(0.0); 
+	g_pos.iq17kd = POS_KD_UP;
 	g_u16sen_enable = 0xffff;  
 
 #if 0
@@ -120,26 +120,26 @@ void sen_vari_init(void)
 
 
 #if 1
-	g_sen[ L7 ].iq7weight = _IQ7(14500);		g_sen[ L7 ].u16active_arr = 0x8000; 	g_sen[ 15 ].u16passive_arr = 0xffff;
- 	g_sen[ L6 ].iq7weight = _IQ7(12500);		g_sen[ L6 ].u16active_arr = 0x4000; 	g_sen[ 14 ].u16passive_arr = 0xbfff;
+	g_sen[ 15 ].iq7weight = _IQ7(14500);		g_sen[ 15 ].u16active_arr = 0x8000; 	g_sen[ 15 ].u16passive_arr = 0xffff;
+ 	g_sen[ 14 ].iq7weight = _IQ7(12500);		g_sen[ 14 ].u16active_arr = 0x4000; 	g_sen[ 14 ].u16passive_arr = 0xbfff;
     
-	g_sen[ L5 ].iq7weight = _IQ7(10500);		g_sen[ L5 ].u16active_arr = 0x2000; 	g_sen[ 13 ].u16passive_arr = 0xdfff;
-	g_sen[ L4 ].iq7weight = _IQ7(4500);			g_sen[ L4 ].u16active_arr = 0x1000; 	g_sen[ 12 ].u16passive_arr = 0xefff;	// 8900
+	g_sen[ 13 ].iq7weight = _IQ7(10500);		g_sen[ 13 ].u16active_arr = 0x2000; 	g_sen[ 13 ].u16passive_arr = 0xdfff;
+	g_sen[ 12 ].iq7weight = _IQ7(4500);			g_sen[ 12 ].u16active_arr = 0x1000; 	g_sen[ 12 ].u16passive_arr = 0xefff;	// 8900
 
-	g_sen[ L3 ].iq7weight = _IQ7(3200); 		g_sen[ L3 ].u16active_arr = 0x0800; 	g_sen[ 11 ].u16passive_arr = 0xf7ff;	//7000
-	g_sen[ L2 ].iq7weight = _IQ7(2100); 		g_sen[ L2 ].u16active_arr = 0x0400; 	g_sen[ 10 ].u16passive_arr = 0xfbff;	// 4000
-	g_sen[ L1 ].iq7weight = _IQ7(1100);			g_sen[ L1 ].u16active_arr = 0x0200;		g_sen[ 9 ].u16passive_arr = 0xfdff; 	// 1000
-	g_sen[ L0 ].iq7weight = _IQ7(100);			g_sen[ L0 ].u16active_arr = 0x0100;		g_sen[ 8 ].u16passive_arr = 0xfeff; 	// 500
+	g_sen[ 11 ].iq7weight = _IQ7(3200); 		g_sen[ 11 ].u16active_arr = 0x0800; 	g_sen[ 11 ].u16passive_arr = 0xf7ff;	//7000
+	g_sen[ 10 ].iq7weight = _IQ7(2100); 		g_sen[ 10 ].u16active_arr = 0x0400; 	g_sen[ 10 ].u16passive_arr = 0xfbff;	// 4000
+	g_sen[ 9 ].iq7weight = _IQ7(1100);			g_sen[ 9 ].u16active_arr = 0x0200;		g_sen[ 9 ].u16passive_arr = 0xfdff; 	// 1000
+	g_sen[ 8 ].iq7weight = _IQ7(100);			g_sen[ 8 ].u16active_arr = 0x0100;		g_sen[ 8 ].u16passive_arr = 0xfeff; 	// 500
 
-	g_sen[ R7 ].iq7weight = _IQ7(-100); 		g_sen[ R7 ].u16active_arr = 0x0080;		g_sen[ 7 ].u16passive_arr = 0xff7f;
-	g_sen[ R6 ].iq7weight = _IQ7(-1100); 		g_sen[ R6 ].u16active_arr = 0x0040;		g_sen[ 6 ].u16passive_arr = 0xffbf;
-	g_sen[ R5 ].iq7weight = _IQ7(-2100); 		g_sen[ R5 ].u16active_arr = 0x0020;		g_sen[ 5 ].u16passive_arr = 0xffdf;
-	g_sen[ R4 ].iq7weight = _IQ7(-3200); 		g_sen[ R4 ].u16active_arr = 0x0010;		g_sen[ 4 ].u16passive_arr = 0xffef;
+	g_sen[ 7 ].iq7weight = _IQ7(-100); 		    g_sen[ 7 ].u16active_arr = 0x0080;		g_sen[ 7 ].u16passive_arr = 0xff7f;
+	g_sen[ 6 ].iq7weight = _IQ7(-1100); 		g_sen[ 6 ].u16active_arr = 0x0040;		g_sen[ 6 ].u16passive_arr = 0xffbf;
+	g_sen[ 5 ].iq7weight = _IQ7(-2100); 		g_sen[ 5 ].u16active_arr = 0x0020;		g_sen[ 5 ].u16passive_arr = 0xffdf;
+	g_sen[ 4 ].iq7weight = _IQ7(-3200); 		g_sen[ 4 ].u16active_arr = 0x0010;		g_sen[ 4 ].u16passive_arr = 0xffef;
 
-	g_sen[ R3 ].iq7weight = _IQ7(-4500);		g_sen[ R3 ].u16active_arr = 0x0008;		g_sen[ 3 ].u16passive_arr = 0xfff7;
-	g_sen[ R2 ].iq7weight = _IQ7(-10500);		g_sen[ R2 ].u16active_arr = 0x0004;		g_sen[ 2 ].u16passive_arr = 0xfffb;
-	g_sen[ R1 ].iq7weight = _IQ7(-12500);		g_sen[ R1 ].u16active_arr = 0x0002;		g_sen[ 1 ].u16passive_arr = 0xfffd;
-	g_sen[ R0 ].iq7weight = _IQ7(-14500);		g_sen[ R0 ].u16active_arr = 0x0001;		g_sen[ 0 ].u16passive_arr = 0xfffe;    
+	g_sen[ 3 ].iq7weight = _IQ7(-4500);		    g_sen[ 3 ].u16active_arr = 0x0008;		g_sen[ 3 ].u16passive_arr = 0xfff7;
+	g_sen[ 2 ].iq7weight = _IQ7(-10500);		g_sen[ 2 ].u16active_arr = 0x0004;		g_sen[ 2 ].u16passive_arr = 0xfffb;
+	g_sen[ 1 ].iq7weight = _IQ7(-12500);		g_sen[ 1 ].u16active_arr = 0x0002;		g_sen[ 1 ].u16passive_arr = 0xfffd;
+	g_sen[ 0 ].iq7weight = _IQ7(-14500);		g_sen[ 0 ].u16active_arr = 0x0001;		g_sen[ 0 ].u16passive_arr = 0xfffe;    
 
 #endif
 
@@ -236,8 +236,7 @@ interrupt void Sensor_Value(void)
 #if 1
 interrupt void adc_timer_ISR(void)
 {
-	long 	adc_v1 = 0,
-		   	adc_v2 = 0;
+	long 	adc_v1 = 0;
     
 
 	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
@@ -291,7 +290,7 @@ interrupt void adc_timer_ISR(void)
 	g_int32_sen_cnt++;
 	if(g_int32_sen_cnt >= SEN_END)
 	{		
-		 g_int32_sen_cnt = 3;
+		 g_int32_sen_cnt = 2;
 		StopCpuTimer0(); // sensor interrupt stop 
 	}
     
@@ -307,6 +306,12 @@ void make_position(void) // temp_pos = (-14500~14500) 값으로 변경. 어느 위치에 �
 	g_pos.iq7sum_of_sec = _IQ7(0);	
     //g_u16pos_cnt: position 조절인자 
 	/* 0~127로 표현된 data값을 모두 더한다. */
+    /*
+    if(g_fast_info[g_int32mark_cnt].bril_flag)
+    {
+        g_sen[3].iq17data = g_sen[4].iq17data = g_sen[5].iq17data = g_sen[10].iq17data = g_sen[11].iq17data = g_sen[12].iq17data = _IQ(0);      
+    }
+    */
 	g_pos.iq17sum += g_sen[g_u16pos_cnt + 0].iq17data; //  기본 6,7,8,9
 	g_pos.iq17sum += g_sen[g_u16pos_cnt + 1].iq17data; //   L : 5,6,7,8 
 	g_pos.iq17sum += g_sen[g_u16pos_cnt + 2].iq17data; //   R : 7,8,9,10
@@ -336,12 +341,13 @@ void make_position(void) // temp_pos = (-14500~14500) 값으로 변경. 어느 위치에 �
 
 		position_enable();
         g_int32lineout_pre_cnt = 0;
+        g_Flag.lineout_flag = OFF;
 	}
 	else
 	{
 		
 		g_int32lineout_pre_cnt++;	
-		if( g_int32lineout_pre_cnt > 50 ) // 600
+		if( g_int32lineout_pre_cnt > 5000 ) // 600
 		{
 			g_int32lineout_pre_cnt = 0;
 			g_Flag.lineout_flag = ON;
@@ -355,68 +361,68 @@ void make_position(void) // temp_pos = (-14500~14500) 값으로 변경. 어느 위치에 �
 */
 static position_enable(void) 
 {
-	if ( g_pos.iq7temp_pos > g_sen[ 12 ].iq7weight )	// pos > 14500
+	if ( g_pos.iq7temp_pos > g_sen[ 12 ].iq7weight )	// pos > 4500
 	{
-		g_u16pos_cnt = S_ELEVEN;
+		g_u16pos_cnt = S_NINE;
 		g_u16sen_state = FIVE_SHIFT;
-		g_u16sen_enable = 0x1800;		//0001 1000 0000 0000
+		g_u16sen_enable = 0x1e00;		//0001 1110 0000 0000
 	}
-	else if ( g_pos.iq7temp_pos < g_sen[ 3 ].iq7weight )	// pos < -14500
+	else if ( g_pos.iq7temp_pos < g_sen[ 3 ].iq7weight )	// pos < -4500
 	{
-		g_u16pos_cnt = S_ONE;
+		g_u16pos_cnt = S_THREE;
 		g_u16sen_state = FIVE_SHIFT;	
-		g_u16sen_enable = 0x0018;		//0000 0000 0001 1000
+		g_u16sen_enable = 0x0078;		//0000 0000 0111 1000
 	}
 	
 	
-	else if ( g_pos.iq7temp_pos > g_sen[ 11 ].iq7weight )	// pos > 12500
+	else if ( g_pos.iq7temp_pos > g_sen[ 11 ].iq7weight )	// pos > 3200
 	{
-		g_u16pos_cnt = S_TEN;
+		g_u16pos_cnt = S_NINE;
 		g_u16sen_state = FOUR_SHIFT;
-		g_u16sen_enable = 0x1c00;		//0001 1100 0000 0000
+		g_u16sen_enable = 0x1e00;		//0001 1110 0000 0000
 	}
-	else if ( g_pos.iq7temp_pos < g_sen[ 4 ].iq7weight )	// pos < -12500
+	else if ( g_pos.iq7temp_pos < g_sen[ 4 ].iq7weight )	// pos < -3200
 	{
-		g_u16pos_cnt = S_TWO;
+		g_u16pos_cnt = S_THREE;
 		g_u16sen_state = FOUR_SHIFT;
-		g_u16sen_enable = 0x0038;		//0000 0000 0011 1000
+		g_u16sen_enable = 0x0078;		//0000 0000 0111 1000
 	}
 	
-	else if( g_pos.iq7temp_pos > g_sen[ 10 ].iq7weight )	
+	else if( g_pos.iq7temp_pos > g_sen[ 10 ].iq7weight ) // pos > 2100
 	{
 		g_u16pos_cnt = S_NINE;
 		g_u16sen_state = THREE_SHIFT;
 		g_u16sen_enable = 0x1e00;		//0001 1110 0000 0000
 	}
     
-	else if( g_pos.iq7temp_pos < g_sen[ 5 ].iq7weight )		
+	else if( g_pos.iq7temp_pos < g_sen[ 5 ].iq7weight )	// pos < -2100	
 	{
 		g_u16pos_cnt = S_THREE;
 		g_u16sen_state = THREE_SHIFT;
 		g_u16sen_enable = 0x0078;		//0000 0000 0111 1000
 	}
 	
-	else if( g_pos.iq7temp_pos > g_sen[ 9 ].iq7weight )
+	else if( g_pos.iq7temp_pos > g_sen[ 9 ].iq7weight ) // pos > 1100
 	{
 		g_u16pos_cnt = S_EIGHT;
 		g_u16sen_state = TWO_SHIFT;
 		g_u16sen_enable = 0x0f00;		//0000 1111 0000 0000
 	}
-	else if( g_pos.iq7temp_pos < g_sen[ 6 ].iq7weight ) 
+	else if( g_pos.iq7temp_pos < g_sen[ 6 ].iq7weight ) // pos < -1100
 	{
 		g_u16pos_cnt = S_FOUR;
 		g_u16sen_state = TWO_SHIFT;
 		g_u16sen_enable = 0x00f0;		//0000 0000 1111 0000
 	}
 	
-	else if( g_pos.iq7temp_pos > g_sen[ 8 ].iq7weight )
+	else if( g_pos.iq7temp_pos > g_sen[ 8 ].iq7weight ) // pos > 100
 	{
 		g_u16pos_cnt = S_SEVEN;
 		g_u16sen_state = ONE_SHIFT;
 		g_u16sen_enable = 0x0780;		//0000 0111 1000 0000
 	}
     
-	else if( g_pos.iq7temp_pos < g_sen[ 7 ].iq7weight ) 
+	else if( g_pos.iq7temp_pos < g_sen[ 7 ].iq7weight ) // pos < -100
 	{
 		g_u16pos_cnt = S_FIVE;
 		g_u16sen_state = ONE_SHIFT;
@@ -424,7 +430,7 @@ static position_enable(void)
 	}
 	
 		
-	else if( g_pos.iq7temp_pos >= g_sen[ 7 ].iq7weight &&  g_pos.iq7temp_pos <= g_sen[ 8 ].iq7weight ) // -500 ~ +500
+	else if( g_pos.iq7temp_pos >= g_sen[ 7 ].iq7weight &&  g_pos.iq7temp_pos <= g_sen[ 8 ].iq7weight ) // -100 < pos < 100
 	{
 		g_u16pos_cnt = S_SIX;
 		g_u16sen_state = NON_SHIFT;
@@ -442,8 +448,14 @@ void position_PID(void) // 500us
    
 	g_pos.iq7pos_IIR_puted = g_pos.iq7pos_IIR_puting;  //이전 입력값 
 
+    
+    if(g_fast_info[ g_int32mark_cnt ].bril_flag && g_pos.iq17kp <= _IQ(0.1) )
+    {
+        g_q17shift_pos_val = g_fast_info[ g_int32mark_cnt ].q17bril_pos;
+    }
+    
 	g_pos.iq7pos_IIR_puting = g_pos.iq7temp_pos + (g_q17shift_pos_val >> 10); //현재 입력값 
-	//g_pos.iq7pos_IIR_puting = g_pos.iq7current_pos; // extreme run  
+	//g_pos.iq7pos_IIR_puting = g_pos.iq7current_pos; // extreme run
 	g_pos.iq7pos_IIR_output = _IQ7mpy( PID_Kb , (g_pos.iq7pos_IIR_puted + g_pos.iq7pos_IIR_puting )) - _IQ7mpy(PID_Ka , g_pos.iq7past_pos[ 0 ] );
     
 	//////////////////PID compute
@@ -452,11 +464,16 @@ void position_PID(void) // 500us
 	g_pos.iq7past_pos[ 1 ] = g_pos.iq7past_pos [ 0 ];
 	g_pos.iq7past_pos[ 0 ] = g_pos.iq7pos_IIR_output;
 
-	g_pos.iq7proportion_val = _IQ7mpy( g_pos.iq7past_pos[ 0 ] , g_pos.iq7kp );
-	g_pos.iq7differential_val =_IQ7mpy(( g_pos.iq7past_pos[ 0 ] - g_pos.iq7past_pos[ 3 ] ) +_IQ7mpy( _IQ7(3) , (g_pos.iq7past_pos[ 1 ] - g_pos.iq7past_pos[ 2 ]) ),g_pos.iq7kd);
+	g_pos.iq7proportion_val = _IQ7mpy( g_pos.iq7past_pos[ 0 ] , g_pos.iq17kp >> 10 );
+	g_pos.iq7differential_val =_IQ7mpy(( g_pos.iq7past_pos[ 0 ] - g_pos.iq7past_pos[ 3 ] ) +_IQ7mpy( _IQ7(3) , (g_pos.iq7past_pos[ 1 ] - g_pos.iq7past_pos[ 2 ]) ),g_pos.iq17kd >> 10);
 	g_pos.iq7pid_out = g_pos.iq7proportion_val + g_pos.iq7differential_val; // position pd compute
     //g_pos.iq7integral_val += _IQ7mpy(g_pos.iq7pid_out , g_pos.iq7ki );  
-    
+    /*
+    if(g_fast_info[ g_int32mark_cnt ].bril_flag && g_pos.iq17kp <= _IQ(0.1) )
+    {
+        g_pos.iq7pid_out = _IQ17mpy(g_fast_info[ g_int32mark_cnt ].q17bril_pos, _IQ(1000)) >> 10;
+    }
+    */
 	if( g_pos.iq7pid_out > POS_END)			g_pos.iq7pid_out = POS_END;
 	else if( g_pos.iq7pid_out < -POS_END )		g_pos.iq7pid_out = -POS_END;
 	else;
@@ -464,8 +481,8 @@ void position_PID(void) // 500us
 	///////////////////handle compute 
 	if( g_pos.iq7pid_out > _IQ7( 0 ) )	//우회전 
 	{
-		g_q16right_handle_temp = _IQ16mpy( g_q16han_decstep, (  _IQ16div(HANDLE_CENTER , _IQ16(250) ) - _IQ16div( g_pos.iq7pid_out << 9, _IQ16(250.0) ) ) ) + g_q16han_decmax;
-		g_q16left_handle_temp = _IQ16mpy( g_q16han_accstep , ( _IQ16div( HANDLE_CENTER , _IQ16(250)) + _IQ16div( g_pos.iq7pid_out << 9, _IQ16(250.0) ) ) ) + g_q16han_accmax;
+		g_q16right_handle_temp = _IQ16mpy( g_q16han_decstep, (  _IQ16mpy(HANDLE_CENTER , _IQ16(0.004) ) - _IQ16mpy( g_pos.iq7pid_out << 9, _IQ16(0.004) ) ) ) + g_q16han_decmax;
+		g_q16left_handle_temp = _IQ16mpy( g_q16han_accstep , ( _IQ16mpy( HANDLE_CENTER , _IQ16(0.004)) + _IQ16mpy( g_pos.iq7pid_out << 9, _IQ16(0.004) ) ) ) + g_q16han_accmax;
 
 	
 		
@@ -516,16 +533,6 @@ static void cross_check(void)
 			
 			//	g_q17cross_dist_check = g_q17cross_dist + _IQ(130);
 
-
-			if( !(g_Flag.fast_flag)  )
-			{
-				if( g_fast_info[ g_int32mark_cnt ].q17str_cross == _IQ17(0))
-					g_fast_info[ g_int32mark_cnt ].q17str_cross = ( ( g_lm.q17gone_distance + g_rm.q17gone_distance ) >> 1 );
-				else
-					g_fast_info[ g_int32mark_cnt ].q17end_cross = ( ( g_lm.q17gone_distance + g_rm.q17gone_distance ) >> 1 );
-				
-			}
-			else;
 		}
 
 		else;
@@ -539,7 +546,7 @@ static void cross_check(void)
 			g_Flag.cross_shift = OFF;
 		}
 
-		if( g_q17cross_dist > _IQ(150) ) // _IQ(145) // cross checking distance  
+		if( g_q17cross_dist > _IQ(100) ) // _IQ(145) // cross checking distance  
 		{
 
 			g_lmark.u16turn_flag = OFF;
@@ -580,9 +587,6 @@ extern void start_end_check(void)				// start와 end를  체크한다
         
 		if( g_int32mark_cnt < ((int32)g_u16turnmark_limit) ) 
             return;
-		
-		if( g_Flag.cross_flag ) 
-            return; 
         
         if( !( g_pos.u16current_state & STRAIGHT ) ) 
             return;
@@ -598,7 +602,7 @@ extern void start_end_check(void)				// start와 end를  체크한다
 			g_lm.q17end_gone_distance = g_lm.q17gone_distance;
 			g_rm.q17end_gone_distance = g_rm.q17gone_distance;
 			
-			move_to_end(_IQ(100), _IQ(0), g_q17end_acc);
+			move_to_end(_IQ(500), _IQ(0), g_q17end_acc);
 				
 		}
 		else if(g_Flag.fast_flag ) // 2차 end 
@@ -614,7 +618,8 @@ extern void start_end_check(void)				// start와 end를  체크한다
 		g_rm.q17total_dist = g_lm.q17total_dist = _IQ17(0);
 		while(g_rm.q17next_vel != _IQ(0) && g_lm.q17next_vel != _IQ(0) )
 		{
-            position_PID();
+            make_position();
+            //position_PID();
 		}
 
 	    FAN_OFF;
@@ -652,6 +657,7 @@ extern void start_end_check(void)				// start와 end를  체크한다
                 //g_int32mark_cnt++;
                 MOTOR_TIMER_DISABLE;
                 //DELAY_US(500000);
+                
 				fast_infor_write_rom();
                 fast_infor_write_rom();
                 fast_infor_write_rom();

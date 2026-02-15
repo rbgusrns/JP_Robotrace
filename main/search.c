@@ -208,7 +208,7 @@ int lineout_func(void)		// 라인아웃 체크 함수
 	if( g_Flag.lineout_flag )	// 라인아웃( 검은판 혹은 대리석 ) 
 	{
 		g_int32lineout_cnt++;
-		if(g_int32lineout_cnt < 200 )	
+		if(g_int32lineout_cnt < 2000 )	
             return 0;   //라인 아웃 딜레이 
 
 		g_int32lineout_cnt = 0;
@@ -252,7 +252,7 @@ void  search_run(void)
     DELAY_US(1000000);
     
 	race_start_init(); // 주행 전 변수 초기화 
-	
+	memset( ( void * )g_fast_info , 0x00 , sizeof(fast_run_str) * 256 );
 	handle_ad_make(g_q16out_corner_limit, g_q16in_corner_limit);    // g_q16out_corner_limit = _IQ16(0.52)	g_q16in_corner_limit = _IQ16(1.73); 			
 	move_to_move(_IQ(1000), _IQ( 0 ), g_q17user_vel ,g_q17user_vel, _IQ(5000));
 
@@ -644,85 +644,41 @@ void Set_Handle(void){
 }
 
 
-void SET_END(){
+void SET_END()
+{
 
-	while(1)
-		{
-			if(Up_SW){
-				
-				g_q17end_vel += _IQ(100);
-				DELAY_US(125000);
-			}
-			else if(Down_SW){
-				
-				g_q17end_vel -= _IQ(100);
-				DELAY_US(125000);
-			}
-			else;
-			
-			if(Right_SW){
-				DELAY_US(125000);
-				break;
-			}
-		VFDPrintf("EDV:%4u",IQ_TO_UINT16(g_q17end_vel));
-		}
 
-#if 1
-	while(1)
-		{
-			if(Up_SW){
-				
-				g_q17end_dist += _IQ(10);
-				DELAY_US(125000);
-			}
-			else if(Down_SW){
-				
-				g_q17end_dist -= _IQ(10);
-				DELAY_US(125000);
-			}
-			else;
+
+    while(1)
+    {
+        if(Up_SW)
+        {
+            
+            g_q17end_vel += _IQ(100);
+            DELAY_US(125000);
+        }
+        else if(Down_SW)
+        {
+            
+            g_q17end_vel -= _IQ(100);
+            DELAY_US(125000);
+        }
+  				
+		else if(Right_SW){
 			
-			
-			if(Right_SW){
-				DELAY_US(125000);
-				break;
-			}
-		VFDPrintf("EDIS:%3u",IQ_TO_UINT16(g_q17end_dist));
+            DELAY_US(125000);
+            MOTOR_TIMER_DISABLE;
+            acc_info_write_rom();
+			acc_info_write_rom();
+            acc_info_write_rom();
+
+            MOTOR_TIMER_ENABLE;
+            
+			break;
 		}
+        VFDPrintf("EDV:%4u",IQ_TO_UINT16(g_q17end_vel));
 	
-	
-#endif
-	DELAY_US(150000);
-	while(1)
-		{
-
-			if(Up_SW){
-				
-				g_q17end_acc += _IQ(100);
-				DELAY_US(125000);
-			}
-			else if(Down_SW){
-				
-				g_q17end_acc -= _IQ(100);
-				DELAY_US(125000);
-			}
-			else;
-			
-			
-			if(Right_SW){
-				
-                DELAY_US(125000);
-                MOTOR_TIMER_DISABLE;
-                acc_info_write_rom();
-				acc_info_write_rom();
-                acc_info_write_rom();
-
-                MOTOR_TIMER_ENABLE;
-                
-				break;
-			}
-		VFDPrintf("EA:%5u",IQ_TO_UINT16(g_q17end_acc));
-		}
+	}
 
 }
 
@@ -757,31 +713,6 @@ void Set_Accel(){
 
 	DELAY_US(150000);
 
-	while(1)
-		{
-
-			if(Up_SW){
-				
-				g_q17endturn_acc += _IQ(1000);
-				DELAY_US(125000);
-			}
-			else if(Down_SW){
-				
-				g_q17endturn_acc -= _IQ(1000);
-				DELAY_US(125000);
-			}
-			else;
-			
-			
-			if(Right_SW){
-				DELAY_US(125000);
-				break;
-			}
-		VFDPrintf("ET:%5u",IQ_TO_UINT16(g_q17endturn_acc));
-		}
-	
-	DELAY_US(150000);
-
 	SET_END();
 
 }
@@ -793,12 +724,12 @@ void Set_PosPID(void)
 
 		if(Up_SW){
 			
-			g_pos.iq7kp += _IQ7(0.1);
+			g_pos.iq17kp += _IQ17(0.1);
 			DELAY_US(125000);
 		}
 		else if(Down_SW){
 			
-			g_pos.iq7kp -= _IQ7(0.1);
+			g_pos.iq17kp -= _IQ17(0.1);
 			DELAY_US(125000);
 		}
 		else;
@@ -808,7 +739,7 @@ void Set_PosPID(void)
 			DELAY_US(125000);
 			break;
 		}
-	    VFDPrintf("Pkp:%3.1f",_IQ7toF(g_pos.iq7kp));
+	    VFDPrintf("Pkp:%3.1f",_IQ17toF(g_pos.iq17kp));
 	}
 
 	while(1)
@@ -816,12 +747,12 @@ void Set_PosPID(void)
 
 		if(Up_SW){
 			
-			g_pos.iq7kd += _IQ7(0.1);
+			g_pos.iq17kd += _IQ17(0.1);
 			DELAY_US(125000);
 		}
 		else if(Down_SW){
 			
-			g_pos.iq7kd -= _IQ7(0.1);
+			g_pos.iq17kd -= _IQ17(0.1);
 			DELAY_US(125000);
 		}
 		else;
@@ -831,7 +762,7 @@ void Set_PosPID(void)
 			DELAY_US(125000);
 			break;
 		}
-	    VFDPrintf("Pkd:%3.1f",_IQ7toF(g_pos.iq7kd));
+	    VFDPrintf("Pkd:%3.1f",_IQ17toF(g_pos.iq17kd));
 	}
 
 	motor_vari_init(&g_rm);

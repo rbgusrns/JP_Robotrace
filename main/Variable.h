@@ -62,6 +62,7 @@
 
 
 #define LEFT_MARK_CHECK				0x8000 //  1000 0000 0000 0000
+#define FRONT_MARK_CHECK		    0x0004 //  0000 0000 0000 0100
 #define RIGHT_MARK_CHECK			0x6000 //  0110 0000 0000 0000
 #define STATE_CENTER				9
 
@@ -80,14 +81,16 @@
 
 #define	MAX_SPEED_HANDLE			_IQ16(1.15)
 
-
-#define POS_KP_UP		_IQ7( 1.5 )	//1.5
+#define SMALL_CURVATURE _IQ(0.3)
+#define V_MAX _IQ(4000)
+#define POS_KP_UP		_IQ17( 1.5 )	//1.5
 //#define POS_KP_DOWN		_IQ7( 0.1 )	//0.1
-#define POS_KP_DOWN		_IQ7( 0.1 )	//0.1
-#define POS_KP_NONE     _IQ7( 0.1 )
+#define POS_KP_DOWN		_IQ17( 0.1 )	//0.1
+#define POS_KP_NONE     _IQ17( 0.1 )
+#define POS_KP_ZERO     _IQ17( 0.1 )
 
-#define POS_KD_UP		_IQ7( 3.0 )	//4.4
-#define POS_KD_DOWN		_IQ7( 2.4 )	//3.4
+#define POS_KD_UP		_IQ17( 6.0 )	//4.4
+#define POS_KD_DOWN		_IQ17( 2.4 )	//3.4
 
 #define	STRAIGHT					0x0001
 #define	LTURN						0x0002
@@ -309,7 +312,7 @@ __VARIABLE_EXE__ volatile int32 g_int32shift_level;
 
 typedef enum k_value_control
 {
-	SEN_TO_WHEEL_DIST = 200 ,	//센서보드 에서 바퀴까지의 거리...
+	SEN_TO_WHEEL_DIST = 100 ,	//센서보드 에서 바퀴까지의 거리...
 	END_TO_ZEROVEL_DIST = 100	//엔드마크 후 정지거리.	
 	
 }kval_ctrl_e;

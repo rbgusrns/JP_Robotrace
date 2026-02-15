@@ -81,9 +81,9 @@ void Variable_Init( void )
 	g_q17sen_valmax = _IQ(50);
 
 	/*position pid value*/
-	g_pos.iq7kp = POS_KP_UP; // 1.5
-	g_pos.iq7ki = _IQ7(0.008);
-	g_pos.iq7kd = POS_KD_UP; // 4.4
+	g_pos.iq17kp = POS_KP_UP; // 1.5
+	g_pos.iq17ki = _IQ17(0.008);
+	g_pos.iq17kd = POS_KD_UP; // 4.4
 	
 	/*sensor value*/
 	g_u16sen_enable = 0;
@@ -143,8 +143,8 @@ void Variable_Init( void )
 
 	/*	extremerun variables	*/
 	g_int32shift_level=4;
-	g_q17end_vel = _IQ(1000);
-	g_q17end_dist = _IQ(100);
+	g_q17end_vel = _IQ(3000);
+	g_q17end_dist = _IQ(500);
 	
 	g_q1745user_vel = _IQ(3500);
     g_q1790user_vel = _IQ(3500);
@@ -157,9 +157,9 @@ void Variable_Init( void )
 	
 	g_q17max_acc = g_q17user_acc;
 	g_q17mid_acc = g_q17user_acc;
-	g_q17short_acc = g_q17user_acc;
+	g_q17short_acc = _IQ(15000);
 	
-	g_q17s4s_vel = _IQ(3300);
+	g_q17s4s_vel = _IQ(2000);
 	g_q17s44s_vel = _IQ(4000); 
 	g_q17escape45_vel = _IQ(3500);
 	 
@@ -302,7 +302,7 @@ void print_second_info()
 	for( i=0; i<256;i++)\
 	{
 		
-							TxPrintf("%d| dst: %5d| dec: %5ld| mdst: %5ld| turn_dir: 0x%04X| acc: %5ld| in: %5ld| vel: %5ld| out: %5ld| cnt: %d | down: %d| s44s: %d| escape: %d| kp: %.2f| RDIST: %ld| LDIST: %ld| P: %ld| angle: %ld\n",
+							TxPrintf("%d| dst: %5d| dec: %5ld| mdst: %5ld| turn_dir: 0x%04X| acc: %5ld| in: %5ld| vel: %5ld| out: %5ld| cnt: %d | down: %d| s44s: %d| escape: %d| ready: %d| bril: %d| kp: %.2f| RDIST: %ld| LDIST: %ld| P: %ld| angle: %ld\n",
 									i,
 										  g_fast_info[ i ].u16dist,
 													g_fast_info[ i ].q17dec_dist>>17,	
@@ -316,7 +316,9 @@ void print_second_info()
 																								 							 g_fast_info[ i ].down_flag,
 																								 							 g_fast_info[ i ].s44s_flag,
 																								 							 g_fast_info[ i ].escape_flag,
-																								 							 _IQ7toF(g_fast_info[ i ].q7kp_val),
+																								 							 g_fast_info[ i ].ready_flag,
+																								 							 g_fast_info[ i ].bril_flag,
+																								 							 _IQ17toF(g_fast_info[ i ].q17kp_val),
 																								 							 g_fast_info[ i ].q17r_dist>>17,
 																								 							 g_fast_info[ i ].q17l_dist>>17,
 																								 							 g_fast_info[ i ].iq7pos_integral_val>>7,

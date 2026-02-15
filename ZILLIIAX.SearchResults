@@ -1,11 +1,11 @@
----- fast_infor_write_rom Matches (10 in 5 files) ----
-Rom.asm (main):DW$151	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_write_rom"), DW_AT_symbol_name("_fast_infor_write_rom")
-Rom.c (main):void fast_infor_write_rom( void )
-Rom.h (main):extern void fast_infor_write_rom(void);
-sensor.asm (main):DW$1	.dwtag  DW_TAG_subprogram, DW_AT_name("fast_infor_write_rom"), DW_AT_symbol_name("_fast_infor_write_rom")
-sensor.asm (main):;*** 655	-----------------------    fast_infor_write_rom();
-sensor.asm (main):;*** 656	-----------------------    fast_infor_write_rom();
-sensor.asm (main):;*** 657	-----------------------    fast_infor_write_rom();
-sensor.c (main):				fast_infor_write_rom();
-sensor.c (main):                fast_infor_write_rom();
-sensor.c (main):                fast_infor_write_rom();
+---- g_q17end_vel Matches (10 in 7 files) ----
+brilrun.asm (main):DW$57	.dwtag  DW_TAG_variable, DW_AT_name("g_q17end_vel"), DW_AT_symbol_name("_g_q17end_vel")
+brilrun.asm (main):;*** 88	-----------------------    *((volatile long * const)p_info+62L) = (*p_info).q17out_vel = g_q17end_vel;
+brilrun.c (main):	else 	( pinfo + 1 )->q17in_vel = pinfo->q17out_vel = g_q17end_vel;
+fastrun.asm (main):DW$44	.dwtag  DW_TAG_variable, DW_AT_name("g_q17end_vel"), DW_AT_symbol_name("_g_q17end_vel")
+fastrun.asm (main):;*** 122	-----------------------    *((volatile long * const)pinfo+62L) = (*pinfo).q17out_vel = g_q17end_vel;
+fastrun.c (main):		( pinfo + 1 )->q17in_vel = pinfo->q17out_vel = g_q17end_vel;
+main.asm (main):DW$146	.dwtag  DW_TAG_variable, DW_AT_name("g_q17end_vel"), DW_AT_symbol_name("_g_q17end_vel")
+main.asm (main):;*** 146	-----------------------    g_q17end_vel = 262144000L;
+main.c (main):	g_q17end_vel = _IQ(5000);
+Variable.h (main):					  g_q17end_vel,

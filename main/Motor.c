@@ -47,7 +47,7 @@
 
 /*extreme pd value*/
 //#define	DOWN_KP  				_IQ7( 0.007 )  // 
-#define	DOWN_KP  				_IQ7( 0.014 )
+#define	DOWN_KP  				_IQ17( 0.028 )
 #define DOWN_KD					_IQ7( 0.005 )
 
 //떨어 뜨릴 값이 0.1 까지 이므로 1.5에서 0.1의 차이는 1.3 이다.
@@ -269,7 +269,7 @@ static void position_to_vel( void )
 
 		g_rm.q17user_vel = g_rm.q17user_vel = g_q17user_vel;
 		
-		g_fast_info[g_int32mark_cnt].q7kp_val = POS_KP_UP;
+		g_fast_info[g_int32mark_cnt].q17kp_val = POS_KP_UP;
 		g_fast_info[g_int32mark_cnt].speed_up_45 = OFF;
 		g_fast_info[g_int32mark_cnt].s44s_flag= OFF;
 		g_fast_info[g_int32mark_cnt].escape_flag = OFF;
@@ -283,33 +283,35 @@ static void position_to_vel( void )
 		if( g_rm.q17decel_dist>= _IQabs(g_rm.q17err_dist) && 
 			 g_lm.q17decel_dist>= _IQabs(g_lm.q17err_dist))  //감속 구간.
 		{
+            LED_OFF;
             ;
 		}
 		else  //가속 구간.
 		{
+            LED_ON;
             ;
 		}
-		ext_kval_ctrl_func( ( KVAL_DOWN | KVAL_KP ) , &g_pos , DOWN_KP , g_fast_info[g_int32mark_cnt].q7kp_val );
+		ext_kval_ctrl_func( ( KVAL_DOWN ) , &g_pos , DOWN_KP , g_fast_info[g_int32mark_cnt].q17kp_val );
 		
 	}
 	else if( g_fast_info[g_int32mark_cnt].s44s_flag )  //직진 - 45도 - 45도 - 직진 에서 진입직진이 짧은 직진이 아닐 경우
 	{
 	    //s44s일경우 안정화 이후 푼다.. 그냥 down일 경우 바로 풀어버림 
-		if( g_q17straight_dist > _IQ( g_fast_info[g_int32mark_cnt].u16dist) - _IQ(SEN_TO_WHEEL_DIST) )  //진입하자마자 kp를 풀면 직진 보정을 못하므로...
+		if( g_q17straight_dist > ( _IQ( g_fast_info[g_int32mark_cnt].u16dist) - _IQ(SEN_TO_WHEEL_DIST) ) )  //진입하자마자 kp를 풀면 직진 보정을 못하므로...
 		{
-			ext_kval_ctrl_func( ( KVAL_DOWN | KVAL_KP ) , &g_pos , DOWN_KP , g_fast_info[g_int32mark_cnt].q7kp_val );
+			ext_kval_ctrl_func( ( KVAL_DOWN ) , &g_pos , DOWN_KP , g_fast_info[g_int32mark_cnt].q17kp_val );
 		}   //안정화 이후 kp 풀어놓고 턴 진입. 
 		else
 		{
 		
-			ext_kval_ctrl_func( ( KVAL_UP | KVAL_KP ) , &g_pos , DOWN_KP , g_fast_info[g_int32mark_cnt].q7kp_val );
+			ext_kval_ctrl_func( ( KVAL_UP ) , &g_pos , DOWN_KP , g_fast_info[g_int32mark_cnt].q17kp_val );
 			//아닐 경우 복귀
 		}
 	}
 	else //kp값 원래대로 돌리기	
 	{  			
 
-		ext_kval_ctrl_func( ( KVAL_UP | KVAL_KP ) , &g_pos , DOWN_KP , g_fast_info[g_int32mark_cnt].q7kp_val );
+		ext_kval_ctrl_func( ( KVAL_UP ) , &g_pos , DOWN_KP , g_fast_info[g_int32mark_cnt].q17kp_val );
 	}
 	
 #endif
@@ -327,26 +329,6 @@ static void position_to_vel( void )
 	
 		g_lm.q17user_vel = g_fast_info[g_int32mark_cnt].q17vel;
 		g_rm.q17user_vel = g_lm.q17user_vel;
-
-		//position kd 값 ctrl -> 직진 보정 흔들림 감소.		
-		#if 0 //직진 d 제어
-		if( ( g_Flag.xrun_flag == ON ) && ( g_fast_info[g_int32mark_cnt].u16turn_dir & STRAIGHT ) && ( g_fast_info[g_int32mark_cnt].u16dist > MID_DIST ) )  //middle 직진 이상인 경우 
-		{	
-			if( g_q17straight_dist <= _IQ( SEN_TO_WHEEL_DIST ) )  //거리 200 동안 KD를 낮춘다.
-			{
-				//DEBUG_LED_ON;
-				xkval_ctrl_func( ( EX_DOWN | EX_KD ) , &g_pos , DOWN_KD , POS_KD_DOWN );					
-			}
-			else
-			{
-				//DEBUG_LED_OFF;
-				xkval_ctrl_func( ( EX_UP | EX_KD ) , &g_pos , DOWN_KD , POS_KD_DOWN );
-			}
-			
-		}
-		else
-			xkval_ctrl_func( ( EX_UP | EX_KD ) , &g_pos , DOWN_KD , POS_KD_DOWN ); //
-		#endif
 
 		return;
 	}
@@ -391,7 +373,7 @@ interrupt void  motor_ISR(void)
 	g_lm.q17total_dist = (g_rm.q17dist_sum + g_lm.q17dist_sum) >> 1; // total
 	g_rm.q17total_dist = g_lm.q17total_dist; 
 	
-	g_q17shift_dist = (( g_rm.q27tick_dist >> 10 )+( g_lm.q27tick_dist >> 10 )) >> 1;  // shift 거리 측정 
+	g_q17shift_dist = ( g_rm.q27tick_dist + g_lm.q27tick_dist ) >> 11;  // shift 거리 측정 
 
 
 	g_q17cross_dist	 += ( ( g_rm.q27tick_dist + g_lm.q27tick_dist ) >> 11 );		//	 cross 얼마나 갓는지 측정

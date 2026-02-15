@@ -110,9 +110,9 @@ typedef volatile struct position
 	_iq7		iq7sum;
 	_iq7		iq7sum_of_sec;
 	_iq7		iq7pid_out;
-	_iq7		iq7kp;
-	_iq7		iq7ki;
-	_iq7		iq7kd;
+	_iq17		iq17kp;
+	_iq17		iq17ki;
+	_iq17		iq17kd;
 
 	_iq7		iq7current_pos;
 
@@ -190,7 +190,7 @@ __STRUCT_EXT__ turnmark_t g_lmark;
 
 typedef volatile struct fast_run_struct
 {
-	_iq7	q7kp_val;
+	_iq7	q17kp_val;
 
 	_iq7 iq7mark_dist;
 	_iq7 iq7mark_start_dist;
@@ -205,7 +205,9 @@ typedef volatile struct fast_run_struct
 	Uint16 s44s_flag:1;
 	Uint16 down_flag:1;
 	Uint16 escape_flag:1;
-	
+    Uint16 bril_flag:1;
+	Uint16 ready_flag:1;
+    
 	Uint16 same_dir:1;	
 	Uint16 cross_out:1;
 	
@@ -217,9 +219,8 @@ typedef volatile struct fast_run_struct
 			q17out_vel,
 			q17dec_dist,
 			q17m_dist,
-			q17str_cross,
-			q17end_cross,
-			q17angle;	
+			q17angle,
+			q17bril_pos;	
 			
 	Uint16	u16turn_way,
 			u16turn_cnt,
@@ -238,10 +239,6 @@ typedef volatile struct error_struct
 	
 	_iq17 q17under_dist[ 256 ];
 	_iq17 q17err_dist[ 256 ];
-
-
-	int32 int32err_cnt[ 256 ];
-	int32 int32load_err[ 256 ];
 
 	int32 in32mark_val[ 20 ];
 }error_str;

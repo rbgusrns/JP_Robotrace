@@ -64,7 +64,9 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 	volatile _iq17 big_vel = _IQ( 0 );
 	volatile _iq17 small_vel = _IQ( 0 );
 	
-	pinfo->q7kp_val = POS_KP_UP;
+	pinfo->q17kp_val = POS_KP_UP;
+
+    pinfo->q17bril_pos = _IQmpy(_IQdiv( pinfo->q17angle , _IQ(pinfo->u16dist) ),_IQ(10000));
 
 	if( mark_cnt > 0 )
 	{
@@ -78,11 +80,12 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 		bril_turn_division_compute( ( pinfo + 1 ) ,( mark_cnt + 1 ), perr );	
 
 		pinfo->q17out_vel = ( pinfo + 1 )->q17in_vel;
+        //pinfo->q17out_vel = ( pinfo->q17out_vel < g_q17user_vel ) ? g_q17user_vel : pinfo->q17out_vel;
 		
 		if( pinfo->q17out_vel == _IQ( 0.0 ) )	pinfo->q17out_vel = g_q17user_vel; 
 
 	}
-	else 	pinfo->q17out_vel = g_q17end_vel;
+	else 	( pinfo + 1 )->q17in_vel = pinfo->q17out_vel = g_q17end_vel;
 	
 	do
 	{
@@ -116,20 +119,25 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 			pinfo->q17dist_limit = _IQmpy(_IQ( pinfo->u16dist ),_IQ(0.15));  //  총 거리의 15%를 지나면 쉬프트를 시작한다. 
 		}
 
-        if( pinfo->u16turn_dir & ETURN )        pinfo->q17acc = g_q17endturn_acc;
-
 		pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];	
 		  
 		// 다음 턴이 45도이고 그 다음 턴이 45도 or 90도 인 경우 
 		if( ( ( pinfo + 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 2 )->u16turn_dir & ( TURN_45 | TURN_90 ) ) ) // 연속턴 | 직진 - 45도 - 45도 - 직진 | 직진 - 45도 - 90도 - 45도
 		{
-			pinfo->q7kp_val = POS_KP_NONE;				
 
 			// 직진 거리가 200(센서보드에서 바퀴까지의 거리) 이하이면 down_flag on, 이상이면 s44s on
 			if( pinfo->u16dist < SEN_TO_WHEEL_DIST )	pinfo->down_flag = ON;
 			else 										pinfo->s44s_flag = ON;
 
-			if( ( pinfo + 2 )->u16turn_dir & TURN_45 )	// 다다음 턴이 45도인 경우 
+            bril_turn_division_compute( ( pinfo + 1 ) ,( mark_cnt + 1 ), perr );
+			pinfo->q17kp_val = POS_KP_NONE;				
+            if( ( pinfo + 1 )->bril_flag ) // 다음 턴이 ready라면 
+            {
+                pinfo->bril_flag = ON; // s44s 앞은 전부 bril ON. 
+                pinfo->q17kp_val = POS_KP_ZERO; 
+            }
+
+			if( ( ( pinfo + 2 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 3 )->u16turn_dir & STRAIGHT ) )	// 다다음 턴이 45도인 경우 
 				pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];	
 		}
 	}
@@ -141,8 +149,6 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 		pinfo->q17dist_limit = _IQ( pinfo->u16dist >> 1 );
 	}
 	
-	if( !mark_cnt && pinfo->q17acc > _IQ17(8000) )	pinfo->q17acc = _IQ17(8000);  // 시작 직진 가속도 제한 
-
 	big_vel = MAX( pinfo->q17in_vel, pinfo->q17out_vel);
 	small_vel = MIN( pinfo->q17in_vel, pinfo->q17out_vel);
 
@@ -167,7 +173,7 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 		max_vel_compute( _IQ17( pinfo->u16dist ), pinfo->q17m_dist, big_vel, pinfo->q17acc, &pinfo->q17vel ); //현재 거리와 등가속도에서 최고 속도를 계산
 		decel_dist_compute( pinfo->q17vel, pinfo->q17out_vel, pinfo->q17acc, &pinfo->q17dec_dist );  //감속 거리 계산	
 	}
-	
+    
 	//에러 처리
 	perr->q17err_dist[ mark_cnt ] = _IQ17( pinfo->u16dist << 2 );  //거리 에러 체크 값
 	
@@ -178,7 +184,14 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 
 	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ17( pinfo->u16dist ) , _IQ17(0.9)); //마크 체크 시점 거리 제한.  	 마크를 더 봤을 때 필요 
 
-
+    //if(pinfo->q17kp_val == POS_KP_NONE)
+    //{
+    //    perr->q17err_dist[ mark_cnt ] = _IQmpy( _IQ(pinfo->u16dist), _IQ(1.5)); 
+        //if(pinfo->u16dist <= MID_DIST_LIMIT)
+        //{
+        //    perr->q17err_dist[ mark_cnt - 1 ] = _IQmpy( _IQ(pinfo->u16dist), _IQ(1)); 
+        //}
+    //}
 }
 
 static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_str *perr ) //kp, invel, outvel, maxvel , accel , shift 결정 
@@ -189,7 +202,7 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
 	
 	bril_turn_division_compute( ( pinfo + 1 ) ,( mark_cnt + 1 ), perr );
 
-	pinfo->q7kp_val = POS_KP_UP;	
+	pinfo->q17kp_val = POS_KP_UP;	
 	pinfo->q17acc = g_q17user_acc;
 	
 	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ]; 
@@ -197,7 +210,7 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
 	if( ( mark_cnt < 2 ) || ( pinfo + 1 )->u16turn_dir & ETURN ) // 시작 및 엔드턴은 풀지 않는다.
 	{
 		pinfo->q17vel = pinfo->q17out_vel = pinfo->q17in_vel = g_q17user_vel;
-		pinfo->q7kp_val = POS_KP_UP;
+		pinfo->q17kp_val = POS_KP_UP;
 
         if( ( pinfo + 1 )->u16turn_dir & ETURN ) 
 			pinfo->q17shift_before = _IQ(0.0);        
@@ -208,38 +221,36 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
 			pinfo->q17shift_before = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
         pinfo->q17shift_after = pinfo->q17shift_before;
 	}
-
 	else if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) )  //직진 - 45도 - 직진
 	{
 		pinfo->q17acc = g_q17user_acc; // LIMIT_ACC
 
-		ext_memmove_sec_info_struct_func( pinfo , pinfo + 1 , g_q17s4s_vel , m_dist ); // in_vel과 out_vel을 다음 구간의 최고속도로 지정.
+		ext_memmove_sec_info_struct_func( pinfo , pinfo + 1 , g_q17s44s_vel , m_dist ); // in_vel과 out_vel을 다음 구간의 최고속도로 지정.
 		pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
         pinfo->q17shift_after = pinfo->q17shift_before;
 	}
 
-    //m_dist = ( pinfo + 1 )->u16dist > MID_DIST_LIMIT ? _IQ( ( pinfo + 1 )->u16dist >> 2 ) : _IQ( ( pinfo + 1 )->u16dist >> 1 );
-    //다음 거리가 중간 직진보다 길다면 다음 거리의1/4를 m_dist로, 아니라면 다음 거리의 절반을 m_dist로..
     else if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 2 )->u16turn_dir & STRAIGHT ) ) //직진 - 45도 - 45도 - 직진 에서의 45도 
     {
         pinfo->down_flag = ON; 
-        pinfo->q7kp_val = POS_KP_NONE;
+        pinfo->q17kp_val = POS_KP_NONE;
         ext_memmove_sec_info_struct_func( pinfo, pinfo + 2, g_q17s44s_vel, m_dist);    //  탈출 직진을 봐야함 -> pinfo + 2
         //xcontinus_angle_vel_compute_func( pinfo , _IQ17( pinfo->u16dist >> 1 ) , POS_KP_DOWN );
     
         //상태 유지.
-        pinfo->q17shift_before = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift + 1 ] : shift_left_45[ shift + 1 ];  //다음 턴 방향을 기준으로 shift
+        pinfo->q17shift_before = ( ( pinfo )->u16turn_dir & RTURN ) ? shift_right_45[ shift + 1 ] : shift_left_45[ shift + 1 ];  //다음 턴 방향을 기준으로 shift
         pinfo->q17shift_after = pinfo->q17shift_before;
     }
     else if( ( ( pinfo - 2 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ) //  직진 - 45 - 45 - 직진 에서의 45도 
     {
         pinfo->down_flag = ON;
         pinfo->escape_flag = ON;    //escape 이면 90도 가변 하면 안되므로...                
-        pinfo->q7kp_val = POS_KP_NONE;
+        pinfo->q17kp_val = POS_KP_NONE;
         ext_memmove_sec_info_struct_func( pinfo, pinfo + 1, g_q17s44s_vel, m_dist);     //탈출 직진을 봐야함 -> pinfo + 1
     
         //상태 유지.
-        pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift + 1 ] : shift_left_45[ shift + 1 ];  //현재 턴 방향을 기준으로 쉬프트
+        //pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift + 1 ] : shift_left_45[ shift + 1 ];  //현재 턴 방향을 기준으로 쉬프트
+        pinfo->q17shift_before = _IQ(0.0);
         pinfo->q17shift_after = pinfo->q17shift_before;
     }
 
@@ -249,11 +260,16 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
 	{
 		pinfo->down_flag = OFF;		
 		pinfo->escape_flag = ON;	//escape -> 가변턴 X 
-		
+		if( pinfo->bril_flag )
+		{
+            pinfo->down_flag = ON;
+            pinfo->q17kp_val = POS_KP_ZERO;
+		}
 		ext_memmove_sec_info_struct_func( pinfo, pinfo + 1, g_q17escape45_vel, m_dist); 	
 	
 		if( ( pinfo + 1 )->u16dist > MID_DIST_LIMIT )
 			pinfo->q17shift_before = _IQ(0.0);	//거리가 길때 꺾으면 흔들림 심함,,,
+
 		else
 			pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
 
@@ -262,21 +278,51 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
     
     
 
-	else if( ( pinfo + 1 )->u16turn_dir & ( TURN_45 | TURN_90 ) )  //  45도 연속턴
+	else if( ( pinfo + 1 )->u16turn_dir & TURN_45 )  //  45도 연속턴
 	{
 		xcontinus_angle_vel_compute_func( pinfo , _IQ17( pinfo->u16dist >> 1 ) , POS_KP_NONE );
 		
         pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
         pinfo->q17shift_after  = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
 
-        if( ( pinfo + 1 )->u16turn_dir & TURN_90 )
-				pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift + 1 ] : shift_left_45[ shift + 1 ];
-	}
+        #if 1
+        if( ( pinfo - 1 )->s44s_flag || ( pinfo - 1 )->ready_flag ) // 이전 턴이 진입 턴이라면
+        {
+                pinfo->ready_flag = ON;
+                pinfo->q17bril_pos = ( pinfo - 1 )->q17bril_pos;
+        }
+        bril_turn_division_compute( ( pinfo + 1 ) ,( mark_cnt + 1 ), perr );
+        if( ( pinfo + 1 )->escape_flag && pinfo->ready_flag ) // 다음 턴이 탈출턴이라면
+        {
+            ( pinfo + 1 )->bril_flag = ON; //탈출턴 플래그 켜준 다음
+            ( pinfo + 1 )->q17bril_pos = ( pinfo - 1 )->q17bril_pos;
+            pinfo->bril_flag = ON; //내 플래그도 켠다.
+        }
+        if( ( pinfo + 1 )->bril_flag && pinfo->ready_flag ) // 다음 턴이 ready라면 
+            pinfo->bril_flag = ON; // s44s 앞은 전부 bril ON. 
+
+
+        if( pinfo->bril_flag )
+        {
+            pinfo->q17shift_before = _IQ(0);
+            pinfo->q17shift_after  = _IQ(0);
+            pinfo->q17kp_val = POS_KP_ZERO;
+            
+            ( pinfo - 1 )->q17shift_before = _IQ(0);
+            ( pinfo - 1 )->q17shift_after  = _IQ(0);
+            ( pinfo - 1 )->q17kp_val = POS_KP_ZERO;
+            
+            ( pinfo + 1 )->q17shift_before = _IQ(0);
+            ( pinfo + 1 )->q17shift_after  = _IQ(0);
+
+        }
+        #endif
+    }
 
 
 	else
 	{
-		pinfo->q7kp_val= POS_KP_UP;
+		pinfo->q17kp_val= POS_KP_UP;
 	
 		if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) //가변 턴 -> 현재 턴 속도 보다 300 더 높인다!!
 		{
@@ -290,7 +336,7 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
 				pinfo->q17vel = ( g_q17user_vel + _IQ(LIMIT_45_VEL) );
 	
 			decel_dist_compute( pinfo->q17vel, g_q17user_vel,  pinfo->q17acc, &pinfo->q17dec_dist );
-			pinfo->q17in_vel = pinfo->q17out_vel = g_q17user_vel;
+			pinfo->q17in_vel = pinfo->q17out_vel = ext_turn_vel_set(pinfo);
 		}
 	
 		if( ( pinfo + 1 )->u16turn_dir & STRAIGHT )
@@ -310,18 +356,23 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
 	perr->q17err_dist[ mark_cnt ] = _IQmpy( _IQ(pinfo->u16dist), _IQ(1.5)); 
 	perr->q17under_dist[ mark_cnt ] = _IQ( pinfo->u16dist >> 2 );	
 
+    //if(pinfo->q17kp_val == POS_KP_NONE)
+    //{
+    //    perr->q17err_dist[ mark_cnt ] = _IQmpy( _IQ(pinfo->u16dist), _IQ(1.3)); 
+    //}
+
 }
 
-static void  bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_str *perr )
+static void bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_str *perr )
 {
 	fast_run_str *pinfo = p_info;
 	volatile _iq17 m_dist = _IQ(0.0);
 	int32 shift = g_int32shift_level;	
 
 	pinfo->q17acc = g_q17user_acc;
-	pinfo->q7kp_val = POS_KP_UP;	
+	pinfo->q17kp_val = POS_KP_UP;	
 	
-	pinfo->q17in_vel = g_q17user_vel;			
+	pinfo->q17in_vel = ext_turn_vel_set(pinfo);			
 	pinfo->q17vel = pinfo->q17out_vel = pinfo->q17in_vel;
 
 	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];	
@@ -330,7 +381,7 @@ static void  bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 	if( ( mark_cnt < 2 ) || ( pinfo + 1 )->u16turn_dir & ETURN ) // 시작 및 엔드턴은 풀지 않는다.
 	{
 		pinfo->q17vel = pinfo->q17out_vel = pinfo->q17in_vel = g_q17user_vel;
-		pinfo->q7kp_val = POS_KP_UP;
+		pinfo->q17kp_val = POS_KP_UP;
         
         if( ( pinfo + 1 )->u16turn_dir & ETURN ) 
 			pinfo->q17shift_before = _IQ(0.0);
@@ -367,7 +418,7 @@ static void  bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_s
         {
             //pinfo->down_flag = ON;
             //pinfo->escape_flag = ON;    //escape 이면 90도 가변 하면 안되므로...                
-            //pinfo->q7kp_val = POS_KP_DOWN;
+            //pinfo->q17kp_val = POS_KP_DOWN;
            
             pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];  //현재 턴 방향을 기준으로 쉬프트
         }
@@ -376,7 +427,7 @@ static void  bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_s
         {
             pinfo->s44s_flag = OFF;
             pinfo->down_flag = OFF;
-            pinfo->q7kp_val = POS_KP_UP;
+            pinfo->q17kp_val = POS_KP_UP;
         
             pinfo->q17in_vel = g_q17user_vel;
             pinfo->q17out_vel = pinfo->q17vel = pinfo->q17in_vel;
@@ -396,7 +447,7 @@ static void  bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_s
         if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & TURN_90 ) && ( ( pinfo + 2 )->u16turn_dir & STRAIGHT ) ) //직진 - 90도 - 90도 - 직진 에서의 90도 
         {
             //pinfo->down_flag = ON; 
-            //pinfo->q7kp_val = POS_KP_DOWN;
+            //pinfo->q17kp_val = POS_KP_DOWN;
             //xcontinus_angle_vel_compute_func( pinfo , _IQ17( pinfo->u16dist >> 1 ) , POS_KP_DOWN );
         
             pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];  //다음 턴 방향을 기준으로 shift
@@ -408,7 +459,7 @@ static void  bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_s
         {
             bril_turn_division_compute( ( pinfo + 1 ) , ( mark_cnt + 1 ), perr );
             pinfo->down_flag = ON; 
-            pinfo->q7kp_val = POS_KP_NONE;
+            pinfo->q17kp_val = POS_KP_NONE;
             xcontinus_angle_vel_compute_func( pinfo , _IQ17( pinfo->u16dist >> 1 ) , POS_KP_NONE );
         
             pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 2 ] : shift_left[ shift + 2 ];  //현재 턴 방향을 기준으로 shift
@@ -426,13 +477,13 @@ static void  bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_s
             {
                 xcontinus_angle_vel_compute_func( pinfo , _IQ17( pinfo->u16dist >> 1 ) , POS_KP_NONE );
                 pinfo->down_flag = ON; 
-                pinfo->q7kp_val = POS_KP_NONE;                
+                pinfo->q17kp_val = POS_KP_NONE;                
             }
             else
             {
                 xcontinus_angle_vel_compute_func( pinfo , _IQ17( pinfo->u16dist >> 1 ) , POS_KP_UP );
                 pinfo->down_flag = OFF; 
-                pinfo->q7kp_val = POS_KP_UP;                
+                pinfo->q17kp_val = POS_KP_UP;                
             }
             
             pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 2 ] : shift_left[ shift + 2 ];
@@ -460,66 +511,32 @@ static void  bril_90_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 
 }
 
-static void bril_180_turn_compute( fast_run_str *pinfo, int32 mark_cnt, error_str *perr )
-{
-	int32 shift = g_int32shift_level;
-	
-	pinfo->q17acc = g_q17user_acc;
-	pinfo->q7kp_val = POS_KP_UP; 
-	
-	pinfo->q17in_vel = g_q17user_vel;
-	pinfo->q17out_vel = pinfo->q17vel = pinfo->q17in_vel;
-	
-	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
-
-    if( ( pinfo + 1 )->u16turn_dir & ETURN )
-    {   
-        pinfo->q17shift_before = _IQ(0.0);
-	    pinfo->q17shift_after = _IQ(0.0);
-    }
-    
-	else if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) 
-		pinfo->q17shift_after = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
-	else	
-		pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
-	
-	pinfo->q17dist_limit = _IQmpy( _IQ(pinfo->u16dist), _IQ(0.65));
-
-	//에러처리 
-	perr->q17err_dist[ mark_cnt ] = _IQmpy( _IQ(pinfo->u16dist), _IQ(1.5)); 
-
-	perr->q17under_dist[ mark_cnt ] = _IQmpy(_IQ( pinfo->u16dist ) , _IQ(0.65));	
-}
-
 
 static void bril_default_turn_compute( fast_run_str *pinfo, int32 mark_cnt, error_str *perr )
 {
 	int32 shift = g_int32shift_level;
 	
 	pinfo->q17acc = g_q17user_acc;
-	pinfo->q7kp_val = POS_KP_UP; 
+	pinfo->q17kp_val = POS_KP_UP; 
 	
-	pinfo->q17in_vel = g_q17user_vel;
-	if( g_q17user_vel > _IQ(LIMIT_SHIFT_VEL) )
-		pinfo->q17in_vel = _IQ( LIMIT_SHIFT_VEL );
+	pinfo->q17in_vel = ext_turn_vel_set(pinfo);
 
 
 	pinfo->q17out_vel = pinfo->q17vel = pinfo->q17in_vel;
 	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
 
-    if( ( pinfo + 1 )->u16turn_dir & ETURN )
-    {   
-        pinfo->q17shift_before = _IQ(0.0);
-	    pinfo->q17shift_after = _IQ(0.0);
-    }
     
-	else if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) 
+	if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) 
 		pinfo->q17shift_after = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
 	else	
 		pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
 
 
-
+    if( pinfo->q17vel < g_q17user_vel )
+    {
+        pinfo->q17shift_before = _IQ(0.0);
+	    pinfo->q17shift_after = _IQ(0.0);        
+    }
 	pinfo->q17dist_limit = _IQmpy( _IQ(pinfo->u16dist), _IQ(0.5));
 
 	//에러처리 
@@ -541,7 +558,7 @@ static void bril_large_turn_compute( fast_run_str *p_info, int32 mark_cnt, error
 	volatile _iq17 small_vel = _IQ(0.0);
 
 	
-	pinfo->q7kp_val = POS_KP_UP;
+	pinfo->q17kp_val = POS_KP_UP;
 	pinfo->q17in_vel = pinfo->q17vel = pinfo->q17out_vel = g_q17user_vel;
 	
 	if( ( pinfo + 1 )->u16turn_dir & STRAIGHT )  //다음이 직진이면 직진 최고 속도로 탈출 한다.
@@ -602,11 +619,10 @@ static void bril_large_turn_compute( fast_run_str *p_info, int32 mark_cnt, error
 
 static void bril_turn_division_compute( fast_run_str *pinfo, int32 mark_cnt, error_str *perr ) // 직진, 큰턴, 턴 구분 
 {
-	if( ( pinfo->u16turn_way & STRAIGHT ) || pinfo->u16turn_dir & ETURN )				bril_straight_compute( pinfo, mark_cnt, perr );
+	if( pinfo->u16turn_dir & ( STRAIGHT | ETURN ) )				                    bril_straight_compute( pinfo, mark_cnt, perr );
 	else if( ( pinfo->u16turn_dir & LARGE_TURN ) && g_Flag.BLTURN_flag )				bril_large_turn_compute( pinfo, mark_cnt, perr ); //large_turn_compute( pinfo, mark_cnt, perr );
 	else if( ( pinfo->u16turn_dir & TURN_45 ) && g_Flag.B45_flag )                      bril_45_turn_compute( pinfo, mark_cnt, perr );
-    else if( ( pinfo->u16turn_dir & TURN_90 ) && g_Flag.B90_flag )                      bril_90_turn_compute( pinfo, mark_cnt, perr );
-    else if( ( pinfo->u16turn_dir & TURN_180 ) && g_Flag.B180_flag )                    bril_180_turn_compute( pinfo, mark_cnt, perr );
+    else if( ( pinfo->u16turn_dir & TURN_90 ) && g_Flag.B90_flag )                      bril_default_turn_compute( pinfo, mark_cnt, perr );
     else if( pinfo->u16turn_dir & TURN_270 )                                            bril_default_turn_compute( pinfo, mark_cnt, perr );
     else                                                                                bril_default_turn_compute( pinfo, mark_cnt, perr );
 }
@@ -628,12 +644,11 @@ extern void bril_turn_division_func( void )
 extern void bril_select(void)
 {
 	int32 i = 0;
-	int32 select[5] = {0,0,0,0,0};
+	int32 select[4] = {0,0,0,0};
 
 	g_Flag.BALL_flag = OFF;
 	g_Flag.B45_flag = OFF;
 	g_Flag.B90_flag = OFF;
-	g_Flag.B180_flag = OFF;
 	g_Flag.BLTURN_flag = OFF;	
 
 	
@@ -661,7 +676,6 @@ extern void bril_select(void)
 			g_Flag.BALL_flag = ON;
 			g_Flag.B45_flag = ON;
 			g_Flag.B90_flag = ON;
-			g_Flag.B180_flag = ON;
 			g_Flag.BLTURN_flag = ON;
 		}
 		if (select[1] == 1)
@@ -673,10 +687,6 @@ extern void bril_select(void)
 			g_Flag.B90_flag = ON;
 		}
 		if (select[3] == 1)
-		{
-			g_Flag.B180_flag = ON;
-		}
-		if (select[4] == 1)
 		{
 			g_Flag.BLTURN_flag = ON;
 		}
@@ -693,9 +703,6 @@ extern void bril_select(void)
 				VFDPrintf("B90:   %ld",select[i]);
 				break;
 			case 3:
-				VFDPrintf("B180:  %ld",select[i]);
-				break;
-			case 4:
 				VFDPrintf("BLTRN: %ld",select[i]);
 				break;
 		}
@@ -707,26 +714,20 @@ extern void bril_select(void)
 
 		if(g_Flag.B45_flag)
 		{
-			TxPrintf("       4\n");
-			VFDPrintf("       4");
+            TxPrintf("M:     4\n");
+			VFDPrintf("M:     4");
 			DELAY_US(250000);
 		}
 		if(g_Flag.B90_flag)
 		{
-			TxPrintf("     9\n");
-			VFDPrintf("     9");
-			DELAY_US(250000);
-		}
-		if(g_Flag.B180_flag)
-		{
-			TxPrintf("   8\n");
-			VFDPrintf("   8");
+			TxPrintf("M:   9\n");
+			VFDPrintf("M:   9");
 			DELAY_US(250000);
 		}
 		if(g_Flag.BLTURN_flag) 
 		{
-			TxPrintf(" L\n");
-			VFDPrintf(" L");
+			TxPrintf("M: L\n");
+			VFDPrintf("M: L");
 			DELAY_US(250000);
 		}
         
@@ -746,7 +747,7 @@ extern void print_bril_info(fast_run_str *pinfo)
 
 	for( i=0; i<160;i++)
 	{
-		TxPrintf("%d| turn_dir: %5x| sft_after: %.3f| sft_before: %.3f| dist_limit: %5ld| dst: %5d | err_dst: %5ld| under_dst: %5ld|\n", 
+		TxPrintf("%d| turn_dir: %5x| sft_after: %.3f| sft_before: %.3f| dist_limit: %5ld| dst: %5d | err_dst: %5ld| under_dst: %5ld| bril_pos: %f|\n", 
 			i,
 			g_fast_info[ i ].u16turn_dir,
 			_IQtoF(g_fast_info[ i ].q17shift_after),
@@ -754,7 +755,8 @@ extern void print_bril_info(fast_run_str *pinfo)
 			g_fast_info[ i ].q17dist_limit>>17,
 			g_fast_info[ i ].u16dist,
 			g_err.q17err_dist[ i ]>>17,
-			g_err.q17under_dist[ i ]>>17);
+			g_err.q17under_dist[ i ]>>17,
+			_IQtoF(g_fast_info[ i ].q17bril_pos));
 
 		if(i==g_int32total_cnt)
 		{
@@ -786,7 +788,7 @@ void bril_run( fast_run_str *p_info )
 	
 	//fast_infor_read_rom();  //  저장된  변수 가져오기  
 	turn_info_func();
-	
+	bril_turn_division_func();
 	bril_turn_division_func();  //주행 전 미리 곡률들 속도 및 가속도 계산
 
 	if( pinfo->u16turn_dir & STRAIGHT )  //  첫  곡률이 직진인 경우 
@@ -810,8 +812,11 @@ void bril_run( fast_run_str *p_info )
 	
 	while(1)
 	{
-		VFDPrintf("%8f",_IQtoF(g_q17shift_pos_val));
-		//VFDPrintf("%f",_IQ7toF(g_pos.iq7pid_out));
+        //LED_ON;
+        //TxPrintf("%f,%f,%ld,%d,%f\n",_IQ7toF(g_pos.iq7kp),_IQtoF(g_q17straight_dist),g_int32mark_cnt,g_fast_info[g_int32mark_cnt].u16dist,_IQ7toF(g_fast_info[ g_int32mark_cnt ].q17kp_val));
+       //TxPrintf("%f,%f,%ld,%f\n",_IQ17toF(g_pos.iq17kp),_IQ17toF(g_fast_info[ g_int32mark_cnt ].q17kp_val),g_int32mark_cnt,_IQ17toF(g_q17shift_dist));
+		//VFDPrintf("%8f",_IQ7toF(g_pos.iq7kp));
+		//TxPrintf("%f\r\n",_IQ7toF(g_pos.iq7pid_out));
 		g_q17straight_dist = ( (g_rm.q17gone_distance + g_lm.q17gone_distance) >> 1 );		 
 		
 		make_position();	// 포지션 갱신 
@@ -820,13 +825,13 @@ void bril_run( fast_run_str *p_info )
 			g_lmark.q7turn_dis = (g_lmark.q7check_dis + g_rmark.q7check_dis) >> 1;		//   턴마크 체크 거리값 갱신 
 			g_rmark.q7turn_dis = g_lmark.q7turn_dis;
 	
-			//turn_decide( g_ptr->g_lmark ); 	//	왼쪽 턴마크 check
+			turn_decide( g_ptr->g_lmark ); 	//	왼쪽 턴마크 check
 			turn_decide( g_ptr->g_rmark ); 	//	오른쪽 턴마크 check
 		}
 
 		if( g_Flag.motor_ISR_flag )	// 모터 interrupt 동기화 
 		{
-			#if 1
+
 			//속도별 쉬프트 비율 다르게 주기.
 			pvel = g_rm.q17next_vel > g_lm.q17next_vel ? &g_rm.q17next_vel : &g_lm.q17next_vel; 	//pvel에 왼쪽과 오른쪽 모터중 빠른걸 넣어줌
 			shift_dist = ( ( g_fast_info[ g_int32mark_cnt ].u16turn_dir & STRAIGHT ) && 			//직진이면서
@@ -835,7 +840,6 @@ void bril_run( fast_run_str *p_info )
 	
 			shift_dist = _IQmpy( shift_dist, _IQ(0.0005) );	// 인터럽트 주기당 거리
 			bril_pos_shift_func(g_q17straight_dist, shift_dist, &g_fast_info[g_int32mark_cnt]);
-			#endif 
 			
 			if( lineout_func())  
 			{
@@ -847,9 +851,10 @@ void bril_run( fast_run_str *p_info )
 
 
 
-            bril_compute( &g_err, pinfo, g_int32mark_cnt );				
+            fast_error_compute( &g_err, pinfo, g_int32mark_cnt );		
 			g_Flag.motor_ISR_flag = OFF;
 		}
+        //LED_OFF;
 	}
 #endif
 	

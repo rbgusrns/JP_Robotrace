@@ -327,7 +327,7 @@ extern void LSM6DSR_GetGyroDataDPS(void)
     else g_pos.u16current_state = STRAIGHT;
 
 
-    if ( g_pos.u16current_state != g_pos.u16past_state ) g_pos.u16state |= 0x8000; //  0000 0000 0000 0000 센서가 활성화 된 것 처럼. 
+    if ( g_pos.u16current_state != g_pos.u16past_state ) g_pos.u16state |= 0x8000; //  1000 0000 0000 0000 센서가 활성화 된 것 처럼. 
     else g_pos.u16state &= 0x7fff;
 
 
@@ -425,7 +425,8 @@ extern void turn_decide(turnmark_t* p_mark)
             pmark->u16turn_flag = ON; // 한번만 검사해주자. 
                             
 			if( pmark == g_ptr->g_lmark ) // 곡률 변화 라면 길게 거리 잡고
-			{			
+			{	
+                //LED_ON;
                 pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist); // 일정 거리 가는 동안 각속도가 유지되는지 검사             
                 if(!g_Flag.fast_flag)	 line_info(pmark); //1차 turnmark count ( 턴마크로 간주하고 라인 정보 저장 ) 
 				else					 second_infor( g_ptr->pfastinfo,g_ptr->perr);  //2차				 
@@ -455,6 +456,11 @@ extern void turn_decide(turnmark_t* p_mark)
 			}
 			else if ( pmark == g_ptr -> g_rmark ) // start or end 마크라면
 			{
+                if( g_Flag.cross_flag )
+                {
+                    pmark->u16single_flag = OFF;
+                    return; 
+                }
                 LED_ON;
                 pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);
                 g_Flag.rmark_flag = ON;
