@@ -89,7 +89,7 @@
 #define POS_KP_NONE     _IQ17( 0.1 )
 #define POS_KP_ZERO     _IQ17( 0.1 )
 
-#define POS_KD_UP		_IQ17( 6.0 )	//4.4
+#define POS_KD_UP		_IQ17( 8.0 )	//4.4
 #define POS_KD_DOWN		_IQ17( 2.4 )	//3.4
 
 #define	STRAIGHT					0x0001

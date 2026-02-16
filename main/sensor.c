@@ -129,9 +129,9 @@ void sen_vari_init(void)
 	g_sen[ 11 ].iq7weight = _IQ7(3200); 		g_sen[ 11 ].u16active_arr = 0x0800; 	g_sen[ 11 ].u16passive_arr = 0xf7ff;	//7000
 	g_sen[ 10 ].iq7weight = _IQ7(2100); 		g_sen[ 10 ].u16active_arr = 0x0400; 	g_sen[ 10 ].u16passive_arr = 0xfbff;	// 4000
 	g_sen[ 9 ].iq7weight = _IQ7(1100);			g_sen[ 9 ].u16active_arr = 0x0200;		g_sen[ 9 ].u16passive_arr = 0xfdff; 	// 1000
-	g_sen[ 8 ].iq7weight = _IQ7(100);			g_sen[ 8 ].u16active_arr = 0x0100;		g_sen[ 8 ].u16passive_arr = 0xfeff; 	// 500
+	g_sen[ 8 ].iq7weight = _IQ7(300);			g_sen[ 8 ].u16active_arr = 0x0100;		g_sen[ 8 ].u16passive_arr = 0xfeff; 	// 500
 
-	g_sen[ 7 ].iq7weight = _IQ7(-100); 		    g_sen[ 7 ].u16active_arr = 0x0080;		g_sen[ 7 ].u16passive_arr = 0xff7f;
+	g_sen[ 7 ].iq7weight = _IQ7(-300); 		    g_sen[ 7 ].u16active_arr = 0x0080;		g_sen[ 7 ].u16passive_arr = 0xff7f;
 	g_sen[ 6 ].iq7weight = _IQ7(-1100); 		g_sen[ 6 ].u16active_arr = 0x0040;		g_sen[ 6 ].u16passive_arr = 0xffbf;
 	g_sen[ 5 ].iq7weight = _IQ7(-2100); 		g_sen[ 5 ].u16active_arr = 0x0020;		g_sen[ 5 ].u16passive_arr = 0xffdf;
 	g_sen[ 4 ].iq7weight = _IQ7(-3200); 		g_sen[ 4 ].u16active_arr = 0x0010;		g_sen[ 4 ].u16passive_arr = 0xffef;
@@ -490,8 +490,8 @@ void position_PID(void) // 500us
 	else								//ÁÂÈ¸Àü
 	{	
 	
-		g_q16right_handle_temp = _IQ16mpy( g_q16han_accstep , (_IQ16div(HANDLE_CENTER , _IQ16(250)) - _IQ16div( g_pos.iq7pid_out << 9,_IQ16(250.0) ) ))  + g_q16han_accmax;
-		g_q16left_handle_temp = _IQ16mpy( g_q16han_decstep , (_IQ16div(HANDLE_CENTER , _IQ16(250)) + _IQ16div( g_pos.iq7pid_out << 9,_IQ16(250.0)) )) + g_q16han_decmax;
+		g_q16right_handle_temp = _IQ16mpy( g_q16han_accstep , (_IQ16mpy(HANDLE_CENTER , _IQ16(0.004)) - _IQ16mpy( g_pos.iq7pid_out << 9,_IQ16(0.004) ) ))  + g_q16han_accmax;
+		g_q16left_handle_temp = _IQ16mpy( g_q16han_decstep , (_IQ16mpy(HANDLE_CENTER , _IQ16(0.004)) + _IQ16mpy( g_pos.iq7pid_out << 9,_IQ16(0.004)) )) + g_q16han_decmax;
 
 	}
 	
