@@ -326,7 +326,6 @@ extern void LSM6DSR_GetGyroDataDPS(void)
     else if ( g_q17curvature < -g_q17turn_threshold ) g_pos.u16current_state = LTURN;
     else g_pos.u16current_state = STRAIGHT;
 
-
     if ( g_pos.u16current_state != g_pos.u16past_state ) g_pos.u16state |= 0x8000; //  1000 0000 0000 0000 센서가 활성화 된 것 처럼. 
     else g_pos.u16state &= 0x7fff;
 
@@ -380,18 +379,15 @@ extern void turn_decide(turnmark_t* p_mark)
         if( pmark->q7turn_dis > pmark->q7dist_limit )
         {
 
-            pmark->u16turn_flag = OFF;
-            pmark->u16single_flag = OFF;
-            pmark->q7turn_dis = _IQ7(0);
-            // 턴 체크 변수 초기화 
-            // 이후 중복 방지 거리동안 진행한 뒤 턴 인정 로직 수행하기.
-
             if(!g_Flag.move_state )	return;
             
 			if( pmark == g_ptr->g_lmark ) // 곡률 변화 상태
 			{			
 
-                
+                if( g_pos.u16current_state & STRAIGHT )
+                {
+                    if( pmark->q7turn_dis < pmark->q7dist_limit + _IQ7(140) ) return;
+                }                
                 if(!g_Flag.fast_flag) 
                     init_line_info(pmark);
 
@@ -410,6 +406,12 @@ extern void turn_decide(turnmark_t* p_mark)
 
                 start_end_check(); 
 			} 
+            
+            pmark->u16turn_flag = OFF;
+            pmark->u16single_flag = OFF;
+            pmark->q7turn_dis = _IQ7(0);
+            // 턴 체크 변수 초기화 
+            // 이후 중복 방지 거리동안 진행한 뒤 턴 인정 로직 수행하기.
 
             return;
 
@@ -427,7 +429,8 @@ extern void turn_decide(turnmark_t* p_mark)
 			if( pmark == g_ptr->g_lmark ) // 곡률 변화 라면 길게 거리 잡고
 			{	
                 //LED_ON;
-                pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist); // 일정 거리 가는 동안 각속도가 유지되는지 검사             
+                pmark->q7dist_limit = ( g_lmark.u16mark_enable & LEFT_MARK_CHECK ) ? ( pmark->q7turn_dis + _IQtoIQ7(g_q17mark_dist) ) : ( pmark->q7turn_dis + turn_step ) ; 
+                //pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(mark_dist); // 일정 거리 가는 동안 각속도가 유지되는지 검사             
                 if(!g_Flag.fast_flag)	 line_info(pmark); //1차 turnmark count ( 턴마크로 간주하고 라인 정보 저장 ) 
 				else					 second_infor( g_ptr->pfastinfo,g_ptr->perr);  //2차				 
 			}
@@ -441,7 +444,7 @@ extern void turn_decide(turnmark_t* p_mark)
         }
 		else if( pmark->q7turn_dis >= pmark->q7dist_limit ) // 일정 거리 가도 각속도가 유지될 경우. -> 곡률 변화 인정.
 		{ 
-            
+            pmark->q7dist_limit = ( g_lmark.u16mark_enable & LEFT_MARK_CHECK ) ? ( pmark->q7turn_dis + turn_step ) : ( pmark->q7turn_dis + _IQtoIQ7(g_q17mark_dist) ) ;
 			//pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);	//이 거리동안은 다시 들어와도 인정 X
 			pmark->u16single_flag = ON;
 
@@ -462,7 +465,7 @@ extern void turn_decide(turnmark_t* p_mark)
                     return; 
                 }
                 LED_ON;
-                pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);
+                //pmark->q7dist_limit = pmark->q7turn_dis + _IQtoIQ7(g_q17turnmark_dist);
                 g_Flag.rmark_flag = ON;
 			}
 			

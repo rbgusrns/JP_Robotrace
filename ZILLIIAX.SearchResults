@@ -1,11 +1,17 @@
----- g_q17end_vel Matches (10 in 7 files) ----
-brilrun.asm (main):DW$57	.dwtag  DW_TAG_variable, DW_AT_name("g_q17end_vel"), DW_AT_symbol_name("_g_q17end_vel")
-brilrun.asm (main):;*** 88	-----------------------    *((volatile long * const)p_info+62L) = (*p_info).q17out_vel = g_q17end_vel;
-brilrun.c (main):	else 	( pinfo + 1 )->q17in_vel = pinfo->q17out_vel = g_q17end_vel;
-fastrun.asm (main):DW$44	.dwtag  DW_TAG_variable, DW_AT_name("g_q17end_vel"), DW_AT_symbol_name("_g_q17end_vel")
-fastrun.asm (main):;*** 122	-----------------------    *((volatile long * const)pinfo+62L) = (*pinfo).q17out_vel = g_q17end_vel;
-fastrun.c (main):		( pinfo + 1 )->q17in_vel = pinfo->q17out_vel = g_q17end_vel;
-main.asm (main):DW$146	.dwtag  DW_TAG_variable, DW_AT_name("g_q17end_vel"), DW_AT_symbol_name("_g_q17end_vel")
-main.asm (main):;*** 146	-----------------------    g_q17end_vel = 262144000L;
-main.c (main):	g_q17end_vel = _IQ(5000);
-Variable.h (main):					  g_q17end_vel,
+---- g_q17mark_dist Matches (16 in 9 files) ----
+gyro.asm (main):DW$29	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mark_dist"), DW_AT_symbol_name("_g_q17mark_dist")
+gyro.asm (main):;*** 430	-----------------------    (g_lmark.u16mark_enable&0x8000u) ? (S$2 = (*p_mark).q7turn_dis+(g_q17mark_dist>>10)) : (S$2 = (*p_mark).q7turn_dis+turn_step);
+gyro.asm (main):;*** 445	-----------------------    (g_lmark.u16mark_enable&0x8000u) ? (S$1 = (*p_mark).q7turn_dis+turn_step) : (S$1 = (*p_mark).q7turn_dis+(g_q17mark_dist>>10));
+gyro.asm (main):;*** 329	-----------------------    g_q17mark_dist = (g_pos.u16current_state&1u) ? g_q17str_mark_dist : g_q17turnmark_dist;
+gyro.c (main):                pmark->q7dist_limit = ( g_lmark.u16mark_enable & LEFT_MARK_CHECK ) ? ( pmark->q7turn_dis + _IQtoIQ7(g_q17mark_dist) ) : ( pmark->q7turn_dis + turn_step ) ; 
+gyro.c (main):            pmark->q7dist_limit = ( g_lmark.u16mark_enable & LEFT_MARK_CHECK ) ? ( pmark->q7turn_dis + turn_step ) : ( pmark->q7turn_dis + _IQtoIQ7(g_q17mark_dist) ) ;
+main.asm (main):DW$135	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mark_dist"), DW_AT_symbol_name("_g_q17mark_dist")
+main.asm (main):;*** 78	-----------------------    g_q17mark_dist = 9175040L;
+main.c (main):    g_q17mark_dist = g_q17turnmark_dist;
+Rom.asm (main):DW$43	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mark_dist"), DW_AT_symbol_name("_g_q17mark_dist")
+Rom.asm (main):;*** 761	-----------------------    g_q17mark_dist = y$16;
+Rom.c (main):    g_q17mark_dist = g_q17turnmark_dist;
+search.asm (main):DW$36	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mark_dist"), DW_AT_symbol_name("_g_q17mark_dist")
+search.asm (main):;*** 437	-----------------------    g_q17mark_dist = g_q17turnmark_dist;
+search.c (main):            g_q17mark_dist = g_q17turnmark_dist;
+Variable.h (main):					  g_q17mark_dist,

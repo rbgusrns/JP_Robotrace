@@ -757,6 +757,8 @@ void turnmark_info_read_rom(void)
 	Rom_Data_Buffer |= ((read_buf1[y++] & 0xff) << 8);
 	
 	g_q17turnmark_dist  = _IQ(Rom_Data_Buffer);
+    g_q17str_mark_dist  = g_q17turnmark_dist + _IQ(80);
+    g_q17mark_dist = g_q17turnmark_dist;
 	
 	i = 0;
 	SpiReadRom((Uint16)(_TURNMARK_LIMIT) , 0 , (Uint16)(_TURNMARK_BLOCK), read_buf2 );

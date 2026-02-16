@@ -433,6 +433,8 @@ void Set_TurnMark(void)
 		
 		if(Right_SW){
 			DELAY_US(125000);
+            g_q17str_mark_dist  = g_q17turnmark_dist + _IQ(80);
+            g_q17mark_dist = g_q17turnmark_dist;
 			break;
 		}
 		VFDPrintf("MARKD:%2u",IQ_TO_UINT16(g_q17turnmark_dist));

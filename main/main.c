@@ -74,6 +74,8 @@ void Variable_Init( void )
 	g_int32timer_cnt = 0;
 
 	g_q17turnmark_dist = _IQ(70);
+    g_q17str_mark_dist  = g_q17turnmark_dist + _IQ(80);
+    g_q17mark_dist = g_q17turnmark_dist;
 	//g_q17turnmark_dist = _IQ(146);
 	g_q17cross_dist = _IQ(0);
 	g_u16turnmark_limit = 100;
