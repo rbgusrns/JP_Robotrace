@@ -130,11 +130,11 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 			else 										pinfo->s44s_flag = ON;
 
             bril_turn_division_compute( ( pinfo + 1 ) ,( mark_cnt + 1 ), perr );
+            
 			pinfo->q17kp_val = POS_KP_NONE;				
             if( ( pinfo + 1 )->bril_flag ) // 다음 턴이 ready라면 
             {
                 pinfo->bril_flag = ON; // s44s 앞은 전부 bril ON. 
-                pinfo->q17kp_val = POS_KP_ZERO; 
             }
 
 			if( ( ( pinfo + 2 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 3 )->u16turn_dir & STRAIGHT ) )	// 다다음 턴이 45도인 경우 
@@ -207,21 +207,8 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
 	
 	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ]; 
 
-	if( ( mark_cnt < 2 ) || ( pinfo + 1 )->u16turn_dir & ETURN ) // 시작 및 엔드턴은 풀지 않는다.
-	{
-		pinfo->q17vel = pinfo->q17out_vel = pinfo->q17in_vel = g_q17user_vel;
-		pinfo->q17kp_val = POS_KP_UP;
 
-        if( ( pinfo + 1 )->u16turn_dir & ETURN ) 
-			pinfo->q17shift_before = _IQ(0.0);        
-
-		else if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) 
-			pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
-		else	
-			pinfo->q17shift_before = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
-        pinfo->q17shift_after = pinfo->q17shift_before;
-	}
-	else if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) )  //직진 - 45도 - 직진
+	if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) )  //직진 - 45도 - 직진
 	{
 		pinfo->q17acc = g_q17user_acc; // LIMIT_ACC
 
@@ -253,18 +240,62 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
         pinfo->q17shift_before = _IQ(0.0);
         pinfo->q17shift_after = pinfo->q17shift_before;
     }
+    else if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 2 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 3 )->u16turn_dir & STRAIGHT ) ) 
+    { //직444직의 첫 4
+    
+        pinfo->down_flag = ON;
+        pinfo->bril_flag = ON;
+        pinfo->q17kp_val = POS_KP_ZERO;
+        
+        ext_memmove_sec_info_struct_func( pinfo, pinfo + 1, g_q17escape45_vel, m_dist); 
 
 
-	
+        if( ( pinfo - 1 )->s44s_flag ) // 이전 턴이 진입 직진이라면
+        {
+                pinfo->q17bril_pos = ( pinfo - 1 )->q17bril_pos;
+        }
+
+        pinfo->q17shift_before = _IQ(0.0);
+        pinfo->q17shift_after = _IQ(0.0);
+        ( pinfo - 1 )->q17shift_after = _IQ(0.0);
+    }
+    else if( ( ( pinfo - 2 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 2 )->u16turn_dir & STRAIGHT ) ) 
+    { //직444직의 2번 4
+
+        pinfo->down_flag = ON;
+        pinfo->bril_flag = ON;
+        pinfo->q17kp_val = POS_KP_ZERO;
+        
+        ext_memmove_sec_info_struct_func( pinfo, pinfo + 1, g_q17escape45_vel, m_dist); 
+        
+        pinfo->q17bril_pos = ( pinfo - 1 )->q17bril_pos;
+        
+        pinfo->q17shift_before = _IQ(0.0);
+        pinfo->q17shift_after = _IQ(0.0);
+
+    }
+    else if( ( ( pinfo - 3 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 2 )->u16turn_dir & TURN_45 ) && ( ( pinfo - 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ) 
+    { //직444직의 탈출 4
+    
+        pinfo->down_flag = ON;
+        pinfo->bril_flag = ON;
+        pinfo->escape_flag = ON;
+        pinfo->q17kp_val = POS_KP_ZERO;
+        
+        ext_memmove_sec_info_struct_func( pinfo, pinfo + 1, g_q17escape45_vel, m_dist); 
+        
+        pinfo->q17bril_pos = ( pinfo - 1 )->q17bril_pos;
+        
+        pinfo->q17shift_before = _IQ(0.0);
+        pinfo->q17shift_after = _IQ(0.0);
+        ( pinfo + 1 )->q17shift_before = _IQ(0.0);
+    }
+
 	else if( ( ( pinfo - 1 )->u16turn_dir & ( TURN_45 | TURN_90 ) ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ) //45도 연속턴 탈출 - 직진 , 90 - 45 - 직진 
 	{
 		pinfo->down_flag = OFF;		
 		pinfo->escape_flag = ON;	//escape -> 가변턴 X 
-		if( pinfo->bril_flag )
-		{
-            pinfo->down_flag = ON;
-            pinfo->q17kp_val = POS_KP_ZERO;
-		}
+
 		ext_memmove_sec_info_struct_func( pinfo, pinfo + 1, g_q17escape45_vel, m_dist); 	
 	
 		if( ( pinfo + 1 )->u16dist > MID_DIST_LIMIT )
@@ -285,40 +316,7 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
         pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
         pinfo->q17shift_after  = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
 
-        #if 1
-        if( ( pinfo - 1 )->s44s_flag || ( pinfo - 1 )->ready_flag ) // 이전 턴이 진입 턴이라면
-        {
-                pinfo->ready_flag = ON;
-                pinfo->q17bril_pos = ( pinfo - 1 )->q17bril_pos;
-        }
-        bril_turn_division_compute( ( pinfo + 1 ) ,( mark_cnt + 1 ), perr );
-        if( ( pinfo + 1 )->escape_flag && pinfo->ready_flag ) // 다음 턴이 탈출턴이라면
-        {
-            ( pinfo + 1 )->bril_flag = ON; //탈출턴 플래그 켜준 다음
-            ( pinfo + 1 )->q17bril_pos = ( pinfo - 1 )->q17bril_pos;
-            pinfo->bril_flag = ON; //내 플래그도 켠다.
-        }
-        if( ( pinfo + 1 )->bril_flag && pinfo->ready_flag ) // 다음 턴이 ready라면 
-            pinfo->bril_flag = ON; // s44s 앞은 전부 bril ON. 
-
-
-        if( pinfo->bril_flag )
-        {
-            pinfo->q17shift_before = _IQ(0);
-            pinfo->q17shift_after  = _IQ(0);
-            pinfo->q17kp_val = POS_KP_ZERO;
-            
-            ( pinfo - 1 )->q17shift_before = _IQ(0);
-            ( pinfo - 1 )->q17shift_after  = _IQ(0);
-            ( pinfo - 1 )->q17kp_val = POS_KP_ZERO;
-            
-            ( pinfo + 1 )->q17shift_before = _IQ(0);
-            ( pinfo + 1 )->q17shift_after  = _IQ(0);
-
-        }
-        #endif
     }
-
 
 	else
 	{

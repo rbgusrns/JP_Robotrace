@@ -364,6 +364,10 @@ void second_infor(fast_run_str * p_info, error_str *perr )
             g_lmark.u16mark_enable = FRONT_MARK_CHECK;
             
 	}
+    else if( ( pinfo + g_int32mark_cnt )->q17kp_val == POS_KP_DOWN )
+    {
+            g_lmark.u16mark_enable = ( FRONT_MARK_CHECK | LEFT_MARK_CHECK );
+    }
 	else																					
     {
         g_Flag.straight_run = OFF;

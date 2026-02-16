@@ -1,17 +1,141 @@
----- g_q17mark_dist Matches (16 in 9 files) ----
-gyro.asm (main):DW$29	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mark_dist"), DW_AT_symbol_name("_g_q17mark_dist")
-gyro.asm (main):;*** 430	-----------------------    (g_lmark.u16mark_enable&0x8000u) ? (S$2 = (*p_mark).q7turn_dis+(g_q17mark_dist>>10)) : (S$2 = (*p_mark).q7turn_dis+turn_step);
-gyro.asm (main):;*** 445	-----------------------    (g_lmark.u16mark_enable&0x8000u) ? (S$1 = (*p_mark).q7turn_dis+turn_step) : (S$1 = (*p_mark).q7turn_dis+(g_q17mark_dist>>10));
-gyro.asm (main):;*** 329	-----------------------    g_q17mark_dist = (g_pos.u16current_state&1u) ? g_q17str_mark_dist : g_q17turnmark_dist;
-gyro.c (main):                pmark->q7dist_limit = ( g_lmark.u16mark_enable & LEFT_MARK_CHECK ) ? ( pmark->q7turn_dis + _IQtoIQ7(g_q17mark_dist) ) : ( pmark->q7turn_dis + turn_step ) ; 
-gyro.c (main):            pmark->q7dist_limit = ( g_lmark.u16mark_enable & LEFT_MARK_CHECK ) ? ( pmark->q7turn_dis + turn_step ) : ( pmark->q7turn_dis + _IQtoIQ7(g_q17mark_dist) ) ;
-main.asm (main):DW$135	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mark_dist"), DW_AT_symbol_name("_g_q17mark_dist")
-main.asm (main):;*** 78	-----------------------    g_q17mark_dist = 9175040L;
-main.c (main):    g_q17mark_dist = g_q17turnmark_dist;
-Rom.asm (main):DW$43	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mark_dist"), DW_AT_symbol_name("_g_q17mark_dist")
-Rom.asm (main):;*** 761	-----------------------    g_q17mark_dist = y$16;
-Rom.c (main):    g_q17mark_dist = g_q17turnmark_dist;
-search.asm (main):DW$36	.dwtag  DW_TAG_variable, DW_AT_name("g_q17mark_dist"), DW_AT_symbol_name("_g_q17mark_dist")
-search.asm (main):;*** 437	-----------------------    g_q17mark_dist = g_q17turnmark_dist;
-search.c (main):            g_q17mark_dist = g_q17turnmark_dist;
-Variable.h (main):					  g_q17mark_dist,
+---- u16turn_dir Matches (166 in 16 files) ----
+brilrun.asm (main):;*** 537	-----------------------    if ( (*pinfo).u16turn_dir&4 ) goto g3;
+brilrun.asm (main):;*** 541	-----------------------    ((*pinfo).u16turn_dir&4u) ? (S$2 = *(&shift_right+U$8)) : (S$2 = *(&shift_left+U$8));
+brilrun.asm (main):;*** 208	-----------------------    if ( (*p_info).u16turn_dir&4 ) goto g3;
+brilrun.asm (main):;*** 354	-----------------------    ((*p_info).u16turn_dir&4u) ? (S$2 = *(&shift_right_45+U$12)) : (S$2 = *(&shift_left_45+U$12));
+brilrun.asm (main):;*** 329	-----------------------    ((*p_info).u16turn_dir&4u) ? (S$4 = *(&shift_right_45+U$12)) : (S$4 = *(&shift_left_45+U$12));
+brilrun.asm (main):;*** 318	-----------------------    ((*p_info).u16turn_dir&4u) ? (S$5 = *(&shift_right_45+U$12)) : (S$5 = *(&shift_left_45+U$12));
+brilrun.asm (main):;*** 241	-----------------------    ((*p_info).u16turn_dir&4u) ? (S$6 = *(&shift_right_45+U$12+2L)) : (S$6 = *(&shift_left_45+U$12+2L));
+brilrun.asm (main):;*** 229	-----------------------    ((*p_info).u16turn_dir&4u) ? (S$7 = *(&shift_right_45+U$12)) : (S$7 = *(&shift_left_45+U$12));
+brilrun.asm (main):;*** 219	-----------------------    ((*p_info).u16turn_dir&4u) ? (S$9 = *(&shift_right_45+U$12)) : (S$9 = *(&shift_left_45+U$12));
+brilrun.asm (main):;*** 585	-----------------------    if ( (*p_info).u16turn_dir&4 ) goto g5;
+brilrun.asm (main):;*** 74	-----------------------    if ( (*p_info).u16turn_dir&0x8 ) goto g7;
+brilrun.asm (main):;*** 146	-----------------------    if ( !((*p_info).u16turn_dir&0x8) ) goto g31;
+brilrun.asm (main):;*** 633	-----------------------    if ( (*pinfo).u16turn_dir&0x9u ) goto g12;
+brilrun.asm (main):;*** 634	-----------------------    if ( !((*pinfo).u16turn_dir&0x100) ) goto g4;
+brilrun.asm (main):;*** 635	-----------------------    if ( !((*pinfo).u16turn_dir&0x10) ) goto g6;
+brilrun.asm (main):;*** 636	-----------------------    if ( !((*pinfo).u16turn_dir&0x20) ) goto g9;
+brilrun.asm (main):;*** 637	-----------------------    (*pinfo).u16turn_dir;
+brilrun.asm (main):;*** 761	-----------------------    TxPrintf("%d| turn_dir: %5x| sft_after: %.3f| sft_before: %.3f| dist_limit: %5ld| dst: %5d | err_dst: %5ld| under_dst: %5ld| bril_pos: %f|\n", i, (*U$6).u16turn_dir, _IQ17toF((*U$6).q17shift_after), _IQ17toF((*U$6).q17shift_before), (*U$6).q17dist_limit>>17, (*U$6).u16dist, U$10[256]>>17, *U$10>>17, _IQ17toF((*U$6).q17bril_pos));
+brilrun.asm (main):;*** 881	-----------------------    if ( !((*p_info).u16turn_dir&0x101u) ) goto g4;
+brilrun.asm (main):;*** 882	-----------------------    if ( !((*p_info).u16turn_dir&0x101u) ) goto g8;
+brilrun.asm (main):;*** 805	-----------------------    if ( (*p_info).u16turn_dir&1u ) goto g3;
+brilrun.asm (main):;*** 847	-----------------------    if ( !((K$31[g_int32mark_cnt]).u16turn_dir&1u) ) goto g14;
+brilrun.asm (main):	.dwattr DW$377, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+brilrun.c (main):	if( !( pinfo->u16turn_dir & ETURN ) )	//마지막 구간 아닐 경우
+brilrun.c (main):				pinfo->q17shift_before = ( ( pinfo - 1 )->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
+brilrun.c (main):		pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];	
+brilrun.c (main):		if( ( ( pinfo + 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 2 )->u16turn_dir & ( TURN_45 | TURN_90 ) ) ) // 연속턴 | 직진 - 45도 - 45도 - 직진 | 직진 - 45도 - 90도 - 45도
+brilrun.c (main):			if( ( ( pinfo + 2 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 3 )->u16turn_dir & STRAIGHT ) )	// 다다음 턴이 45도인 경우 
+brilrun.c (main):				pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];	
+brilrun.c (main):		if( pinfo->u16turn_dir & ETURN )   //END일때 포지션 당기지 않음...
+brilrun.c (main):	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ]; 
+brilrun.c (main):	if( ( mark_cnt < 2 ) || ( pinfo + 1 )->u16turn_dir & ETURN ) // 시작 및 엔드턴은 풀지 않는다.
+brilrun.c (main):        if( ( pinfo + 1 )->u16turn_dir & ETURN ) 
+brilrun.c (main):		else if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) 
+brilrun.c (main):			pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):			pinfo->q17shift_before = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):	else if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) )  //직진 - 45도 - 직진
+brilrun.c (main):		pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):    else if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 2 )->u16turn_dir & STRAIGHT ) ) //직진 - 45도 - 45도 - 직진 에서의 45도 
+brilrun.c (main):        pinfo->q17shift_before = ( ( pinfo )->u16turn_dir & RTURN ) ? shift_right_45[ shift + 1 ] : shift_left_45[ shift + 1 ];  //다음 턴 방향을 기준으로 shift
+brilrun.c (main):    else if( ( ( pinfo - 2 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ) //  직진 - 45 - 45 - 직진 에서의 45도 
+brilrun.c (main):        //pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift + 1 ] : shift_left_45[ shift + 1 ];  //현재 턴 방향을 기준으로 쉬프트
+brilrun.c (main):    else if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 2 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 3 )->u16turn_dir & STRAIGHT ) ) 
+brilrun.c (main):    else if( ( ( pinfo - 2 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 2 )->u16turn_dir & STRAIGHT ) ) 
+brilrun.c (main):    else if( ( ( pinfo - 3 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 2 )->u16turn_dir & TURN_45 ) && ( ( pinfo - 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ) 
+brilrun.c (main):	else if( ( ( pinfo - 1 )->u16turn_dir & ( TURN_45 | TURN_90 ) ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ) //45도 연속턴 탈출 - 직진 , 90 - 45 - 직진 
+brilrun.c (main):			pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):	else if( ( pinfo + 1 )->u16turn_dir & TURN_45 )  //  45도 연속턴
+brilrun.c (main):        pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):        pinfo->q17shift_after  = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):		if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) //가변 턴 -> 현재 턴 속도 보다 300 더 높인다!!
+brilrun.c (main):		if( ( pinfo + 1 )->u16turn_dir & STRAIGHT )
+brilrun.c (main):			pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):			pinfo->q17shift_before = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):	//if ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) pinfo->q17shift_after = _IQ(0.0);
+brilrun.c (main):	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];	
+brilrun.c (main):	if( ( mark_cnt < 2 ) || ( pinfo + 1 )->u16turn_dir & ETURN ) // 시작 및 엔드턴은 풀지 않는다.
+brilrun.c (main):        if( ( pinfo + 1 )->u16turn_dir & ETURN ) 
+brilrun.c (main):		else if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) 
+brilrun.c (main):			pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
+brilrun.c (main):			pinfo->q17shift_before = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right_45[ shift ] : shift_left_45[ shift ];
+brilrun.c (main):	else if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) // 다음 턴이 직진인 경우( 90 - 직 )
+brilrun.c (main):        pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];
+brilrun.c (main):				( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 1 )->u16dist > MID_DIST_LIMIT) ) // 작은 직진에서만 가변.
+brilrun.c (main):        if( ( ( pinfo - 2 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 1 )->u16turn_dir & TURN_90 ) && ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ) //  직진 - 90 - 90 - 직진 에서의 90도 
+brilrun.c (main):            pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];  //현재 턴 방향을 기준으로 쉬프트
+brilrun.c (main):        if( ( ( pinfo - 1 )->u16turn_dir & TURN_90 ) && ( ( pinfo - 2 )->u16turn_dir & TURN_90 )  ) //90 연속 후 가속 시 흔들린다..
+brilrun.c (main):        if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo + 1 )->u16turn_dir & TURN_90 ) && ( ( pinfo + 2 )->u16turn_dir & STRAIGHT ) ) //직진 - 90도 - 90도 - 직진 에서의 90도 
+brilrun.c (main):            pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];  //다음 턴 방향을 기준으로 shift
+brilrun.c (main):            pinfo->q17shift_after = pinfo->q17shift_after  = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];
+brilrun.c (main):        else if( ( ( pinfo - 1 )->u16turn_dir & TURN_45 ) && ( ( pinfo + 1 )->u16turn_dir & TURN_45 )  ) //직진 - 45 - 90 - 45 - 직진에서 90도  
+brilrun.c (main):            pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 2 ] : shift_left[ shift + 2 ];  //현재 턴 방향을 기준으로 shift
+brilrun.c (main):            pinfo->q17shift_after  = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];
+brilrun.c (main):        //else if( ( ( pinfo - 1 )->u16turn_dir & ( TURN_90 ) )  && ( ( pinfo + 1 )->u16turn_dir & ( TURN_90 ) ) ) //연속 턴 
+brilrun.c (main):        else if( ( ( pinfo - 1 )->u16turn_dir & ( TURN_45 | TURN_90 ) ) && ( pinfo + 1 )->u16turn_dir & ( TURN_90 | TURN_45 ) )
+brilrun.c (main):            if( ( pinfo - 1 )->u16turn_dir & ( TURN_90 | TURN_45 ) )
+brilrun.c (main):            pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 2 ] : shift_left[ shift + 2 ];
+brilrun.c (main):            pinfo->q17shift_after  = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift + 2 ] : shift_left[ shift + 2 ];
+brilrun.c (main):            pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
+brilrun.c (main):            pinfo->q17shift_after  = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift + 1 ] : shift_left[ shift + 1 ];
+brilrun.c (main):	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
+brilrun.c (main):	if( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) 
+brilrun.c (main):		pinfo->q17shift_after = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
+brilrun.c (main):		pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
+brilrun.c (main):	if( ( pinfo + 1 )->u16turn_dir & STRAIGHT )  //다음이 직진이면 직진 최고 속도로 탈출 한다.
+brilrun.c (main):	pinfo->q17shift_before = ( pinfo->u16turn_dir & RTURN ) ? shift_right[ shift + 2 ] : shift_left[ shift + 2 ];
+brilrun.c (main):	if( ( pinfo + 1 )->u16turn_dir & STRAIGHT )
+brilrun.c (main):		pinfo->q17shift_after = ( ( pinfo + 1 )->u16turn_dir & RTURN ) ? shift_right[ shift ] : shift_left[ shift ];
+brilrun.c (main):	if( ( ( pinfo - 1 )->u16turn_dir & STRAIGHT ) && ( ( pinfo - 1 )->u16dist ) < MID_DIST )  //이전이 직진이면 직진 최고 속도로 진입한다.
+brilrun.c (main):	if( pinfo->u16turn_dir & ( STRAIGHT | ETURN ) )				                    bril_straight_compute( pinfo, mark_cnt, perr );
+brilrun.c (main):	else if( ( pinfo->u16turn_dir & LARGE_TURN ) && g_Flag.BLTURN_flag )				bril_large_turn_compute( pinfo, mark_cnt, perr ); //large_turn_compute( pinfo, mark_cnt, perr );
+brilrun.c (main):	else if( ( pinfo->u16turn_dir & TURN_45 ) && g_Flag.B45_flag )                      bril_45_turn_compute( pinfo, mark_cnt, perr );
+brilrun.c (main):    else if( ( pinfo->u16turn_dir & TURN_90 ) && g_Flag.B90_flag )                      bril_default_turn_compute( pinfo, mark_cnt, perr );
+brilrun.c (main):    else if( pinfo->u16turn_dir & TURN_270 )                                            bril_default_turn_compute( pinfo, mark_cnt, perr );
+brilrun.c (main):			g_fast_info[ i ].u16turn_dir,
+brilrun.c (main):	if( pinfo->u16turn_dir & STRAIGHT )  //  첫  곡률이 직진인 경우 
+brilrun.c (main):			shift_dist = ( ( g_fast_info[ g_int32mark_cnt ].u16turn_dir & STRAIGHT ) && 			//직진이면서
+brilrun.c (main): 	volatile _iq17 pre_ratio = ( pinfo->u16turn_dir & ( STRAIGHT | LARGE_TURN ) ) && ( pinfo->u16dist > MID_DIST_LIMIT ) ? g_q17st_ret_ratio : g_q17shift_ratio;	//  3.5  or  6.5
+brilrun.c (main):	volatile _iq17 aft_ratio = ( pinfo->u16turn_dir & ( STRAIGHT | LARGE_TURN ) ) && ( pinfo->u16dist > MID_DIST_LIMIT ) ? g_q17st_ret_ratio : g_q17return_ratio;	//  3.5  or  7.5 	
+brilrun.c (main):        if( ( ( pinfo + mark_cnt + 1 )->u16turn_dir & ( STRAIGHT | ETURN ) ) && !( g_pos.u16current_state & STRAIGHT ) )
+extremerun.asm (main):	.dwattr DW$159, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+extremerun.c (main):    volatile Uint16 dist = ( ( pinfo + 1 )->u16turn_dir & STRAIGHT ) ? pinfo->u16dist - 100 : pinfo->u16dist;
+fastrun.asm (main):;*** 190	-----------------------    if ( !((*pinfo).u16turn_dir&0x10) ) goto g4;
+fastrun.asm (main):;*** 114	-----------------------    if ( (*pinfo).u16turn_dir&0x8 ) goto g3;
+fastrun.asm (main):;*** 127	-----------------------    if ( !((*pinfo).u16turn_dir&0x8) ) goto g9;
+fastrun.asm (main):;*** 266	-----------------------    TxPrintf("way: %d\n", (*pinfo).u16turn_dir);
+fastrun.asm (main):;*** 268	-----------------------    (*pinfo).u16turn_dir;
+fastrun.asm (main):;*** 361	-----------------------    if ( (p_info[g_int32mark_cnt]).u16turn_dir&0x109u ) goto g8;
+fastrun.asm (main):;*** 381	-----------------------    g_pos.u16past_state = (p_info[g_int32mark_cnt]).u16turn_dir;
+fastrun.asm (main):	.dwattr DW$253, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+fastrun.c (main):	if( !( pinfo->u16turn_dir & ETURN ) )	//마지막 구간 아닐 경우. 일반적인 직진!
+fastrun.c (main):    if( pinfo->u16turn_dir & ETURN )        pinfo->q17acc = g_q17endturn_acc;
+fastrun.c (main):	if( ( pinfo->u16turn_dir & TURN_45 ) && ( ( pinfo + 1 )->u16turn_dir & ( TURN_45 | TURN_90 ) ) )
+fastrun.c (main):    TxPrintf("way: %d\n",pinfo->u16turn_dir);
+fastrun.c (main):	else if( pinfo->u16turn_dir & LARGE_TURN )											default_turn_compute( pinfo, mark_cnt, perr ); //large_turn_compute( pinfo, mark_cnt, perr );
+fastrun.c (main):    //if( ( ( pinfo + g_int32mark_cnt + 1 )->u16turn_dir & ( STRAIGHT | ETURN ) ) && !( g_pos.u16current_state & STRAIGHT ) )
+fastrun.c (main):	if( ( pinfo + g_int32mark_cnt )->u16turn_dir & ( STRAIGHT | LARGE_TURN | ETURN ) )
+fastrun.c (main):	g_pos.u16past_state = ( pinfo + g_int32mark_cnt )->u16turn_dir;	
+gyro.asm (main):	.dwattr DW$349, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+main.asm (main):;*** 307	-----------------------    TxPrintf("%d| dst: %5d| dec: %5ld| mdst: %5ld| turn_dir: 0x%04X| acc: %5ld| in: %5ld| vel: %5ld| out: %5ld| cnt: %d | down: %d| s44s: %d| escape: %d| ready: %d| bril: %d| kp: %.2f| RDIST: %ld| LDIST: %ld| P: %ld| angle: %ld\n", i, (*U$6).u16dist, (*U$6).q17dec_dist>>17, (*U$6).q17m_dist>>17, (*U$6).u16turn_dir, (*U$6).q17acc>>17, (*U$6).q17in_vel>>17, (*U$6).q17vel>>17, (*U$6).q17out_vel>>17, (*U$6).u16turn_cnt, *((volatile unsigned *)U$6+14)>>2&1, *((volatile unsigned *)U$6+14)>>1&1, *((volatile unsigned *)U$6+14)>>3&1, *((volatile unsigned *)U$6+14)>>5&1, *((volatile unsigned *)U$6+14)>>4&1, _IQ17toF((*U$6).q17kp_val), (*U$6).q17r_dist>>17, (*U$6).q17l_dist>>17, (*U$6).iq7pos_integral_val>>7, (*U$6).q17angle>>17);
+main.asm (main):	.dwattr DW$531, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+main.c (main):																		 g_fast_info[ i ].u16turn_dir,																 
+menu.asm (main):	.dwattr DW$135, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+Motor.asm (main):	.dwattr DW$525, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+Rom.asm (main):	.dwattr DW$305, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+search.asm (main):;*** 94	-----------------------    (*pinfo).u16turn_dir = 1u;
+search.asm (main):;*** 158	-----------------------    (*pinfo).u16turn_dir = (*pinfo).u16turn_way|0x20u;
+search.asm (main):;*** 163	-----------------------    (*pinfo).u16turn_dir = (*pinfo).u16turn_way|0x80u;
+search.asm (main):;*** 153	-----------------------    (*pinfo).u16turn_dir = (*pinfo).u16turn_way|0x10u;
+search.asm (main):;*** 125	-----------------------    (*pinfo).u16turn_dir = (*pinfo).u16turn_way|0x100u;
+search.asm (main):;*** 170	-----------------------    (*pinfo).u16turn_dir = (*pinfo).u16turn_way;
+search.asm (main):	.dwattr DW$355, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+search.c (main):		pinfo->u16turn_dir = STRAIGHT;
+search.c (main):			pinfo->u16turn_dir = LARGE_TURN | pinfo->u16turn_way;			
+search.c (main):			pinfo->u16turn_dir = TURN_45 | pinfo->u16turn_way;
+search.c (main):			pinfo->u16turn_dir = TURN_90 | pinfo->u16turn_way;
+search.c (main):			pinfo->u16turn_dir = TURN_270 | pinfo->u16turn_way;
+search.c (main):		pinfo->u16turn_dir = pinfo->u16turn_way;
+sensor.asm (main):	.dwattr DW$576, DW_AT_name("u16turn_dir"), DW_AT_symbol_name("_u16turn_dir")
+Struct.h (include):			u16turn_dir,
