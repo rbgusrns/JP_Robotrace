@@ -386,7 +386,7 @@ extern void turn_decide(turnmark_t* p_mark)
 
                 if( g_pos.u16current_state & STRAIGHT )
                 {
-                    if( pmark->q7turn_dis < pmark->q7dist_limit + _IQ7(140) ) return;
+                    if( pmark->q7turn_dis < pmark->q7dist_limit + _IQ7(100) ) return;
                 }                
                 if(!g_Flag.fast_flag) 
                     init_line_info(pmark);

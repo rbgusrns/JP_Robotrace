@@ -175,7 +175,7 @@ static void bril_straight_compute( fast_run_str *p_info, int32 mark_cnt, error_s
 	}
     
 	//에러 처리
-	perr->q17err_dist[ mark_cnt ] = _IQ17( pinfo->u16dist << 2 );  //거리 에러 체크 값
+	//perr->q17err_dist[ mark_cnt ] = _IQ17( pinfo->u16dist << 2 );  //거리 에러 체크 값
 	
 	if( perr->q17err_dist[ mark_cnt ] > _IQ17( MID_DIST_LIMIT + SHT_DIST_LIMIT ) )   //직진 거리가 길 경우 -> 에러거리  재 조정.
 		perr->q17err_dist[ mark_cnt ] = _IQ17( MID_DIST_LIMIT + SHT_DIST_LIMIT );
@@ -352,7 +352,7 @@ static void bril_45_turn_compute( fast_run_str *p_info, int32 mark_cnt, error_st
 	//pinfo->q17dist_limit =  _IQ( pinfo->u16dist >> 1 );		
 	pinfo->q17dist_limit = _IQmpy( _IQ(pinfo->u16dist), _IQ(0.2));
 	perr->q17err_dist[ mark_cnt ] = _IQmpy( _IQ(pinfo->u16dist), _IQ(1.5)); 
-	perr->q17under_dist[ mark_cnt ] = _IQ( pinfo->u16dist >> 2 );	
+	perr->q17under_dist[ mark_cnt ] = _IQmpy( _IQ(pinfo->u16dist), _IQ(0.7)); 	
 
     //if(pinfo->q17kp_val == POS_KP_NONE)
     //{
