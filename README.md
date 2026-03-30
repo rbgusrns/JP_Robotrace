@@ -5,7 +5,7 @@
 
 A complete robot tracing project that brings together firmware, electronics, and mechanical design in one repository.
 
-<img src="./Mechanics/Assembly.png" alt="JP_Robotrace Assembly" width="78%" />
+<img src="./Docs/MM2025全日本ロゴ.png" alt="MM2025 poster" width="88%" />
 
 <br />
 
@@ -31,16 +31,24 @@ At the center of the project is a TI C2000-based control system tuned for fast a
 <table>
   <tr>
     <td width="50%">
-      <img src="./Mechanics/MM2025_RT51.jpg" alt="Robot photo" width="100%" />
+      <img src="./Mechanics/Assembly.png" alt="Assembly model" width="100%" />
     </td>
     <td width="50%">
+      <img src="./Mechanics/MM2025_RT51.jpg" alt="Robot photo" width="100%" />
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
       <img src="./Hardware/EasyEDA/Board.png" alt="Main board" width="100%" />
+    </td>
+    <td width="50%">
+      <img src="./Hardware/EasyEDA/SensorBoard.png" alt="Sensor board" width="100%" />
     </td>
   </tr>
 </table>
 
 <p align="center">
-  <sub>Real hardware, competition context, and board design are all preserved in the same repository.</sub>
+  <sub>Event identity, mechanical design, real hardware, and board-level engineering all live in the same archive.</sub>
 </p>
 
 ---
@@ -102,12 +110,6 @@ This repository also preserves the electrical side of the robot.
 - `Hardware/EasyEDA/` contains editable PCB project files and preview images
 - `Hardware/Gerber/` contains manufacturing-ready archives for the boards
 - `Hardware/Logic/` contains supporting circuit reference documents
-
-Sensor board preview:
-
-<p align="center">
-  <img src="./Hardware/EasyEDA/SensorBoard.png" alt="Sensor board" width="72%" />
-</p>
 
 ---
 
