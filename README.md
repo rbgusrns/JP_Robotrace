@@ -186,4 +186,4 @@ From the project make configuration:
 
 ## License
 
-No explicit license file is currently included in the repository. If you plan to share, modify, or redistribute this project publicly, adding a `LICENSE` file would make the intended usage clear.
+This project is released under the `MIT` License. See `LICENSE` for details.
